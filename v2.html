@@ -831,11 +831,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 })();
 </script>
 <script>
-try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(e){}
-window.addEventListener('load',function(){if(!location.hash||location.hash.length<2)window.scrollTo(0,0);});
+/* Toujours repartir en haut au chargement (changement de version, rechargement) */
+(function(){
+  try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(e){}
+  try{if(location.hash)history.replaceState(null,'',location.pathname+location.search);}catch(e){}
+  function top(){var h=document.documentElement,prev=h.style.scrollBehavior;h.style.scrollBehavior='auto';
+    try{window.scrollTo({top:0,left:0,behavior:'instant'});}catch(e){window.scrollTo(0,0);}
+    h.scrollTop=0;if(document.body)document.body.scrollTop=0;h.style.scrollBehavior=prev;}
+  top();document.addEventListener('DOMContentLoaded',top);
+  window.addEventListener('load',function(){top();setTimeout(top,60);setTimeout(top,250);});
+  window.addEventListener('pageshow',top);
+  window.zkTop=top;
+})();
 (function(){var sel=document.getElementById('vpick');if(!sel)return;
 var files={v1:'v1.html',v2:'v2.html',v3:'v3.html'};
 sel.addEventListener('change',function(){var id=sel.value;
+  if(window.zkTop)window.zkTop();
   try{if(window.parent!==window&&typeof window.parent.zkShow==='function'){window.parent.zkShow(id);return;}}catch(e){}
   location.href=files[id];});})();
 </script>
