@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zenika Site Versions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap">
+<style>
+:root{--bar:#0E0F13;--bar-text:#FFFFFF;--muted:#A3A7B3;--accent:#EE2238;--line:rgba(255,255,255,.14)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bar:#0E0F13}}
+:root[data-theme="dark"]{--bar:#0E0F13}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0E0F13;overflow:hidden}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#FFF}
+.vs{position:fixed;left:16px;bottom:16px;z-index:10;display:flex;align-items:center;gap:10px;max-width:calc(100% - 32px);padding:6px 6px 6px 16px;border-radius:999px;background:var(--bar);color:var(--bar-text);font-family:"Montserrat",system-ui,sans-serif;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.35);border:1px solid var(--line)}
+.vs label{display:flex;align-items:center;gap:8px;font-weight:600;white-space:nowrap}
+.vs label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.vs select{appearance:none;-webkit-appearance:none;min-width:0;max-width:62vw;height:36px;padding:0 34px 0 14px;border-radius:999px;border:1px solid var(--line);background:#22242C url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;color:#FFF;font:inherit;font-weight:600;cursor:pointer;text-overflow:ellipsis}
+.vs select:focus-visible{outline:3px solid #8185EA;outline-offset:2px}
+.vs .note{color:var(--muted);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:8px}
+@media (max-width:640px){.vs .note{display:none}.vs label span{display:none}}
+</style>
+</head>
+<body>
+<iframe id="frame" title="Prototype du site Zenika" src="v1.html"></iframe>
+<div class="vs" role="group" aria-label="Choix de la version">
+<label for="ver"><span>Version</span></label>
+<select id="ver"></select>
+<span class="note" id="note"></span>
+</div>
+<script>
+/* Ajouter une idée : déposer vN.html et ajouter une ligne ici. */
+var VERSIONS=[
+  {id:'v1',file:'v1.html',name:'V1 · Défis en bandeau rouge',note:'Les défis en bandeau plein écran avant le scroll'},
+  {id:'v2',file:'v2.html',name:'V2 · Défis en rouge dans le scroll',note:'Mots-clés des freins reliés, solutions en liste, navigation libellée'},
+  {id:'v3',file:'v3.html',name:'V3 · Prototype style training',note:'Hero centré + carte vidéo'}
+];
+var sel=document.getElementById('ver'),frame=document.getElementById('frame'),note=document.getElementById('note');
+VERSIONS.forEach(function(v){var o=document.createElement('option');o.value=v.id;o.textContent=v.name;sel.appendChild(o);});
+function show(id){
+  var v=VERSIONS.filter(function(x){return x.id===id;})[0]||VERSIONS[0];
+  sel.value=v.id; note.textContent=v.note;
+  if(frame.getAttribute('src')!==v.file) frame.setAttribute('src',v.file);
+  try{history.replaceState(null,'','#'+v.id);}catch(e){}
+  try{localStorage.setItem('zk-version2',v.id);}catch(e){}
+}
+var start=(location.hash||'').slice(1);
+if(!start){try{start=localStorage.getItem('zk-version2')||'';}catch(e){}}
+show(start||VERSIONS[0].id);
+sel.addEventListener('change',function(){show(sel.value);});
+</script>
+</body>
+</html>
