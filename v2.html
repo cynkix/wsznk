@@ -122,9 +122,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @keyframes dot{0%{box-shadow:0 0 0 0 rgba(224,51,79,.55)}100%{box-shadow:0 0 0 8px rgba(224,51,79,0)}}
 
 /* V5 · mots-clés, liste de solutions, navigation libellée */
-.kws{font-size:18px;line-height:1.75}
-.kw{padding:1px 6px;margin:0 -2px;border-radius:6px;background:#FDE8EC;color:#9E1A3A;font-weight:800;font-family:var(--display);font-size:.94em;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .3s ease,color .3s ease;cursor:default}
+.kws,.step p.lead.kws{font-size:18px;line-height:2.15}
+.kw{padding:3px 7px;margin:0 1px;border-radius:6px;background:#FDE8EC;color:#9E1A3A;font-weight:800;font-family:var(--display);font-size:.94em;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .3s ease,color .3s ease;cursor:default}
 .kw.lit{background:var(--red);color:#FFF}
+.tri{display:inline-block;width:1em;height:1em;margin:0 .3em -.12em 0;flex:none}
+.tri .tb{fill:#E2001A;transition:fill .3s ease}.tri .tx{fill:none;stroke:#FFF;stroke-width:2.6;stroke-linecap:round}
+.kw.crit{background:#FBD3DB;color:#8A0F2C}.kw.crit.lit .tb{fill:#FFF}.kw.crit.lit .tx{stroke:#E2001A}
+.pill.p-crit .tri{width:1.15em;height:1.15em;margin:0 -1px 0 -2px}
+.riskline .tri{width:16px;height:16px;margin:0}.riskline .tri .tb{fill:#FFF}.riskline .tri .tx{stroke:#E2001A}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
 .sh.one{align-items:center}
 .sh.one h3 small{font-size:12px;font-weight:700;color:#7A818F}
 .scr .alerts .al{padding:6px 12px;transition:opacity .4s ease,transform .4s ease,box-shadow .3s ease,background .3s ease}
@@ -170,6 +177,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .catch p span{display:block;margin-top:2px;font-family:var(--body);font-weight:400;font-size:15px;color:var(--muted)}
 
 .seq-visual{position:relative}
+
 .stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px);height:min(78vh,660px);border-radius:28px;overflow:hidden}
 .bd{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
 .bd.on{opacity:1}
@@ -448,8 +456,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <article class="step on risk" data-step="0">
 <span class="eyebrow">Les défis du SI · Risque élevé</span>
 <h2>Ce que vous vivez au quotidien <em>ralentit votre transformation.</em></h2>
-<p class="lead kws"><mark class="kw" data-k="0" tabindex="0">Données fragmentées</mark>, <mark class="kw" data-k="1" tabindex="0">systèmes legacy</mark>, <mark class="kw" data-k="2" tabindex="0">architecture mille-feuilles</mark>, <mark class="kw" data-k="3" tabindex="0">silos organisationnels</mark>, <mark class="kw" data-k="4" tabindex="0">pression sur les coûts</mark>, <mark class="kw" data-k="5" tabindex="0">complexité croissante</mark>, <mark class="kw" data-k="6" tabindex="0">transformation permanente</mark>&nbsp;: pris isolément, ces freins semblent gérables. Cumulés, ils bloquent votre capacité à produire de la valeur et mettent vos projets critiques en danger.</p>
-<div class="riskline"><span class="pulse" aria-hidden="true"></span><b>7 freins identifiés</b><span>dont 3 critiques</span></div>
+<p class="lead kws"><mark class="kw crit" data-k="0" tabindex="0"><span class="vh">Critique : </span><span style="white-space:nowrap"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path class="tb" d="M10.3 3.3a2 2 0 0 1 3.4 0l8.4 14.6a2 2 0 0 1-1.7 3H3.6a2 2 0 0 1-1.7-3z"/><path class="tx" d="M12 9v4.5M12 17h.01"/></svg>Données</span> fragmentées</mark>, <mark class="kw crit" data-k="1" tabindex="0"><span class="vh">Critique : </span><span style="white-space:nowrap"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path class="tb" d="M10.3 3.3a2 2 0 0 1 3.4 0l8.4 14.6a2 2 0 0 1-1.7 3H3.6a2 2 0 0 1-1.7-3z"/><path class="tx" d="M12 9v4.5M12 17h.01"/></svg>systèmes</span> legacy</mark>, <mark class="kw" data-k="2" tabindex="0">architecture mille-feuilles</mark>, <mark class="kw" data-k="3" tabindex="0">silos organisationnels</mark>, <mark class="kw crit" data-k="4" tabindex="0"><span class="vh">Critique : </span><span style="white-space:nowrap"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path class="tb" d="M10.3 3.3a2 2 0 0 1 3.4 0l8.4 14.6a2 2 0 0 1-1.7 3H3.6a2 2 0 0 1-1.7-3z"/><path class="tx" d="M12 9v4.5M12 17h.01"/></svg>pression</span> sur les coûts</mark>, <mark class="kw" data-k="5" tabindex="0">complexité croissante</mark>, <mark class="kw" data-k="6" tabindex="0">transformation permanente</mark>&nbsp;: pris isolément, ces freins semblent gérables. Cumulés, ils bloquent votre capacité à produire de la valeur et mettent vos projets critiques en danger.</p>
+<div class="riskline"><span class="pulse" aria-hidden="true"></span><b>7 freins identifiés</b><span style="display:inline-flex;align-items:center;gap:6px">dont <svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path class="tb" d="M10.3 3.3a2 2 0 0 1 3.4 0l8.4 14.6a2 2 0 0 1-1.7 3H3.6a2 2 0 0 1-1.7-3z"/><path class="tx" d="M12 9v4.5M12 17h.01"/></svg>3 critiques</span></div>
 </article>
 <article class="step sol1" data-step="1" data-group="sol">
 <span class="eyebrow">Nos solutions</span>
@@ -509,11 +517,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <div class="scr on">
 <div class="sh one"><h3>Supervision du SI <small>· 7 alertes ouvertes</small></h3><span class="pill p-crit">3 critiques</span></div>
 <div class="alerts">
-<div class="al c" style="--i:0" data-k="0"><i style="background:var(--crit)"></i><div><b>Données fragmentées</b><span class="m">14 sources non synchronisées</span></div><span class="pill p-crit">Critique</span></div>
-<div class="al c" style="--i:1" data-k="1"><i style="background:var(--crit)"></i><div><b>Systèmes legacy</b><span class="m">Version non maintenue depuis 2016</span></div><span class="pill p-crit">Critique</span></div>
+<div class="al c" style="--i:0" data-k="0"><i style="background:var(--crit)"></i><div><b>Données fragmentées</b><span class="m">14 sources non synchronisées</span></div><span class="pill p-crit"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path class="tb" d="M10.3 3.3a2 2 0 0 1 3.4 0l8.4 14.6a2 2 0 0 1-1.7 3H3.6a2 2 0 0 1-1.7-3z"/><path class="tx" d="M12 9v4.5M12 17h.01"/></svg>Critique</span></div>
+<div class="al c" style="--i:1" data-k="1"><i style="background:var(--crit)"></i><div><b>Systèmes legacy</b><span class="m">Version non maintenue depuis 2016</span></div><span class="pill p-crit"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path class="tb" d="M10.3 3.3a2 2 0 0 1 3.4 0l8.4 14.6a2 2 0 0 1-1.7 3H3.6a2 2 0 0 1-1.7-3z"/><path class="tx" d="M12 9v4.5M12 17h.01"/></svg>Critique</span></div>
 <div class="al" style="--i:2" data-k="2"><i style="background:var(--warn)"></i><div><b>Architecture mille-feuilles</b><span class="m">38 interfaces point à point</span></div><span class="pill p-warn">Élevée</span></div>
 <div class="al" style="--i:3" data-k="3"><i style="background:var(--warn)"></i><div><b>Silos organisationnels</b><span class="m">5 équipes, 0 backlog commun</span></div><span class="pill p-warn">Élevée</span></div>
-<div class="al c" style="--i:4" data-k="4"><i style="background:var(--crit)"></i><div><b>Pression sur les coûts</b><span class="m">Budget run : 78 % du total</span></div><span class="pill p-crit">Critique</span></div>
+<div class="al c" style="--i:4" data-k="4"><i style="background:var(--crit)"></i><div><b>Pression sur les coûts</b><span class="m">Budget run : 78 % du total</span></div><span class="pill p-crit"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path class="tb" d="M10.3 3.3a2 2 0 0 1 3.4 0l8.4 14.6a2 2 0 0 1-1.7 3H3.6a2 2 0 0 1-1.7-3z"/><path class="tx" d="M12 9v4.5M12 17h.01"/></svg>Critique</span></div>
 <div class="al" style="--i:5" data-k="5"><i style="background:var(--warn)"></i><div><b>Complexité croissante</b><span class="m">Délai moyen d'une évolution : 4 mois</span></div><span class="pill p-warn">Élevée</span></div>
 <div class="al" style="--i:6" data-k="6"><i style="background:var(--warn)"></i><div><b>Transformation permanente</b><span class="m">3 réorganisations en 2 ans</span></div><span class="pill p-warn">Élevée</span></div>
 </div>
@@ -753,7 +761,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   var kwL=[].slice.call(document.querySelectorAll('.kws .kw')), kwR=[].slice.call(document.querySelectorAll('.al[data-k]'));
   var kwI=-1, kwT=null, kwHold=false;
   function lightKw(i){kwI=i;kwL.forEach(function(m){m.classList.toggle('lit',+m.dataset.k===i);});kwR.forEach(function(a){a.classList.toggle('lit',+a.dataset.k===i);});}
-  function startKw(){ if(kwT||reduce) return; kwT=setInterval(function(){ if(!kwHold) lightKw((kwI+1)%7); },1500); }
+  function startKw(){ if(kwT||reduce) return; kwT=setInterval(function(){ if(!kwHold) lightKw((kwI+1)%7); },1700); }
   function stopKw(){ clearInterval(kwT); kwT=null; lightKw(-1); }
   kwL.forEach(function(m){
     function on(){kwHold=true;lightKw(+m.dataset.k);} function off(){kwHold=false;}
