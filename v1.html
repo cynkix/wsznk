@@ -178,7 +178,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .deliv-list li{display:inline-flex;align-items:center;gap:12px;min-height:54px;padding:0 24px 0 20px;border:2px solid #E2001A;border-radius:999px;background:#FFF;font-family:var(--display);font-weight:700;font-size:16.5px;color:var(--ink);text-align:left}
 .deliv-list svg{width:20px;height:20px;flex:none;fill:none;stroke:#E2001A;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 @media (max-width:640px){.deliv{padding-block:64px 8px}.deliv-list{gap:10px;margin-top:28px}.deliv-list li{min-height:48px;padding:10px 18px 10px 16px;font-size:15px;border-radius:24px}}
-.stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px);height:min(78vh,660px);border-radius:28px;overflow:hidden}
+.stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 160px);height:min(calc(100vh - 190px),660px);border-radius:28px;overflow:hidden}
+.prog{display:none!important}
+/* Parcours de l'offre : barre collante qui s'allume étape par étape */
+.jrny{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);z-index:6;padding-block:8px 12px;background:linear-gradient(#FFF 78%,rgba(255,255,255,0))}
+.jrny ol{list-style:none;margin:0;padding:8px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;border-radius:16px;background:#FFF;border:1px solid var(--line);box-shadow:0 8px 24px rgba(26,32,44,.06)}
+.jrny button{display:flex;flex-direction:column;align-items:stretch;gap:9px;width:100%;min-height:52px;padding:9px 12px;border:0;border-radius:10px;background:none;font-family:var(--display);font-weight:600;font-size:14.5px;text-align:left;color:var(--soft);cursor:pointer;transition:background .2s ease,color .4s ease}
+.jrny button:hover{background:var(--surface)}
+.jrny button:focus-visible{outline:3px solid #8185EA;outline-offset:2px}
+.jrny li.done button{color:var(--ink)}
+.jrny li.cur button{color:var(--ink);font-weight:700}
+.jrny .tk{position:relative;display:block;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.jrny .tk b{position:absolute;inset:0 auto 0 0;width:0;border-radius:2px;background:var(--red);transition:width .6s cubic-bezier(.3,.7,.2,1)}
+.jrny .sm{display:none}
 .bd{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
 .bd.on{opacity:1}
 .stage .count{position:absolute;left:28px;top:24px;z-index:3;padding:6px 12px;border-radius:7px;background:rgba(255,255,255,.2);color:#FFF;font-family:var(--display);font-weight:600;font-size:13px}
@@ -384,7 +396,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media (max-width:900px){
   .nav,.hact .join{display:none}
   .seq-grid{grid-template-columns:minmax(0,1fr);gap:0}
-  .seq-visual{order:-1;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);z-index:5;height:46vh;background:#FFF;padding-bottom:10px}
+  .seq-visual{order:-1;position:sticky;top:calc(env(safe-area-inset-top,0px) + 136px);z-index:5;height:42vh;background:#FFF;padding-bottom:10px}
+  .jrny{padding-block:6px 8px;background:#FFF}
+  .jrny ol{padding:4px;gap:2px;border-radius:12px}
+  .jrny button{min-height:44px;padding:6px 7px;font-size:12px;gap:7px}
+  .jrny .lg{display:none}.jrny .sm{display:inline}
   .stage{position:relative;top:0;height:100%;border-radius:20px}
   .step{min-height:70vh;opacity:.35}
   .story .top,.clients .top,.cband,.fgrid,.agencies{grid-template-columns:minmax(0,1fr)}
@@ -412,6 +428,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .adn-in{padding-inline:16px}
 }
 @media (prefers-reduced-motion:reduce){
+  .jrny .tk b,.jrny button{transition:none}
+
   .hero .bg{animation:none}
   .hero h1 .w,.hero .ctas{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
 
@@ -465,6 +483,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <!-- 3 · Séquence : l'écran qui se transforme -->
 <section class="seq" id="sequence">
+<nav class="wrap jrny" id="jrny" aria-label="Parcours de l'offre"><ol><li><button type="button" data-to="defis"><span><span class="lg">Le problème</span><span class="sm">Problème</span></span><span class="tk"><b></b></span></button></li><li><button type="button" data-to="0"><span><span class="lg">Nos solutions</span><span class="sm">Solutions</span></span><span class="tk"><b></b></span></button></li><li><button type="button" data-to="2"><span><span class="lg">Nos résultats</span><span class="sm">Résultats</span></span><span class="tk"><b></b></span></button></li><li><button type="button" data-to="3"><span><span class="lg">La preuve</span><span class="sm">Preuve</span></span><span class="tk"><b></b></span></button></li></ol></nav>
 <div class="wrap seq-grid">
 <div class="seq-text">
 <article class="step sol1 on" data-step="0" data-group="sol">
@@ -756,7 +775,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     [bds,scrs,flts].forEach(function(list){for(var i=0;i<list.length;i++){list[i].classList.toggle('on',i===k);}});
     for(var i=0;i<bars.length;i++){bars[i].classList.toggle('on',i<=k);}
     urlEl.textContent=urls[k]; countEl.textContent=labels[k];
+    /* Barre de parcours : phase 0 = problème (déjà vu), 1 = solutions (étapes 0-1), 2 = résultats, 3 = preuve */
+    var phase=k<=1?1:k, fill=[1,k>=1?1:.5,k>=2?1:0,k>=3?1:0];
+    jItems.forEach(function(li,i){li.querySelector('b').style.width=(fill[i]*100)+'%';li.classList.toggle('done',fill[i]>0);li.classList.toggle('cur',i===phase);
+      var b=li.querySelector('button'); if(i===phase){b.setAttribute('aria-current','step');}else{b.removeAttribute('aria-current');}});
   }
+  var jItems=[].slice.call(document.querySelectorAll('#jrny li'));
+  jItems.forEach(function(li){li.querySelector('button').addEventListener('click',function(){
+    var t=this.dataset.to, el=t==='defis'?document.getElementById('defis'):steps[+t];
+    el.scrollIntoView({behavior:reduce?'auto':'smooth',block:t==='defis'?'start':'center'});
+  });});
   function pickStep(){
     var mid=window.innerHeight*(window.innerWidth<=900?0.72:0.5), best=0, bestD=1e9;
     steps.forEach(function(s,i){var r=s.getBoundingClientRect();var c=r.top+r.height/2;var d=Math.abs(c-mid);if(d<bestD){bestD=d;best=i;}});
