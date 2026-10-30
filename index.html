@@ -27,7 +27,7 @@ var frame=document.getElementById('frame');
 function show(id){
   var v=VERSIONS.filter(function(x){return x.id===id;})[0]||VERSIONS[0];
   document.title='Zenika · '+v.name;
-  if(frame.getAttribute('src')!==v.file) frame.setAttribute('src',v.file);
+  frame.setAttribute('src',v.file+'?r='+Date.now());
   try{history.replaceState(null,'','#'+v.id);}catch(e){}
   try{localStorage.setItem('zk-version2',v.id);}catch(e){}
 }

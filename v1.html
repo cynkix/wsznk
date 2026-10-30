@@ -887,6 +887,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 })();
 </script>
 <script>
+try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(e){}
+window.addEventListener('load',function(){if(!location.hash||location.hash.length<2)window.scrollTo(0,0);});
 (function(){var sel=document.getElementById('vpick');if(!sel)return;
 var files={v1:'v1.html',v2:'v2.html',v3:'v3.html'};
 sel.addEventListener('change',function(){var id=sel.value;
