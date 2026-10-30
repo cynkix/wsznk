@@ -64,8 +64,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .hero .in{position:relative;width:100%;padding-block:120px 72px}
 .hero h1{max-width:15em;color:#FFF;font-weight:500;font-size:clamp(32px,3.5vw,54px);line-height:1.2;letter-spacing:-.005em;text-wrap:pretty}
 .hero .sub{margin-top:36px;max-width:31em;font-family:var(--display);font-weight:500;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#FFF}
-.hero .pillars{display:block;margin-top:30px;font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:.02em;text-transform:uppercase;color:#FFF}
-.hero .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 34px;margin-top:28px}
+.hero .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 34px;margin-top:44px}
+.hero .bg{position:absolute;inset:0;z-index:0;background:inherit;transform-origin:70% 50%;animation:heroZoom 28s ease-in-out infinite alternate;will-change:transform}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.045)}}
+.hero::before{z-index:1}.hero .in{z-index:2}
+.hero h1 .w{display:inline-block;opacity:0;transform:translateY(.45em);filter:blur(6px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),filter .7s ease}
+.hero h1.on .w{opacity:1;transform:none;filter:none}
+.hero .ctas{opacity:0;transform:translateY(12px);transition:opacity .7s ease,transform .7s ease}
+.hero.ready .ctas{opacity:1;transform:none}
 .hero .btn{text-transform:uppercase;letter-spacing:.02em;min-height:56px;padding:6px 6px 6px 30px;gap:18px}
 .hero .btn i{width:44px;height:44px}
 .hero .lnk{display:inline-flex;align-items:center;gap:10px;min-height:48px;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:#FFF}
@@ -391,7 +397,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .hero::before{background:linear-gradient(180deg,rgba(18,18,22,.35) 0%,rgba(18,18,22,0) 16%,rgba(18,18,22,0) 28%,#121216 46svh)}
   .hero .in{padding-block:calc(46svh - 56px) 48px}
   .hero .sub{margin-top:20px}
-  .hero .pillars{margin-top:20px;font-size:13px}
   .hero .btn{font-size:14px;padding-left:22px}
   .statement{padding-block:88px 24px}
   .flt{right:-10px;bottom:-14px;width:210px}
@@ -407,6 +412,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .adn-in{padding-inline:16px}
 }
 @media (prefers-reduced-motion:reduce){
+  .hero .bg{animation:none}
+  .hero h1 .w,.hero .ctas{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
   .js .rv.pre{opacity:1;transform:none}
@@ -424,10 +432,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <main id="top">
 <!-- 1 · Accueil -->
 <section class="hero" aria-label="Accueil">
+<div class="bg" aria-hidden="true"></div>
 <div class="wrap in">
 <h1>Zenika est le partenaire technologique de proximité qui augmente l'impact métier de votre système d'information.</h1>
-<p class="sub">À l'ère de l'IA et du cloud, la tech investit le cœur des stratégies d'entreprise, mais l'IT peine souvent à produire de la valeur au rythme attendu.</p>
-<span class="pillars">Conseil · Réalisation · Formation</span>
 <div class="ctas">
 <a class="btn" href="#contact">Parlons de vos projets<i><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a>
 <a class="lnk" href="#adn">Découvrir Zenika<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
@@ -800,6 +807,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   var chips=document.querySelectorAll('.chip');
   chips.forEach(function(c){c.addEventListener('click',function(){chips.forEach(function(o){o.setAttribute('aria-pressed',o===c?'true':'false');});});});
   document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();this.classList.add('done');});
+})();
+</script>
+<script>
+(function(){
+  var hero=document.querySelector('.hero'),h=hero&&hero.querySelector('h1');if(!h)return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  h.setAttribute('aria-label',h.textContent);
+  var words=h.textContent.split(' ');h.textContent='';
+  words.forEach(function(w,i){var s=document.createElement('span');s.className='w';s.setAttribute('aria-hidden','true');s.textContent=w;s.style.transitionDelay=(reduce?0:i*70)+'ms';h.appendChild(s);if(i<words.length-1)h.appendChild(document.createTextNode(' '));});
+  requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('on');setTimeout(function(){hero.classList.add('ready');},reduce?0:words.length*70+350);});});
 })();
 </script>
 </body></html>
