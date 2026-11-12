@@ -1107,6 +1107,17 @@ html[data-theme="dark"] .eg-it.act b,html[data-theme="dark"] .eg2 h2 em,html[dat
 .hact .hct svg{width:17px;height:17px}
 .hact .thm{order:4;margin-left:0}
 .hact .vpick{order:5;margin-left:2px}
+
+/* zk-reveal-1112 */
+.js .risk .risk-eb,.js .risk .risk-head h2,.js .risk .risk-head p,.js .risk .risk-sum{opacity:0;transform:translateY(18px);filter:blur(5px)}
+.js .risk .rc{opacity:0;transform:translateY(26px) scale(.97);filter:blur(4px)}
+.js .risk.go .risk-eb,.js .risk.go .risk-head h2,.js .risk.go .risk-head p,.js .risk.go .risk-sum,.js .risk.go .rc{opacity:1;transform:none;filter:none;transition:opacity 1s ease,transform 1.1s cubic-bezier(.22,1,.36,1),filter 1s ease}
+.js .risk.go .risk-eb{transition-delay:.05s}
+.js .risk.go .risk-head h2{transition-delay:.25s}
+.js .risk.go .risk-head p{transition-delay:.6s}
+.js .risk.go .risk-sum{transition-delay:.95s}
+.js .risk.go .rc{transition-delay:calc(1.25s + var(--i) * 190ms)}
+@media (prefers-reduced-motion:reduce){.js .risk .risk-eb,.js .risk .risk-head h2,.js .risk .risk-head p,.js .risk .risk-sum,.js .risk .rc{opacity:1;transform:none;filter:none;transition:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1610,7 +1621,7 @@ html[data-theme="dark"] .eg-it.act b,html[data-theme="dark"] .eg2 h2 em,html[dat
     rk.classList.toggle('done',p>=1);
   }
   if(reduce||!('IntersectionObserver' in window)){rk.classList.add('go');}
-  else{var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){rk.classList.add('go');io.disconnect();}},{threshold:.2});io.observe(rk);}
+  else{var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){rk.classList.add('go');io.disconnect();}},{rootMargin:'0px 0px -35% 0px',threshold:0});io.observe(rk);}
   var tick=false;
   function onS(){ if(tick) return; tick=true; requestAnimationFrame(function(){tick=false;upd();}); }
   window.addEventListener('scroll',onS,{passive:true}); window.addEventListener('resize',onS);
@@ -1722,6 +1733,18 @@ sel.addEventListener('change',function(){var id=sel.value;
   window.addEventListener('scroll',on,{passive:true}); window.addEventListener('resize',on);
   var m0='v'; try{ m0=localStorage.getItem('zk-eg-mode')==='h'?'h':'v'; }catch(e){}
   setMode(m0,true);
+})();
+</script>
+<script>
+/* zk-reveal-1112 : compteur 0 → 7 au moment où le bandeau apparaît */
+(function(){
+  var r=document.querySelector('.risk'), b=r&&r.querySelector('.risk-sum b'); if(!b) return;
+  var end=parseInt(b.textContent,10)||7, reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return; b.textContent='0';
+  function run(){ var t0=null; setTimeout(function(){ requestAnimationFrame(function step(t){ if(t0===null) t0=t; var k=Math.min(1,(t-t0)/900); b.textContent=Math.round(end*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(step); }); },950); }
+  if(r.classList.contains('go')) return run();
+  var mo=new MutationObserver(function(){ if(r.classList.contains('go')){ mo.disconnect(); run(); } });
+  mo.observe(r,{attributes:true,attributeFilter:['class']});
 })();
 </script>
 </body></html>
