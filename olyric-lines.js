@@ -195,9 +195,10 @@
       const w = this.clientWidth || 1, h = this.clientHeight || 1;
       this._renderer.setSize(w, h, false);
       this._cam.aspect = w / h;
-      this._cam.position.set(0, 0, w / h < 1 ? 15 : 12);
+      this._cam.position.set(0, 0, this.getAttribute('align') === 'center' ? (w / h < 1 ? 13 : 8.6) : (w / h < 1 ? 15 : 12));
       this._cam.lookAt(0, 0, 0);
-      this._group.position.set(w / h > 1.3 ? 3.2 : 0, w / h > 1.3 ? 0.3 : 0.8, 0);
+      const ctr = this.getAttribute('align') === 'center';
+      this._group.position.set(ctr ? 0 : (w / h > 1.3 ? 3.2 : 0), ctr ? 0.1 : (w / h > 1.3 ? 0.3 : 0.8), 0);
       this._cam.updateProjectionMatrix();
     }
   }
