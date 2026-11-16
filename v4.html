@@ -1179,6 +1179,31 @@ html[data-theme="dark"] .sl4-card p{color:var(--muted)}
   .sl4{margin-top:-120px;padding:180px 0 80px}.sl4-grid{grid-template-columns:minmax(0,1fr);margin-top:36px}.sl4-col.c2,.sl4-col.c3{margin-top:0}
 }
 @media (prefers-reduced-motion:reduce){.zin > *{opacity:1;transform:none;animation:none}.js .rv4,.cst-card li{opacity:1;transform:none;transition:none}.cst-line i{transform:none;transition:none}}
+
+/* zk-demarche */
+.dem{position:relative;color:#FFF;background:linear-gradient(100deg,#050A1A 0%,#18212F 52%,#3A0F1C 100%);padding:clamp(64px,8vw,110px) 0 clamp(64px,8vw,110px)}
+.dem h2{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(28px,3.4vw,48px);line-height:1.08;letter-spacing:-.02em;color:#FFF}
+.dem-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,5vw,80px);align-items:center;margin-top:clamp(28px,4vw,56px)}
+.dem-lead{margin:0;max-width:30em;font-size:clamp(16px,1.5vw,20px);line-height:1.55;color:rgba(255,255,255,.88)}
+.dem-lead strong{color:#FFF}
+.dem-cards{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:14px}
+.dem-cards li{padding:20px 24px 22px;border-radius:20px;background:#F0F0EE;color:#5B6475}
+.dem-cards b{display:block;font-family:var(--display);font-weight:800;font-size:16px;color:#14213D}
+.dem-cards span{display:block;margin-top:8px;font-size:14.5px;line-height:1.5}
+.dem-r{display:flex;justify-content:center}
+.dem-svg{width:100%;max-width:640px;height:auto;overflow:visible}
+.dm-ticks line{stroke:rgba(255,255,255,.4);stroke-width:2}.dm-ticks line.M{stroke:rgba(255,255,255,.6);stroke-width:3}
+.dm-ticks{transform-origin:410px 310px;animation:dmspin 90s linear infinite}
+@keyframes dmspin{to{transform:rotate(360deg)}}
+.dm-r1,.dm-r2{fill:none;stroke:rgba(255,255,255,.5);stroke-width:1.5}.dm-r2{stroke:rgba(255,255,255,.3)}
+.dm-ring{fill:none;stroke:rgba(255,255,255,.52);stroke-width:12}
+.dm-arc{fill:none;stroke-width:44;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset 1.6s cubic-bezier(.22,1,.36,1);transition-delay:calc(.5s + var(--d) * .25s)}
+.dem-r.in .dm-arc{stroke-dashoffset:0}
+.dm-node{fill:rgba(255,255,255,.55)}
+.dm-lab text{font-family:var(--display);font-weight:800;font-size:34px;fill:#FFF}
+.dm-lab{opacity:0;transition:opacity 1s ease 1.4s}.dem-r.in .dm-lab{opacity:1}
+@media (max-width:900px){.dem-grid{grid-template-columns:minmax(0,1fr)}.dm-lab text{font-size:30px}}
+@media (prefers-reduced-motion:reduce){.dm-ticks{animation:none}.dm-arc{stroke-dashoffset:0;transition:none}.dm-lab{opacity:1;transition:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1241,30 +1266,7 @@ html[data-theme="dark"] .sl4-card p{color:var(--muted)}
 </section>
 
 <!-- 5 · Histoire -->
-<section class="story story-v2" id="histoire">
-<div class="wrap">
-<div class="top">
-<div><span class="eyebrow">Depuis 2006</span><h2>Nos convictions sont le fruit de plus de 20 ans d'expérience.</h2></div>
-<p class="lead rv">Depuis notre création en 2006, nous avons traversé avec nos clients transformations, évolutions et révolutions, nous préparant aujourd'hui pour le virage de l'Intelligence Artificielle. Ces succès partagés ont forgé notre manière de faire, sans jamais nous éloigner de nos valeurs.</p>
-</div>
-<div class="timeline" id="timeline">
-<span class="line" aria-hidden="true"></span>
-<div class="tl"><b>2006</b><span>Création de Zenika</span></div>
-<div class="tl"><b>Transformations</b><span>traversées avec nos clients</span></div>
-<div class="tl"><b>Évolutions</b><span>et révolutions technologiques</span></div>
-<div class="tl"><b>Aujourd'hui</b><span>le virage de l'IA</span></div>
-</div>
-<div class="vals"><span class="val v1 rv">Responsabilité</span><span class="val v2 rv">Indépendance</span><span class="val v3 rv">Transparence</span><span class="val v4 rv">Amélioration continue</span></div>
-<div class="agencies rv">
-<div><p class="n" data-count="14">14</p><p class="nl">agences en France et dans le monde, au plus près de vous</p></div>
-<div>
-<div class="cities"><span>Bordeaux</span><span>Brest</span><span>Clermont-Ferrand</span><span>Grenoble</span><span>Lille</span><span>Lyon</span><span>Nantes</span><span>Niort</span><span>Paris</span><span>Rennes</span><span>Toulouse</span></div>
-<p class="world">Dans le monde</p>
-<div class="cities w"><span>Casablanca</span><span>Montréal</span><span>Singapour</span></div>
-</div>
-</div>
-</div>
-</section>
+<section class="dem" id="histoire"><div class="wrap dem-in"><h2 class="rv4">Notre démarche est le fruit de 20 ans d'expérience</h2><div class="dem-grid"><div class="dem-l"><p class="dem-lead rv4" style="--i:1">Depuis notre création en 2006, nous avons traversé avec nos clients <strong>transformations, évolutions et révolutions</strong>, nous préparant aujourd'hui pour le virage de l'intelligence artificielle, tout en restant fidèles à nos valeurs cardinales&nbsp;:</p><ul class="dem-cards"><li class="rv4" style="--i:2"><b>Numérique responsable</b><span>Bilan carbone sur tous nos volets (2019), démarche de sobriété et conception durable.</span></li><li class="rv4" style="--i:3"><b>Égalité des chances</b><span>50/50 à tous les échelons, recrutement sans biais, accompagnement de carrière pour chaque collaborateur.</span></li><li class="rv4" style="--i:4"><b>Tech for good</b><span>Des solutions tech au service de l'humain, de la société et du climat.</span></li><li class="rv4" style="--i:5"><b>Éthique et transparence</b><span>Gouvernance claire, charte éthique, et exigence de transparence dans toutes nos pratiques.</span></li></ul></div><div class="dem-r rv4" style="--i:2"><svg class="dm-svg" viewBox="-110 -10 820 640" role="img" aria-label="Nos quatre piliers : Agile, iA, Cloud et Data, Craft et DevOps"><defs><linearGradient id="dm-ag" gradientUnits="userSpaceOnUse" x1="145" y1="259" x2="286" y2="141"><stop offset="0" stop-color="#F0708F"/><stop offset="1" stop-color="#E9658A"/></linearGradient><linearGradient id="dm-ia" gradientUnits="userSpaceOnUse" x1="314" y1="141" x2="455" y2="259"><stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#EF4444"/></linearGradient><linearGradient id="dm-cl" gradientUnits="userSpaceOnUse" x1="455" y1="341" x2="314" y2="459"><stop offset="0" stop-color="#D2104A"/><stop offset="1" stop-color="#FF1F3D"/></linearGradient><linearGradient id="dm-cr" gradientUnits="userSpaceOnUse" x1="259" y1="455" x2="141" y2="314"><stop offset="0" stop-color="#B9B9BD"/><stop offset="1" stop-color="#A7A7AB"/></linearGradient></defs><g class="dm-ticks"><line x1="300.0" y1="38.0" x2="300.0" y2="22.0" class="M"/><line x1="322.8" y1="39.0" x2="323.5" y2="31.0" class=""/><line x1="345.5" y1="42.0" x2="346.9" y2="34.1" class=""/><line x1="367.8" y1="46.9" x2="369.9" y2="39.2" class=""/><line x1="389.6" y1="53.8" x2="392.3" y2="46.3" class=""/><line x1="410.7" y1="62.5" x2="414.1" y2="55.3" class=""/><line x1="431.0" y1="73.1" x2="439.0" y2="59.2" class="M"/><line x1="450.3" y1="85.4" x2="454.9" y2="78.8" class=""/><line x1="468.4" y1="99.3" x2="473.6" y2="93.2" class=""/><line x1="485.3" y1="114.7" x2="490.9" y2="109.1" class=""/><line x1="500.7" y1="131.6" x2="506.8" y2="126.4" class=""/><line x1="514.6" y1="149.7" x2="521.2" y2="145.1" class=""/><line x1="526.9" y1="169.0" x2="540.8" y2="161.0" class="M"/><line x1="537.5" y1="189.3" x2="544.7" y2="185.9" class=""/><line x1="546.2" y1="210.4" x2="553.7" y2="207.7" class=""/><line x1="553.1" y1="232.2" x2="560.8" y2="230.1" class=""/><line x1="558.0" y1="254.5" x2="565.9" y2="253.1" class=""/><line x1="561.0" y1="277.2" x2="569.0" y2="276.5" class=""/><line x1="562.0" y1="300.0" x2="578.0" y2="300.0" class="M"/><line x1="561.0" y1="322.8" x2="569.0" y2="323.5" class=""/><line x1="558.0" y1="345.5" x2="565.9" y2="346.9" class=""/><line x1="553.1" y1="367.8" x2="560.8" y2="369.9" class=""/><line x1="546.2" y1="389.6" x2="553.7" y2="392.3" class=""/><line x1="537.5" y1="410.7" x2="544.7" y2="414.1" class=""/><line x1="526.9" y1="431.0" x2="540.8" y2="439.0" class="M"/><line x1="514.6" y1="450.3" x2="521.2" y2="454.9" class=""/><line x1="500.7" y1="468.4" x2="506.8" y2="473.6" class=""/><line x1="485.3" y1="485.3" x2="490.9" y2="490.9" class=""/><line x1="468.4" y1="500.7" x2="473.6" y2="506.8" class=""/><line x1="450.3" y1="514.6" x2="454.9" y2="521.2" class=""/><line x1="431.0" y1="526.9" x2="439.0" y2="540.8" class="M"/><line x1="410.7" y1="537.5" x2="414.1" y2="544.7" class=""/><line x1="389.6" y1="546.2" x2="392.3" y2="553.7" class=""/><line x1="367.8" y1="553.1" x2="369.9" y2="560.8" class=""/><line x1="345.5" y1="558.0" x2="346.9" y2="565.9" class=""/><line x1="322.8" y1="561.0" x2="323.5" y2="569.0" class=""/><line x1="300.0" y1="562.0" x2="300.0" y2="578.0" class="M"/><line x1="277.2" y1="561.0" x2="276.5" y2="569.0" class=""/><line x1="254.5" y1="558.0" x2="253.1" y2="565.9" class=""/><line x1="232.2" y1="553.1" x2="230.1" y2="560.8" class=""/><line x1="210.4" y1="546.2" x2="207.7" y2="553.7" class=""/><line x1="189.3" y1="537.5" x2="185.9" y2="544.7" class=""/><line x1="169.0" y1="526.9" x2="161.0" y2="540.8" class="M"/><line x1="149.7" y1="514.6" x2="145.1" y2="521.2" class=""/><line x1="131.6" y1="500.7" x2="126.4" y2="506.8" class=""/><line x1="114.7" y1="485.3" x2="109.1" y2="490.9" class=""/><line x1="99.3" y1="468.4" x2="93.2" y2="473.6" class=""/><line x1="85.4" y1="450.3" x2="78.8" y2="454.9" class=""/><line x1="73.1" y1="431.0" x2="59.2" y2="439.0" class="M"/><line x1="62.5" y1="410.7" x2="55.3" y2="414.1" class=""/><line x1="53.8" y1="389.6" x2="46.3" y2="392.3" class=""/><line x1="46.9" y1="367.8" x2="39.2" y2="369.9" class=""/><line x1="42.0" y1="345.5" x2="34.1" y2="346.9" class=""/><line x1="39.0" y1="322.8" x2="31.0" y2="323.5" class=""/><line x1="38.0" y1="300.0" x2="22.0" y2="300.0" class="M"/><line x1="39.0" y1="277.2" x2="31.0" y2="276.5" class=""/><line x1="42.0" y1="254.5" x2="34.1" y2="253.1" class=""/><line x1="46.9" y1="232.2" x2="39.2" y2="230.1" class=""/><line x1="53.8" y1="210.4" x2="46.3" y2="207.7" class=""/><line x1="62.5" y1="189.3" x2="55.3" y2="185.9" class=""/><line x1="73.1" y1="169.0" x2="59.2" y2="161.0" class="M"/><line x1="85.4" y1="149.7" x2="78.8" y2="145.1" class=""/><line x1="99.3" y1="131.6" x2="93.2" y2="126.4" class=""/><line x1="114.7" y1="114.7" x2="109.1" y2="109.1" class=""/><line x1="131.6" y1="99.3" x2="126.4" y2="93.2" class=""/><line x1="149.7" y1="85.4" x2="145.1" y2="78.8" class=""/><line x1="169.0" y1="73.1" x2="161.0" y2="59.2" class="M"/><line x1="189.3" y1="62.5" x2="185.9" y2="55.3" class=""/><line x1="210.4" y1="53.8" x2="207.7" y2="46.3" class=""/><line x1="232.2" y1="46.9" x2="230.1" y2="39.2" class=""/><line x1="254.5" y1="42.0" x2="253.1" y2="34.1" class=""/><line x1="277.2" y1="39.0" x2="276.5" y2="31.0" class=""/></g><circle cx="300" cy="300" r="250" class="dm-r1"/><circle cx="300" cy="300" r="236" class="dm-r2"/><circle cx="300" cy="300" r="224" class="dm-ring"/><circle cx="300" cy="300" r="204" class="dm-r2"/><path class="dm-arc" pathLength="100" style="--d:0" d="M145.5 258.6A160 160 0 0 1 286.1 140.6" stroke="url(#dm-ag)"/><path class="dm-arc" pathLength="100" style="--d:1" d="M313.9 140.6A160 160 0 0 1 454.5 258.6" stroke="url(#dm-ia)"/><path class="dm-arc" pathLength="100" style="--d:2" d="M454.5 341.4A160 160 0 0 1 313.9 459.4" stroke="url(#dm-cl)"/><path class="dm-arc" pathLength="100" style="--d:3" d="M258.6 454.5A160 160 0 0 1 140.6 313.9" stroke="url(#dm-cr)"/><circle class="dm-node" cx="167.0" cy="129.8" r="12"/><circle class="dm-node" cx="460.5" cy="155.5" r="12"/><circle class="dm-node" cx="460.5" cy="444.5" r="12"/><circle class="dm-node" cx="139.5" cy="444.5" r="12"/><g class="dm-lab"><text x="87" y="64" text-anchor="end">Agile</text><text x="504" y="56" text-anchor="start">iA</text><text x="504" y="544" text-anchor="start">Cloud<tspan x="504" dy="34">&amp; Data</tspan></text><text x="96" y="544" text-anchor="end">Craft<tspan x="96" dy="34">&amp; DevOps</tspan></text></g></svg></div></div></div></section>
 
 <!-- 6 · Clients -->
 <section class="clients" id="clients">
