@@ -1,8 +1,8 @@
-// <olyric-lines> — Z 3D en lignes + faisceaux lumineux (three.js 0.160, chargé à la volée)
+// <effect-3d> — Z 3D en lignes + faisceaux lumineux (three.js 0.160, chargé à la volée)
 // Usage :
-//   <script src="olyric-lines.js"></script>
+//   <script src="3deffect.js"></script>
 //   <div style="position:relative;height:100vh">
-//     <olyric-lines theme="clair" count="36" speed="1.8" spacing="6.8" beam="7" parallax="0.5"></olyric-lines>
+//     <effect-3d theme="clair" count="36" speed="1.8" spacing="6.8" beam="7" parallax="0.5"></effect-3d>
 //   </div>
 // Attributs (tous optionnels, modifiables à chaud sauf count) :
 //   theme    gradient | sombre | clair   (couleurs des lignes ; le fond reste à la charge du conteneur)
@@ -37,7 +37,7 @@
   const PFRAG = `uniform vec3 uBeam; varying float vA;
     void main(){ float r=length(gl_PointCoord-0.5)*2.0; float g=exp(-r*r*5.0); if(g<0.01) discard; gl_FragColor=vec4(uBeam, g*vA); }`;
 
-  class OlyricLines extends HTMLElement {
+  class Effect3D extends HTMLElement {
     static get observedAttributes() { return ['theme', 'count', 'speed', 'parallax', 'beam', 'spacing']; }
     connectedCallback() {
       this.style.display = 'block';
@@ -202,5 +202,5 @@
       this._cam.updateProjectionMatrix();
     }
   }
-  if (!customElements.get('olyric-lines')) customElements.define('olyric-lines', OlyricLines);
+  if (!customElements.get('effect-3d')) customElements.define('effect-3d', Effect3D);
 })();
