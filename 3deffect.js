@@ -162,11 +162,11 @@
       L.rnd = 1 - k01 * 0.6;
     }
     _tick(t, dt) {
-      this._sx += (this._mx - this._sx) * 0.025;
-      this._sy += (this._my - this._sy) * 0.025;
+      this._sx += (this._mx - this._sx) * 0.07;
+      this._sy += (this._my - this._sy) * 0.07;
       const px = this.parallax;
-      this._group.rotation.y = -0.6 + Math.sin(t * 0.1) * 0.3 + this._sx * 0.4 * px;
-      this._group.rotation.x = 0.22 + Math.sin(t * 0.07) * 0.06 + this._sy * 0.22 * px;
+      this._group.rotation.y = -0.6 + Math.sin(t * 0.1) * 0.3 + this._sx * 0.75 * px;
+      this._group.rotation.x = 0.22 + Math.sin(t * 0.07) * 0.06 + this._sy * 0.45 * px;
       this._pMat.uniforms.uSize.value = this.beam;
       const pPos = this._pGeo.attributes.position.array, pA = this._pGeo.attributes.aA.array;
       this._lines.forEach((L, idx) => {
