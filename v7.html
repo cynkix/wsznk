@@ -1514,6 +1514,32 @@ html[data-theme="dark"] .contact,html[data-theme="dark"] .clients{background:tra
 .split .hero-z .zl-pre,.split .hero-z .zl-go{display:none !important}
 .split .zin{position:absolute !important;left:0;right:0;bottom:34px;padding:0 !important}
 .split .zl-tags{margin:0 !important}
+
+/* V5 · moitié gauche : intro sombre (aurore, grille de points sous la souris, mots en contour), textes et boutons de la V1 */
+.spl{background:#0A0B10 !important;isolation:isolate}
+.spl::before{display:none !important}
+.spl-in{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:60px clamp(24px,4vw,64px) 90px max(24px,calc((100vw - 1200px)/2)) !important}
+.hx-aur{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hx-aur i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.75;will-change:transform}
+.hx-aur i:nth-child(1){width:46vw;height:46vw;left:-12vw;top:-14vw;background:radial-gradient(circle,#EE2238 0%,rgba(238,34,56,0) 68%);animation:hxa 18s ease-in-out infinite alternate}
+.hx-aur i:nth-child(2){width:40vw;height:40vw;right:-14vw;bottom:-18vw;background:radial-gradient(circle,#BF1D67 0%,rgba(191,29,103,0) 68%);animation:hxb 22s ease-in-out infinite alternate}
+.hx-aur i:nth-child(3){width:26vw;height:26vw;left:16vw;top:20vh;background:radial-gradient(circle,#5B1450 0%,rgba(91,20,80,0) 70%);animation:hxc 26s ease-in-out infinite alternate}
+@keyframes hxa{to{transform:translate(12vw,12vh) scale(1.15)}}
+@keyframes hxb{to{transform:translate(-10vw,-10vh) scale(1.1)}}
+@keyframes hxc{to{transform:translate(-8vw,8vh) scale(.85)}}
+.hx-grid{position:absolute;inset:0;z-index:1;background:radial-gradient(circle,rgba(255,255,255,.55) 1.1px,transparent 1.6px) 0 0/28px 28px;-webkit-mask:radial-gradient(circle 240px at var(--mx,60%) var(--my,40%),#000 0%,transparent 100%);mask:radial-gradient(circle 240px at var(--mx,60%) var(--my,40%),#000 0%,transparent 100%)}
+.hx-mq{position:absolute;left:0;right:0;bottom:3%;z-index:1;overflow:hidden;white-space:nowrap;pointer-events:none}
+.hx-mq div{display:inline-flex;animation:hxm 60s linear infinite}
+.hx-mq span{font-family:var(--display);font-weight:800;font-size:clamp(90px,12vw,190px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.14)}
+@keyframes hxm{to{transform:translateX(-50%)}}
+.hx-pre{margin:0;max-width:30em;font-size:clamp(14px,1.2vw,17px);line-height:1.55;color:rgba(255,255,255,.72)}
+.spl h1{margin:24px 0 0 !important;max-width:12em !important;font-weight:800 !important;font-size:clamp(30px,3.4vw,52px) !important;line-height:1.06 !important;letter-spacing:-.025em !important}
+.hx-tags{display:flex;align-items:center;gap:14px;margin:28px 0 0;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.hx-tags i{width:5px;height:5px;border-radius:50%;background:#EE2238}
+.spl .zl-go{margin-top:30px}
+.split .zin{display:none !important}
+@media (max-width:760px){.hx-grid{display:none}}
+@media (prefers-reduced-motion:reduce){.hx-aur i,.hx-mq div{animation:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1528,16 +1554,15 @@ html[data-theme="dark"] .contact,html[data-theme="dark"] .clients{background:tra
 <!-- 1 · Accueil -->
 <div class="split">
 <section class="spl" aria-label="Accueil">
-<div class="spl-bg" aria-hidden="true">
-<div class="sl on" style="background-image:url(hero.jpg);background-position:70% center"></div>
-<div class="sl" style="background-image:url(hero2.jpg);background-position:70% 30%"></div>
-<div class="sl" style="background-image:url(hero3.jpg);background-position:70% 40%"></div>
-</div>
+<div class="hx-aur" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="hx-grid" aria-hidden="true"></div>
+<div class="hx-mq" aria-hidden="true"><div><span>Conseil · Réalisation · Formation · </span><span>Conseil · Réalisation · Formation · </span></div></div>
 <div class="spl-in">
-<h1>Zenika est le partenaire technologique de proximité qui augmente l'impact métier de votre système d'information.</h1>
-<div class="spl-ctas"><a class="zl-go" href="#contact">Parlons de vos projets<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="zl-go" href="#sequence">Découvrir Zenika<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+<p class="hx-pre">À l'ère de l'IA et du Cloud, la tech investit le cœur des stratégies d'entreprises, mais produit-elle vraiment la valeur attendue&nbsp;?</p>
+<h1>Zenika votre partenaire technologique de proximité qui augmente l'impact métier de votre SI</h1>
+<p class="hx-tags">Conseil <i></i> Réalisation <i></i> Formation</p>
+<a class="zl-go" href="#sequence">Découvrir Zenika<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
 </div>
-<div class="hdots" role="tablist" aria-label="Images"><button type="button" class="on" aria-label="Image 1"></button><button type="button" aria-label="Image 2"></button><button type="button" aria-label="Image 3"></button></div>
 </section>
 <section class="hero hero-z" id="top-z">
 <div class="zl-stage">
@@ -2001,11 +2026,9 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
 })();
 </script>
 
+
 <script>
-(function(){var sl=document.querySelectorAll('.spl .sl'),dt=document.querySelectorAll('.spl .hdots button'),i=0,tm;
-if(sl.length<2) return;
-function clear(){ clearTimeout(tm); if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)) tm=setTimeout(function(){go(i+1)},6000); }
-function go(n){ sl[i].classList.remove('on'); dt[i].classList.remove('on'); i=(n+sl.length)%sl.length; sl[i].classList.add('on'); void dt[i].offsetWidth; dt[i].classList.add('on'); clear(); }
-dt.forEach(function(b,n){b.addEventListener('click',function(){go(n)})}); clear();})();
+(function(){var h=document.querySelector('.spl'); if(!h) return;
+h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect(); h.style.setProperty('--mx',(e.clientX-r.left)+'px'); h.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});})();
 </script>
 </body></html>

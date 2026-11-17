@@ -1972,31 +1972,6 @@ html[data-theme="dark"] .clients,html[data-theme="dark"] .contact{background:#12
 .hdots button.on::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;animation:hdot 6s linear forwards}
 @keyframes hdot{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){.hdots button.on::after{animation:none}}
-
-/* V4 · nouvelle intro : fond sombre, aurore rouge, grille de points qui s'allume sous la souris, mots en contour qui défilent */
-.hero.hx{background:#0A0B10 !important;display:flex;align-items:center;justify-content:center;text-align:center;isolation:isolate}
-.hero.hx::before{display:none !important}
-.hx-aur{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hx-aur i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.75;will-change:transform}
-.hx-aur i:nth-child(1){width:58vw;height:58vw;left:-12vw;top:-18vw;background:radial-gradient(circle,#EE2238 0%,rgba(238,34,56,0) 68%);animation:hxa 18s ease-in-out infinite alternate}
-.hx-aur i:nth-child(2){width:50vw;height:50vw;right:-10vw;bottom:-22vw;background:radial-gradient(circle,#BF1D67 0%,rgba(191,29,103,0) 68%);animation:hxb 22s ease-in-out infinite alternate}
-.hx-aur i:nth-child(3){width:34vw;height:34vw;left:38vw;top:12vh;background:radial-gradient(circle,#5B1450 0%,rgba(91,20,80,0) 70%);animation:hxc 26s ease-in-out infinite alternate}
-@keyframes hxa{to{transform:translate(18vw,14vh) scale(1.15)}}
-@keyframes hxb{to{transform:translate(-16vw,-12vh) scale(1.1)}}
-@keyframes hxc{to{transform:translate(-14vw,10vh) scale(.85)}}
-.hx-grid{position:absolute;inset:0;z-index:1;background:radial-gradient(circle,rgba(255,255,255,.55) 1.1px,transparent 1.6px) 0 0/28px 28px;opacity:.14;-webkit-mask:radial-gradient(circle 260px at var(--mx,70%) var(--my,40%),#000 0%,transparent 100%);mask:radial-gradient(circle 260px at var(--mx,70%) var(--my,40%),#000 0%,transparent 100%);opacity:.9}
-.hx-mq{position:absolute;left:0;right:0;bottom:4%;z-index:1;overflow:hidden;white-space:nowrap;pointer-events:none}
-.hx-mq div{display:inline-flex;animation:hxm 60s linear infinite}
-.hx-mq span{font-family:var(--display);font-weight:800;font-size:clamp(110px,17vw,250px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.14)}
-@keyframes hxm{to{transform:translateX(-50%)}}
-.hx-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding-block:130px 110px}
-.hx-pre{margin:0;max-width:34em;font-size:clamp(15px,1.35vw,18px);line-height:1.55;color:rgba(255,255,255,.72)}
-.hero.hx h1{margin:28px auto 0;max-width:14em;color:#fff;font-weight:800;font-size:clamp(34px,4.9vw,68px);line-height:1.06;letter-spacing:-.025em}
-.hx-tags{display:flex;align-items:center;gap:14px;margin:34px 0 0;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#fff}
-.hx-tags i{width:5px;height:5px;border-radius:50%;background:#EE2238}
-.hx-in .zl-go{margin-top:34px}
-@media (max-width:760px){.hx-aur i{filter:blur(60px)}.hx-grid{display:none}.hx-in{padding-block:120px 90px}}
-@media (prefers-reduced-motion:reduce){.hx-aur i,.hx-mq div{animation:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -2008,15 +1983,19 @@ html[data-theme="dark"] .clients,html[data-theme="dark"] .contact{background:#12
 </header>
 
 <main id="top">
-<section class="hero hx" id="top-z" aria-label="Accueil">
-<div class="hx-aur" aria-hidden="true"><i></i><i></i><i></i></div>
-<div class="hx-grid" aria-hidden="true"></div>
-<div class="hx-mq" aria-hidden="true"><div><span>Conseil · Réalisation · Formation · </span><span>Conseil · Réalisation · Formation · </span></div></div>
-<div class="wrap hx-in">
-<p class="hx-pre">À l'ère de l'IA et du Cloud, la tech investit le cœur des stratégies d'entreprises, mais produit-elle vraiment la valeur attendue&nbsp;?</p>
-<h1>Zenika votre partenaire technologique de proximité qui augmente l'impact métier de votre SI</h1>
-<p class="hx-tags">Conseil <i></i> Réalisation <i></i> Formation</p>
-<a class="zl-go" href="#sequence">Découvrir Zenika<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+<section class="hero" id="top-z" aria-label="Accueil">
+<div class="bg" aria-hidden="true">
+<div class="sl on" style="background-image:url(hero.jpg);background-position:70% center"></div>
+<div class="sl" style="background-image:url(hero2.jpg);background-position:70% 30%"></div>
+<div class="sl" style="background-image:url(hero3.jpg);background-position:70% 40%"></div>
+</div>
+<div class="hdots" role="tablist" aria-label="Images"><button type="button" class="on" aria-label="Image 1"></button><button type="button" aria-label="Image 2"></button><button type="button" aria-label="Image 3"></button></div>
+<div class="wrap in">
+<h1>Zenika est le partenaire technologique de proximité qui augmente l'impact métier de votre système d'information.</h1>
+<div class="ctas">
+<a class="btn" href="#contact">Parlons de vos projets<i><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a>
+<a class="lnk" href="#adn">Découvrir Zenika<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+</div>
 </div>
 </section>
 <section class="cst" id="sequence">
@@ -2408,9 +2387,12 @@ bars.style.setProperty('--ra',c(p*1.5-0.5).toFixed(3));}
 window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
 </script>
 
-
 <script>
-(function(){var h=document.querySelector('.hx'); if(!h) return;
-h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect(); h.style.setProperty('--mx',(e.clientX-r.left)+'px'); h.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});})();
+/* V4 · carrousel du hero : 3 images, changement toutes les 6 s */
+(function(){var sl=document.querySelectorAll('.hero .bg .sl'),dt=document.querySelectorAll('.hdots button'),i=0,tm;
+if(sl.length<2) return;
+function go(n){ sl[i].classList.remove('on'); dt[i].classList.remove('on'); i=(n+sl.length)%sl.length; sl[i].classList.add('on'); void dt[i].offsetWidth; dt[i].classList.add('on'); clear(); }
+function clear(){ clearTimeout(tm); if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)) tm=setTimeout(function(){go(i+1)},6000); }
+dt.forEach(function(b,n){b.addEventListener('click',function(){go(n)})}); clear();})();
 </script>
 </body></html>
