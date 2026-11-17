@@ -1958,6 +1958,20 @@ html[data-theme="dark"] .clients,html[data-theme="dark"] .contact{background:#12
 .dem-card .dm-sep{display:flex;align-items:center;gap:18px;margin:56px 0 0;font-family:var(--display);font-weight:700;font-size:12px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .dem-card .dm-sep::after{content:"";flex:1;height:1px;background:rgba(120,125,140,.25)}
 .dem-card .dm-vals{margin-top:36px !important;padding-top:0 !important;border-top:0 !important}
+
+/* V4 · hero en carrousel, voile plus léger et inversé (fort à droite → clair à gauche) */
+.hero{background:#111318 !important}
+.hero .bg{background:#111318 !important}
+.hero .bg .sl{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity 1.2s ease}
+.hero .bg .sl.on{opacity:1}
+.hero::before{background:linear-gradient(270deg,rgba(238,34,56,.62) 0%,rgba(215,31,80,.42) 38%,rgba(191,29,103,.12) 70%,rgba(191,29,103,0) 100%),linear-gradient(90deg,rgba(12,12,16,.38) 0%,rgba(12,12,16,.14) 55%,rgba(12,12,16,0) 100%) !important}
+@media (max-width:760px){.hero::before{background:linear-gradient(0deg,rgba(238,34,56,.5) 0%,rgba(191,29,103,.2) 35%,rgba(12,12,16,.3) 100%) !important}}
+.hdots{position:absolute;z-index:3;right:max(24px,calc((100vw - 1200px)/2));bottom:34px;display:flex;gap:10px}
+.hdots button{width:34px;height:4px;border:0;padding:0;border-radius:4px;background:rgba(255,255,255,.4);cursor:pointer;position:relative;overflow:hidden}
+.hdots button.on{background:rgba(255,255,255,.4)}
+.hdots button.on::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;animation:hdot 6s linear forwards}
+@keyframes hdot{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.hdots button.on::after{animation:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1970,7 +1984,12 @@ html[data-theme="dark"] .clients,html[data-theme="dark"] .contact{background:#12
 
 <main id="top">
 <section class="hero" id="top-z" aria-label="Accueil">
-<div class="bg" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true">
+<div class="sl on" style="background-image:url(hero.jpg);background-position:70% center"></div>
+<div class="sl" style="background-image:url(hero2.jpg);background-position:70% 30%"></div>
+<div class="sl" style="background-image:url(hero3.jpg);background-position:70% 40%"></div>
+</div>
+<div class="hdots" role="tablist" aria-label="Images"><button type="button" class="on" aria-label="Image 1"></button><button type="button" aria-label="Image 2"></button><button type="button" aria-label="Image 3"></button></div>
 <div class="wrap in">
 <h1>Zenika est le partenaire technologique de proximité qui augmente l'impact métier de votre système d'information.</h1>
 <div class="ctas">
@@ -2366,5 +2385,14 @@ bars.style.setProperty('--r2',c(p*1.6-0.3).toFixed(3));
 bars.style.setProperty('--r3',c(p*1.6-0.6).toFixed(3));
 bars.style.setProperty('--ra',c(p*1.5-0.5).toFixed(3));}
 window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+
+<script>
+/* V4 · carrousel du hero : 3 images, changement toutes les 6 s */
+(function(){var sl=document.querySelectorAll('.hero .bg .sl'),dt=document.querySelectorAll('.hdots button'),i=0,tm;
+if(sl.length<2) return;
+function go(n){ sl[i].classList.remove('on'); dt[i].classList.remove('on'); i=(n+sl.length)%sl.length; sl[i].classList.add('on'); void dt[i].offsetWidth; dt[i].classList.add('on'); clear(); }
+function clear(){ clearTimeout(tm); if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)) tm=setTimeout(function(){go(i+1)},6000); }
+dt.forEach(function(b,n){b.addEventListener('click',function(){go(n)})}); clear();})();
 </script>
 </body></html>
