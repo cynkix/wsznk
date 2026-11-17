@@ -17,6 +17,7 @@
   const THEMES = {
     gradient: { lines: [[1, 1, 1], [1, 1, 1]], op: 0.32, beam: [1, 1, 1] },
     sombre: { lines: [[0.933, 0.133, 0.22], [0.749, 0.114, 0.404]], op: 0.55, beam: [1, 1, 1] },
+    rougenoir: { lines: [[0.933, 0.133, 0.22], [0.04, 0.04, 0.05]], op: 0.8, beam: [1, 0.35, 0.4] },
     clair: { lines: [[0.12, 0.12, 0.12], [0.45, 0.46, 0.46]], op: 0.22, beam: [0.933, 0.133, 0.22] },
   };
   const SEG = 420;
@@ -38,7 +39,7 @@
     void main(){ float r=length(gl_PointCoord-0.5)*2.0; float g=exp(-r*r*5.0); if(g<0.01) discard; gl_FragColor=vec4(uBeam, g*vA); }`;
 
   class Effect3D extends HTMLElement {
-    static get observedAttributes() { return ['theme', 'count', 'speed', 'parallax', 'beam', 'spacing', 'intensity']; }
+    static get observedAttributes() { return ['theme', 'count', 'speed', 'parallax', 'beam', 'spacing', 'intensity', 'shape', 'thick', 'warp']; }
     connectedCallback() {
       this.style.display = 'block';
       this.style.position = this.style.position || 'absolute';
@@ -136,7 +137,51 @@
       });
       this._pMat.uniforms.uBeam.value.setRGB(...th.beam);
     }
+    _roundPath() {
+      // Z à coins arrondis : trait central + normales (échantillonné à pas régulier)
+      if (this._rp) return this._rp;
+      const S = 1.7, P = [[-S, S], [S, S], [-S, -S], [S, -S]], R = 0.62, pts = [P[0]];
+      for (let c = 1; c <= 2; c++) {
+        const a = P[c - 1], b = P[c], d = P[c + 1];
+        const l1 = Math.hypot(b[0] - a[0], b[1] - a[1]), l2 = Math.hypot(d[0] - b[0], d[1] - b[1]);
+        const p1 = [b[0] + (a[0] - b[0]) * Math.min(0.45, R / l1), b[1] + (a[1] - b[1]) * Math.min(0.45, R / l1)];
+        const p2 = [b[0] + (d[0] - b[0]) * Math.min(0.45, R / l2), b[1] + (d[1] - b[1]) * Math.min(0.45, R / l2)];
+        for (let k = 0; k <= 16; k++) { const t = k / 16, u = 1 - t; pts.push([u * u * p1[0] + 2 * u * t * b[0] + t * t * p2[0], u * u * p1[1] + 2 * u * t * b[1] + t * t * p2[1]]); }
+      }
+      pts.push(P[3]);
+      const cum = [0]; for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+      const tot = cum[cum.length - 1], out = [];
+      let j = 0;
+      for (let k = 0; k <= SEG; k++) {
+        const d = (k / SEG) * tot;
+        while (j < pts.length - 2 && d > cum[j + 1]) j++;
+        const u = (d - cum[j]) / (cum[j + 1] - cum[j] || 1);
+        const x = pts[j][0] + (pts[j + 1][0] - pts[j][0]) * u, y = pts[j][1] + (pts[j + 1][1] - pts[j][1]) * u;
+        const tx = pts[j + 1][0] - pts[j][0], ty = pts[j + 1][1] - pts[j][1], tl = Math.hypot(tx, ty) || 1;
+        out.push([x, y, -ty / tl, tx / tl]);
+      }
+      return (this._rp = out);
+    }
     _spawn(L, birth) {
+      if (this.getAttribute('shape') === 'round') {
+        // bande épaisse : chaque trait a sa position dans l'épaisseur et sa profondeur, déformés par des ondulations
+        const path = this._roundPath(), N = parseInt(this.getAttribute('count')) || 36;
+        const th = parseFloat(this.getAttribute('thick')) || 0.5, wp = parseFloat(this.getAttribute('warp')) || 0.3;
+        const k01 = N > 1 ? L.i / (N - 1) : 0.5;
+        const off = (((L.i * 0.6180339) % 1) - 0.5) * 2 * th, ph = L.i * 1.7, ph2 = L.i * 0.9;
+        const oz = (0.5 - k01) * this.spacing;
+        const pos = L.geo.attributes.position.array;
+        for (let k = 0; k <= SEG; k++) {
+          const q = path[k], u = k / SEG;
+          const w = off + wp * 0.22 * Math.sin(u * 6 + ph) * (0.4 + k01);
+          pos[k * 3] = q[0] + q[2] * w + wp * 0.1 * Math.sin(u * 5 + ph2);
+          pos[k * 3 + 1] = q[1] + q[3] * w + wp * 0.1 * Math.cos(u * 6 + ph);
+          pos[k * 3 + 2] = oz + wp * 0.6 * Math.sin(u * 4 + ph2) + off * 0.8;
+        }
+        L.geo.attributes.position.needsUpdate = true;
+        L.birth = birth; L.grow = 3.6; L.hold = 3.2; L.back = 3.6; L.life = L.grow + L.hold + L.back + 1.2; L.period = 2.6; L.poff = 0; L.rnd = 1 - k01 * 0.6;
+        return;
+      }
       // Tracé du Z : haut-gauche → haut-droite → bas-gauche → bas-droite, chaque trait décalé en profondeur (3D)
       const S = 1.7, P = [[-S, S], [S, S], [-S, -S], [S, -S]];
       const segLen = [], tot = [0];

@@ -1496,7 +1496,7 @@ html[data-theme="dark"] .sl4-card{background:#171A21}
 <!-- 1 · Accueil -->
 <section class="hero hero-z" id="top-z">
 <div class="zl-stage">
-<div class="zv" aria-hidden="true"><canvas id="zvc"></canvas><svg class="zv-z" viewBox="0 0 340 230"><path d="M42 58 L232 36 L118 168 L296 146"/></svg></div>
+<div class="zv" aria-hidden="true"><effect-3d id="zl" theme="rougenoir" shape="round" thick="0.5" warp="0.35" align="center" count="150" speed="1.6" spacing="3.4" beam="7" parallax="1" intensity="1"></effect-3d></div>
 <div class="wrap zin">
 <p class="zl-pre">À l'ère de l'IA et du Cloud, la tech investit le cœur des stratégies d'entreprises, mais produit-elle vraiment la valeur attendue&nbsp;?</p>
 <h1>Zenika votre partenaire technologique de proximité qui augmente l'impact métier de votre SI</h1>
@@ -1843,7 +1843,7 @@ sel.addEventListener('change',function(){var id=sel.value;
 (function(){
   var z=document.getElementById('zl');
   if(z){
-    var sync=function(){ z.setAttribute('theme', document.documentElement.getAttribute('data-theme')==='dark'?'sombre':'clair'); };
+    var sync=function(){ z.setAttribute('theme', document.documentElement.getAttribute('data-theme')==='dark'?'sombre':'rougenoir'); };
     sync(); new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){ z.setAttribute('speed','0.4'); z.setAttribute('parallax','0'); }
   }
@@ -1865,35 +1865,5 @@ bars.style.setProperty('--r2',c(p*1.6-0.3).toFixed(3));
 bars.style.setProperty('--r3',c(p*1.6-0.6).toFixed(3));
 bars.style.setProperty('--ra',c(p*1.5-0.5).toFixed(3));}
 window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
-</script>
-<script>
-/* V3 · tourbillon de lignes derrière le Z blanc */
-(function(){
-  var cv=document.getElementById('zvc'); if(!cv) return; var ctx=cv.getContext('2d'), N=84, dpr=1, W=0, H=0, mx=0, my=0, sx=0, sy=0;
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function fit(){ var r=cv.getBoundingClientRect(); dpr=Math.min(2,window.devicePixelRatio||1); W=Math.max(1,r.width); H=Math.max(1,r.height); cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
-  function lerp(a,b,t){return a+(b-a)*t}
-  function draw(t){
-    ctx.clearRect(0,0,W,H);
-    var dark=document.documentElement.getAttribute('data-theme')==='dark';
-    var x0=W*0.30+sx*14, y0=H*0.46+sy*10, x1=W*0.80+sx*26, y1=H*0.86+sy*18;
-    for(var i=0;i<N;i++){
-      var u=i/(N-1), e=Math.pow(u,0.82);
-      var cx=lerp(x0,x1,e), cy=lerp(y0,y1,e);
-      var rx=W*0.27*Math.pow(1-u,1.05)+3, ry=H*0.40*Math.pow(1-u,0.95)+2;
-      var ang=-0.3+0.5*Math.sin(t*0.45+u*4.2)+0.6*u+0.08*Math.sin(i*1.7);
-      var k=u<0.55?u/0.55:1, m=Math.max(0,(u-0.55)/0.45);
-      var r=u<0.55?lerp(226,190,k):lerp(190,dark?70:236,m), g=u<0.55?lerp(40,44,k):lerp(44,dark?72:236,m), b=u<0.55?lerp(62,105,k):lerp(105,dark?84:240,m);
-      var a=lerp(0.85,0.12,Math.pow(u,1.4));
-      ctx.beginPath(); ctx.ellipse(cx,cy,rx,ry,ang,0,Math.PI*2);
-      ctx.strokeStyle='rgba('+(r|0)+','+(g|0)+','+(b|0)+','+a.toFixed(3)+')'; ctx.lineWidth=1.05; ctx.stroke();
-    }
-  }
-  var t0=performance.now();
-  function loop(now){ sx+=(mx-sx)*0.06; sy+=(my-sy)*0.06; draw((now-t0)/1000); if(!reduce) requestAnimationFrame(loop); }
-  fit(); addEventListener('resize',function(){fit(); if(reduce) draw(0);});
-  addEventListener('pointermove',function(e){mx=e.clientX/innerWidth*2-1; my=e.clientY/innerHeight*2-1;},{passive:true});
-  if(reduce) draw(0); else requestAnimationFrame(loop);
-})();
 </script>
 </body></html>
