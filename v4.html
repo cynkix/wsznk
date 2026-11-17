@@ -1866,6 +1866,15 @@ html[data-theme="dark"] .clients,html[data-theme="dark"] .contact{background:#12
 .sl4-acc{background:linear-gradient(160deg,#EE2238 0%,#BF1D67 100%) !important}
 .sl4-acc b{color:#D41F4A}
 .sl4-acc .plus::before,.sl4-acc .plus::after{background:#D41F4A}
+
+/* V4 : voile du hero en dégradé rouge charte (au lieu du gris) */
+.hero::before{background:linear-gradient(90deg,rgba(238,34,56,.88) 0%,rgba(215,31,80,.7) 40%,rgba(191,29,103,.25) 70%,rgba(191,29,103,0) 100%) !important}
+@media (max-width:760px){.hero::before{background:linear-gradient(180deg,rgba(238,34,56,.55) 0%,rgba(191,29,103,.3) 30%,rgba(191,29,103,.9) 100%) !important}}
+
+/* photo du hero (rétablie) */
+.hero{background:#111318 url(hero.jpg) 70% center/cover no-repeat !important}
+.hero .bg{background:inherit !important}
+@media (max-width:760px){.hero{background-size:auto 46svh !important;background-position:87% top !important;background-color:#121216 !important}}
 </style>
 
 <header class="hdr" id="hdr">
