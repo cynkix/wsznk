@@ -2259,11 +2259,11 @@ sel.addEventListener('change',function(){var id=sel.value;
   els.forEach(function(e){io.observe(e);});
 })();
 </script>
-<effect-3d-morph id="zm" theme="clair" count="26" spacing="1.8" aria-hidden="true"></effect-3d-morph>
+<effect-3d-morph id="zm" theme="charte" count="26" spacing="1.8" aria-hidden="true"></effect-3d-morph>
 <script>
 /* zk-morph : forme fixe de la page */
 (function(){var zm=document.getElementById('zm');if(!zm)return;var K=1;
-function th(){var d=document.documentElement.getAttribute('data-theme')==='dark';var t=d?'gradient':'clair';if(zm.getAttribute('theme')!==t)zm.setAttribute('theme',t);}
+function th(){var d=document.documentElement.getAttribute('data-theme')==='dark';var t='charte';if(zm.getAttribute('theme')!==t)zm.setAttribute('theme',t);}
 function go(){zm.setMorph&&zm.setMorph(K);zm.setPlace&&zm.setPlace(0);th();}
 new MutationObserver(th).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 if(document.readyState==='complete')go();else addEventListener('load',go);setTimeout(go,500);})();
