@@ -1378,6 +1378,16 @@ main > section{position:relative;z-index:2 !important}
 .hero .sub{margin-left:0}
 .hero .ctas{justify-content:flex-start}
 .hero{min-height:clamp(640px,47vw,100svh);background:#111318 url(hero.jpg) 70% center/cover no-repeat!important}
+
+/* timeline de la démarche : les lignes se tracent au scroll */
+.dm-trk i{transform:scaleX(var(--r,0)) !important;transition:none !important;will-change:transform}
+.dm-row:nth-child(1) .dm-trk i{--r:var(--r1,0)}
+.dm-row:nth-child(2) .dm-trk i{--r:var(--r2,0)}
+.dm-row:nth-child(3) .dm-trk i{--r:var(--r3,0)}
+.dm-axis::before{clip-path:inset(0 calc((1 - var(--ra,0)) * 100%) 0 0)}
+.dm-axis::after{opacity:var(--ra,0)}
+.dm-axis .m,.dm-axis .a,.dm-axis .z{opacity:var(--ra,0)}
+@media (prefers-reduced-motion: reduce){.dm-trk i{transform:none !important}.dm-axis::before{clip-path:none}.dm-axis::after,.dm-axis .m,.dm-axis .a,.dm-axis .z{opacity:1}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1790,6 +1800,19 @@ sel.addEventListener('change',function(){var id=sel.value;
 (function(){var z=document.getElementById('zm'),h=document.querySelector('.hero');if(!z||!h)return;
 z.style.transition='opacity .5s ease';
 function u(){var b=h.getBoundingClientRect().bottom;z.style.opacity=b>window.innerHeight*0.35?'0':'1';}
+window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+<script>
+/* démarche : progression des lignes liée au scroll */
+(function(){var bars=document.querySelector('.dm-bars');if(!bars)return;
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function c(x){return x<0?0:x>1?1:x}
+function u(){var r=bars.getBoundingClientRect(),h=window.innerHeight;
+var p=reduce?1:c((h*0.92-r.top)/(h*0.55));
+bars.style.setProperty('--r1',c(p*1.6).toFixed(3));
+bars.style.setProperty('--r2',c(p*1.6-0.3).toFixed(3));
+bars.style.setProperty('--r3',c(p*1.6-0.6).toFixed(3));
+bars.style.setProperty('--ra',c(p*1.5-0.5).toFixed(3));}
 window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
 </script>
 </body></html>
