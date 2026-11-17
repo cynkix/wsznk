@@ -1707,6 +1707,48 @@ html[data-theme="dark"] .sv .sv-gph{fill:#A0A6B3}
 
 /* boutons pastille : sans ombre */
 .zl-go,.lnk,.btn-arrow,.dm-more a,.dm-adn,.btn,.ghost,.fcta,.zl-go:hover,.lnk:hover,.btn-arrow:hover,.dm-more a:hover,.dm-adn:hover,.btn:hover,.ghost:hover,.fcta:hover{box-shadow:none !important}
+
+/* ===== publications : Nos convictions en mouvement ===== */
+.pub{position:relative;z-index:2;padding:96px 0 40px}
+.pub-head{display:grid;grid-template-columns:1fr 1fr;gap:40px 64px;align-items:end;margin-bottom:56px}
+.pub-head h2{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(32px,4vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+.pub-head p{margin:0;font-size:clamp(16px,1.5vw,20px);line-height:1.6;color:var(--muted)}
+.pub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pub-c{display:grid;grid-template-columns:1fr minmax(120px,42%);gap:20px;padding:32px;min-height:400px;border-radius:var(--radius-zika,32px);background:linear-gradient(90deg,#EE2238 0%,#D12F66 60%,#C2397F 100%);color:#fff;overflow:hidden}
+.pub-t{display:flex;flex-direction:column;min-width:0}
+.pub-eb{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.pub-t h3{margin:22px 0 0;font-family:var(--display);font-weight:800;font-size:clamp(20px,1.9vw,26px);line-height:1.2;color:#fff}
+.pub-t p{margin:14px 0 0;font-size:15px;line-height:1.5;color:rgba(255,255,255,.85)}
+.pub-t .btn-arrow{margin-top:auto;align-self:flex-start}
+.pub-t p+.btn-arrow{margin-top:auto}
+.pub-t{justify-content:flex-start}
+.pub-t .btn-arrow{position:relative}
+.pub-m{display:flex;flex-direction:column;gap:16px;padding:22px 20px;border-radius:14px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.pub-mt{font-family:var(--display);font-weight:800;font-size:clamp(15px,1.4vw,19px);line-height:1.25;letter-spacing:.01em;color:#E2001A}
+.pub-bars{flex:1;display:flex;align-items:flex-end;gap:12px;min-height:120px}
+.pub-bars i{flex:1;border-radius:4px;background:linear-gradient(90deg,#F7A3B0,#E6A6D4)}
+.pub-bars i:nth-child(2){background:linear-gradient(90deg,#F08A9A,#DF97C6)}
+.pub-bars i:nth-child(3){background:linear-gradient(90deg,#EC6179,#D0589E)}
+.pub-bars i:nth-child(4){background:linear-gradient(90deg,#E8243D,#C23C7E)}
+.pub-lines{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:14px}
+.pub-lines i{display:block;height:12px;border-radius:99px;background:linear-gradient(90deg,#F7A3B0,#E6A6D4)}
+.pub-lines i:nth-child(2){background:linear-gradient(90deg,#F08A9A,#DF97C6)}
+.pub-lines i:nth-child(3){background:linear-gradient(90deg,#EC6179,#D0589E)}
+.pub-lines i:nth-child(4){background:linear-gradient(90deg,#E8243D,#C23C7E)}
+.pub-dots{flex:1;display:grid;grid-template-columns:1fr 1fr;align-content:end;justify-items:center;gap:22px 12px}
+.pub-dots i{width:clamp(34px,3.4vw,46px);aspect-ratio:1;border-radius:50%;background:linear-gradient(90deg,#F7A3B0,#E6A6D4)}
+.pub-dots i:nth-child(2){background:linear-gradient(90deg,#F08A9A,#DF97C6)}
+.pub-dots i:nth-child(3){background:linear-gradient(90deg,#EC6179,#D0589E)}
+.pub-dots i:nth-child(4){background:linear-gradient(90deg,#E8243D,#C23C7E)}
+@media (max-width:1180px){.pub-grid{grid-template-columns:1fr}.pub-c{min-height:320px}}
+@media (max-width:820px){.pub-head{grid-template-columns:1fr}}
+@media (max-width:560px){.pub-c{grid-template-columns:1fr;padding:24px}.pub-m{min-height:220px}}
+
+.pub-c{grid-template-columns:1fr minmax(120px,40%);grid-template-rows:1fr auto;gap:20px 20px}
+.pub-c .pub-t{grid-column:1;grid-row:1}
+.pub-c .pub-m{grid-column:2;grid-row:1}
+.pub-c>.btn-arrow{grid-column:1 / -1;grid-row:2;justify-self:start;margin:0}
+@media (max-width:560px){.pub-c{grid-template-columns:1fr;grid-template-rows:auto}.pub-c .pub-m{grid-column:1;grid-row:2}.pub-c>.btn-arrow{grid-row:3}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1757,6 +1799,9 @@ html[data-theme="dark"] .sv .sv-gph{fill:#A0A6B3}
 
 
 <!-- 7 · Contact -->
+<section class="pub" id="publications" aria-labelledby="pub-t"><div class="wrap">
+<div class="pub-head"><h2 id="pub-t" class="rv4">Nos convictions en mouvement.</h2><p class="rv4" style="--i:1">Des ressources conçues pour celles et ceux qui désirent piloter sereinement leurs transitions numérique et agentique.</p></div>
+<div class="pub-grid"><article class="pub-c rv4" style="--i:0"><div class="pub-t"><span class="pub-eb">Livre blanc</span><h3>Votre IA mérite plus qu’un POC.</h3><p>Passez de l’expérimentation à l’IA à grande échelle.</p></div><a class="btn-arrow" href="#">Lire le livre blanc <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><div class="pub-m" aria-hidden="true"><b class="pub-mt">IA<br>À<br>L’ÉCHELLE</b><div class="pub-bars"><i style="height:22%"></i><i style="height:42%"></i><i style="height:62%"></i><i style="height:82%"></i></div></div></article><article class="pub-c rv4" style="--i:1"><div class="pub-t"><span class="pub-eb">Comparaison</span><h3>Plus de delivery. Gardez le contrôle.</h3><p>AI + SDLC : accélérez sans perdre le contrôle.</p></div><a class="btn-arrow" href="#">Lire la comparaison <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><div class="pub-m" aria-hidden="true"><b class="pub-mt">AI<br>+ SDLC</b><div class="pub-lines"><i style="width:100%"></i><i style="width:70%"></i><i style="width:90%"></i><i style="width:52%"></i></div></div></article><article class="pub-c rv4" style="--i:2"><div class="pub-t"><span class="pub-eb">Point de vue</span><h3>Décidez avec clarté dans la complexité.</h3><p>CxO Advisory : éclairez vos choix technologiques.</p></div><a class="btn-arrow" href="#">Lire le point de vue <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><div class="pub-m" aria-hidden="true"><b class="pub-mt">CxO<br>ADVISORY</b><div class="pub-dots"><i></i><i></i><i></i><i></i></div></div></article></div></div></section>
 <section class="contact" id="contact">
 <div class="wrap">
 <div class="cband rv">
