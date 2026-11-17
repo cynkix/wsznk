@@ -1929,8 +1929,8 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
     }
     // grand Z blanc arrondi au premier plan, presque hors du cercle
     ctx.translate(cx,cy); ctx.rotate(0.03*Math.sin(t*0.5)+sx*0.04);
-    ctx.shadowColor='rgba(110,15,50,0.32)'; ctx.shadowBlur=S*0.05; ctx.shadowOffsetY=S*0.02;
-    ctx.globalAlpha=1; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.strokeStyle='#fff'; ctx.lineWidth=S*0.105;
+    var dark=document.documentElement.getAttribute('data-theme')==='dark'; ctx.shadowColor=dark?'rgba(0,0,0,0.6)':'rgba(110,15,50,0.32)'; ctx.shadowBlur=S*0.05; ctx.shadowOffsetY=S*0.02;
+    ctx.globalAlpha=1; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.strokeStyle=dark?'#000':'#fff'; ctx.lineWidth=S*0.105;
     var Q=[[-0.36,-0.16],[0.30,-0.25],[-0.30,0.25],[0.37,0.16]];
     ctx.beginPath(); ctx.moveTo(Q[0][0]*S,Q[0][1]*S); for(var qi=1;qi<4;qi++) ctx.lineTo(Q[qi][0]*S,Q[qi][1]*S); ctx.stroke();
     ctx.restore();
