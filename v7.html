@@ -1540,6 +1540,15 @@ html[data-theme="dark"] .contact,html[data-theme="dark"] .clients{background:tra
 .split .zin{display:none !important}
 @media (max-width:760px){.hx-grid{display:none}}
 @media (prefers-reduced-motion:reduce){.hx-aur i,.hx-mq div{animation:none}}
+
+/* V5 · split fusionné : un seul hero sombre, texte à gauche, Z 3D à droite */
+.split{background:#0A0B10;overflow:hidden;isolation:isolate}
+.spl{background:transparent !important}
+.split .hero-z{background:transparent !important}
+.split .hx-aur i:nth-child(1){width:58vw;height:58vw;left:-12vw;top:-18vw}
+.split .hx-aur i:nth-child(2){width:52vw;height:52vw;right:-8vw;bottom:-22vw}
+.split .hx-aur i:nth-child(3){left:42vw;top:10vh}
+.split .hx-mq span{font-size:clamp(110px,17vw,250px)}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1553,10 +1562,10 @@ html[data-theme="dark"] .contact,html[data-theme="dark"] .clients{background:tra
 <main id="top">
 <!-- 1 · Accueil -->
 <div class="split">
-<section class="spl" aria-label="Accueil">
 <div class="hx-aur" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="hx-grid" aria-hidden="true"></div>
 <div class="hx-mq" aria-hidden="true"><div><span>Conseil · Réalisation · Formation · </span><span>Conseil · Réalisation · Formation · </span></div></div>
+<section class="spl" aria-label="Accueil">
 <div class="spl-in">
 <p class="hx-pre">À l'ère de l'IA et du Cloud, la tech investit le cœur des stratégies d'entreprises, mais produit-elle vraiment la valeur attendue&nbsp;?</p>
 <h1>Zenika votre partenaire technologique de proximité qui augmente l'impact métier de votre SI</h1>
@@ -2028,7 +2037,7 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
 
 
 <script>
-(function(){var h=document.querySelector('.spl'); if(!h) return;
+(function(){var h=document.querySelector('.split'); if(!h) return;
 h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect(); h.style.setProperty('--mx',(e.clientX-r.left)+'px'); h.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});})();
 </script>
 </body></html>
