@@ -1871,7 +1871,23 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
 (function(){
   var cv=document.getElementById('zvc'); if(!cv) return; var ctx=cv.getContext('2d'), S=0, dpr=1, mx=0, my=0, sx=0, sy=0;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function fit(){ var r=cv.getBoundingClientRect(); dpr=Math.min(2,window.devicePixelRatio||1); S=Math.max(1,r.width); cv.width=S*dpr; cv.height=S*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  function fit(){ ring=null; var r=cv.getBoundingClientRect(); dpr=Math.min(2,window.devicePixelRatio||1); S=Math.max(1,r.width); cv.width=S*dpr; cv.height=S*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  var ring=null, ringS=0;
+  function zPath(sc){ sc=sc||S; var p=new Path2D(), k=function(x,y){return [x/495*sc,y/495*sc]}, m=function(q){return q};
+    function P(x,y){var q=k(x,y);return q}
+    var A=P(-30,185),B=P(325,115),C1=P(388,104),C=P(380,162),D=P(236,312),E=P(535,262),E2=P(535,320),F=P(163,390),F1=P(110,400),F2=P(122,342),G=P(290,185),H=P(-30,247);
+    p.moveTo(A[0],A[1]); p.lineTo(B[0],B[1]); p.quadraticCurveTo(C1[0],C1[1],C[0],C[1]); p.lineTo(D[0],D[1]); p.lineTo(E[0],E[1]); p.lineTo(E2[0],E2[1]); p.lineTo(F[0],F[1]); p.quadraticCurveTo(F1[0],F1[1],F2[0],F2[1]); p.lineTo(G[0],G[1]); p.lineTo(H[0],H[1]); p.closePath(); return p; }
+  function buildRings(){
+    ring=document.createElement('canvas'); ring.width=cv.width; ring.height=cv.height; ringS=S;
+    var rc=ring.getContext('2d'); rc.setTransform(dpr,0,0,dpr,0,0);
+    var tmp=document.createElement('canvas'); tmp.width=cv.width; tmp.height=cv.height; var tc=tmp.getContext('2d'); tc.setTransform(dpr,0,0,dpr,0,0);
+    var zp=zPath();
+    for(var d=1;d<=14;d++){ var w=d*S*0.011;
+      tc.clearRect(0,0,S,S); tc.lineJoin='round'; tc.strokeStyle='#000'; tc.lineWidth=2*w; tc.stroke(zp);
+      tc.globalCompositeOperation='destination-out'; tc.lineWidth=2*w-1.3; tc.stroke(zp); tc.globalCompositeOperation='source-over';
+      tc.globalCompositeOperation='source-in'; tc.fillStyle=col(d/14,Math.max(0.15,0.95-d*0.05)); tc.fillRect(0,0,S,S); tc.globalCompositeOperation='source-over';
+      rc.drawImage(tmp,0,0,S,S); }
+  }
   function lerp(a,b,t){return a+(b-a)*t}
   function col(u,a){ var r,g,b; if(u<0.6){var k=u/0.6;r=lerp(238,191,k);g=lerp(34,29,k);b=lerp(56,103,k);} else {var m=(u-0.6)/0.4;r=lerp(191,92,m);g=lerp(29,14,m);b=lerp(103,52,m);} return 'rgba('+(r|0)+','+(g|0)+','+(b|0)+','+a.toFixed(3)+')'; }
   function draw(t){
@@ -1889,9 +1905,11 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
       var rx=S*(0.05+0.2*u)*(1+0.18*Math.sin(t*0.9+ph)), ry=S*(0.04+0.15*(1-u))*(1+0.2*Math.cos(t*0.8+ph*0.7));
       ctx.beginPath(); ctx.ellipse(cx,cy,rx,ry,t*0.25+ph,0,Math.PI*2);
       ctx.strokeStyle=col(0.25+0.6*u,0.5); ctx.lineWidth=1; ctx.stroke(); }
+    // contours qui épousent la forme du Z (anneaux concentriques en cache)
+    if(!ring||ringS!==S) buildRings();
+    ctx.globalAlpha=0.55+0.25*Math.sin(t*0.8); ctx.drawImage(ring,0,0,S,S); ctx.globalAlpha=1;
     // pochoir : le Z est découpé (transparent)
-    ctx.globalCompositeOperation='destination-out'; ctx.lineJoin='round'; ctx.lineCap='butt'; ctx.lineWidth=S*0.135; ctx.strokeStyle='#000';
-    ctx.beginPath(); ctx.moveTo(-0.08*S,0.335*S); ctx.lineTo(0.70*S,0.235*S); ctx.lineTo(0.27*S,0.67*S); ctx.lineTo(1.08*S,0.59*S); ctx.stroke();
+    ctx.globalCompositeOperation='destination-out'; ctx.fillStyle='#000'; ctx.fill(zPath());
     ctx.restore();
   }
   var t0=performance.now();
