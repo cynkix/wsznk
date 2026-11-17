@@ -1354,8 +1354,12 @@ main > section{position:relative;z-index:2 !important}
 @media (max-width:860px){.sl4-chips{justify-content:flex-start}.dm-axis{margin-left:116px}.dm-axis .m{left:-116px}}
 
 /* ===== fond blanc : sections démarche et clients (la figure 3D reste visible ailleurs) ===== */
-.dem,.clients{background:#FFF !important}
-html[data-theme="dark"] .dem,html[data-theme="dark"] .clients{background:#0E0F13 !important}
+.dem,.clients{background:transparent !important}
+
+
+/* V2 comme V1 : l'animation du fond reste visible, la démarche est une carte blanche */
+.dem-card{padding:clamp(28px,4vw,52px);border-radius:var(--radius-zika);background:#FFF;box-shadow:var(--shadozika)}
+html[data-theme="dark"] .dem-card{background:#171A21}
 </style>
 
 <header class="hdr" id="hdr">
