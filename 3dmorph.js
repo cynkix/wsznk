@@ -1,5 +1,5 @@
 // <effect-3d-morph> — figure 3D en lignes + faisceaux, fixe à l'écran, qui change de forme (Z → case cochée → horloge)
-// Pilotée par la page : el.setMorph(v) (0 = Z, 1 = case cochée, 2 = horloge), el.setPlace(k) (0 = centré, 1 = sur le côté), theme="clair|gradient|sombre"
+// Pilotée par la page : el.setMorph(v) (0 = Z, 1 = cercle d'itération, 2 = timeline, 3 = ligne), el.setPlace(k) (0 = centré, 1 = sur le côté), theme="clair|gradient|sombre"
 (function () {
   const BASE = (document.currentScript && document.currentScript.src) || document.baseURI;
   const THEMES = {
@@ -39,13 +39,20 @@
     }
     return out;
   }
-  const CLOCK = [];
-  for (let k = 0; k <= 72; k++) { const a = (k / 72) * Math.PI * 2; CLOCK.push([1.6 * Math.sin(a), 1.6 * Math.cos(a)]); }
-  CLOCK.push([0, 0], [0.95, -0.55]);
+  // 1 · cercle d'itération : arc de 320° + pointe de flèche
+  const LOOP = [], R = 1.6, A0 = 0.9, A1 = A0 + Math.PI * 2 * (320 / 360);
+  for (let k = 0; k <= 90; k++) { const a = A0 + (A1 - A0) * (k / 90); LOOP.push([R * Math.cos(a), R * Math.sin(a)]); }
+  { const e = LOOP[LOOP.length - 1], ta = A1 + Math.PI / 2, d = 0.5;
+    const b1 = [e[0] + d * Math.cos(ta + 2.5), e[1] + d * Math.sin(ta + 2.5)], b2 = [e[0] + d * Math.cos(ta - 2.5 + 0.0), e[1] + d * Math.sin(ta - 2.5)];
+    LOOP.push(b1, e, b2); }
+  // 2 · timeline : axe horizontal, repères alternés, flèche
+  const TL = [[-2.6, 0]]; [-2.1, -1.05, 0, 1.05, 2.1].forEach((x, i) => { const h = i % 2 ? 0.55 : 0.95; TL.push([x, 0], [x, h], [x, 0]); });
+  TL.push([2.6, 0], [2.3, 0.22], [2.6, 0], [2.3, -0.22]);
   const SHAPES = [
-    sample([[-S, S], [S, S], [-S, -S], [S, -S]], SEG + 1),                                                        // 0 · Z
-    sample([[-1.5, 1.5], [1.5, 1.5], [1.5, -1.5], [-1.5, -1.5], [-1.5, 1.5], [-0.9, 0.05], [-0.3, -0.65], [1.0, 0.95]], SEG + 1), // 1 · case cochée
-    sample(CLOCK, SEG + 1),                                                                                      // 2 · symbole du temps
+    sample([[-S, S], [S, S], [-S, -S], [S, -S]], SEG + 1),   // 0 · Z
+    sample(LOOP, SEG + 1),                                   // 1 · cercle d'itération
+    sample(TL, SEG + 1),                                     // 2 · timeline
+    sample([[-2.7, 0], [2.7, 0]], SEG + 1),                  // 3 · simple ligne
   ];
   const ease = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
 
