@@ -1923,7 +1923,7 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
     var moved=window.__zvm, tx=moved?(sx*0.5+0.5)*VW:cx+S*(0.42+0.08*Math.sin(t*0.4)), ty=moved?(sy*0.5+0.5)*VH:cy+S*(0.3+0.06*Math.cos(t*0.35));
     var vx=tx-cx, vy=ty-cy;
     var N=120, zp=zPath(S);
-    ctx.save(); ctx.globalAlpha=1-0.4*Math.min(p,1);
+    ctx.save(); ctx.globalAlpha=1;
     for(var i=N-1;i>=0;i--){
       var k=i/(N-1), e=Math.pow(k,0.8), s=Math.pow(1-k,1.35), w=Math.sin(t*1.1-k*6);
       var x=cx+vx*e+S*0.012*k*Math.sin(t*0.8+k*7), y=cy+vy*e+S*0.012*k*Math.cos(t*0.7+k*6);
@@ -1932,7 +1932,7 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
       ctx.save(); ctx.translate(x,y); ctx.rotate(0.05*k*Math.sin(t*0.6+k*3)); ctx.scale(s*(1+0.04*k*w),s*(1-0.04*k*w)); ctx.translate(-S/2,-S/2);
       ctx.lineWidth=1.15/Math.max(s,0.02); if(s<0.02) ctx.lineWidth=40;
       ctx.strokeStyle='rgba('+(rr|0)+','+(gg|0)+','+(bb|0)+','+al.toFixed(3)+')';
-      ctx.beginPath(); ctx.arc(S/2,S/2,S/2,0,Math.PI*2); ctx.stroke(); ctx.translate(S/2,S/2); ctx.scale(0.64,0.64); ctx.translate(-S/2,-S/2); ctx.lineWidth/=0.64; ctx.globalAlpha=Math.min(1,(1-0.4*Math.min(sp,1))*1.5); ctx.stroke(zp);
+      ctx.beginPath(); ctx.arc(S/2,S/2,S/2,0,Math.PI*2); ctx.stroke(); ctx.translate(S/2,S/2); ctx.scale(0.64,0.64); ctx.translate(-S/2,-S/2); ctx.lineWidth/=0.64; ctx.globalAlpha=1; ctx.stroke(zp);
       ctx.restore();
     }
     // grand Z blanc arrondi au premier plan, presque hors du cercle
@@ -1946,7 +1946,10 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
   function draw(t){ t=Math.max(0,t); ctx.clearRect(0,0,VW,VH); trail(t); }
   var t0=performance.now();
   function loop(now){ sx+=(mx-sx)*0.06; sy+=(my-sy)*0.06; sp+=(spT-sp)*0.08; draw((now-t0)/1000); if(!reduce) requestAnimationFrame(loop); }
-  function onS(){ spT=scrollY/Math.max(1,innerHeight); }
+  var tgt=null; function findT(){ var h=document.querySelectorAll('h2'); for(var i=0;i<h.length;i++) if(/^\s*Des solutions/.test(h[i].textContent)){tgt=h[i];break;} }
+  function onS(){ spT=scrollY/Math.max(1,innerHeight);
+    if(!tgt) findT(); var q=0; if(tgt){ var top=tgt.getBoundingClientRect().top; q=Math.max(0,Math.min(1,(innerHeight*0.85-top)/(innerHeight*0.9))); }
+    cv.style.opacity=(1-0.3*q).toFixed(3); }
   addEventListener('scroll',onS,{passive:true}); onS(); sp=spT;
   fit(); addEventListener('resize',function(){fit(); if(reduce) draw(0);});
   addEventListener('pointermove',function(e){window.__zvm=1; mx=e.clientX/innerWidth*2-1; my=e.clientY/innerHeight*2-1;},{passive:true});
