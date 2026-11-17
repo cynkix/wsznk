@@ -1476,6 +1476,14 @@ html[data-theme="dark"] .sl4-card{background:#171A21}
   .hero-z .zl-stage{flex-direction:column;align-items:stretch;justify-content:flex-start}
   .hero-z .zin{padding-block:0 60px}
 }
+
+/* V3 · le module 3D reste en fond : tout le contenu passe par-dessus */
+.zv{z-index:0}
+body>section,main>section,.hero-z,.dem,.clients,footer{position:relative;z-index:1}
+/* Notre démarche : carte blanche comme en V2 */
+.dem,.clients{background:transparent !important}
+.dem-card{padding:clamp(28px,4vw,52px) !important;border-radius:var(--radius-zika);background:#FFF !important;box-shadow:var(--shadozika) !important}
+html[data-theme="dark"] .dem-card{background:#171A21 !important}
 </style>
 
 <header class="hdr" id="hdr">
