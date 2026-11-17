@@ -1782,6 +1782,29 @@ html[data-theme="dark"] .sv .sv-gph{fill:#A0A6B3}
 .roi-c .roi-t>span::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,#EE2238,#BF1D67);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);pointer-events:none}
 .roi-c .roi-t>span i{display:inline-block !important;flex:none;width:14px;height:14px;border-radius:0;background:#E2001A !important;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M1.5 7.4l3.7 3.2L11.8 2.8' stroke='%23000' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M1.5 7.4l3.7 3.2L11.8 2.8' stroke='%23000' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
 .roi-c .roi-t>b{margin-top:12px}
+
+/* ===== Nos solutions : constat / réponses / livrables en barres segmentées ===== */
+.sx2{padding:72px 0 40px}
+.sx2 .sx-sub{text-align:left;margin:0 0 28px;max-width:none;font-size:15px}
+.sx2 .sx-h2{margin:0 0 36px;max-width:none;font-family:var(--display);font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:1.2;letter-spacing:-.015em;color:var(--ink);text-align:left}
+.sx2 .sx-h2.r{text-align:right}
+.sx2 .sx-h2 em{font-style:normal;background:linear-gradient(90deg,#EE2238,#BF1D67);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sx2 .sx-bar+.sx-h2,.sx2 .sx-bar+.sx-k2{margin-top:84px}
+.sx2 .sx-bar + .sx-k2{margin-top:56px}
+.sx2 .sx-k2{margin:0 0 18px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sx2 .sx-h2.r+.sx-k2{margin-top:0}
+.sx2 .sx-bar{display:grid;grid-template-columns:repeat(var(--n,6),minmax(0,1fr));gap:6px;border-radius:32px;overflow:hidden;background:#fff}
+.sx2 .sx-bar.n6{--n:6}.sx2 .sx-bar.n5{--n:5}.sx2 .sx-bar.n4{--n:4}
+.sx2 .sx-s{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:150px;padding:22px 18px;background:#F2F2F4;text-align:center;box-shadow:none}
+.sx2 .sx-s h4{margin:0;font-family:var(--display);font-weight:700;font-size:17px;line-height:1.3;color:#E2001A}
+.sx2 .sx-s p{margin:0;font-family:var(--display);font-weight:600;font-size:15px;line-height:1.4;color:var(--ink)}
+.sx2 .sx-s .sx-m{font-size:18px;font-weight:700;line-height:1.35}
+.sx2 .sx-s em{font-style:normal;color:#E2001A}
+.sx2 .sx-s.rv4{opacity:1;transform:none}
+@media (max-width:1100px){.sx2 .sx-bar{grid-template-columns:repeat(2,minmax(0,1fr))}.sx2 .sx-bar.n5>.sx-s:last-child,.sx2 .sx-bar.n5>.sx-s:nth-child(5){grid-column:1/-1}}
+@media (max-width:560px){.sx2 .sx-bar{grid-template-columns:1fr}.sx2 .sx-s{min-height:0}}
+:root[data-theme="dark"] .sx2 .sx-bar{background:#12151B}
+:root[data-theme="dark"] .sx2 .sx-s{background:#1B1F27}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1802,19 +1825,17 @@ html[data-theme="dark"] .sv .sv-gph{fill:#A0A6B3}
 </div>
 </div>
 </section>
-<section class="sx" id="reponses" aria-labelledby="sx-t"><div class="wrap">
+<section class="sx sx2" id="reponses" aria-labelledby="sx-t"><div class="wrap">
 <p class="sx-sub rv4">Secure &amp; compliant by design – durable et souverain – piloté par la valeur – craft &amp; devops</p>
-<h2 id="sx-t" class="sx-h rv4">Ce que vous vivez</h2>
-<ul class="sx-pills rv4"><li class="pl-b">Données fragmentées</li><li class="pl-b">Systèmes legacy</li><li class="pl-b">Architecture mille-feuilles</li><li class="pl-b">Silos organisationnels</li><li class="pl-b">Transformation permanente</li><li class="pl-b">Pression sur les coûts</li></ul>
-<div class="sx-ar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
-<h2 class="sx-h rv4">Comment nous y répondons</h2>
-<p class="sx-k rv4">Maîtriser la complexité</p>
-<div class="sx-grid g5"><article class="sx-c rv4"><h4>AI-augmented SDLC</h4><p>Orchestration, agents de dev, test, documentation…</p></article><article class="sx-c rv4"><h4>Lean Strike teams</h4><p>Petites équipes expertes, engagées et autonomes</p></article><article class="sx-c rv4"><h4>Platform engineering</h4><p>Infras internes en self-service, automatisation</p></article><article class="sx-c rv4"><h4>Product strategy &amp; discovery</h4><p>Rationalisation de portfolio produit, lien tech / produit</p></article><article class="sx-c rv4"><h4>Performance-driven delivery</h4><p>Métriques DORA, Team topologies, engagement agile</p></article></div>
-<p class="sx-k rv4">Créer de la valeur métier</p>
-<div class="sx-grid g4"><article class="sx-c rv4"><h4>AI for Business Performance</h4><p>Dans les apps métier</p><p>Dans les process de gestion</p><p>Dans le SDLC</p></article><article class="sx-c rv4"><h4>Data-driven Organization</h4><p>Master Data (gouvernance)</p><p>Fresh Data (temps réel)</p><p>Trusted Data (sécurisation)</p></article><article class="sx-c rv4"><h4>Cloud Forge — From strategy to value</h4><p>Valoriser les services cloud</p><p>Approche « BizDevOps » (Stratégie métier / Tech / Exécution)</p></article><article class="sx-c rv4"><h4>Valorisation du Legacy</h4><p>Maîtriser l’existant (sécurisation, refactoring)</p><p>Moderniser (refacto, refontes)</p></article></div>
-<div class="sx-ar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
-<h2 class="sx-h sx-red rv4">Ce que nous livrons</h2>
-<ul class="sx-pills sx-liv rv4"><li class="pl-r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Alignement avec la stratégie d’entreprise</li><li class="pl-r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sécurité, conformité, durabilité</li><li class="pl-r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Pertinence des logiciels pour les métiers</li><li class="pl-r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Bénéfices tangibles de l’IA</li><li class="pl-r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Réduction du time-to-market</li><li class="pl-r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Innovation continue</li></ul>
+<h2 id="sx-t" class="sx-h2 rv4">Ce que vous <em>vivez</em></h2>
+<div class="sx-bar n6 rv4"><div class="sx-s"><p class="sx-m"><em>Données</em> fragmentées</p></div><div class="sx-s"><p class="sx-m"><em>Systèmes</em> legacy</p></div><div class="sx-s"><p class="sx-m">Architecture <em>mille-feuilles</em></p></div><div class="sx-s"><p class="sx-m"><em>Silos</em> organisationnels</p></div><div class="sx-s"><p class="sx-m">Transformation <em>permanente</em></p></div><div class="sx-s"><p class="sx-m">Pression sur les <em>coûts</em></p></div></div>
+<h2 class="sx-h2 r rv4">Comment nous y <em>répondons</em></h2>
+<p class="sx-k2 rv4">Maîtriser la complexité</p>
+<div class="sx-bar n5 rv4"><div class="sx-s"><h4>AI-augmented SDLC</h4><p>Orchestration, agents de dev, test, documentation…</p></div><div class="sx-s"><h4>Lean Strike teams</h4><p>Petites équipes expertes, engagées et autonomes</p></div><div class="sx-s"><h4>Platform engineering</h4><p>Infras internes en self-service, automatisation</p></div><div class="sx-s"><h4>Product strategy &amp; discovery</h4><p>Rationalisation de portfolio produit, lien tech / produit</p></div><div class="sx-s"><h4>Performance-driven delivery</h4><p>Métriques DORA, Team topologies, engagement agile</p></div></div>
+<p class="sx-k2 rv4">Créer de la valeur métier</p>
+<div class="sx-bar n4 rv4"><div class="sx-s"><h4>AI for Business Performance</h4><p>Dans les apps métier</p><p>Dans les process de gestion</p><p>Dans le SDLC</p></div><div class="sx-s"><h4>Data-driven Organization</h4><p>Master Data (gouvernance)</p><p>Fresh Data (temps réel)</p><p>Trusted Data (sécurisation)</p></div><div class="sx-s"><h4>Cloud Forge — From strategy to value</h4><p>Valoriser les services cloud</p><p>Approche « BizDevOps » (Stratégie métier / Tech / Exécution)</p></div><div class="sx-s"><h4>Valorisation du Legacy</h4><p>Maîtriser l’existant (sécurisation, refactoring)</p><p>Moderniser (refacto, refontes)</p></div></div>
+<h2 class="sx-h2 rv4">Ce que nous <em>livrons</em></h2>
+<div class="sx-bar n6 liv rv4"><div class="sx-s"><p class="sx-m"><em>Alignement</em> avec la stratégie d’entreprise</p></div><div class="sx-s"><p class="sx-m"><em>Sécurité</em>, conformité, durabilité</p></div><div class="sx-s"><p class="sx-m"><em>Pertinence</em> des logiciels pour les métiers</p></div><div class="sx-s"><p class="sx-m"><em>Bénéfices tangibles</em> de l’IA</p></div><div class="sx-s"><p class="sx-m">Réduction du <em>time-to-market</em></p></div><div class="sx-s"><p class="sx-m"><em>Innovation</em> continue</p></div></div>
 </div></section>
 
 <section class="of" id="offres"><div class="wrap">
