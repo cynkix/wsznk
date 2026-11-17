@@ -141,7 +141,11 @@
       const s = 1 - 0.42 * p;
       const x = narrow ? 0 : p * (this._hw - 1.7 * s - 0.7);
       const y = narrow ? -p * (this._hh - 1.7 * s - 0.5) : 0;
-      this._group.position.set(x, y, 0); this._group.scale.setScalar(s * (narrow ? 0.8 : 1));
+      this._group.position.set(x, y, 0);
+      // grand écran : la figure grandit, et la timeline / la ligne s'étirent sur toute la largeur
+      const big = narrow ? 1 : Math.min(1.7, Math.max(1, this._cam.aspect / 1.6)), s2 = s * (narrow ? 0.8 : big);
+      const wide = narrow ? 1 : Math.max(1, (this._hw * 0.92) / (2.7 * s2)), mm = this._m, wf = mm <= 1 ? 1 : mm <= 2 ? 1 + (wide - 1) * (mm - 1) : wide;
+      this._group.scale.set(s2 * wf, s2, s2);
       this._sx += (this._mx - this._sx) * 0.07; this._sy += (this._my - this._sy) * 0.07;
       this._group.rotation.y = -0.25 + Math.sin(t * 0.1) * 0.22 + this._sx * 0.7;
       this._group.rotation.x = 0.2 + Math.sin(t * 0.07) * 0.05 + this._sy * 0.42;
