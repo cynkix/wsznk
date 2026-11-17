@@ -1913,7 +1913,30 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
       for(var n=0;n<m.length;n+=2){ ctx.fillRect(x0+m[n]*cell+(cell-w)/2,y0+m[n+1]*cell+(cell-w)/2,w,w); }
     }
   }
-  function draw(t){ t=Math.max(0,t); ctx.clearRect(0,0,BS,BS); disc(t); pixels(t); }
+  // traînée : anneaux déformés empilés du Z (devant) vers une pointe en bas à droite, dégradé rouge → magenta → gris
+  function trail(t){
+    ctx.save(); ctx.translate(OX,OX);
+    var N=110, R=S*0.43, cx0=S*0.36, cy0=S*0.36;
+    var ang=0.5+0.12*Math.sin(t*0.4)+sx*0.2+sy*0.08, dx=Math.cos(ang), dy=Math.sin(ang), L=S*0.72;
+    for(var i=N-1;i>=0;i--){
+      var k=i/(N-1), e=Math.pow(k,0.85), w=Math.sin(t*1.1-k*5.5);
+      var r=R*Math.pow(1-k*0.97,1.05)*(1+0.05*w);
+      var cx=cx0+dx*L*e+S*0.012*Math.sin(t*0.8+k*7), cy=cy0+dy*L*e*0.9+S*0.012*Math.cos(t*0.7+k*6);
+      var rx=r*(1+0.06*Math.sin(t*0.9+k*4)), ry=r*(1-0.06*Math.sin(t*0.9+k*4));
+      var u=k, rr,gg,bb;
+      if(u<0.55){var q=u/0.55;rr=lerp(214,170,q);gg=lerp(52,30,q);bb=lerp(68,105,q);} else {var m=(u-0.55)/0.45;rr=lerp(170,242,m);gg=lerp(30,242,m);bb=lerp(105,244,m);}
+      var al=0.85*(1-Math.pow(k,1.6))+0.1;
+      ctx.beginPath(); ctx.ellipse(cx,cy,rx,ry,0.25*Math.sin(t*0.5+k*3),0,Math.PI*2);
+      ctx.strokeStyle='rgba('+(rr|0)+','+(gg|0)+','+(bb|0)+','+al.toFixed(3)+')'; ctx.lineWidth=1.1; ctx.stroke();
+    }
+    // Z blanc arrondi épais découpé au premier plan
+    ctx.globalCompositeOperation='destination-out'; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.lineWidth=S*0.105; ctx.strokeStyle='#000';
+    var z=function(x,y){return [S*(0.14+x*0.52), S*(0.2+y*0.52)]}, P=[z(0.02,0.18),z(0.78,0.05),z(0.04,0.78),z(0.82,0.64)];
+    ctx.beginPath(); ctx.moveTo(P[0][0],P[0][1]); for(var q2=1;q2<4;q2++) ctx.lineTo(P[q2][0],P[q2][1]); ctx.stroke();
+    ctx.globalCompositeOperation='source-over';
+    ctx.restore();
+  }
+  function draw(t){ t=Math.max(0,t); ctx.clearRect(0,0,BS,BS); trail(t); }
   var t0=performance.now();
   function loop(now){ sx+=(mx-sx)*0.06; sy+=(my-sy)*0.06; draw((now-t0)/1000); if(!reduce) requestAnimationFrame(loop); }
   fit(); addEventListener('resize',function(){fit(); if(reduce) draw(0);});
