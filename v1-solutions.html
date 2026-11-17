@@ -1820,6 +1820,13 @@ html[data-theme="dark"] .sv .sv-gph{fill:#A0A6B3}
 .of-z path{fill:none;stroke:#ECEEF2;stroke-width:132;stroke-linejoin:round;stroke-linecap:round}
 :root[data-theme="dark"] .of-z path{stroke:#232830}
 @media (max-width:700px){.of-z{left:-10vw;width:90vw;opacity:.45}}
+
+/* modèle simplifié : deux bandeaux (modèles opératoires / expertises) */
+.sx2 .sx-bar.n7{--n:7}.sx2 .sx-bar.n8{--n:8}
+.sx2 .sx-bar.n7 .sx-m,.sx2 .sx-bar.n8 .sx-m{font-size:17px}
+.sx2 .sx-bar.n7+.sx-h2,.sx2 .sx-bar.n8+.sx-h2{margin-top:84px}
+@media (max-width:1100px){.sx2 .sx-bar.n7,.sx2 .sx-bar.n8{grid-template-columns:repeat(2,minmax(0,1fr))}.sx2 .sx-bar.n7>.sx-s:last-child{grid-column:1/-1}}
+@media (max-width:560px){.sx2 .sx-bar.n7,.sx2 .sx-bar.n8{grid-template-columns:1fr}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1841,16 +1848,10 @@ html[data-theme="dark"] .sv .sv-gph{fill:#A0A6B3}
 </div>
 </section>
 <section class="sx sx2" id="reponses" aria-labelledby="sx-t"><div class="wrap">
-<p class="sx-sub rv4">Secure &amp; compliant by design – durable et souverain – piloté par la valeur – craft &amp; devops</p>
-<h2 id="sx-t" class="sx-h2 rv4">Ce que vous <em>vivez</em></h2>
-<div class="sx-bar n6 rv4"><div class="sx-s"><p class="sx-m"><em>Données</em> fragmentées</p></div><div class="sx-s"><p class="sx-m"><em>Systèmes</em> legacy</p></div><div class="sx-s"><p class="sx-m">Architecture <em>mille-feuilles</em></p></div><div class="sx-s"><p class="sx-m"><em>Silos</em> organisationnels</p></div><div class="sx-s"><p class="sx-m">Transformation <em>permanente</em></p></div><div class="sx-s"><p class="sx-m">Pression sur les <em>coûts</em></p></div></div>
-<h2 class="sx-h2 r rv4">Comment nous y <em>répondons</em></h2>
-<p class="sx-k2 rv4">Maîtriser la complexité</p>
-<div class="sx-bar n5 rv4"><div class="sx-s"><h4>AI-augmented SDLC</h4><p>Orchestration, agents de dev, test, documentation…</p></div><div class="sx-s"><h4>Lean Strike teams</h4><p>Petites équipes expertes, engagées et autonomes</p></div><div class="sx-s"><h4>Platform engineering</h4><p>Infras internes en self-service, automatisation</p></div><div class="sx-s"><h4>Product strategy &amp; discovery</h4><p>Rationalisation de portfolio produit, lien tech / produit</p></div><div class="sx-s"><h4>Performance-driven delivery</h4><p>Métriques DORA, Team topologies, engagement agile</p></div></div>
-<p class="sx-k2 rv4">Créer de la valeur métier</p>
-<div class="sx-bar n4 rv4"><div class="sx-s"><h4>AI for Business Performance</h4><p>Dans les apps métier</p><p>Dans les process de gestion</p><p>Dans le SDLC</p></div><div class="sx-s"><h4>Data-driven Organization</h4><p>Master Data (gouvernance)</p><p>Fresh Data (temps réel)</p><p>Trusted Data (sécurisation)</p></div><div class="sx-s"><h4>Cloud Forge — From strategy to value</h4><p>Valoriser les services cloud</p><p>Approche « BizDevOps » (Stratégie métier / Tech / Exécution)</p></div><div class="sx-s"><h4>Valorisation du Legacy</h4><p>Maîtriser l’existant (sécurisation, refactoring)</p><p>Moderniser (refacto, refontes)</p></div></div>
-<h2 class="sx-h2 rv4">Ce que nous <em>livrons</em></h2>
-<div class="sx-bar n6 liv rv4"><div class="sx-s"><p class="sx-m"><em>Alignement</em> avec la stratégie d’entreprise</p></div><div class="sx-s"><p class="sx-m"><em>Sécurité</em>, conformité, durabilité</p></div><div class="sx-s"><p class="sx-m"><em>Pertinence</em> des logiciels pour les métiers</p></div><div class="sx-s"><p class="sx-m"><em>Bénéfices tangibles</em> de l’IA</p></div><div class="sx-s"><p class="sx-m">Réduction du <em>time-to-market</em></p></div><div class="sx-s"><p class="sx-m"><em>Innovation</em> continue</p></div></div>
+<h2 id="sx-t" class="sx-h2 rv4">Nos modèles opératoires <em>intègrent</em><br>vos équipes et votre organisation…</h2>
+<div class="sx-bar n7 rv4"><div class="sx-s"><p class="sx-m"><em>Diagnostic</em> flash, audit 360° et études</p></div><div class="sx-s"><p class="sx-m"><em>Cadrage</em> produit, solution ou projet</p></div><div class="sx-s"><p class="sx-m"><em>Solution</em> logicielle clé en mains</p></div><div class="sx-s"><p class="sx-m"><em>Régie</em> &amp; renfort d’équipe</p></div><div class="sx-s"><p class="sx-m"><em>Centre de services</em>, de compétences</p></div><div class="sx-s"><p class="sx-m"><em>Expertise</em> ponctuelle et coaching</p></div><div class="sx-s"><p class="sx-m">Programmes de <em>transfo</em> pilotés</p></div></div>
+<h2 class="sx-h2 r rv4">… et y déploient nos <em>expertises</em></h2>
+<div class="sx-bar n8 rv4"><div class="sx-s"><p class="sx-m"><em>Agentic</em> systems</p></div><div class="sx-s"><p class="sx-m"><em>Architectures</em> modernes</p></div><div class="sx-s"><p class="sx-m"><em>Software</em> Excellence</p></div><div class="sx-s"><p class="sx-m">Data &amp; <em>IA</em></p></div><div class="sx-s"><p class="sx-m">Infrastructures &amp; <em>Cloud</em></p></div><div class="sx-s"><p class="sx-m"><em>Product</em> design &amp; management</p></div><div class="sx-s"><p class="sx-m"><em>Delivery</em> Management</p></div><div class="sx-s"><p class="sx-m"><em>Organisations</em>, conduite du changement</p></div></div>
 </div></section>
 
 <section class="of" id="offres"><div class="wrap">
