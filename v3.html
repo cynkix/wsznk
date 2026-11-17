@@ -1473,7 +1473,7 @@ html[data-theme="dark"] .sl4-card{background:#171A21}
 .hero-z .zin .zl-pre{max-width:26em;margin-inline:0;text-align:left}
 .hero-z .zin .zl-tags{justify-content:flex-start}
 .zv{position:absolute;z-index:1;right:max(0px,calc((100vw - 1200px)/2 + 10px));top:50%;width:min(44vw,640px);aspect-ratio:1;transform:translateY(-50%);pointer-events:none}
-.zv canvas{position:absolute;inset:0;width:100%;height:100%}
+.zv canvas{position:absolute;left:-65%;top:-65%;width:230%;height:230%}
 .zv-z{position:absolute;left:12%;top:26%;width:52%;overflow:visible;filter:drop-shadow(0 10px 18px rgba(120,15,50,.28))}
 .zv-z path{fill:none;stroke:#fff;stroke-width:46;stroke-linecap:round;stroke-linejoin:round}
 .hero-z .zin h1,.hero-z .zin p{text-shadow:none}
@@ -1867,56 +1867,58 @@ bars.style.setProperty('--ra',c(p*1.5-0.5).toFixed(3));}
 window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
 </script>
 <script>
-/* V3 · disque de lignes avec le Z en pochoir (découpé) */
+/* V3 · disque de lignes, Z en pochoir, et contour du Z qui se pixellise à l'infini hors du cercle */
 (function(){
-  var cv=document.getElementById('zvc'); if(!cv) return; var ctx=cv.getContext('2d'), S=0, dpr=1, mx=0, my=0, sx=0, sy=0;
+  var cv=document.getElementById('zvc'); if(!cv) return; var ctx=cv.getContext('2d'), S=0, BS=0, OX=0, dpr=1, mx=0, my=0, sx=0, sy=0;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function fit(){ ring=null; var r=cv.getBoundingClientRect(); dpr=Math.min(2,window.devicePixelRatio||1); S=Math.max(1,r.width); cv.width=S*dpr; cv.height=S*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
-  var ring=null, ringS=0;
-  function zPath(sc){ sc=sc||S; var p=new Path2D(), k=function(x,y){return [x/495*sc,y/495*sc]}, m=function(q){return q};
-    function P(x,y){var q=k(x,y);return q}
-    var A=P(-30,185),B=P(325,115),C1=P(388,104),C=P(380,162),D=P(236,312),E=P(535,262),E2=P(535,320),F=P(163,390),F1=P(110,400),F2=P(122,342),G=P(290,185),H=P(-30,247);
-    p.moveTo(A[0],A[1]); p.lineTo(B[0],B[1]); p.quadraticCurveTo(C1[0],C1[1],C[0],C[1]); p.lineTo(D[0],D[1]); p.lineTo(E[0],E[1]); p.lineTo(E2[0],E2[1]); p.lineTo(F[0],F[1]); p.quadraticCurveTo(F1[0],F1[1],F2[0],F2[1]); p.lineTo(G[0],G[1]); p.lineTo(H[0],H[1]); p.closePath(); return p; }
-  function buildRings(){
-    ring=document.createElement('canvas'); ring.width=cv.width; ring.height=cv.height; ringS=S;
-    var rc=ring.getContext('2d'); rc.setTransform(dpr,0,0,dpr,0,0);
-    var tmp=document.createElement('canvas'); tmp.width=cv.width; tmp.height=cv.height; var tc=tmp.getContext('2d'); tc.setTransform(dpr,0,0,dpr,0,0);
-    var zp=zPath();
-    for(var d=1;d<=14;d++){ var w=d*S*0.011;
-      tc.clearRect(0,0,S,S); tc.lineJoin='round'; tc.strokeStyle='#000'; tc.lineWidth=2*w; tc.stroke(zp);
-      tc.globalCompositeOperation='destination-out'; tc.lineWidth=2*w-1.3; tc.stroke(zp); tc.globalCompositeOperation='source-over';
-      tc.globalCompositeOperation='source-in'; tc.fillStyle=col(d/14,Math.max(0.15,0.95-d*0.05)); tc.fillRect(0,0,S,S); tc.globalCompositeOperation='source-over';
-      rc.drawImage(tmp,0,0,S,S); }
-  }
+  var LEVELS=[88,68,52,40,30,22,16,12], masks={}, R0=-0.12, RS=1.24;   // région d'échantillonnage du Z (en fraction du disque)
   function lerp(a,b,t){return a+(b-a)*t}
   function col(u,a){ var r,g,b; if(u<0.6){var k=u/0.6;r=lerp(238,191,k);g=lerp(34,29,k);b=lerp(56,103,k);} else {var m=(u-0.6)/0.4;r=lerp(191,92,m);g=lerp(29,14,m);b=lerp(103,52,m);} return 'rgba('+(r|0)+','+(g|0)+','+(b|0)+','+a.toFixed(3)+')'; }
-  function draw(t){
-    ctx.clearRect(0,0,S,S); ctx.save();
-    var C=S/2, R=S/2-1; ctx.beginPath(); ctx.arc(C,C,R,0,Math.PI*2); ctx.clip();
-    var th=0.62+0.3*Math.sin(t*0.35)+sx*0.35+sy*0.12;   // direction du point de tangence
-    var dx=Math.cos(th), dy=Math.sin(th), N=64;
-    // famille A : cercles tangents au bord
+  function zPath(sc){ var p=new Path2D(), k=function(x,y){return [x/495*sc,y/495*sc]};
+    var A=k(-30,185),B=k(325,115),C1=k(388,104),C=k(380,162),D=k(236,312),E=k(535,262),E2=k(535,320),F=k(163,390),F1=k(110,400),F2=k(122,342),G=k(290,185),H=k(-30,247);
+    p.moveTo(A[0],A[1]); p.lineTo(B[0],B[1]); p.quadraticCurveTo(C1[0],C1[1],C[0],C[1]); p.lineTo(D[0],D[1]); p.lineTo(E[0],E[1]); p.lineTo(E2[0],E2[1]); p.lineTo(F[0],F[1]); p.quadraticCurveTo(F1[0],F1[1],F2[0],F2[1]); p.lineTo(G[0],G[1]); p.lineTo(H[0],H[1]); p.closePath(); return p; }
+  // masque pixel du Z : uniquement les cellules de contour (bord de la forme)
+  function mask(res){
+    if(masks[res]) return masks[res];
+    var c=document.createElement('canvas'); c.width=c.height=res; var x=c.getContext('2d');
+    x.fillStyle='#000'; x.translate(-R0*res/RS,-R0*res/RS); x.scale(res/RS/ (1),res/RS/(1)); x.fill(zPath(1));
+    var im=x.getImageData(0,0,res,res).data, on=function(i,j){return i>=0&&j>=0&&i<res&&j<res&&im[(j*res+i)*4+3]>110}, out=[];
+    for(var j=0;j<res;j++)for(var i=0;i<res;i++){ if(!on(i,j)) continue; if(!on(i-1,j)||!on(i+1,j)||!on(i,j-1)||!on(i,j+1)) out.push(i,j); }
+    return (masks[res]=out);
+  }
+  function fit(){ var r=cv.parentElement.getBoundingClientRect(); S=Math.max(1,r.width); BS=S*2.3; OX=(BS-S)/2; dpr=Math.min(1.5,window.devicePixelRatio||1); cv.width=BS*dpr; cv.height=BS*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  function disc(t){
+    ctx.save(); ctx.translate(OX,OX);
+    var C=S/2, R=S/2-1; ctx.save(); ctx.beginPath(); ctx.arc(C,C,R,0,Math.PI*2); ctx.clip();
+    var th=0.62+0.3*Math.sin(t*0.35)+sx*0.35+sy*0.12, dx=Math.cos(th), dy=Math.sin(th), N=64;
     for(var i=0;i<N;i++){ var k=(i+1)/N, r=R*Math.pow(k,0.92), off=R-r;
-      ctx.beginPath(); ctx.arc(C+dx*off,C+dy*off,r,0,Math.PI*2);
-      ctx.strokeStyle=col(1-k*0.95,0.62+0.38*(1-k)); ctx.lineWidth=1.25; ctx.stroke(); }
-    // famille B : boucles déformées au centre
+      ctx.beginPath(); ctx.arc(C+dx*off,C+dy*off,r,0,Math.PI*2); ctx.strokeStyle=col(1-k*0.95,0.62+0.38*(1-k)); ctx.lineWidth=1.25; ctx.stroke(); }
     for(var j=0;j<46;j++){ var u=j/45, ph=j*0.7;
       var cx=C+S*(0.02+0.16*Math.sin(t*0.5+ph))+dx*S*0.04, cy=C+S*(0.02+0.14*Math.cos(t*0.42+ph*1.3));
       var rx=S*(0.05+0.2*u)*(1+0.18*Math.sin(t*0.9+ph)), ry=S*(0.04+0.15*(1-u))*(1+0.2*Math.cos(t*0.8+ph*0.7));
-      ctx.beginPath(); ctx.ellipse(cx,cy,rx,ry,t*0.25+ph,0,Math.PI*2);
-      ctx.strokeStyle=col(0.25+0.6*u,0.5); ctx.lineWidth=1; ctx.stroke(); }
-    // contours qui épousent la forme du Z (anneaux concentriques en cache)
-    if(!ring||ringS!==S) buildRings();
-    ctx.globalAlpha=0.55+0.25*Math.sin(t*0.8); ctx.drawImage(ring,0,0,S,S); ctx.globalAlpha=1;
-    // pochoir : le Z est découpé (transparent)
-    ctx.globalCompositeOperation='destination-out'; ctx.fillStyle='#000'; ctx.fill(zPath());
+      ctx.beginPath(); ctx.ellipse(cx,cy,rx,ry,t*0.25+ph,0,Math.PI*2); ctx.strokeStyle=col(0.25+0.6*u,0.5); ctx.lineWidth=1; ctx.stroke(); }
+    ctx.restore();
+    ctx.globalCompositeOperation='destination-out'; ctx.fillStyle='#000'; ctx.fill(zPath(S)); ctx.globalCompositeOperation='source-over';
     ctx.restore();
   }
+  // contours pixel du Z qui sortent du cercle et grossissent à l'infini
+  function pixels(t){
+    var L=5, per=10;
+    for(var l=0;l<L;l++){
+      var p=((t/per)+l/L)%1, e=p*p*(3-2*p*0.6);
+      var li=Math.min(LEVELS.length-1,Math.floor(p*LEVELS.length)), res=LEVELS[li], m=mask(res);
+      var sc=1+Math.pow(p,0.9)*0.9, size=S*RS*sc, cell=size/res, a=Math.pow(1-p,1.3)*0.78; if(a<0.02) continue;
+      var x0=OX+S/2-(S*0.5-S*R0)*sc+sx*10*p, y0=OX+S/2-(S*0.5-S*R0)*sc+sy*8*p, w=cell*0.74;
+      ctx.fillStyle=col(0.05+0.7*p,a);
+      for(var n=0;n<m.length;n+=2){ ctx.fillRect(x0+m[n]*cell+(cell-w)/2,y0+m[n+1]*cell+(cell-w)/2,w,w); }
+    }
+  }
+  function draw(t){ t=Math.max(0,t); ctx.clearRect(0,0,BS,BS); disc(t); pixels(t); }
   var t0=performance.now();
   function loop(now){ sx+=(mx-sx)*0.06; sy+=(my-sy)*0.06; draw((now-t0)/1000); if(!reduce) requestAnimationFrame(loop); }
   fit(); addEventListener('resize',function(){fit(); if(reduce) draw(0);});
   addEventListener('pointermove',function(e){mx=e.clientX/innerWidth*2-1; my=e.clientY/innerHeight*2-1;},{passive:true});
-  if(reduce) draw(0); else requestAnimationFrame(loop);
+  if(reduce) draw(2); else requestAnimationFrame(loop);
 })();
 </script>
 </body></html>
