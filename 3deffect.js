@@ -38,7 +38,7 @@
     void main(){ float r=length(gl_PointCoord-0.5)*2.0; float g=exp(-r*r*5.0); if(g<0.01) discard; gl_FragColor=vec4(uBeam, g*vA); }`;
 
   class Effect3D extends HTMLElement {
-    static get observedAttributes() { return ['theme', 'count', 'speed', 'parallax', 'beam', 'spacing']; }
+    static get observedAttributes() { return ['theme', 'count', 'speed', 'parallax', 'beam', 'spacing', 'intensity']; }
     connectedCallback() {
       this.style.display = 'block';
       this.style.position = this.style.position || 'absolute';
@@ -132,7 +132,7 @@
         const a = th.lines[0], b = th.lines[1];
         L.mat.uniforms.uColor.value.setRGB(a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k);
         L.mat.uniforms.uBeam.value.setRGB(...th.beam);
-        L.mat.uniforms.uOp.value = th.op * (0.6 + 0.4 * L.rnd);
+        L.mat.uniforms.uOp.value = Math.min(1, th.op * (parseFloat(this.getAttribute('intensity')) || 1)) * (0.6 + 0.4 * L.rnd);
       });
       this._pMat.uniforms.uBeam.value.setRGB(...th.beam);
     }
