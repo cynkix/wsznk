@@ -1467,11 +1467,6 @@ html[data-theme="dark"] .sl4-card{background:#171A21}
 .zl-go,.lnk,.btn-arrow,.dm-more a,.dm-adn,.btn,.ghost,.fcta,.zl-go:hover,.lnk:hover,.btn-arrow:hover,.dm-more a:hover,.dm-adn:hover,.btn:hover,.ghost:hover,.fcta:hover{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1) !important}
 
 /* V3 · variante : Z blanc arrondi dans un tourbillon de lignes rouge → gris */
-.hero-z .zl-stage{justify-content:flex-start}
-.hero-z .zin{align-items:flex-start;text-align:left;margin-inline:auto;width:100%;max-width:1200px;padding-inline:24px}
-.hero-z .zin h1{margin-inline:0;max-width:10.5em;font-size:clamp(30px,3.5vw,52px) !important}
-.hero-z .zin .zl-pre{max-width:26em;margin-inline:0;text-align:left}
-.hero-z .zin .zl-tags{justify-content:flex-start}
 .zv{position:fixed;inset:0;z-index:1;pointer-events:none}
 .zv canvas{position:absolute;inset:0;width:100%;height:100%}
 .zv-z{position:absolute;left:12%;top:26%;width:52%;overflow:visible;filter:drop-shadow(0 10px 18px rgba(120,15,50,.28))}
@@ -1915,29 +1910,22 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
   }
   // traînée : anneaux déformés empilés du Z (devant) vers une pointe en bas à droite, dégradé rouge → magenta → gris
   function trail(t){
-    var mob=VW<900, p=sp;                                  // p = progression du scroll (en hauteurs d'écran)
-    S=Math.min(mob?VW*0.9:VW*0.46,680)*(1+0.32*Math.min(p,3));
-    var ax=mob?VW*0.5:VW*(0.70-0.2*Math.min(p,3)), ay=VH*(mob?0.62:0.5)+Math.sin(p*1.3)*VH*0.18-p*VH*0.06;
-    ax+=sx*VW*0.04; ay+=sy*VH*0.04;
-    ctx.save(); ctx.globalAlpha=1-0.45*Math.min(p,1); ctx.translate(ax-S*0.36,ay-S*0.36);
-    var N=110, R=S*0.43, cx0=S*0.36, cy0=S*0.36;
-    var ang=0.5+0.12*Math.sin(t*0.4)+sx*0.45+sy*0.2+p*0.9, dx=Math.cos(ang), dy=Math.sin(ang), L=S*(0.72+0.25*Math.min(p,2));
+    var mob=VW<900, p=sp, Zs=Math.min(VW*(mob?0.95:0.7),VH*0.98,900)*(1+0.18*Math.min(p,3)), S=Zs;
+    var cx=VW*(mob?0.5:0.5-0.12*Math.min(p,2.5))+sx*VW*0.03, cy=VH*(0.5+0.06*Math.sin(p*1.2))-p*VH*0.04+sy*VH*0.03;
+    var ang=0.62+0.12*Math.sin(t*0.4)+sx*0.5+sy*0.2+p*0.8, vx=Math.cos(ang), vy=Math.sin(ang), L=S*(0.55+0.3*Math.min(p,2));
+    var N=120, zp=zPath(S);
+    ctx.save(); ctx.globalAlpha=1-0.4*Math.min(p,1);
     for(var i=N-1;i>=0;i--){
-      var k=i/(N-1), e=Math.pow(k,0.85), w=Math.sin(t*1.1-k*5.5);
-      var r=R*Math.pow(1-k*0.97,1.05)*(1+0.05*w);
-      var cx=cx0+dx*L*e+S*0.012*Math.sin(t*0.8+k*7), cy=cy0+dy*L*e*0.9+S*0.012*Math.cos(t*0.7+k*6);
-      var rx=r*(1+0.06*Math.sin(t*0.9+k*4)), ry=r*(1-0.06*Math.sin(t*0.9+k*4));
-      var u=k, rr,gg,bb;
-      if(u<0.55){var q=u/0.55;rr=lerp(214,170,q);gg=lerp(52,30,q);bb=lerp(68,105,q);} else {var m=(u-0.55)/0.45;rr=lerp(170,242,m);gg=lerp(30,242,m);bb=lerp(105,244,m);}
-      var al=0.85*(1-Math.pow(k,1.6))+0.1;
-      ctx.beginPath(); ctx.ellipse(cx,cy,rx,ry,0.25*Math.sin(t*0.5+k*3),0,Math.PI*2);
-      ctx.strokeStyle='rgba('+(rr|0)+','+(gg|0)+','+(bb|0)+','+al.toFixed(3)+')'; ctx.lineWidth=1.1; ctx.stroke();
+      var k=i/(N-1), e=Math.pow(k,0.8), s=Math.pow(1-k,1.35), w=Math.sin(t*1.1-k*6);
+      var x=cx+vx*L*e+S*0.012*Math.sin(t*0.8+k*7), y=cy+vy*L*e*0.9+S*0.012*Math.cos(t*0.7+k*6);
+      var rr,gg,bb; if(k<0.55){var q=k/0.55;rr=lerp(238,170,q);gg=lerp(34,30,q);bb=lerp(56,105,q);} else {var m=(k-0.55)/0.45;rr=lerp(170,225,m);gg=lerp(30,225,m);bb=lerp(105,230,m);}
+      var al=0.5*(1-Math.pow(k,1.3))+0.1;
+      ctx.save(); ctx.translate(x,y); ctx.rotate(0.05*Math.sin(t*0.6+k*3)); ctx.scale(s*(1+0.04*w),s*(1-0.04*w)); ctx.translate(-S/2,-S/2);
+      ctx.lineWidth=1.15/Math.max(s,0.02); if(s<0.02) ctx.lineWidth=40;
+      ctx.strokeStyle='rgba('+(rr|0)+','+(gg|0)+','+(bb|0)+','+al.toFixed(3)+')';
+      ctx.beginPath(); ctx.arc(S/2,S/2,S/2,0,Math.PI*2); ctx.stroke(); ctx.translate(S/2,S/2); ctx.scale(0.64,0.64); ctx.translate(-S/2,-S/2); ctx.lineWidth/=0.64; ctx.globalAlpha=Math.min(1,(1-0.4*Math.min(sp,1))*1.5); ctx.stroke(zp);
+      ctx.restore();
     }
-    // Z blanc arrondi épais découpé au premier plan
-    ctx.globalCompositeOperation='destination-out'; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.lineWidth=S*0.105; ctx.strokeStyle='#000';
-    var z=function(x,y){return [S*(0.14+x*0.52), S*(0.2+y*0.52)]}, P=[z(0.02,0.18),z(0.78,0.05),z(0.04,0.78),z(0.82,0.64)];
-    ctx.beginPath(); ctx.moveTo(P[0][0],P[0][1]); for(var q2=1;q2<4;q2++) ctx.lineTo(P[q2][0],P[q2][1]); ctx.stroke();
-    ctx.globalCompositeOperation='source-over';
     ctx.restore();
   }
   function draw(t){ t=Math.max(0,t); ctx.clearRect(0,0,VW,VH); trail(t); }
