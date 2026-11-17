@@ -736,6 +736,14 @@ html[data-theme="dark"] .eg-it.act b,html[data-theme="dark"] .eg2 h2 em,html[dat
 /* boutons pastille : sans ombre */
 .zl-go,.lnk,.btn-arrow,.dm-more a,.dm-adn,.btn,.ghost,.fcta,.zl-go:hover,.lnk:hover,.btn-arrow:hover,.dm-more a:hover,.dm-adn:hover,.btn:hover,.ghost:hover,.fcta:hover{box-shadow:none !important}
 
+
+/* boutons de section (V1) : Nos solutions, ADN, engagements */
+.cta-solu{display:flex;justify-content:center;margin:48px 0 0}
+.dm-more{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:flex-end;margin:44px 0 0 !important;padding-top:0 !important;border-top:0 !important}
+.dem-lead .dm-adn,.dem-in .dm-adn{display:flex !important;width:fit-content;margin:18px 0 0 auto !important}
+
+/* ombre des boutons (maquette Figma « Link:shadow ») */
+.zl-go,.lnk,.btn-arrow,.dm-more a,.dm-adn,.btn,.ghost,.fcta,.zl-go:hover,.lnk:hover,.btn-arrow:hover,.dm-more a:hover,.dm-adn:hover,.btn:hover,.ghost:hover,.fcta:hover{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1) !important}
 </style>
 
 <header class="hdr" id="hdr">
@@ -917,7 +925,7 @@ html[data-theme="dark"] .eg-it.act b,html[data-theme="dark"] .eg2 h2 em,html[dat
 <div class="prog" id="prog"><i class="on"></i><i></i><i></i><i></i><i></i></div>
 </div>
 </div>
-</div>
+<p class="cta-solu rv4"><a class="btn-arrow" href="v1-solutions.html">Nos solutions <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p></div>
 </section>
 
 <!-- 4 · ADN (le seul moment sombre, atteint en fondu) -->
@@ -942,7 +950,7 @@ html[data-theme="dark"] .eg-it.act b,html[data-theme="dark"] .eg2 h2 em,html[dat
 <section class="story" id="histoire">
 <div class="wrap">
 <div class="top">
-<div><span class="eyebrow">Depuis 2006</span><h2>Nos convictions sont le fruit de plus de 20 ans d'expérience.</h2></div>
+<div><span class="eyebrow">Depuis 2006</span><h2>Nos convictions sont le fruit de plus de 20 ans d'expérience.</h2><a class="dm-adn" href="v1-adn.html">Découvrir notre ADN <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
 <p class="lead rv">Depuis notre création en 2006, nous avons traversé avec nos clients transformations, évolutions et révolutions, nous préparant aujourd'hui pour le virage de l'Intelligence Artificielle. Ces succès partagés ont forgé notre manière de faire, sans jamais nous éloigner de nos valeurs.</p>
 </div>
 <div class="timeline" id="timeline">
@@ -961,7 +969,7 @@ html[data-theme="dark"] .eg-it.act b,html[data-theme="dark"] .eg2 h2 em,html[dat
 <div class="cities w"><span>Casablanca</span><span>Singapour</span></div>
 </div>
 </div>
-</div>
+<p class="dm-more"><a href="v1-engagements.html">Nos engagements <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p></div>
 </section>
 
 <!-- 6 · Clients -->
