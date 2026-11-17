@@ -1952,7 +1952,8 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
   var tgt=null; function findT(){ var h=document.querySelectorAll('h2'); for(var i=0;i<h.length;i++) if(/^\s*Des solutions/.test(h[i].textContent)){tgt=h[i];break;} }
   function onS(){ spT=scrollY/Math.max(1,innerHeight);
     if(!tgt) findT(); var q=0; if(tgt){ var top=tgt.getBoundingClientRect().top; q=Math.max(0,Math.min(1,(innerHeight*0.85-top)/(innerHeight*0.9))); }
-    cv.style.opacity=(1-0.3*q).toFixed(3); }
+    var q2=0, t2=document.querySelector('#clients h2'); if(t2){ var tp=t2.getBoundingClientRect().top; q2=Math.max(0,Math.min(1,(innerHeight*0.85-tp)/(innerHeight*0.6))); }
+    cv.style.opacity=(1-0.3*q-0.2*q2).toFixed(3); }
   addEventListener('scroll',onS,{passive:true}); onS(); sp=spT;
   fit(); addEventListener('resize',function(){fit(); if(reduce) draw(0);});
   addEventListener('pointermove',function(e){window.__zvm=1; mx=e.clientX/innerWidth*2-1; my=e.clientY/innerHeight*2-1;},{passive:true});
