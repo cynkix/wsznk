@@ -1323,6 +1323,11 @@ html[data-theme="dark"] .cst-l{border-color:#2B3242}
 .dm-more a{font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#E2001A;text-decoration:none}
 .dm-more a:hover{text-decoration:underline}
 effect-3d-morph{opacity:.9}
+
+/* ===== V5 : figure 3D en fond, sous les cartes ===== */
+effect-3d-morph{z-index:1 !important;opacity:1}
+main > section{position:relative;z-index:2 !important}
+.clients,.hero,.hero-z,.zl-stage{background:transparent !important}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1685,7 +1690,7 @@ sel.addEventListener('change',function(){var id=sel.value;
   els.forEach(function(e){io.observe(e);});
 })();
 </script>
-<effect-3d-morph id="zm" theme="clair" count="26" spacing="1.4" aria-hidden="true"></effect-3d-morph>
+<effect-3d-morph id="zm" theme="clair" count="26" spacing="1.8" aria-hidden="true"></effect-3d-morph>
 <script>
 /* zk-morph : Z -> case cochée -> horloge, selon la section et le scroll */
 (function(){
@@ -1694,11 +1699,9 @@ sel.addEventListener('change',function(){var id=sel.value;
   var secs=ids.map(function(i){return document.getElementById(i);});
   var dark=function(){return document.documentElement.getAttribute('data-theme')==='dark';};
   function upd(){
-    var vh=innerHeight, y=scrollY+vh/2, pts=[];
-    secs.forEach(function(e,i){ if(e){var r=e.getBoundingClientRect(); pts.push([scrollY+r.top+r.height/2,K[i]]);} });
-    var m=pts[0][1];
-    if(y<=pts[0][0]) m=pts[0][1]; else if(y>=pts[pts.length-1][0]) m=pts[pts.length-1][1];
-    else for(var i=0;i<pts.length-1;i++){ if(y>=pts[i][0]&&y<=pts[i+1][0]){ var t=(y-pts[i][0])/(pts[i+1][0]-pts[i][0]); t=Math.min(1,Math.max(0,(t-.25)/.5)); m=pts[i][1]+(pts[i+1][1]-pts[i][1])*t; break; } }
+    var vh=innerHeight, m=K[0];
+    /* forme franche : celle de la section qui occupe le milieu de l'écran (pas d'état intermédiaire) */
+    secs.forEach(function(e,i){ if(e && e.getBoundingClientRect().top<=vh*.5) m=K[i]; });
     zm.setMorph&&zm.setMorph(m);
     zm.setPlace&&zm.setPlace(0);
     var th=dark()?'gradient':'clair'; if(zm.getAttribute('theme')!==th) zm.setAttribute('theme',th);
