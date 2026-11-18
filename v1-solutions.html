@@ -1827,6 +1827,15 @@ html[data-theme="dark"] .sv .sv-gph{fill:#A0A6B3}
 .sx2 .sx-bar.n7+.sx-h2,.sx2 .sx-bar.n8+.sx-h2{margin-top:84px}
 @media (max-width:1100px){.sx2 .sx-bar.n7,.sx2 .sx-bar.n8{grid-template-columns:repeat(2,minmax(0,1fr))}.sx2 .sx-bar.n7>.sx-s:last-child{grid-column:1/-1}}
 @media (max-width:560px){.sx2 .sx-bar.n7,.sx2 .sx-bar.n8{grid-template-columns:1fr}}
+
+/* modèle opératoire : les deux bandeaux restent épinglés en haut, les expertises arrivent en scrollant */
+@media (min-width:1101px) and (min-height:720px){
+  .sx2 .sx-pin{position:sticky;top:88px;z-index:3}
+  .sx2 .sx-run{height:90vh}
+  .sx2 .sx-b2{margin-top:34px;transition:none}
+  .sx2 .sx-b .sx-h2{margin-top:0}
+}
+@media not all and (min-width:1101px) and (min-height:720px){.sx2 .sx-run{display:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1848,10 +1857,12 @@ html[data-theme="dark"] .sv .sv-gph{fill:#A0A6B3}
 </div>
 </section>
 <section class="sx sx2" id="reponses" aria-labelledby="sx-t"><div class="wrap">
-<h2 id="sx-t" class="sx-h2 rv4">Nos modèles opératoires <em>intègrent</em><br>vos équipes et votre organisation…</h2>
-<div class="sx-bar n7 rv4"><div class="sx-s"><p class="sx-m"><em>Diagnostic</em> flash, audit 360° et études</p></div><div class="sx-s"><p class="sx-m"><em>Cadrage</em> produit, solution ou projet</p></div><div class="sx-s"><p class="sx-m"><em>Solution</em> logicielle clé en mains</p></div><div class="sx-s"><p class="sx-m"><em>Régie</em> &amp; renfort d’équipe</p></div><div class="sx-s"><p class="sx-m"><em>Centre de services</em>, de compétences</p></div><div class="sx-s"><p class="sx-m"><em>Expertise</em> ponctuelle et coaching</p></div><div class="sx-s"><p class="sx-m">Programmes de <em>transfo</em> pilotés</p></div></div>
-<h2 class="sx-h2 r rv4">… et y déploient nos <em>expertises</em></h2>
-<div class="sx-bar n8 rv4"><div class="sx-s"><p class="sx-m"><em>Agentic</em> systems</p></div><div class="sx-s"><p class="sx-m"><em>Architectures</em> modernes</p></div><div class="sx-s"><p class="sx-m"><em>Software</em> Excellence</p></div><div class="sx-s"><p class="sx-m">Data &amp; <em>IA</em></p></div><div class="sx-s"><p class="sx-m">Infrastructures &amp; <em>Cloud</em></p></div><div class="sx-s"><p class="sx-m"><em>Product</em> design &amp; management</p></div><div class="sx-s"><p class="sx-m"><em>Delivery</em> Management</p></div><div class="sx-s"><p class="sx-m"><em>Organisations</em>, conduite du changement</p></div></div>
+<div class="sx-pin"><div class="sx-b sx-b1"><h2 id="sx-t" class="sx-h2 rv4">Nos modèles opératoires <em>intègrent</em><br>vos équipes et votre organisation…</h2>
+<div class="sx-bar n7 rv4"><div class="sx-s"><p class="sx-m"><em>Diagnostic</em> flash, audit 360° et études</p></div><div class="sx-s"><p class="sx-m"><em>Cadrage</em> produit, solution ou projet</p></div><div class="sx-s"><p class="sx-m"><em>Solution</em> logicielle clé en mains</p></div><div class="sx-s"><p class="sx-m"><em>Régie</em> &amp; renfort d’équipe</p></div><div class="sx-s"><p class="sx-m"><em>Centre de services</em>, de compétences</p></div><div class="sx-s"><p class="sx-m"><em>Expertise</em> ponctuelle et coaching</p></div><div class="sx-s"><p class="sx-m">Programmes de <em>transfo</em> pilotés</p></div></div></div>
+<div class="sx-b sx-b2"><h2 class="sx-h2 r rv4">… et y déploient nos <em>expertises</em></h2>
+<div class="sx-bar n8 rv4"><div class="sx-s"><p class="sx-m"><em>Agentic</em> systems</p></div><div class="sx-s"><p class="sx-m"><em>Architectures</em> modernes</p></div><div class="sx-s"><p class="sx-m"><em>Software</em> Excellence</p></div><div class="sx-s"><p class="sx-m">Data &amp; <em>IA</em></p></div><div class="sx-s"><p class="sx-m">Infrastructures &amp; <em>Cloud</em></p></div><div class="sx-s"><p class="sx-m"><em>Product</em> design &amp; management</p></div><div class="sx-s"><p class="sx-m"><em>Delivery</em> Management</p></div><div class="sx-s"><p class="sx-m"><em>Organisations</em>, conduite du changement</p></div></div></div>
+</div>
+<div class="sx-run" aria-hidden="true"></div>
 </div></section>
 
 <section class="of" id="offres"><div class="wrap">
@@ -2193,5 +2204,18 @@ function th(){var d=document.documentElement.getAttribute('data-theme')==='dark'
 function go(){zm.setMorph&&zm.setMorph(K);zm.setPlace&&zm.setPlace(0);th();}
 new MutationObserver(th).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 if(document.readyState==='complete')go();else addEventListener('load',go);setTimeout(go,500);})();
+</script>
+
+<script>
+/* épinglage : au scroll, les modèles opératoires restent en haut et les expertises arrivent dessous */
+(function(){var w=document.querySelector('.sx2 .wrap'),pin=document.querySelector('.sx-pin'),b2=document.querySelector('.sx-b2'),run=document.querySelector('.sx-run');if(!w||!pin||!b2||!run)return;
+var mq=window.matchMedia('(min-width:1101px) and (min-height:720px)');
+function u(){ if(!mq.matches){b2.style.opacity='';b2.style.transform='';return;}
+  var top=pin.getBoundingClientRect().top, r=run.offsetHeight||1;
+  /* progression : 0 tant que le bloc n'est pas épinglé, 1 aux 2/3 de la course */
+  var done=Math.max(0,Math.min(1,(88-w.getBoundingClientRect().top)/(r*0.66)));
+  var q=Math.max(0,Math.min(1,done));
+  b2.style.opacity=q.toFixed(3); b2.style.transform='translateY('+((1-q)*70).toFixed(1)+'px)';}
+addEventListener('scroll',u,{passive:true});addEventListener('resize',u);addEventListener('load',u);u();})();
 </script>
 </body></html>
