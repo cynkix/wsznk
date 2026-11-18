@@ -1346,6 +1346,10 @@ effect-3d-morph{opacity:.9}
 
 /* ombre des boutons (maquette Figma « Link:shadow ») */
 .zl-go,.lnk,.btn-arrow,.dm-more a,.dm-adn,.btn,.ghost,.fcta,.zl-go:hover,.lnk:hover,.btn-arrow:hover,.dm-more a:hover,.dm-adn:hover,.btn:hover,.ghost:hover,.fcta:hover{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1) !important}
+
+/* Notre ADN : dégradé rouge du bas vers le haut, le haut reste blanc transparent (comme la bande de la V2) */
+.adn4{background:linear-gradient(0deg,rgba(226,0,26,.78) 0%,rgba(229,36,63,.62) 16%,rgba(201,58,116,.42) 40%,rgba(241,163,184,.2) 66%,rgba(255,255,255,0) 100%) !important}
+html[data-theme="dark"] .adn4{background:linear-gradient(0deg,rgba(226,0,26,.55) 0%,rgba(191,29,103,.34) 40%,rgba(191,29,103,.1) 70%,rgba(0,0,0,0) 100%) !important}
 </style>
 
 <header class="hdr" id="hdr">
