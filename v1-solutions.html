@@ -2231,7 +2231,7 @@ var mq=window.matchMedia('(min-width:1101px) and (min-height:720px)');
 function u(){ if(!mq.matches){b2.style.opacity='';b2.style.transform='';return;}
   var top=pin.getBoundingClientRect().top, r=run.offsetHeight||1;
   /* progression : 0 tant que le bloc n'est pas épinglé, 1 aux 2/3 de la course */
-  var done=Math.max(0,Math.min(1,(88-w.getBoundingClientRect().top)/(r*0.66)));
+  var st=innerHeight*0.5,en=88-r*0.12;var done=Math.max(0,Math.min(1,(st-w.getBoundingClientRect().top)/(st-en)));
   var q=Math.max(0,Math.min(1,done));
   b2.style.opacity=q.toFixed(3); b2.style.transform='translateY('+((1-q)*70).toFixed(1)+'px)';}
 addEventListener('scroll',u,{passive:true});addEventListener('resize',u);addEventListener('load',u);u();})();
