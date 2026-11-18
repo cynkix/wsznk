@@ -408,7 +408,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:900px){
-  .nav,.hact .join{display:none}
+  .nav,.hact .join:not(.ext){display:none}
   .seq-grid{grid-template-columns:minmax(0,1fr);gap:0}
   .seq-visual{order:-1;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);z-index:5;height:46vh;background:#FFF;padding-bottom:10px}
   .stage{position:relative;top:0;height:100%;border-radius:20px}
@@ -871,7 +871,7 @@ html[data-theme="dark"] .sv .sv-gph{fill:#A0A6B3}
 .nav a,.join,.hact .btn{white-space:nowrap}
 @media (max-width:1380px){.nav{gap:20px}.join.ext + .join.ext{margin-left:14px}.thm{margin-left:4px}}
 @media (max-width:1240px){.nav{gap:16px}.nav a{font-size:13.5px}.hact .btn.sm{padding-left:16px}}
-@media (max-width:1140px){.join.ext{display:none}}
+@media (max-width:620px){.join.ext{display:none}}
 .ext-ic{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.75}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .eg2[data-s="0"],.eh[data-s="0"]{--egc:#E2001A}
