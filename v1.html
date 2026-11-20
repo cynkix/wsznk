@@ -1417,6 +1417,30 @@ html[data-theme="dark"] .btn-arrow{background:#1B1E26;color:var(--ink)}
 .zin .zl-sub{animation-delay:.45s}.zin .zl-ctas{animation-delay:.8s}
 
 .cst + .sl4,#sequence + #solutions{padding-top:14px !important}
+
+.dem-card.dz{text-align:center;padding:clamp(36px,5vw,72px) clamp(20px,4vw,56px)}
+.dz .dz-h{margin:0 auto;max-width:22em;font-family:var(--display);font-weight:700;font-size:clamp(26px,3.3vw,46px);line-height:1.14;letter-spacing:-.02em;color:var(--ink)}
+.dz .dz-r{background:linear-gradient(90deg,#EE2238,#BF1D67);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dz .dz-p{margin:28px auto 0;max-width:36em;font-size:clamp(16px,1.35vw,19px);line-height:1.65;color:var(--muted)}
+.dz-chips{list-style:none;margin:36px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 0}
+.dz-chips li{display:inline-flex;align-items:center;height:42px;padding:0 20px;border:1px solid rgba(120,125,140,.35);border-radius:999px;font-family:var(--display);font-weight:600;font-size:15px;color:#4A5160;background:transparent}
+.dz-chips li + li{margin-left:34px;position:relative}
+.dz-chips li + li::before{content:"";position:absolute;left:-26px;top:50%;width:18px;height:2px;border-radius:2px;background:rgba(120,125,140,.35)}
+.dz-chips li.on{border-color:transparent;background:linear-gradient(90deg,#EE2238,#BF1D67);color:#fff}
+.dz-chips li.soon{border-style:dashed;color:#8A91A0}
+.dz-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:38px}
+.dz-btn,.dz-ghost{display:inline-flex;align-items:center;height:52px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:16px;text-decoration:none;transition:transform .2s ease}
+.dz-btn{gap:16px;padding:0 7px 0 28px;background:linear-gradient(90deg,#EE2238,#BF1D67);color:#fff}
+.dz-btn i{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#fff;color:#EE2238}
+.dz-btn svg{width:15px;height:15px}
+.dz-ghost{padding:0 28px;border:1.5px solid var(--ink);color:var(--ink)}
+.dz-btn:hover,.dz-ghost:hover{transform:translateY(-2px)}
+.dz-more{margin:26px 0 0}
+.dz-more a{font-family:var(--display);font-weight:600;font-size:15px;color:#4A5160;text-decoration:none;padding-bottom:3px;border-bottom:1px solid rgba(120,125,140,.4)}
+.dz-more a span{color:#EE2238}
+@media (max-width:600px){.dz-chips li + li{margin-left:0}.dz-chips li + li::before{display:none}.dz-chips{gap:10px}}
+
+.dz .dz-h{max-width:none;font-size:clamp(24px,2.9vw,40px) !important}.dz .dz-r{white-space:nowrap}@media (max-width:760px){.dz .dz-r{white-space:normal}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1457,7 +1481,7 @@ html[data-theme="dark"] .btn-arrow{background:#1B1E26;color:var(--ink)}
 
 
 <!-- 5 · Histoire -->
-<section class="dem" id="histoire"><div class="wrap"><div class="dem-card rv4"><h2>Notre démarche est le fruit de 20 ans d'expérience</h2><p class="dem-lead">Depuis notre création en 2006, nous avons traversé avec nos clients <strong>transformations, évolutions et révolutions</strong>, nous préparant aujourd'hui pour le virage de l'intelligence artificielle, tout en restant fidèles à nos valeurs cardinales. <a class="dm-adn" href="v1-adn.html">Découvrir notre ADN <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p><div class="dm-bars"><div class="dm-row"><b>Agile</b><div class="dm-trk"><i style="--l:0%;--w:100%;background:linear-gradient(90deg,#E2001A,#C01B6B)"></i></div></div><div class="dm-row"><b>Craft &amp; DevOps</b><div class="dm-trk"><i style="--l:28%;--w:72%;background:linear-gradient(90deg,#E2001A,#B3226E)"></i></div></div><div class="dm-row"><b>iA</b><div class="dm-trk"><i style="--l:70%;--w:30%;background:linear-gradient(90deg,#F59E0B,#EF4444)"></i></div></div><div class="dm-axis"><span class="a">2006</span><span class="m">20 ANS</span><span class="z">Aujourd'hui</span></div></div><p class="dm-sep" aria-hidden="true">Nos valeurs cardinales</p><div class="dm-vals"><ul><li class="rv4" style="--i:0;--c:#16A34A"><span class="dm-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14M5 19c3-4 6-6 9-7"/></svg></span><div><b>Numérique responsable</b><p>Bilan carbone sur tous nos volets (2019), démarche de sobriété et conception durable.</p></div></li><li class="rv4" style="--i:1;--c:#2563EB"><span class="dm-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><div><b>Tech for good</b><p>Des solutions tech au service de l'humain, de la société et du climat.</p></div></li><li class="rv4" style="--i:2;--c:#7C3AED"><span class="dm-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5M15 15c3 0 5.5 1.5 5.5 4"/></svg></span><div><b>Égalité des chances</b><p>50/50 à tous les échelons, recrutement sans biais, accompagnement de carrière pour chaque collaborateur.</p></div></li><li class="rv4" style="--i:3;--c:#EA580C"><span class="dm-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><b>Éthique et transparence</b><p>Gouvernance claire, charte éthique, et exigence de transparence dans toutes nos pratiques.</p></div></li></ul></div><p class="dm-more"><a href="v1-engagements.html">Nos engagements <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p></div></div></section>
+<section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz rv4"><h2 class="dz-h">Depuis 20 ans, nous transformons les SI.<br><span class="dz-r">Construisons ensemble les 20 prochaines années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. L’IA ne fera pas exception.</p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li><li class="soon">Et demain…</li></ul><div class="dz-ctas"><a class="dz-btn" href="#contact">Décrivez votre projet<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a></div><p class="dz-more"><a href="v1-engagements.html">Nos valeurs et engagements <span aria-hidden="true">→</span></a></p></div></div></section>
 
 <!-- 6 · Clients -->
 <section class="clients" id="clients">
