@@ -2070,21 +2070,6 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 .sl4-acc .plus::before,.sl4-acc .plus::after{background:#e60039 !important}
 .sl4-acc .plus::before{width:12px !important;height:2px !important}.sl4-acc .plus::after{width:2px !important;height:12px !important}
 
-/* 20 ans : mise en page de la V7 (texte à gauche, carte 20 ans à droite) */
-.dz.dz2{display:grid !important;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,64px);align-items:center;text-align:left !important;padding:clamp(28px,4vw,56px) !important}
-.dz2 .dz-t{display:grid;gap:22px;justify-items:start}
-.dz2 .dz-h{margin:0 !important;max-width:none !important;font-size:clamp(28px,3.2vw,44px) !important;text-align:left}
-.dz2 .dz-p{margin:0 !important;text-align:left;max-width:31em !important}
-.dz2 .dz-chips{margin:0 !important;justify-content:flex-start}
-.dz2 .dz-ctas{justify-content:flex-start !important;margin-top:4px !important}
-.dz2 .dz-ctas .dz-more{flex-basis:100%;margin:6px 0 0 !important;padding:0 !important;border:0 !important}
-.dz2 .dz-fig{display:grid;place-items:center;gap:16px;padding:clamp(28px,3.4vw,44px);text-align:center;border-radius:28px;background:#fff;border:1px solid #e3e7ee;box-shadow:0px 25px 50px -12px rgba(0,0,0,.25)}
-.dz2 .dz-fig img{width:min(260px,70%);height:auto;display:block}
-.dz2 .dz-fig p{margin:0;max-width:20em;font-size:15.5px;line-height:1.55;color:#566176}
-.dz2 .dz-chips{gap:10px !important}.dz2 .dz-chips li + li{margin-left:0 !important}.dz2 .dz-chips li + li::before{display:none !important}
-.dz2 .dz-ctas .dz-more{text-align:left !important}
-@media (max-width:900px){.dz.dz2{grid-template-columns:minmax(0,1fr)}}
-
 /* constat : moins de vide sous l'accueil, apparition plus tôt, léger parallaxe */
 @media (min-width:901px){.cst{margin-top:clamp(-190px,-13vw,-70px) !important}}
 .js .cst-card.rv4{transition-duration:.6s,.8s !important}
@@ -2101,8 +2086,8 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 .cst-in{align-items:stretch !important}
 
 /* constat → solutions : respiration entre les deux sections */
-#sequence + #solutions.sl4{padding-top:84px !important}
-@media (max-width:900px){#sequence + #solutions.sl4{padding-top:56px !important}}
+#sequence + #solutions.sl4{padding-top:32px !important}
+@media (max-width:900px){#sequence + #solutions.sl4{padding-top:28px !important}}
 
 /* hero plein écran, comme la V5 : les cartes n'apparaissent qu'au scroll */
 .hero#top-z{min-height:calc(100svh + 40px) !important}
@@ -2120,6 +2105,13 @@ effect-3d-morph{z-index:0 !important}
 .hero .ctas{margin-top:30px !important;justify-content:center !important}
 .hero .ghost-h{display:inline-flex;align-items:center;min-height:56px;padding:0 30px;border-radius:999px;border:1.5px solid rgba(255,255,255,.7);color:#fff;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.02em;text-transform:uppercase;text-decoration:none;transition:background .2s ease,transform .2s ease}
 .hero .ghost-h:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
+
+/* V4 : parallaxe (hero, culture, 20 ans, clients, contact) */
+.hero .bg{translate:0 var(--hpy,0px)}
+.hero .wrap.in{translate:0 var(--hcy,0px);opacity:var(--hco,1)}
+.cult-card,.dem-card,.clients .cl5,.cband{translate:0 var(--py,0px);will-change:translate}
+.cult-card:nth-child(2){--k:1.35}.cult-card:nth-child(3){--k:1.7}
+@media (prefers-reduced-motion:reduce){.hero .bg,.hero .wrap.in,.cult-card,.dem-card,.clients .cl5,.cband{translate:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -2168,7 +2160,7 @@ effect-3d-morph{z-index:0 !important}
 <div class="cult-cv rv4"><span class="cult-l">Nos convictions</span><ul><li>Petites équipes expertes</li><li>Modulaire plutôt que massif</li><li>L’IA comme accélérateur</li><li>La qualité avant la vitesse</li></ul></div>
 </div></section>
 
-<section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz dz2 rv4"><div class="dz-t"><h2 class="dz-h">Depuis 20&nbsp;ans, nous transformons les&nbsp;SI. <span class="dz-r">Construisons ensemble les 20&nbsp;prochaines&nbsp;années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. <span class="nb">L’IA ne fera pas exception.</span></p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li><li class="soon">Et demain…</li></ul><div class="dz-ctas"><a class="dz-btn" href="#contact">Décrivez votre projet<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a><p class="dz-more"><a href="v1-engagements.html">Nos valeurs et engagements <span aria-hidden="true">→</span></a></p></div></div><div class="dz-fig"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><p>Une même exigence, de l’agilité à l’intelligence artificielle.</p></div></div></div></section>
+<section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz rv4"><h2 class="dz-h">Depuis 20&nbsp;ans, nous transformons les&nbsp;SI.<br><span class="dz-r">Construisons ensemble les 20&nbsp;prochaines&nbsp;années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. <span class="nb">L’IA ne fera pas exception.</span></p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li><li class="soon">Et demain…</li></ul><div class="dz-ctas"><a class="dz-btn" href="#contact">Décrivez votre projet<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a><p class="dz-more"><a href="v1-engagements.html">Nos valeurs et engagements <span aria-hidden="true">→</span></a></p></div></div></div></section>
 
 
 
@@ -2570,6 +2562,23 @@ dt.forEach(function(b,n){b.addEventListener('click',function(){go(n)})}); clear(
     .concat([].slice.call(document.querySelectorAll('.sl4-grid')).map(function(el){return {el:el,amp:40};}));
   var tick=false;
   function upd(){tick=false;var vh=innerHeight;items.forEach(function(o){var r=o.el.parentElement.getBoundingClientRect();var p=Math.max(0,Math.min(1,(vh-r.top)/(vh*0.85)));o.el.style.setProperty('--py',((1-p)*o.amp).toFixed(1)+'px');});}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
+  addEventListener('resize',upd);upd();
+})();
+</script>
+<script>
+/* V4 : parallaxe */
+(function(){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var hero=document.querySelector('.hero'),bg=hero&&hero.querySelector('.bg'),inn=hero&&hero.querySelector('.wrap.in');
+  var els=[].slice.call(document.querySelectorAll('.cult-card,.dem-card,.clients .cl5,.cband'));
+  var tick=false;
+  function upd(){tick=false;var y=scrollY,vh=innerHeight;
+    if(hero&&y<vh*1.4){hero.style.setProperty('--hpy',(y*.28).toFixed(1)+'px');
+      if(inn){inn.style.setProperty('--hcy',(-y*.14).toFixed(1)+'px');inn.style.setProperty('--hco',Math.max(0,1-y/(vh*.75)).toFixed(2));}}
+    els.forEach(function(el){var r=el.getBoundingClientRect();if(r.top>vh*1.3||r.bottom<-vh*.3)return;
+      var p=Math.max(0,Math.min(1,(vh-r.top)/(vh*.85)));var k=parseFloat(getComputedStyle(el).getPropertyValue('--k'))||1;
+      el.style.setProperty('--py',((1-p)*38*k).toFixed(1)+'px');});}
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
   addEventListener('resize',upd);upd();
 })();
