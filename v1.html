@@ -1500,6 +1500,21 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 .sl4-acc .plus{background:#fff !important;width:28px !important;height:28px !important;margin:-14px auto !important;z-index:2;box-shadow:0 4px 10px rgba(0,0,0,.18)}
 .sl4-acc .plus::before,.sl4-acc .plus::after{background:#e60039 !important}
 .sl4-acc .plus::before{width:12px !important;height:2px !important}.sl4-acc .plus::after{width:2px !important;height:12px !important}
+
+/* 20 ans : mise en page de la V7 (texte à gauche, carte 20 ans à droite) */
+.dz.dz2{display:grid !important;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,64px);align-items:center;text-align:left !important;padding:clamp(28px,4vw,56px) !important}
+.dz2 .dz-t{display:grid;gap:22px;justify-items:start}
+.dz2 .dz-h{margin:0 !important;max-width:none !important;font-size:clamp(28px,3.2vw,44px) !important;text-align:left}
+.dz2 .dz-p{margin:0 !important;text-align:left;max-width:31em !important}
+.dz2 .dz-chips{margin:0 !important;justify-content:flex-start}
+.dz2 .dz-ctas{justify-content:flex-start !important;margin-top:4px !important}
+.dz2 .dz-ctas .dz-more{flex-basis:100%;margin:6px 0 0 !important;padding:0 !important;border:0 !important}
+.dz2 .dz-fig{display:grid;place-items:center;gap:16px;padding:clamp(28px,3.4vw,44px);text-align:center;border-radius:28px;background:#fff;border:1px solid #e3e7ee;box-shadow:0px 25px 50px -12px rgba(0,0,0,.25)}
+.dz2 .dz-fig img{width:min(260px,70%);height:auto;display:block}
+.dz2 .dz-fig p{margin:0;max-width:20em;font-size:15.5px;line-height:1.55;color:#566176}
+.dz2 .dz-chips{gap:10px !important}.dz2 .dz-chips li + li{margin-left:0 !important}.dz2 .dz-chips li + li::before{display:none !important}
+.dz2 .dz-ctas .dz-more{text-align:left !important}
+@media (max-width:900px){.dz.dz2{grid-template-columns:minmax(0,1fr)}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1551,7 +1566,7 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 
 
 <!-- 5 · Histoire -->
-<section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz rv4"><h2 class="dz-h">Depuis 20&nbsp;ans, nous transformons les&nbsp;SI.<br><span class="dz-r">Construisons ensemble les 20&nbsp;prochaines&nbsp;années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. <span class="nb">L’IA ne fera pas exception.</span></p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li><li class="soon">Et demain…</li></ul><div class="dz-ctas"><a class="dz-btn" href="#contact">Décrivez votre projet<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a><p class="dz-more"><a href="v1-engagements.html">Nos valeurs et engagements <span aria-hidden="true">→</span></a></p></div></div></div></section>
+<section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz dz2 rv4"><div class="dz-t"><span class="eyebrow">Depuis 2006</span><h2 class="dz-h">Depuis 20&nbsp;ans, nous transformons les&nbsp;SI. <span class="dz-r">Construisons ensemble les 20&nbsp;prochaines&nbsp;années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. <span class="nb">L’IA ne fera pas exception.</span></p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li><li class="soon">Et demain…</li></ul><div class="dz-ctas"><a class="dz-btn" href="#contact">Décrivez votre projet<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a><p class="dz-more"><a href="v1-engagements.html">Nos valeurs et engagements <span aria-hidden="true">→</span></a></p></div></div><div class="dz-fig"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><p>Une même exigence, de l’agilité à l’intelligence artificielle.</p></div></div></div></section>
 
 <!-- 6 · Clients -->
 <section class="clients" id="clients">
