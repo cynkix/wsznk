@@ -1619,8 +1619,7 @@ html[data-theme="dark"] .cult[data-prop="c"] .cv-grid li{background:var(--surfac
 .cult .cv-grid li:last-child{grid-column:auto;text-align:left}
 .cult .cv-grid li:last-child h3,.cult .cv-grid li:last-child p{margin-left:0;margin-right:0;max-width:none}
 /* 8e conviction : uniquement en proposition C (cartes) */
-/* Convictions : 4 tags supprimés, espace titre / blocs réduit */
-.cult .cv-pills{display:none !important}
+/* Convictions : espace titre / blocs réduit */
 .cult .cv-aside{margin-top:14px !important}
 .cult .cv-grid{margin-top:clamp(14px,1.8vw,22px) !important}
 /* Proposition D : cartes en 3 colonnes, lecture par colonne */
@@ -1678,6 +1677,15 @@ html[data-theme="dark"] .cst-l{background:var(--surface) !important}
 .cult[data-prop="b"] .cv-grid li:last-child{grid-column:1/-1 !important;border-bottom:0 !important}
 .cult[data-prop="b"] .cv-grid li:last-child h3{max-width:none !important;white-space:nowrap}
 @media (max-width:760px){.cult[data-prop="b"] .cv-grid li:last-child h3{white-space:normal}}
+/* V1 : phrase de liaison discrète entre constat et solutions */
+#sequence + #solutions.sl4{padding-top:18px !important}
+.sl4 > .wrap > h2{margin:0 auto 18px !important;max-width:none !important;text-align:center !important;font-size:clamp(15px,1.3vw,18px) !important;font-weight:500 !important;line-height:1.4 !important;letter-spacing:0 !important;color:var(--muted) !important}
+.sl4 > .wrap > h2 br{display:none}
+.sl4 > .wrap > h2 .r:first-child{margin-right:.3em}
+.sl4 > .wrap > h2 .r{color:#E2001A !important;font-weight:600}
+.sl4 > .wrap > h2 .sl4-ck{width:18px;height:18px;vertical-align:-3px}
+.sl4-grid{margin-top:0 !important}
+.cst{padding-bottom:0 !important}
 </style>
 
 <header class="hdr" id="hdr">
