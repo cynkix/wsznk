@@ -2155,6 +2155,11 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 .cult .cv-grid li{padding:18px 0 20px}
 .cult .cv-grid p{margin-top:4px;font-size:15px;line-height:1.45}
 @media (max-width:860px){.cult .cv-grid li{padding:16px 0 18px}}
+/* convictions : les 4 mots-clés restent toujours sur une seule ligne (taille fluide selon la largeur disponible) */
+.cult .cv-aside{container-type:inline-size}
+.cult .cv-list{flex-wrap:nowrap;white-space:nowrap;justify-content:flex-start;gap:clamp(5px,1.9cqi,11px);font-size:clamp(8.5px,2.5cqi,12px);letter-spacing:clamp(.03em,.7cqi,.1em)}
+.cult .cv-list i{width:clamp(3px,1.1cqi,5px);height:clamp(3px,1.1cqi,5px)}
+
 </style>
 
 <header class="hdr" id="hdr">

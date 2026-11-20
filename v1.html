@@ -1603,6 +1603,11 @@ html[data-theme="dark"] .cult[data-prop="c"] .cv-grid li{background:var(--surfac
 @media (max-width:1100px){.cult[data-prop="c"] .cv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .cult[data-prop="c"] .cv-pills li{border-color:transparent;background:var(--wash);box-shadow:var(--shadozika)}
 @media (max-width:760px){.cult .cv-grid{grid-template-columns:minmax(0,1fr)}.cult .cv-grid li:last-child{text-align:left}.cult[data-prop="c"] .cv-grid{grid-template-columns:minmax(0,1fr)}.cult[data-prop="c"] .cv-grid li:last-child{grid-column:auto !important}.cult[data-prop="c"] .cv-grid li,.cult[data-prop="c"] .cv-grid li:last-child{padding:20px 20px 22px}}
+
+/* convictions : les 4 mots-clés restent toujours sur une seule ligne */
+.cult .cv-aside{container-type:inline-size}
+.cult .cv-pills{flex-wrap:nowrap;gap:clamp(4px,1.4cqi,12px)}
+.cult .cv-pills li{white-space:nowrap;flex:none;height:clamp(30px,6cqi,42px);padding:0 clamp(8px,3.2cqi,26px);font-size:clamp(10px,2.2cqi,15px)}
 </style>
 
 <header class="hdr" id="hdr">
