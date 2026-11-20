@@ -1635,6 +1635,22 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 @media (prefers-reduced-motion:reduce){.sl4-acc .brk .nb,.sl4-acc .brk .pl{animation:none}}
 #sequence + #solutions.sl4,.sl4{padding-top:28px !important}
 .sl4-grid{margin-top:0 !important}
+/* V2 : timeline 2006 → 2026 (transition vers « Depuis 20 ans ») */
+.tl20{position:relative;z-index:1;padding:clamp(36px,5vw,64px) 0 clamp(36px,5vw,70px);color:#fff}
+.tl20-box{max-width:1100px;margin:0 auto}
+.tl20-top{display:flex;align-items:baseline;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:26px;text-align:center}
+.tl20-y{font-family:var(--display);font-weight:600;font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tl20-n{font-family:var(--display);font-weight:600;font-size:clamp(14px,1.3vw,18px);letter-spacing:.04em;opacity:.9}
+.tl20-line{position:relative;height:44px}
+.tl20-line::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:rgba(255,255,255,.3)}
+.tl20-line i{position:absolute;left:0;top:50%;height:2px;margin-top:-1px;width:0;background:#fff}
+.tl20-line b{position:absolute;top:50%;left:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(255,255,255,.25)}
+.tl20-ticks{position:absolute;inset:0;pointer-events:none}
+.tl20-ticks span{position:absolute;top:50%;width:2px;height:12px;margin:-6px 0 0 -1px;background:rgba(255,255,255,.35);transition:background .3s,height .3s,margin .3s}
+.tl20-ticks span.m{height:22px;margin-top:-11px}
+.tl20-ticks span.on{background:#fff}
+.tl20-ax{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.06em;opacity:.85}
+@media (prefers-reduced-motion:reduce){.tl20-ticks span{transition:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1673,7 +1689,12 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 </section>
 <section class="cult" id="culture"><div class="wrap">
 <div class="cv-head"><h2 class="rv4"><span class="r">Nos convictions techniques,</span> votre avantage pour vos projets critiques</h2><div class="cv-aside rv4"><p class="cv-lead">Nous apportons structure, méthodologie et expertise à chaque étape de vos projets</p><p class="cv-list"><span>conception</span><span>déploiement</span><span>maintenance</span><span>refontes</span></p></div></div><ul class="cv-grid"><li class="rv4" style="--i:1"><h3>De petites équipes expertes</h3><p>Plutôt que de grands plateaux projets</p></li><li class="rv4" style="--i:2"><h3>L’IA comme accélérateur</h3><p>Plutôt qu’en remplacement</p></li><li class="rv4" style="--i:1"><h3>Piloter par la valeur métier</h3><p>plutôt que par la quantité de code</p></li><li class="rv4" style="--i:2"><h3>Une vélocité soutenue par la qualité</h3><p>Plutôt que du logiciel à la va-vite</p></li><li class="rv4" style="--i:1"><h3>Modulariser et paralléliser</h3><p>Plutôt que passer à l’échelle sans structure</p></li><li class="rv4" style="--i:2"><h3>Déchiffrer les innovations utiles via notre veille</h3><p>Plutôt que suivre les effets de mode</p></li><li class="rv4" style="--i:1"><h3>Des communautés de partage de la connaissance</h3><p>plutôt que des experts dans une tour d’ivoire</p></li></ul>
-</div></section>
+</div><div class="tl20" id="tl20" role="group" aria-label="De 2006 à 2026, vingt ans de transformation des SI"><div class="tl20-box">
+<div class="tl20-top"><span class="tl20-y" id="tl20y" aria-hidden="true">2006</span><span class="tl20-n">20 ans de transformation des SI</span></div>
+<div class="tl20-line" id="tl20l" aria-hidden="true"><i id="tl20f"></i><b id="tl20d"></b><div class="tl20-ticks" id="tl20t"></div></div>
+<div class="tl20-ax" aria-hidden="true"><span>2006</span><span>2016</span><span>2026</span></div>
+</div></div>
+</section>
 
 </div>
 
@@ -2059,6 +2080,18 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
   function upd(){tick=false;var vh=innerHeight;items.forEach(function(o){var r=o.el.parentElement.getBoundingClientRect();var p=Math.max(0,Math.min(1,(vh-r.top)/(vh*0.85)));o.el.style.setProperty('--py',((1-p)*o.amp).toFixed(1)+'px');});}
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
   addEventListener('resize',upd);upd();
+})();
+</script>
+<script>
+(function(){var sec=document.getElementById('tl20');if(!sec)return;
+var f=document.getElementById('tl20f'),d=document.getElementById('tl20d'),y=document.getElementById('tl20y'),t=document.getElementById('tl20t'),l=document.getElementById('tl20l');
+var N=20,ticks=[];for(var i=0;i<=N;i++){var s=document.createElement('span');s.style.left=(i/N*100)+'%';if(i%5===0)s.className='m';t.appendChild(s);ticks.push(s);}
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;var cur=reduce?1:0,raf=0;
+function target(){var r=sec.getBoundingClientRect(),vh=innerHeight;var p=(vh*.92-r.top)/(vh*.62);return Math.max(0,Math.min(1,p));}
+function draw(p){f.style.width=(p*100)+'%';d.style.left=(p*100)+'%';y.textContent=Math.round(2006+p*20);var k=Math.round(p*N);ticks.forEach(function(e,i){e.classList.toggle('on',i<=k)});}
+function loop(){var g=reduce?1:target();cur+=(g-cur)*.14;if(Math.abs(g-cur)<.001)cur=g;draw(cur);raf=(cur!==g)?requestAnimationFrame(loop):0;}
+function kick(){if(!raf)raf=requestAnimationFrame(loop);}
+addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);kick();
 })();
 </script>
 </body></html>
