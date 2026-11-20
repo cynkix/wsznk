@@ -2112,6 +2112,10 @@ effect-3d-morph{z-index:0 !important}
 .cult-card,.dem-card,.clients .cl5,.cband{translate:0 var(--py,0px);will-change:translate}
 .cult-card:nth-child(2){--k:1.35}.cult-card:nth-child(3){--k:1.7}
 @media (prefers-reduced-motion:reduce){.hero .bg,.hero .wrap.in,.cult-card,.dem-card,.clients .cl5,.cband{translate:none}}
+
+/* V4 : forme 3D (Z) descendue et plus transparente */
+effect-3d-morph{translate:0 16vh;opacity:.5 !important}
+@media (max-width:900px){effect-3d-morph{translate:0 10vh}}
 </style>
 
 <header class="hdr" id="hdr">
