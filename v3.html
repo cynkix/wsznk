@@ -1616,8 +1616,8 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 @media (min-width:901px){.cst{margin-top:clamp(-190px,-13vw,-70px) !important}}
 .js .cst-card.rv4{transition-duration:.6s,.8s !important}
 .cst-card li{transition-delay:calc(.15s + var(--i) * 90ms) !important}
-.cst-card,.sl4-col{translate:0 var(--py,0px);will-change:translate}
-@media (prefers-reduced-motion:reduce){.cst-card,.sl4-col{translate:none}}
+.cst-card,.sl4-grid{translate:0 var(--py,0px);will-change:translate}
+@media (prefers-reduced-motion:reduce){.cst-card,.sl4-grid{translate:none}}
 
 /* constat (gauche) : puce pleine comme la V7 au lieu du tiret dans un cercle */
 .cst-l li{gap:14px !important}
@@ -2108,8 +2108,8 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
     cards.forEach(function(c){io.observe(c);});if(inEl)io.observe(inEl);
   }
   if(reduce)return;
-  var items=[].slice.call(document.querySelectorAll('.cst-card')).map(function(el,i){return {el:el,amp:i?70:46};})
-    .concat([].slice.call(document.querySelectorAll('.sl4-col')).map(function(el,i){return {el:el,amp:i?34:48};}));
+  var items=[].slice.call(document.querySelectorAll('.cst-card')).map(function(el,i){return {el:el,amp:50};})
+    .concat([].slice.call(document.querySelectorAll('.sl4-grid')).map(function(el){return {el:el,amp:40};}));
   var tick=false;
   function upd(){tick=false;var vh=innerHeight;items.forEach(function(o){var r=o.el.parentElement.getBoundingClientRect();var p=Math.max(0,Math.min(1,(vh-r.top)/(vh*0.85)));o.el.style.setProperty('--py',((1-p)*o.amp).toFixed(1)+'px');});}
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
