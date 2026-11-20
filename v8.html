@@ -303,6 +303,14 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 .dmx-axis .m{position:absolute;left:50%;transform:translateX(-50%);color:#E2001A;letter-spacing:.12em;font-size:13px}
 @media (max-width:700px){.dmx-row{grid-template-columns:96px minmax(0,1fr);gap:12px}.dmx-axis{margin-left:108px}}
 @media (prefers-reduced-motion:reduce){.dmx-trk i{transform:none;transition:none}}
+
+/* Depuis 20 ans : petite bille qui tourne autour du badge, comme une aiguille (le temps qui passe) */
+.an-card .orb{position:relative;display:block;width:min(260px,70%);aspect-ratio:1}
+.an-card .orb img{width:100%;height:100%}
+.orb-h{position:absolute;inset:-14px;border-radius:50%;animation:orbspin 24s linear infinite;pointer-events:none}
+.orb-h b{position:absolute;left:50%;top:0;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#E2001A;box-shadow:0 0 0 4px rgba(226,0,26,.14),0 2px 8px rgba(226,0,26,.45)}
+@keyframes orbspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb-h{animation:none}}
 </style>
 </head>
 <body>
@@ -365,7 +373,7 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 <div class="pills"><span class="pill">Agilité</span><span class="pill">Craft &amp; DevOps</span><span class="pill">Cloud &amp; Data</span><span class="pill on">IA</span><span class="pill soon">Et demain…</span></div>
 <div class="row"><a class="btn" href="v1-engagements.html">Découvrez nos valeurs<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a></div>
 </div>
-<div class="rv free"><div class="card an-card" style="--d:1"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><p>Une même exigence, de l’agilité à l’intelligence artificielle.</p></div></div>
+<div class="rv free"><div class="card an-card" style="--d:1"><span class="orb"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><i class="orb-h" aria-hidden="true"><b></b></i></span><p>Une même exigence, de l’agilité à l’intelligence artificielle.</p></div></div>
 </div>
 <div class="rv free dmx"><div class="dmx-in" aria-label="Notre histoire en un chronomètre : de 2006 à aujourd'hui">
 <div class="dmx-row"><b>Agile</b><div class="dmx-trk"><i style="--l:0%;--w:100%;background:linear-gradient(90deg,#E2001A,#C01B6B)"></i></div></div>
