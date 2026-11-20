@@ -1643,6 +1643,25 @@ html[data-theme="dark"] .cult[data-prop="d"] .cv-grid li{background:var(--surfac
 .cult[data-prop="d"] .cv-grid li:nth-child(8) h3{color:#fff;white-space:nowrap}
 .cult[data-prop="d"] .cv-grid li:nth-child(8) p{color:rgba(255,255,255,.88)}
 @media (max-width:900px){.cult[data-prop="d"] .cv-grid{grid-template-columns:minmax(0,1fr)}.cult[data-prop="d"] .cv-grid li:nth-child(8) h3{white-space:normal}.cult[data-prop="d"] .cv-grid li{grid-column:1 !important;grid-row:auto !important;padding:20px 20px 22px}}
+/* V1 : constat / réponse dans le design de la V4 (carte blanche + carte rouge à cases cochées) */
+.cst{padding:56px 0 20px !important}
+.cst-in{column-gap:20px !important;align-items:stretch !important}
+.cst-card{border:0 !important;margin-top:0 !important;padding:clamp(28px,3.2vw,44px) !important;border-radius:var(--radius-zika) !important;box-shadow:var(--shadozika) !important;display:block}
+.cst-l{background:var(--wash) !important;color:var(--ink) !important}
+.cst-r{background:linear-gradient(135deg,#FF0033,#D6006B) !important;color:#fff !important}
+.cst-tag{display:block;margin-bottom:12px;font:700 12px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#E2001A}
+.cst-r .cst-tag{color:rgba(255,255,255,.88)}
+.cst-card h2,.cst-l h2{text-align:left !important;max-width:none !important;margin:0 !important;font-size:clamp(24px,2.7vw,36px) !important;line-height:1.15 !important}
+.cst-l h2{color:var(--ink) !important}
+.cst-r h2{color:#fff !important}
+.cst-card ul{margin-top:22px !important;gap:10px !important}
+.cst-card li{position:relative;padding-left:20px;font-size:17px;font-weight:500 !important}
+.cst-l li{color:var(--muted)}
+.cst-l li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#E2001A;margin:0}
+.cst-r li{color:rgba(255,255,255,.92);padding-left:36px;line-height:1.4}
+.cst-r li::before{content:"" !important;position:absolute;left:0;top:.08em;width:22px;height:22px;margin:0 !important;border-radius:7px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e60039' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5.5 12.5 4.2 4.2 8.8-9.4'/%3E%3C/svg%3E") center/16px no-repeat;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+html[data-theme="dark"] .cst-l{background:var(--surface) !important}
+@media (max-width:900px){.cst-in{row-gap:16px !important}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1665,8 +1684,8 @@ html[data-theme="dark"] .cult[data-prop="d"] .cv-grid li{background:var(--surfac
 
 <section class="cst" id="sequence">
 <div class="wrap cst-in">
-<article class="cst-card cst-l rv4"><h2>Nous maîtrisons la complexité des SI et des organisations…</h2><ul><li style="--i:0">Données fragmentées</li><li style="--i:1">Systèmes legacy</li><li style="--i:2">Architecture mille-feuilles</li><li style="--i:3">Silos organisationnels</li><li style="--i:4">Transformation permanente</li><li style="--i:5">Complexité croissante</li><li style="--i:6">Pression sur les coûts</li></ul></article>
-<article class="cst-card cst-r rv4"><h2>… Pour traduire les investissements IT en valeur métier mesurable.</h2><ul><li style="--i:0">Alignement avec la stratégie d'entreprise</li><li style="--i:1">Sécurité, conformité, durabilité</li><li style="--i:2">Pertinence des logiciels pour les métiers</li><li style="--i:3">Bénéfices tangibles de l'IA</li><li style="--i:4">Réduction du time-to-market</li><li style="--i:5">Innovation continue</li></ul></article>
+<article class="cst-card cst-l rv4"><span class="cst-tag">Le constat</span><h2>Nous maîtrisons la complexité des SI et des organisations…</h2><ul><li style="--i:0">Données fragmentées</li><li style="--i:1">Systèmes legacy</li><li style="--i:2">Architecture mille-feuilles</li><li style="--i:3">Silos organisationnels</li><li style="--i:4">Transformation permanente</li><li style="--i:5">Complexité croissante</li><li style="--i:6">Pression sur les coûts</li></ul></article>
+<article class="cst-card cst-r rv4"><span class="cst-tag">Notre réponse</span><h2>… Pour traduire les investissements IT en valeur métier mesurable.</h2><ul><li style="--i:0">Alignement avec la stratégie d'entreprise</li><li style="--i:1">Sécurité, conformité, durabilité</li><li style="--i:2">Pertinence des logiciels pour les métiers</li><li style="--i:3">Bénéfices tangibles de l'IA</li><li style="--i:4">Réduction du time-to-market</li><li style="--i:5">Innovation continue</li></ul></article>
 </div>
 </section>
 <section class="sl4" id="solutions">
