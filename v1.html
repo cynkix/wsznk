@@ -1548,6 +1548,21 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 
 /* phrase d'intro : une phrase par ligne sur grand écran */
 @media (min-width:900px){.zl-sub{max-width:46em !important}}
+
+/* Culture technique : « Nos convictions techniques » (nouveaux textes) */
+.cult .cv-head{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px clamp(32px,5vw,72px);align-items:start;text-align:left}
+.cult .cv-head h2{margin:0;max-width:none;text-align:left;font-size:clamp(28px,3.4vw,48px)}
+.cult .cv-aside{padding-top:8px}
+.cult .cv-lead{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(16px,1.35vw,19px);line-height:1.5;color:var(--ink)}
+.cult .cv-list{margin:10px 0 0;font-size:clamp(15px,1.2vw,17px);line-height:1.5;color:var(--muted)}
+.cult .cv-grid{list-style:none;margin:clamp(36px,4.5vw,56px) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,5vw,72px)}
+.cult .cv-grid li{padding:30px 0 34px;border-top:1px solid var(--line,rgba(120,125,140,.35))}
+.cult .cv-grid h3{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(19px,1.7vw,24px);line-height:1.25;color:var(--ink)}
+.cult .cv-grid p{margin:10px 0 0;font-size:16px;line-height:1.55;color:var(--muted)}
+.cult-blk .cv-lead,.cult-blk .cv-grid h3{color:#fff}
+.cult-blk .cv-list,.cult-blk .cv-grid p{color:rgba(255,255,255,.72)}
+.cult-blk .cv-grid li{border-top-color:rgba(255,255,255,.18)}
+@media (max-width:860px){.cult .cv-head{grid-template-columns:minmax(0,1fr)}.cult .cv-grid{grid-template-columns:minmax(0,1fr)}.cult .cv-grid li{padding:24px 0 26px}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1585,14 +1600,7 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 </div>
 </section>
 <section class="cult" id="culture"><div class="wrap">
-<h2 class="rv4">Notre culture technique, <span class="r">votre avantage</span> sur les projets critiques</h2>
-<p class="cult-p rv4">Veille, partage, open source : chez Zenika, la curiosité n’est pas un passe-temps. C’est ce qui nous permet de vous proposer des solutions sur mesure et de les livrer avec exigence, même sur vos systèmes les plus critiques.</p>
-<div class="cult-grid">
-<article class="cult-card rv4" style="--i:1"><span class="cult-k">Curiosité</span><b>Une veille utile</b><p>On suit les innovations pour vous proposer celles qui servent vraiment votre projet, pas celles qui sont à la mode.</p></article>
-<article class="cult-card rv4" style="--i:2"><span class="cult-k">Partage</span><b>Une expertise qui circule</b><p>Communautés, conférences, open source : ce que l’un de nous apprend profite à toute l’équipe, et à vos équipes.</p></article>
-<article class="cult-card rv4" style="--i:3"><span class="cult-k">Exigence</span><b>Une exécution exigeante</b><p>Du conseil à la refonte, sur tout le cycle de vie de vos produits, avec la même rigueur.</p></article>
-</div>
-<div class="cult-cv rv4"><span class="cult-l">Nos convictions</span><ul><li>Petites équipes expertes</li><li>Modulaire plutôt que massif</li><li>L’IA comme accélérateur</li><li>La qualité avant la vitesse</li></ul></div>
+<div class="cv-head"><h2 class="rv4"><span class="r">Nos convictions techniques,</span> votre avantage pour vos projets critiques</h2><div class="cv-aside rv4"><p class="cv-lead">Nous apportons structure, méthodologie et expertise à chaque étape de vos projets</p><p class="cv-list">conception - déploiement - maintenance - refontes</p></div></div><ul class="cv-grid"><li class="rv4" style="--i:1"><h3>De petites équipes expertes</h3><p>Plutôt que de grands plateaux projets</p></li><li class="rv4" style="--i:2"><h3>L’IA comme accélérateur</h3><p>Plutôt qu’en remplacement</p></li><li class="rv4" style="--i:1"><h3>Piloter par la valeur métier</h3><p>plutôt que par la quantité de code</p></li><li class="rv4" style="--i:2"><h3>Une vélocité soutenue par la qualité</h3><p>Plutôt que du logiciel à la va-vite</p></li><li class="rv4" style="--i:1"><h3>Modulariser et paralléliser</h3><p>Plutôt que passer à l’échelle sans structure</p></li><li class="rv4" style="--i:2"><h3>Déchiffrer les innovations utiles via notre veille</h3><p>Plutôt que suivre les effets de mode</p></li><li class="rv4" style="--i:1"><h3>Des communautés de partage de la connaissance</h3><p>plutôt que des experts dans une tour d’ivoire</p></li></ul>
 </div></section>
 
 

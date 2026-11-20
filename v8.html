@@ -261,6 +261,19 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 
 /* phrase d'intro : retours à la ligne équilibrés */
 .lead{text-wrap:balance}
+
+/* Culture technique : « Nos convictions techniques » (nouveaux textes) */
+.cvx .cv-head{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px clamp(32px,5vw,72px);align-items:start}
+.cvx .cv-head h2{margin:0;max-width:none;font-size:clamp(28px,3.5vw,48px)}
+.cvx .cv-head h2 .r{background:linear-gradient(90deg,#ff2e56,#e8408f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cvx .cv-aside{padding-top:8px}
+.cvx .cv-lead{margin:0;font-weight:600;font-size:clamp(16px,1.35vw,19px);line-height:1.5;color:var(--fg)}
+.cvx .cv-list{margin:10px 0 0;font-size:clamp(15px,1.2vw,17px);line-height:1.5;color:var(--mute)}
+.cvx .cv-grid{list-style:none;margin:clamp(36px,4.5vw,56px) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,5vw,72px)}
+.cvx .cv-grid li{padding:30px 0 34px;border-top:1px solid var(--line)}
+.cvx .cv-grid h3{margin:0;font-weight:700;font-size:clamp(19px,1.7vw,24px);line-height:1.25;color:var(--fg)}
+.cvx .cv-grid p{margin:10px 0 0;font-size:16px;line-height:1.55;color:var(--mute)}
+@media (max-width:860px){.cvx .cv-head,.cvx .cv-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -310,13 +323,7 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 
 <section class="sec s-dark" id="culture">
 <div class="wrap">
-<div class="sh"><span class="eyebrow">Culture technique</span><h2>Notre culture technique, <span class="grad">votre avantage</span> sur les projets critiques</h2><p class="lead">Veille, partage, open source : chez Zenika, la curiosité n’est pas un passe-temps. C’est ce qui nous permet de vous proposer des solutions sur mesure et de les livrer avec exigence, même sur vos systèmes les plus critiques.</p></div>
-<div class="grid cu rv">
-<article class="card" style="--d:0"><span class="tag">Curiosité</span><h3>Une veille utile</h3><p>On suit les innovations pour vous proposer celles qui servent vraiment votre projet, pas celles qui sont à la mode.</p></article>
-<article class="card" style="--d:1"><span class="tag" style="color:var(--amber)">Partage</span><h3>Une expertise qui circule</h3><p>Communautés, conférences, open source : ce que l’un de nous apprend profite à toute l’équipe, et à vos équipes.</p></article>
-<article class="card red" style="--d:2"><span class="tag">Exigence</span><h3>Une exécution exigeante</h3><p>Du conseil à la refonte, sur tout le cycle de vie de vos produits, avec la même rigueur.</p></article>
-</div>
-<div class="convic"><span class="lab">Nos convictions</span><span class="pill">Petites équipes expertes</span><span class="pill">Modulaire plutôt que massif</span><span class="pill">L’IA comme accélérateur</span><span class="pill">La qualité avant la vitesse</span></div>
+<div class="cvx"><div class="cv-head"><h2 class="rv4"><span class="r">Nos convictions techniques,</span> votre avantage pour vos projets critiques</h2><div class="cv-aside rv4"><p class="cv-lead">Nous apportons structure, méthodologie et expertise à chaque étape de vos projets</p><p class="cv-list">conception - déploiement - maintenance - refontes</p></div></div><ul class="cv-grid"><li class="rv4" style="--i:1"><h3>De petites équipes expertes</h3><p>Plutôt que de grands plateaux projets</p></li><li class="rv4" style="--i:2"><h3>L’IA comme accélérateur</h3><p>Plutôt qu’en remplacement</p></li><li class="rv4" style="--i:1"><h3>Piloter par la valeur métier</h3><p>plutôt que par la quantité de code</p></li><li class="rv4" style="--i:2"><h3>Une vélocité soutenue par la qualité</h3><p>Plutôt que du logiciel à la va-vite</p></li><li class="rv4" style="--i:1"><h3>Modulariser et paralléliser</h3><p>Plutôt que passer à l’échelle sans structure</p></li><li class="rv4" style="--i:2"><h3>Déchiffrer les innovations utiles via notre veille</h3><p>Plutôt que suivre les effets de mode</p></li><li class="rv4" style="--i:1"><h3>Des communautés de partage de la connaissance</h3><p>plutôt que des experts dans une tour d’ivoire</p></li></ul></div>
 </div>
 </section>
 
