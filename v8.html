@@ -165,18 +165,18 @@ h3{font-weight:700;font-size:20px;line-height:1.25}
 .contact::before{background:radial-gradient(1500px 950px at 100% 100%,rgba(238,34,56,.92),transparent 66%),radial-gradient(1000px 640px at 25% 105%,rgba(191,29,103,.55),transparent 62%),radial-gradient(800px 520px at 0% 0%,rgba(139,92,246,.28),transparent 60%)}
 .ct{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:center}
 .ct h2{font-size:clamp(46px,7vw,104px);font-weight:700;line-height:1;letter-spacing:-.03em}
-.form{display:grid;gap:16px;padding:clamp(24px,3vw,38px);border-radius:var(--radius);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.form{display:grid;gap:16px;padding:clamp(24px,3vw,38px);border-radius:var(--radius);background:rgba(17,22,34,.88);border:1px solid #222b3d;box-shadow:0 10px 36px rgba(0,0,0,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .form .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .f{display:grid;gap:7px}
-.f label{font:700 12px var(--f-d);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85)}
-.f input,.f textarea{width:100%;border:1px solid rgba(255,255,255,.28);border-radius:16px;background:rgba(5,6,10,.35);color:#fff;font:600 16px var(--f-b);padding:14px 16px}
+.f label{font:700 12px var(--f-d);letter-spacing:.1em;text-transform:uppercase;color:#8e9bae}
+.f input,.f textarea{width:100%;border:1px solid #222b3d;border-radius:16px;background:#0b0f19;color:#fff;font:600 16px var(--f-b);padding:14px 16px}
 .f textarea{min-height:110px;resize:vertical}
 .f input::placeholder,.f textarea::placeholder{color:rgba(255,255,255,.5)}
-.f input:focus,.f textarea:focus{outline:2px solid #fff;outline-offset:2px}
+.f input:focus,.f textarea:focus{outline:2px solid var(--accent-t);outline-offset:2px}
 .form .btn{justify-self:start}
 .sent{display:none;margin:0;font-size:14px;color:#fff}
 .sent.on{display:block}
-.rg{margin:0;font-size:12px;color:rgba(255,255,255,.6)}
+.rg{margin:0;font-size:12px;color:#8e9bae}
 
 /* footer */
 .ftr{background:#05060a;color:#fff;padding:56px 0 34px;border-top:1px solid #222b3d;--mute:#8e9bae}
@@ -292,7 +292,7 @@ h3{font-weight:700;font-size:20px;line-height:1.25}
 <div class="two"><div class="f"><label for="nom">Nom</label><input id="nom" name="nom" type="text" placeholder="Jean Dupont" autocomplete="name"></div><div class="f"><label for="ent">Entreprise</label><input id="ent" name="ent" type="text" placeholder="Votre entreprise" autocomplete="organization"></div></div>
 <div class="f"><label for="mail">Email professionnel</label><input id="mail" name="mail" type="email" placeholder="jean.dupont@entreprise.com" autocomplete="email"></div>
 <div class="f"><label for="msg">Message (facultatif)</label><textarea id="msg" name="msg" placeholder="Vos enjeux, votre calendrier…"></textarea></div>
-<button class="btn white" type="submit">Envoyer ma demande<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></button>
+<button class="btn" type="submit">Envoyer ma demande<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></button>
 <p class="sent" role="status">Prototype : la demande n'est pas réellement envoyée.</p>
 <p class="rg">[Mention RGPD à fournir]</p>
 </form>
