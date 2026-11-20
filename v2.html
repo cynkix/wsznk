@@ -1594,6 +1594,13 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 #culture .cv-lead,#culture .cv-grid h3,#culture .cv-list{color:#fff !important}
 #culture .cv-grid p{color:rgba(255,255,255,.88) !important}
 #culture .cv-grid li{border-top-color:rgba(255,255,255,.35) !important}
+
+/* V2 convictions : bloc secondaire aligné sur le bas, mots-clés avec point blanc, sur une ligne */
+#culture .cv-head{align-items:end}
+#culture .cv-aside{padding-top:0;align-self:end;container-type:inline-size}
+#culture .cv-list{display:flex;flex-wrap:nowrap;white-space:nowrap;align-items:center;gap:clamp(8px,3cqi,18px);margin:14px 0 0;font-family:var(--display);font-weight:600;font-size:clamp(11px,3.4cqi,15px)}
+#culture .cv-list span{display:inline-flex;align-items:center;gap:7px}
+#culture .cv-list span::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;flex:none}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1633,7 +1640,7 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 </div>
 </section>
 <section class="cult" id="culture"><div class="wrap">
-<div class="cv-head"><h2 class="rv4"><span class="r">Nos convictions techniques,</span> votre avantage pour vos projets critiques</h2><div class="cv-aside rv4"><p class="cv-lead">Nous apportons structure, méthodologie et expertise à chaque étape de vos projets</p><p class="cv-list">conception - déploiement - maintenance - refontes</p></div></div><ul class="cv-grid"><li class="rv4" style="--i:1"><h3>De petites équipes expertes</h3><p>Plutôt que de grands plateaux projets</p></li><li class="rv4" style="--i:2"><h3>L’IA comme accélérateur</h3><p>Plutôt qu’en remplacement</p></li><li class="rv4" style="--i:1"><h3>Piloter par la valeur métier</h3><p>plutôt que par la quantité de code</p></li><li class="rv4" style="--i:2"><h3>Une vélocité soutenue par la qualité</h3><p>Plutôt que du logiciel à la va-vite</p></li><li class="rv4" style="--i:1"><h3>Modulariser et paralléliser</h3><p>Plutôt que passer à l’échelle sans structure</p></li><li class="rv4" style="--i:2"><h3>Déchiffrer les innovations utiles via notre veille</h3><p>Plutôt que suivre les effets de mode</p></li><li class="rv4" style="--i:1"><h3>Des communautés de partage de la connaissance</h3><p>plutôt que des experts dans une tour d’ivoire</p></li></ul>
+<div class="cv-head"><h2 class="rv4"><span class="r">Nos convictions techniques,</span> votre avantage pour vos projets critiques</h2><div class="cv-aside rv4"><p class="cv-lead">Nous apportons structure, méthodologie et expertise à chaque étape de vos projets</p><p class="cv-list"><span>conception</span><span>déploiement</span><span>maintenance</span><span>refontes</span></p></div></div><ul class="cv-grid"><li class="rv4" style="--i:1"><h3>De petites équipes expertes</h3><p>Plutôt que de grands plateaux projets</p></li><li class="rv4" style="--i:2"><h3>L’IA comme accélérateur</h3><p>Plutôt qu’en remplacement</p></li><li class="rv4" style="--i:1"><h3>Piloter par la valeur métier</h3><p>plutôt que par la quantité de code</p></li><li class="rv4" style="--i:2"><h3>Une vélocité soutenue par la qualité</h3><p>Plutôt que du logiciel à la va-vite</p></li><li class="rv4" style="--i:1"><h3>Modulariser et paralléliser</h3><p>Plutôt que passer à l’échelle sans structure</p></li><li class="rv4" style="--i:2"><h3>Déchiffrer les innovations utiles via notre veille</h3><p>Plutôt que suivre les effets de mode</p></li><li class="rv4" style="--i:1"><h3>Des communautés de partage de la connaissance</h3><p>plutôt que des experts dans une tour d’ivoire</p></li></ul>
 </div></section>
 
 </div>
