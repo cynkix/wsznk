@@ -102,6 +102,11 @@ h3{font-weight:700;font-size:20px;line-height:1.25}
 .vpick{position:relative;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.28);border-radius:999px;font:700 12px var(--f-d);color:#fff}
 .vpick select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font:inherit}
 .vpick select option{color:#111622}
+/* Barre de navigation : même ordre que les autres versions, sélecteur de version tout à droite ; le bouton rouge sépare les liens externes des réglages */
+.hact .pillbtn.ext{order:1}
+.hact .iconbtn.red{order:3;margin-left:6px}
+.hact #thm{order:4}
+.hact .vpick{order:5;margin-left:2px}
 .vpick svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 #prog{position:fixed;z-index:60;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#e60039,#8b5cf6)}
