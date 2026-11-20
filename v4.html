@@ -2112,6 +2112,14 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 
 /* forme 3D sous tous les blocs */
 effect-3d-morph{z-index:0 !important}
+
+/* V4 hero : mots en couleur, tags, double CTA */
+.hero h1 .w.px{background:linear-gradient(90deg,#FFD27A,#FF8FB1);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.hero .htags{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:12px;margin:28px 0 0;font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.hero .htags i{width:5px;height:5px;border-radius:50%;background:#FFD27A}
+.hero .ctas{margin-top:30px !important;justify-content:center !important}
+.hero .ghost-h{display:inline-flex;align-items:center;min-height:56px;padding:0 30px;border-radius:999px;border:1.5px solid rgba(255,255,255,.7);color:#fff;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.02em;text-transform:uppercase;text-decoration:none;transition:background .2s ease,transform .2s ease}
+.hero .ghost-h:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
 </style>
 
 <header class="hdr" id="hdr">
@@ -2131,7 +2139,7 @@ effect-3d-morph{z-index:0 !important}
 </div>
 <div class="hdots" role="tablist" aria-label="Images"><button type="button" class="on" aria-label="Image 1"></button><button type="button" aria-label="Image 2"></button><button type="button" aria-label="Image 3"></button></div>
 <div class="wrap in">
-<h1>Partenaire technologique de proximité</h1><p class="sub">L’IT n’a de valeur que si elle sert votre stratégie. Nous la transformons en impact métier, à l’ère de l’IA et du Cloud.</p><div class="ctas"><a class="btn" href="#sequence">Découvrir nos offres<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a></div>
+<h1>Partenaire technologique de proximité</h1><p class="sub">L’IT n’a de valeur que si elle sert votre stratégie. Nous la transformons en impact métier, à l’ère de l’IA et du Cloud.</p><p class="htags">Conseil <i></i> Réalisation <i></i> Formation</p><div class="ctas"><a class="btn" href="#contact">Nous contacter<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="ghost-h" href="#sequence">Découvrir nos offres</a></div>
 </div>
 </section>
 <section class="cst" id="sequence">
@@ -2522,7 +2530,7 @@ sel.addEventListener('change',function(){var id=sel.value;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   h.setAttribute('aria-label',h.textContent);
   var words=h.textContent.split(' ');h.textContent='';
-  words.forEach(function(w,i){var s=document.createElement('span');s.className='w';s.setAttribute('aria-hidden','true');s.textContent=w;s.style.transitionDelay=(reduce?0:i*70)+'ms';h.appendChild(s);if(i<words.length-1)h.appendChild(document.createTextNode(' '));});
+  words.forEach(function(w,i){var s=document.createElement('span');s.className='w'+(i>=words.length-2?' px':'');s.setAttribute('aria-hidden','true');s.textContent=w;s.style.transitionDelay=(reduce?0:i*70)+'ms';h.appendChild(s);if(i<words.length-1)h.appendChild(document.createTextNode(' '));});
   requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('on');setTimeout(function(){hero.classList.add('ready');},reduce?0:words.length*70+350);});});
 })();
 </script>
