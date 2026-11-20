@@ -1562,6 +1562,19 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 .cult-cv ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .cult-cv li{display:inline-flex;align-items:center;height:42px;padding:0 20px;border:1px solid rgba(120,125,140,.35);border-radius:999px;font-family:var(--display);font-weight:600;font-size:15px;color:var(--text);background:transparent}
 @media (max-width:900px){.cult-grid{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:36px}.cult-card{padding:28px 24px 30px}.cult{padding:36px 0 20px}.cult-l{width:100%;text-align:center;margin:0}}
+
+/* v3 : bloc noir pour rythmer la page */
+.cult{padding:40px 0 40px}
+.cult-blk{position:relative;z-index:1;padding:clamp(44px,6vw,84px) clamp(22px,4.5vw,64px);border-radius:var(--radius-zika);background:linear-gradient(120deg,#0B0F1C 0%,#171F2E 55%,#2E0F1D 100%);box-shadow:var(--shadozika);color:#fff}
+.cult-blk h2,.cult-blk h2 .r{color:#fff !important}
+.cult-blk h2 .r{background:linear-gradient(90deg,#FF4D6D,#E8408F);-webkit-background-clip:text;background-clip:text;color:transparent !important}
+.cult-blk .cult-p{color:rgba(255,255,255,.78) !important}
+.cult-blk .cult-card{background:rgba(255,255,255,.06) !important;border:1px solid rgba(255,255,255,.12);box-shadow:none !important}
+.cult-blk .cult-k{color:#FF4D6D}
+.cult-blk .cult-card b{color:#fff}
+.cult-blk .cult-card p{color:rgba(255,255,255,.72)}
+.cult-blk .cult-l{color:rgba(255,255,255,.6) !important}
+.cult-blk .cult-cv li{color:#fff !important;border-color:rgba(255,255,255,.4) !important}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1599,7 +1612,7 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 <p class="cta-solu rv4"><a class="btn-arrow" href="v1-solutions.html">Nos solutions <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p>
 </div>
 </section>
-<section class="cult" id="culture"><div class="wrap">
+<section class="cult" id="culture"><div class="wrap"><div class="cult-blk">
 <h2 class="rv4">Notre culture technique, <span class="r">votre avantage</span> sur les projets critiques</h2>
 <p class="cult-p rv4">Veille, partage, open source : chez Zenika, la curiosité n’est pas un passe-temps. C’est ce qui nous permet de vous proposer des solutions sur mesure et de les livrer avec exigence, même sur vos systèmes les plus critiques.</p>
 <div class="cult-grid">
@@ -1608,7 +1621,7 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 <article class="cult-card rv4" style="--i:3"><span class="cult-k">Exigence</span><b>Une exécution exigeante</b><p>Du conseil à la refonte, sur tout le cycle de vie de vos produits, avec la même rigueur.</p></article>
 </div>
 <div class="cult-cv rv4"><span class="cult-l">Nos convictions</span><ul><li>Petites équipes expertes</li><li>Modulaire plutôt que massif</li><li>L’IA comme accélérateur</li><li>La qualité avant la vitesse</li></ul></div>
-</div></section>
+</div></div></section>
 
 
 
