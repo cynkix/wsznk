@@ -1638,8 +1638,10 @@ html[data-theme="dark"] .cult[data-prop="d"] .cv-grid li{background:var(--surfac
 .cult[data-prop="d"] .cv-grid li:nth-child(4){grid-column:2;grid-row:2}
 .cult[data-prop="d"] .cv-grid li:nth-child(5){grid-column:3;grid-row:1}
 .cult[data-prop="d"] .cv-grid li:nth-child(6){grid-column:3;grid-row:2}
-.cult[data-prop="d"] .cv-grid li:nth-child(8){grid-column:2;grid-row:3}
-@media (max-width:900px){.cult[data-prop="d"] .cv-grid{grid-template-columns:minmax(0,1fr)}.cult[data-prop="d"] .cv-grid li{grid-column:1 !important;grid-row:auto !important;padding:20px 20px 22px}}
+.cult[data-prop="d"] .cv-grid li:nth-child(8){grid-column:1/-1;grid-row:3;background:linear-gradient(135deg,#E2001A,#C21D5F) !important;box-shadow:var(--shadozika)}
+.cult[data-prop="d"] .cv-grid li:nth-child(8) h3{color:#fff;white-space:nowrap}
+.cult[data-prop="d"] .cv-grid li:nth-child(8) p{color:rgba(255,255,255,.88)}
+@media (max-width:900px){.cult[data-prop="d"] .cv-grid{grid-template-columns:minmax(0,1fr)}.cult[data-prop="d"] .cv-grid li:nth-child(8) h3{white-space:normal}.cult[data-prop="d"] .cv-grid li{grid-column:1 !important;grid-row:auto !important;padding:20px 20px 22px}}
 </style>
 
 <header class="hdr" id="hdr">
