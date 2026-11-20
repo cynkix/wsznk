@@ -1538,6 +1538,13 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 .dz2 .dz-chips{gap:10px !important}.dz2 .dz-chips li + li{margin-left:0 !important}.dz2 .dz-chips li + li::before{display:none !important}
 .dz2 .dz-ctas .dz-more{text-align:left !important}
 @media (max-width:900px){.dz.dz2{grid-template-columns:minmax(0,1fr)}}
+
+/* constat : moins de vide sous l'accueil, apparition plus tôt, léger parallaxe */
+@media (min-width:901px){.cst{margin-top:clamp(-190px,-13vw,-70px) !important}}
+.js .cst-card.rv4{transition-duration:.6s,.8s !important}
+.cst-card li{transition-delay:calc(.15s + var(--i) * 90ms) !important}
+.cst-card,.sl4-col{translate:0 var(--py,0px);will-change:translate}
+@media (prefers-reduced-motion:reduce){.cst-card,.sl4-col{translate:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1954,5 +1961,23 @@ bars.style.setProperty('--r2',c(p*1.6-0.3).toFixed(3));
 bars.style.setProperty('--r3',c(p*1.6-0.6).toFixed(3));
 bars.style.setProperty('--ra',c(p*1.5-0.5).toFixed(3));}
 window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+<script>
+/* constat + solutions : apparition anticipée et léger parallaxe */
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cards=[].slice.call(document.querySelectorAll('.cst-card')),inEl=document.querySelector('.cst-in');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px 18% 0px',threshold:0});
+    cards.forEach(function(c){io.observe(c);});if(inEl)io.observe(inEl);
+  }
+  if(reduce)return;
+  var items=[].slice.call(document.querySelectorAll('.cst-card')).map(function(el,i){return {el:el,amp:i?70:46};})
+    .concat([].slice.call(document.querySelectorAll('.sl4-col')).map(function(el,i){return {el:el,amp:i?34:48};}));
+  var tick=false;
+  function upd(){tick=false;var vh=innerHeight;items.forEach(function(o){var r=o.el.parentElement.getBoundingClientRect();var p=Math.max(0,Math.min(1,(vh-r.top)/(vh*0.85)));o.el.style.setProperty('--py',((1-p)*o.amp).toFixed(1)+'px');});}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
+  addEventListener('resize',upd);upd();
+})();
 </script>
 </body></html>
