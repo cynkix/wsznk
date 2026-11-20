@@ -1651,6 +1651,12 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 .tl20-ticks span.m{height:22px;margin-top:-11px}
 .tl20-ticks span.on{background:linear-gradient(to bottom,#fff 50%,#E2001A 50%)}
 .tl20-ax{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.06em;color:#C2002A}
+/* V2 : point, ligne et graduation en noir (lisibles sur le rouge comme sur le blanc) */
+.tl20-line::before{background:rgba(14,16,21,.28) !important}
+.tl20-line i{background:#0E1015 !important}
+.tl20-line b{background:#0E1015 !important;box-shadow:0 0 0 4px rgba(255,255,255,.55) !important}
+.tl20-ticks span{background:rgba(14,16,21,.4) !important}
+.tl20-ticks span.on{background:#0E1015 !important}
 #histoire{margin-top:64px}
 @media (max-width:760px){#culture{padding-bottom:200px !important}}
 </style>
