@@ -1618,6 +1618,8 @@ html[data-theme="dark"] .cult[data-prop="c"] .cv-grid li{background:var(--surfac
 /* 8 convictions : le dernier élément n'est plus seul sur sa ligne */
 .cult .cv-grid li:last-child{grid-column:auto;text-align:left}
 .cult .cv-grid li:last-child h3,.cult .cv-grid li:last-child p{margin-left:0;margin-right:0;max-width:none}
+/* 8e conviction : uniquement en proposition C (cartes) */
+.cult:not([data-prop="c"]) .cv-grid li:nth-child(7){display:none !important}
 </style>
 
 <header class="hdr" id="hdr">
