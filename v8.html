@@ -124,12 +124,12 @@ h3{font-weight:700;font-size:20px;line-height:1.25}
 
 /* solutions */
 .sg{grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:auto auto}
-.sg .big{grid-row:1 / span 2;padding:clamp(28px,3.2vw,42px);align-content:start}
-.sg .big h3{font-size:clamp(22px,2vw,28px);margin-bottom:6px}
-.sg .big ul{margin-top:10px;gap:14px}
-.sg .big li{font:700 17px var(--f-d);color:#fff;padding-left:0;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:14px}
-.sg .big li:last-child{border-bottom:0;padding-bottom:0}
+.sg .big{grid-row:1 / span 2;padding:clamp(24px,2.6vw,34px) clamp(28px,3.2vw,42px);align-content:stretch}
+.sg .big ul{height:100%;gap:0;grid-template-rows:repeat(5,1fr)}
+.sg .big li{position:relative;display:flex;align-items:center;min-height:64px;padding:18px 0;font:700 clamp(17px,1.4vw,20px) var(--f-d);color:#fff;border-bottom:1px solid rgba(255,255,255,.35)}
+.sg .big li:last-child{border-bottom:0}
 .sg .big li::before{display:none}
+.sg .big li:not(:last-child)::after{content:"+";position:absolute;left:50%;bottom:-14px;width:28px;height:28px;margin-left:-14px;display:grid;place-items:center;border-radius:50%;background:#fff;color:#e60039;font:700 19px/1 var(--f-d);box-shadow:0 4px 10px rgba(0,0,0,.18)}
 .sg .card p{font-size:15.5px;line-height:1.55}
 .sg-cta{margin-top:32px;display:flex}
 
@@ -248,18 +248,18 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 </div></div>
 </section>
 
-<section class="sec s-dark" id="sequence" style="padding-top:clamp(24px,4vw,56px)">
+<section class="sec s-dark" id="sequence" style="padding-top:clamp(24px,4vw,56px);padding-bottom:clamp(40px,4vw,56px)">
 <div class="wrap"><div class="grid cs rv">
 <article class="card" style="--d:0"><span class="tag">Le constat</span><h2>Nous maîtrisons la complexité des SI et des organisations…</h2><ul><li>Données fragmentées</li><li>Systèmes legacy</li><li>Architecture mille-feuilles</li><li>Silos organisationnels</li><li>Transformation permanente</li><li>Complexité croissante</li><li>Pression sur les coûts</li></ul></article>
 <article class="card red" style="--d:1"><span class="tag">Notre réponse</span><h2>… Pour traduire les investissements IT en valeur métier mesurable.</h2><ul><li>Alignement avec la stratégie d'entreprise</li><li>Sécurité, conformité, durabilité</li><li>Pertinence des logiciels pour les métiers</li><li>Bénéfices tangibles de l'IA</li><li>Réduction du time-to-market</li><li>Innovation continue</li></ul></article>
 </div></div>
 </section>
 
-<section class="sec s-light" id="solutions">
+<section class="sec s-light" id="solutions" style="padding-top:clamp(48px,5vw,72px)">
 <div class="wrap">
 <div class="sh"><span class="eyebrow">Nos solutions</span><h2>Des solutions sur mesure, construites, exécutées et <span class="grad">pilotées ensemble</span></h2></div>
 <div class="grid sg rv">
-<article class="card red big" style="--d:0"><span class="tag">Nos offres</span><h3>Une équipe, un cap, une valeur mesurée</h3><ul><li>AI-augmented SDLC</li><li>Lean Strike teams</li><li>Platform engineering</li><li>Product strategy &amp; discovery</li><li>Performance-driven delivery</li></ul></article>
+<article class="card red big" style="--d:0"><ul><li>AI-augmented SDLC</li><li>Lean Strike teams</li><li>Platform engineering</li><li>Product strategy &amp; discovery</li><li>Performance-driven delivery</li></ul></article>
 <article class="card" style="--d:1"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zM12 4v4M9 13v1.5M15 13v1.5"/></svg></span><h3>AI for Business Performance</h3><p>Déploiement de l'IA dans les applicatifs métier pour accélérer les opérations, améliorer les parcours et générer un impact mesurable.</p></article>
 <article class="card" style="--d:2"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></span><h3>Data-driven Organization</h3><p>Faire de la data un levier de décision, en maîtrisant la gouvernance, la plateforme et les usages métier. Créer de la valeur et tirer de la valeur.</p></article>
 <article class="card" style="--d:3"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17 8.5a4.8 4.8 0 0 1 .5 9.5z"/></svg></span><h3>Cloud, from strategy to value</h3><p>S'appuyer sur les services Cloud pour gagner en agilité, résilience et maîtrise des coûts, du cadrage à l'industrialisation.</p></article>
