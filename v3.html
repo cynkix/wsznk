@@ -2124,4 +2124,10 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
   addEventListener('resize',upd);upd();
 })();
 </script>
+<script>
+/* V3 : la forme 3D s'estompe au scroll */
+(function(){var z=document.querySelector('.zv');if(!z)return;z.style.transition='opacity .25s linear';var t=false;
+function u(){t=false;var p=Math.max(0,Math.min(1,scrollY/(innerHeight*.7)));z.style.opacity=(1-.72*p).toFixed(2);}
+addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u);}},{passive:true});u();})();
+</script>
 </body></html>
