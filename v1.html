@@ -1966,10 +1966,10 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
     cards.forEach(function(c){io.observe(c);});if(inEl)io.observe(inEl);
   }
   if(reduce)return;
-  var items=[].slice.call(document.querySelectorAll('.cst-card')).map(function(el,i){return {el:el,amp:50};})
-    .concat([].slice.call(document.querySelectorAll('.sl4-grid')).map(function(el){return {el:el,amp:40};}));
+  var items=[].slice.call(document.querySelectorAll('.cst-card')).map(function(el,i){return {el:el,amp:12};})
+    .concat([].slice.call(document.querySelectorAll('.sl4-grid')).map(function(el){return {el:el,amp:10};}));
   var tick=false;
-  function upd(){tick=false;var vh=innerHeight;items.forEach(function(o){var r=o.el.parentElement.getBoundingClientRect();var p=Math.max(0,Math.min(1,(vh-r.top)/(vh*0.85)));o.el.style.setProperty('--py',((1-p)*o.amp).toFixed(1)+'px');});}
+  function upd(){tick=false;var vh=innerHeight;items.forEach(function(o){var r=o.el.parentElement.getBoundingClientRect();var p=Math.max(0,Math.min(1,(vh-r.top)/(vh*0.5)));o.el.style.setProperty('--py',((1-p)*o.amp).toFixed(1)+'px');});}
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
   addEventListener('resize',upd);upd();
 })();
