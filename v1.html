@@ -1563,6 +1563,20 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 .cult-blk .cv-list,.cult-blk .cv-grid p{color:rgba(255,255,255,.72)}
 .cult-blk .cv-grid li{border-top-color:rgba(255,255,255,.18)}
 @media (max-width:860px){.cult .cv-head{grid-template-columns:minmax(0,1fr)}.cult .cv-grid{grid-template-columns:minmax(0,1fr)}.cult .cv-grid li{padding:24px 0 26px}}
+
+/* V1 · Culture technique : design en cartes (comme avant), avec les nouveaux textes */
+.cult .cv-head{display:block;text-align:center}
+.cult .cv-head h2{margin:0 auto;max-width:17em;text-align:center}
+.cult .cv-aside{padding-top:0;margin:24px auto 0;max-width:40em}
+.cult .cv-lead{font-weight:500;color:var(--muted);font-size:clamp(16px,1.35vw,19px);line-height:1.65}
+.cult .cv-list{margin:6px 0 0;font-weight:600;color:var(--ink)}
+.cult .cv-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:22px;margin-top:48px}
+.cult .cv-grid li{grid-column:span 4;padding:34px 32px 36px;border:0;border-radius:var(--radius-zika);background:var(--wash);box-shadow:var(--shadozika);text-align:left}
+.cult .cv-grid li:nth-child(n+4){grid-column:span 3}
+html[data-theme="dark"] .cult .cv-grid li{background:var(--surface)}
+.cult .cv-grid h3{font-size:clamp(18px,1.5vw,21px)}
+@media (max-width:1000px){.cult .cv-grid li,.cult .cv-grid li:nth-child(n+4){grid-column:span 6}}
+@media (max-width:700px){.cult .cv-grid{gap:16px;margin-top:36px}.cult .cv-grid li,.cult .cv-grid li:nth-child(n+4){grid-column:1/-1;padding:28px 24px 30px}}
 </style>
 
 <header class="hdr" id="hdr">
