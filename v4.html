@@ -2024,6 +2024,24 @@ html[data-theme="dark"] .clients,html[data-theme="dark"] .contact{background:#12
 .contact .form .btn svg{width:14px !important;height:14px !important}
 
 .clients .wrap{padding-bottom:0 !important}.clients{padding-bottom:110px}
+
+html[data-theme="dark"] .cult-card{background:var(--surface)}
+.dark .cult-card{background:var(--surface)}
+/* culture technique */
+.cult{position:relative;z-index:1;padding:50px 0 30px;background:transparent}
+.cult h2{margin:0 auto;max-width:17em;text-align:center;font-family:var(--display);font-weight:600;font-size:clamp(26px,3.2vw,44px);line-height:1.15;letter-spacing:-.015em;color:var(--ink)}
+.cult h2 .r{color:#E2001A}
+.cult-p{margin:24px auto 0;max-width:38em;text-align:center;font-size:clamp(16px,1.35vw,19px);line-height:1.65;color:var(--muted)}
+.cult-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:48px}
+.cult-card{padding:34px 32px 36px;border-radius:var(--radius-zika);background:var(--wash);box-shadow:var(--shadozika);text-align:left}
+.cult-k{display:block;font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#E2001A}
+.cult-card b{display:block;margin-top:14px;font-family:var(--display);font-weight:700;font-size:21px;line-height:1.2;color:var(--ink)}
+.cult-card p{margin:12px 0 0;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.cult-cv{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 12px;margin-top:40px}
+.cult-l{margin-right:8px;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cult-cv ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.cult-cv li{display:inline-flex;align-items:center;height:42px;padding:0 20px;border:1px solid rgba(120,125,140,.35);border-radius:999px;font-family:var(--display);font-weight:600;font-size:15px;color:var(--text);background:transparent}
+@media (max-width:900px){.cult-grid{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:36px}.cult-card{padding:28px 24px 30px}.cult{padding:36px 0 20px}.cult-l{width:100%;text-align:center;margin:0}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -2061,6 +2079,17 @@ html[data-theme="dark"] .clients,html[data-theme="dark"] .contact{background:#12
 </div>
 </div>
 </section>
+<section class="cult" id="culture"><div class="wrap">
+<h2 class="rv4">Notre culture technique, <span class="r">votre avantage</span> sur les projets critiques</h2>
+<p class="cult-p rv4">Veille, partage, open source : chez Zenika, la curiosité n’est pas un passe-temps. C’est ce qui nous permet de vous proposer des solutions sur mesure et de les livrer avec exigence, même sur vos systèmes les plus critiques.</p>
+<div class="cult-grid">
+<article class="cult-card rv4" style="--i:1"><span class="cult-k">Curiosité</span><b>Une veille utile</b><p>On suit les innovations pour vous proposer celles qui servent vraiment votre projet, pas celles qui sont à la mode.</p></article>
+<article class="cult-card rv4" style="--i:2"><span class="cult-k">Partage</span><b>Une expertise qui circule</b><p>Communautés, conférences, open source : ce que l’un de nous apprend profite à toute l’équipe, et à vos équipes.</p></article>
+<article class="cult-card rv4" style="--i:3"><span class="cult-k">Exigence</span><b>Une exécution exigeante</b><p>Du conseil à la refonte, sur tout le cycle de vie de vos produits, avec la même rigueur.</p></article>
+</div>
+<div class="cult-cv rv4"><span class="cult-l">Nos convictions</span><ul><li>Petites équipes expertes</li><li>Modulaire plutôt que massif</li><li>L’IA comme accélérateur</li><li>La qualité avant la vitesse</li></ul></div>
+</div></section>
+
 <section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz rv4"><h2 class="dz-h">Depuis 20 ans, nous transformons les SI.<br><span class="dz-r">Construisons ensemble les 20 prochaines années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. L’IA ne fera pas exception.</p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li><li class="soon">Et demain…</li></ul><div class="dz-ctas"><a class="dz-btn" href="#contact">Décrivez votre projet<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a></div><p class="dz-more"><a href="v1-engagements.html">Nos valeurs et engagements <span aria-hidden="true">→</span></a></p></div></div></section>
 
 
