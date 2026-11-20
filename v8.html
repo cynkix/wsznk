@@ -205,6 +205,18 @@ html[data-theme="light"] .flinks a:not(.btn){color:#566176}
 html[data-theme="light"] .flinks a:not(.btn):hover,html[data-theme="light"] .fbot a:hover{color:#111622}
 html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 
+
+/* constat + solutions : un seul bloc, même fond, sans couture */
+#sequence::before{background:radial-gradient(800px 420px at 92% -6%,rgba(238,34,56,.12),transparent 62%)}
+#solutions::before{display:none}
+#sequence{overflow:visible;z-index:2}
+.cs .card{box-shadow:var(--shadozika)}
+
+
+/* « Notre réponse » : cases cochées */
+.cs .card.red li{padding-left:36px;font-size:17px;line-height:1.4}
+.cs .card.red li::before{left:0;top:.08em;width:22px;height:22px;border-radius:7px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e60039' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5.5 12.5 4.2 4.2 8.8-9.4'/%3E%3C/svg%3E") center/16px no-repeat;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+
 /* responsive */
 @media (max-width:1000px){
   .nav{display:none}
@@ -248,14 +260,14 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 </div></div>
 </section>
 
-<section class="sec s-dark" id="sequence" style="padding-top:clamp(24px,4vw,56px);padding-bottom:clamp(40px,4vw,56px)">
+<section class="sec s-light" id="sequence" style="padding-top:clamp(56px,6vw,88px);padding-bottom:clamp(20px,2.5vw,32px)">
 <div class="wrap"><div class="grid cs rv">
 <article class="card" style="--d:0"><span class="tag">Le constat</span><h2>Nous maîtrisons la complexité des SI et des organisations…</h2><ul><li>Données fragmentées</li><li>Systèmes legacy</li><li>Architecture mille-feuilles</li><li>Silos organisationnels</li><li>Transformation permanente</li><li>Complexité croissante</li><li>Pression sur les coûts</li></ul></article>
 <article class="card red" style="--d:1"><span class="tag">Notre réponse</span><h2>… Pour traduire les investissements IT en valeur métier mesurable.</h2><ul><li>Alignement avec la stratégie d'entreprise</li><li>Sécurité, conformité, durabilité</li><li>Pertinence des logiciels pour les métiers</li><li>Bénéfices tangibles de l'IA</li><li>Réduction du time-to-market</li><li>Innovation continue</li></ul></article>
 </div></div>
 </section>
 
-<section class="sec s-light" id="solutions" style="padding-top:clamp(48px,5vw,72px)">
+<section class="sec s-light" id="solutions" style="padding-top:clamp(20px,2.5vw,32px)">
 <div class="wrap">
 <div class="sh"><span class="eyebrow">Nos solutions</span><h2>Des solutions sur mesure, construites, exécutées et <span class="grad">pilotées ensemble</span></h2></div>
 <div class="grid sg rv">
