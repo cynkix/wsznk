@@ -1618,6 +1618,10 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 .cst-card li{transition-delay:calc(.15s + var(--i) * 90ms) !important}
 .cst-card,.sl4-col{translate:0 var(--py,0px);will-change:translate}
 @media (prefers-reduced-motion:reduce){.cst-card,.sl4-col{translate:none}}
+
+/* constat (gauche) : puce pleine comme la V7 au lieu du tiret dans un cercle */
+.cst-l li{gap:14px !important}
+.cst-l li::before{width:7px !important;height:7px !important;border:0 !important;background:#E2001A !important;background-image:none !important;border-radius:50%;margin:0 4px 0 5px}
 </style>
 
 <header class="hdr" id="hdr">
