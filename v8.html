@@ -306,6 +306,25 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 @media (max-width:700px){.dmx-row{grid-template-columns:96px minmax(0,1fr);gap:12px}.dmx-axis{margin-left:108px}}
 @media (prefers-reduced-motion:reduce){.dmx-trk i{transform:none;transition:none}}
 
+/* Depuis 20 ans : frise mixée avec la timeline 2006 → 2026 (compteur, curseur, barres qui se remplissent au scroll) */
+.dmx-top{display:flex;align-items:baseline;justify-content:center;gap:16px;flex-wrap:wrap;text-align:center}
+.dmx-y{font-family:var(--display);font-weight:600;font-size:clamp(44px,5.4vw,76px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.dmx-n{font-family:var(--display);font-weight:600;font-size:clamp(14px,1.3vw,18px);letter-spacing:.04em;opacity:.65}
+.dmx-plot{position:relative;display:grid;gap:16px;margin-top:8px}
+.dmx-trk i{transform:scaleX(var(--s,0)) !important;transition:none !important}
+.dmx-cur{position:absolute;top:-6px;bottom:44px;width:2px;margin-left:-1px;left:calc(170px + (100% - 170px) * var(--p,0));background:linear-gradient(to bottom,rgba(226,0,26,0),#E2001A 18%,#E2001A);pointer-events:none}
+.dmx-ln{position:relative;height:28px;margin-left:170px}
+.dmx-ln::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:rgba(226,0,26,.22)}
+.dmx-lf{position:absolute;left:0;top:50%;height:2px;margin-top:-1px;width:0;background:#E2001A}
+.dmx-dot{position:absolute;top:50%;left:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:#E2001A;box-shadow:0 0 0 5px rgba(226,0,26,.2)}
+.dmx-tk{position:absolute;inset:0;pointer-events:none}
+.dmx-tk span{position:absolute;top:50%;width:2px;height:10px;margin:-5px 0 0 -1px;background:rgba(226,0,26,.25);transition:background .3s}
+.dmx-tk span.m{height:18px;margin-top:-9px}
+.dmx-tk span.on{background:#E2001A}
+.dmx-ax{display:flex;justify-content:space-between;margin:-8px 0 0 170px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.06em;color:#C2002A}
+@media (max-width:700px){.dmx-cur{left:calc(108px + (100% - 108px) * var(--p,0))}.dmx-ln{margin-left:108px}.dmx-ax{margin-left:108px}}
+@media (prefers-reduced-motion:reduce){.dmx-tk span{transition:none}}
+
 /* Depuis 20 ans : petite bille qui tourne autour du badge, comme une aiguille (le temps qui passe) */
 .an-card .orb{position:relative;display:block;width:min(260px,70%);aspect-ratio:1}
 .an-card .orb img{width:100%;height:100%}
@@ -396,12 +415,17 @@ html[data-theme="light"] .cvx .cv-list span::before{background:#E2001A}
 </div>
 <div class="rv free"><div class="card an-card" style="--d:1"><span class="orb"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><i class="orb-h" aria-hidden="true"><b></b></i></span><p>Une même exigence, de l’agilité à l’intelligence artificielle.</p></div></div>
 </div>
-<div class="rv free dmx"><div class="dmx-in" aria-label="Notre histoire en un chronomètre : de 2006 à aujourd'hui">
-<div class="dmx-row"><b>Agile</b><div class="dmx-trk"><i style="--l:0%;--w:100%;background:linear-gradient(90deg,#E2001A,#C01B6B)"></i></div></div>
-<div class="dmx-row"><b>Craft &amp; DevOps</b><div class="dmx-trk"><i style="--l:28%;--w:72%;background:linear-gradient(90deg,#E2001A,#B3226E)"></i></div></div>
-<div class="dmx-row"><b>Cloud &amp; Data</b><div class="dmx-trk"><i style="--l:48%;--w:52%;background:linear-gradient(90deg,#E2001A,#B3226E)"></i></div></div>
-<div class="dmx-row"><b>IA</b><div class="dmx-trk"><i style="--l:70%;--w:30%;background:linear-gradient(90deg,#F59E0B,#EF4444)"></i></div></div>
-<div class="dmx-axis"><span class="a">2006</span><span class="m">20 ANS</span><span class="z">Aujourd’hui</span></div>
+<div class="rv free dmx" id="dmx"><div class="dmx-in" role="group" aria-label="Notre histoire de 2006 à aujourd'hui : agilité, craft et DevOps, cloud et data, IA">
+<div class="dmx-top"><span class="dmx-y" id="dmxy" aria-hidden="true">2006</span><span class="dmx-n">20 ans de transformation des SI</span></div>
+<div class="dmx-plot">
+<div class="dmx-row"><b>Agile</b><div class="dmx-trk"><i data-l="0" data-w="1" style="--l:0%;--w:100%;background:linear-gradient(90deg,#E2001A,#C01B6B)"></i></div></div>
+<div class="dmx-row"><b>Craft &amp; DevOps</b><div class="dmx-trk"><i data-l=".28" data-w=".72" style="--l:28%;--w:72%;background:linear-gradient(90deg,#E2001A,#B3226E)"></i></div></div>
+<div class="dmx-row"><b>Cloud &amp; Data</b><div class="dmx-trk"><i data-l=".48" data-w=".52" style="--l:48%;--w:52%;background:linear-gradient(90deg,#E2001A,#B3226E)"></i></div></div>
+<div class="dmx-row"><b>IA</b><div class="dmx-trk"><i data-l=".7" data-w=".3" style="--l:70%;--w:30%;background:linear-gradient(90deg,#F59E0B,#EF4444)"></i></div></div>
+<div class="dmx-cur" id="dmxc" aria-hidden="true"></div>
+<div class="dmx-ln"><div class="dmx-lf" id="dmxf"></div><b class="dmx-dot" id="dmxd"></b><div class="dmx-tk" id="dmxt"></div></div>
+<div class="dmx-ax"><span>2006</span><span>2016</span><span>Aujourd’hui</span></div>
+</div>
 </div></div>
 </div></div>
 </section>
@@ -462,6 +486,20 @@ html[data-theme="light"] .cvx .cv-list span::before{background:#E2001A}
     location.href=files[id];});
   /* formulaire (prototype) */
   document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();this.querySelector('.sent').classList.add('on');});
+})();
+</script>
+<script>
+(function(){var sec=document.getElementById('dmx');if(!sec)return;
+var f=document.getElementById('dmxf'),d=document.getElementById('dmxd'),y=document.getElementById('dmxy'),t=document.getElementById('dmxt');
+var bars=[].slice.call(sec.querySelectorAll('.dmx-trk i'));
+var N=20,ticks=[];for(var i=0;i<=N;i++){var e=document.createElement('span');e.style.left=(i/N*100)+'%';if(i%5===0)e.className='m';t.appendChild(e);ticks.push(e);}
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;var cur=reduce?1:0,raf=0;
+function target(){var r=sec.getBoundingClientRect(),vh=innerHeight;return Math.max(0,Math.min(1,(vh*.95-r.top)/(vh*.6)));}
+function draw(p){f.style.width=(p*100)+'%';d.style.left=(p*100)+'%';sec.style.setProperty('--p',p);y.textContent=Math.round(2006+p*20);var k=Math.round(p*N);ticks.forEach(function(e,i){e.classList.toggle('on',i<=k)});
+bars.forEach(function(b){var l=+b.dataset.l,w=+b.dataset.w;b.style.setProperty('--s',Math.max(0,Math.min(1,(p-l)/w)).toFixed(3));});}
+function loop(){var g=reduce?1:target();cur+=(g-cur)*.14;if(Math.abs(g-cur)<.001)cur=g;draw(cur);raf=(cur!==g)?requestAnimationFrame(loop):0;}
+function kick(){if(!raf)raf=requestAnimationFrame(loop);}
+addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);kick();
 })();
 </script>
 </body>
