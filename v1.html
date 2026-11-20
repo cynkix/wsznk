@@ -1580,10 +1580,16 @@ html[data-theme="dark"] .cult .cv-pills li{border-color:rgba(255,255,255,.6)}
 .cult .cv-grid li:last-child{grid-column:1/-1;text-align:center}
 .cult .cv-grid li:last-child h3,.cult .cv-grid li:last-child p{margin-left:auto;margin-right:auto;max-width:34em}
 .cult .cv-grid h3{font-size:clamp(18px,1.6vw,23px)}
-/* B : un seul panneau blanc */
-.cult[data-prop="b"] .cv-grid{padding:10px clamp(28px,4vw,56px) 14px;border-radius:var(--radius-zika);background:var(--wash);box-shadow:var(--shadozika)}
-.cult[data-prop="b"] .cv-grid li{border-top:0;padding:28px 0 30px}
-.cult[data-prop="b"] .cv-grid li:nth-child(n+3){border-top:1px solid var(--line,rgba(120,125,140,.3))}
+/* B : panneau blanc, liste numérotée en deux colonnes (modèle « Un seul message, huit fonctionnalités ») */
+.cult[data-prop="b"] .cv-grid{column-gap:clamp(32px,4.5vw,64px);padding:clamp(26px,3vw,40px) clamp(24px,3.2vw,44px) clamp(14px,2vw,24px);border-radius:var(--radius-zika);background:var(--wash);box-shadow:var(--shadozika)}
+.cult[data-prop="b"] .cv-grid::before{content:"Nos sept convictions";grid-column:1/-1;margin-bottom:14px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#E2001A}
+.cult[data-prop="b"] .cv-grid li{counter-increment:cv;display:grid;grid-template-columns:44px minmax(0,1fr);align-items:start;padding:18px 0 20px;border-top:0;border-bottom:1px solid var(--line,rgba(120,125,140,.3));text-align:left}
+.cult[data-prop="b"] .cv-grid li::before{content:counter(cv,decimal-leading-zero);grid-row:1/3;font-family:var(--display);font-weight:700;font-size:16px;line-height:1.5;color:#E2001A}
+.cult[data-prop="b"] .cv-grid li h3{grid-column:2;margin:0;font-size:clamp(17px,1.4vw,20px)}
+.cult[data-prop="b"] .cv-grid li p{grid-column:2;margin:3px 0 0;font-size:15.5px}
+.cult[data-prop="b"] .cv-grid li:last-child{text-align:left}
+.cult[data-prop="b"] .cv-grid li:last-child h3,.cult[data-prop="b"] .cv-grid li:last-child p{margin-left:0;margin-right:0;max-width:none}
+.cult[data-prop="b"] .cv-grid li:last-child p{margin-top:3px}
 html[data-theme="dark"] .cult[data-prop="b"] .cv-grid{background:var(--surface)}
 /* C : cartes numérotées */
 .cult[data-prop="c"] .cv-grid{column-gap:22px;row-gap:22px}
@@ -1591,7 +1597,7 @@ html[data-theme="dark"] .cult[data-prop="b"] .cv-grid{background:var(--surface)}
 html[data-theme="dark"] .cult[data-prop="c"] .cv-grid li{background:var(--surface)}
 .cult[data-prop="c"] .cv-grid li::before{counter-increment:cv;content:counter(cv,decimal-leading-zero);display:block;margin-bottom:12px;font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.14em;color:#E2001A}
 .cult[data-prop="c"] .cv-pills li{border-color:transparent;background:var(--wash);box-shadow:var(--shadozika)}
-@media (max-width:760px){.cult .cv-grid{grid-template-columns:minmax(0,1fr)}.cult .cv-grid li:last-child{text-align:left}.cult[data-prop="b"] .cv-grid li:nth-child(2){border-top:1px solid var(--line,rgba(120,125,140,.3))}.cult[data-prop="c"] .cv-grid li{padding:26px 24px 28px}}
+@media (max-width:760px){.cult .cv-grid{grid-template-columns:minmax(0,1fr)}.cult .cv-grid li:last-child{text-align:left}.cult[data-prop="c"] .cv-grid li{padding:26px 24px 28px}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1629,7 +1635,7 @@ html[data-theme="dark"] .cult[data-prop="c"] .cv-grid li{background:var(--surfac
 </div>
 </section>
 <section class="cult" id="culture" data-prop="a"><div class="wrap">
-<div class="cv-switch" role="group" aria-label="Proposition de mise en page"><span>Proposition de mise en page</span><button type="button" data-p="a" class="on">A · Éditorial</button><button type="button" data-p="b">B · Panneau</button><button type="button" data-p="c">C · Cartes</button></div><div class="cv-head"><h2 class="rv4"><span class="r">Nos convictions techniques,</span> votre avantage pour vos projets critiques</h2><div class="cv-aside rv4"><p class="cv-lead">Nous apportons structure, méthodologie et expertise à chaque étape de vos projets</p><ul class="cv-pills"><li>conception</li><li>déploiement</li><li>maintenance</li><li>refontes</li></ul></div></div><ul class="cv-grid"><li class="rv4" style="--i:1"><h3>De petites équipes expertes</h3><p>Plutôt que de grands plateaux projets</p></li><li class="rv4" style="--i:2"><h3>L’IA comme accélérateur</h3><p>Plutôt qu’en remplacement</p></li><li class="rv4" style="--i:1"><h3>Piloter par la valeur métier</h3><p>plutôt que par la quantité de code</p></li><li class="rv4" style="--i:2"><h3>Une vélocité soutenue par la qualité</h3><p>Plutôt que du logiciel à la va-vite</p></li><li class="rv4" style="--i:1"><h3>Modulariser et paralléliser</h3><p>Plutôt que passer à l’échelle sans structure</p></li><li class="rv4" style="--i:2"><h3>Déchiffrer les innovations utiles via notre veille</h3><p>Plutôt que suivre les effets de mode</p></li><li class="rv4" style="--i:1"><h3>Des communautés de partage de la connaissance</h3><p>plutôt que des experts dans une tour d’ivoire</p></li></ul>
+<div class="cv-switch" role="group" aria-label="Proposition de mise en page"><span>Proposition de mise en page</span><button type="button" data-p="a" class="on">A · Éditorial</button><button type="button" data-p="b">B · Panneau numéroté</button><button type="button" data-p="c">C · Cartes</button></div><div class="cv-head"><h2 class="rv4"><span class="r">Nos convictions techniques,</span> votre avantage pour vos projets critiques</h2><div class="cv-aside rv4"><p class="cv-lead">Nous apportons structure, méthodologie et expertise à chaque étape de vos projets</p><ul class="cv-pills"><li>conception</li><li>déploiement</li><li>maintenance</li><li>refontes</li></ul></div></div><ul class="cv-grid"><li class="rv4" style="--i:1"><h3>De petites équipes expertes</h3><p>Plutôt que de grands plateaux projets</p></li><li class="rv4" style="--i:2"><h3>L’IA comme accélérateur</h3><p>Plutôt qu’en remplacement</p></li><li class="rv4" style="--i:1"><h3>Piloter par la valeur métier</h3><p>plutôt que par la quantité de code</p></li><li class="rv4" style="--i:2"><h3>Une vélocité soutenue par la qualité</h3><p>Plutôt que du logiciel à la va-vite</p></li><li class="rv4" style="--i:1"><h3>Modulariser et paralléliser</h3><p>Plutôt que passer à l’échelle sans structure</p></li><li class="rv4" style="--i:2"><h3>Déchiffrer les innovations utiles via notre veille</h3><p>Plutôt que suivre les effets de mode</p></li><li class="rv4" style="--i:1"><h3>Des communautés de partage de la connaissance</h3><p>plutôt que des experts dans une tour d’ivoire</p></li></ul>
 </div></section>
 
 
