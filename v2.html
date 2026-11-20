@@ -1636,24 +1636,23 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 .sl4-grid{margin-top:0 !important}
 /* V2 : timeline 2006 → 2026, à cheval sur la limite rouge / blanc */
 #culture{position:relative;padding-bottom:230px !important}
-.tl20{position:absolute;left:0;right:0;bottom:-44px;z-index:3;color:#fff}
+.tl20{position:absolute;left:0;right:0;bottom:-57px;z-index:3;color:#fff}
 .tl20-box{max-width:1100px;margin:0 auto;padding:0 24px}
 .tl20-top{display:flex;align-items:baseline;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:22px;text-align:center}
 .tl20-y{font-family:var(--display);font-weight:600;font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .tl20-n{font-family:var(--display);font-weight:600;font-size:clamp(14px,1.3vw,18px);letter-spacing:.04em;opacity:.95}
-.tl20-pill{padding:16px 30px 12px;border-radius:999px;background:#fff;box-shadow:0 14px 36px rgba(120,0,20,.28);color:#C2002A}
-.tl20-line{position:relative;height:28px;margin:0 6px}
-.tl20-line::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:rgba(226,0,26,.22)}
-.tl20-line i{position:absolute;left:0;top:50%;height:2px;margin-top:-1px;width:0;background:#E2001A}
-.tl20-line b{position:absolute;top:50%;left:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:#E2001A;box-shadow:0 0 0 5px rgba(226,0,26,.2)}
+.tl20-pill{display:block}
+.tl20-line{position:relative;height:44px}
+.tl20-line::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;background:linear-gradient(to bottom,rgba(255,255,255,.45) 50%,rgba(226,0,26,.3) 50%)}
+.tl20-line i{position:absolute;left:0;top:50%;height:3px;margin-top:-1.5px;width:0;background:linear-gradient(to bottom,#fff 50%,#E2001A 50%)}
+.tl20-line b{position:absolute;top:50%;left:0;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:linear-gradient(to bottom,#fff 50%,#E2001A 50%);box-shadow:0 0 0 4px rgba(255,255,255,.35)}
 .tl20-ticks{position:absolute;inset:0;pointer-events:none}
-.tl20-ticks span{position:absolute;top:50%;width:2px;height:10px;margin:-5px 0 0 -1px;background:rgba(226,0,26,.25);transition:background .3s}
-.tl20-ticks span.m{height:18px;margin-top:-9px}
-.tl20-ticks span.on{background:#E2001A}
-.tl20-ax{display:flex;justify-content:space-between;margin:2px 6px 0;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.06em;color:#C2002A}
+.tl20-ticks span{position:absolute;top:50%;width:2px;height:12px;margin:-6px 0 0 -1px;background:linear-gradient(to bottom,rgba(255,255,255,.45) 50%,rgba(226,0,26,.3) 50%)}
+.tl20-ticks span.m{height:22px;margin-top:-11px}
+.tl20-ticks span.on{background:linear-gradient(to bottom,#fff 50%,#E2001A 50%)}
+.tl20-ax{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.06em;color:#C2002A}
 #histoire{margin-top:64px}
-@media (max-width:760px){#culture{padding-bottom:200px !important}.tl20-pill{padding:14px 18px 10px}}
-@media (prefers-reduced-motion:reduce){.tl20-ticks span{transition:none}}
+@media (max-width:760px){#culture{padding-bottom:200px !important}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1704,7 +1703,7 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 
 
 <!-- 5 · Histoire -->
-<section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz dz2 rv4"><div class="dz-t"><h2 class="dz-h">Depuis 20&nbsp;ans, nous transformons les&nbsp;SI. <span class="dz-r">Construisons ensemble les 20&nbsp;prochaines&nbsp;années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. <span class="nb">L’IA ne fera pas exception.</span></p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li><li class="soon">Et demain…</li></ul><div class="dz-ctas"><a class="dz-btn" href="v1-engagements.html">Découvrez nos valeurs<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a></div></div><div class="dz-fig"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><p>Une même exigence, de l’agilité à l’intelligence artificielle.</p></div></div></div></section>
+<section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz dz2 rv4"><div class="dz-t"><h2 class="dz-h">Depuis 20&nbsp;ans, nous transformons les&nbsp;SI. <span class="dz-r">Construisons ensemble les 20&nbsp;prochaines&nbsp;années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. <span class="nb">L’IA ne fera pas exception.</span></p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li></ul><div class="dz-ctas"><a class="dz-btn" href="v1-engagements.html">Découvrez nos valeurs<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a></div></div><div class="dz-fig"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><p>Une même exigence, de l’agilité à l’intelligence artificielle.</p></div></div></div></section>
 
 <!-- 6 · Clients -->
 <section class="clients" id="clients">
