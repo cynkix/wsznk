@@ -1532,6 +1532,18 @@ html[data-theme="dark"] .contact,html[data-theme="dark"] .clients{background:tra
 @media (max-width:600px){.dz-chips li + li{margin-left:0}.dz-chips li + li::before{display:none}.dz-chips{gap:10px}}
 
 .dz .dz-h{max-width:none;font-size:clamp(24px,2.9vw,40px) !important}.dz .dz-r{white-space:nowrap}@media (max-width:760px){.dz .dz-r{white-space:normal}}
+
+.clients .top{margin-bottom:0 !important;padding-bottom:0 !important}
+.clients .wrap > h2.rv4,.clients .wrap .eyebrow{margin-bottom:0}
+.clients .marq{margin-top:22px !important}
+.clients .cl5-t{margin-top:22px !important}
+.cband{align-items:center !important}
+.cband > div:first-child{display:flex;align-items:center}
+.cband h2{margin:0 !important;font-weight:700 !important;font-size:clamp(38px,5vw,68px) !important;line-height:1.05 !important;letter-spacing:-.02em !important;color:#fff}
+
+.contact .form .btn{width:100% !important;height:52px !important;background:linear-gradient(90deg,#EE2238,#BF1D67) !important;color:#fff !important;font-family:var(--display);font-weight:600 !important;font-size:17px !important;letter-spacing:0 !important;text-transform:none !important;gap:14px !important}
+.contact .form .btn i{width:34px !important;height:34px !important;border-radius:50% !important;background:#fff !important;color:#EE2238 !important}
+.contact .form .btn svg{width:14px !important;height:14px !important}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1589,17 +1601,13 @@ html[data-theme="dark"] .contact,html[data-theme="dark"] .clients{background:tra
 <section class="contact" id="contact">
 <div class="wrap">
 <div class="cband rv">
-<div><span class="eyebrow" style="color:#FFE1E8">Parlons-en</span><h2 style="margin-top:14px">Ensemble, construisons les Systèmes d'Information des 20 prochaines années</h2><p class="lead">Une question, un projet ou un besoin de transformer votre organisation ? Dites-nous en quelques mots où vous en êtes.</p></div>
+<div><h2>Parlons-en</h2></div>
 <form class="form" id="form" aria-label="Formulaire de contact">
 <div class="two">
 <div class="f"><label for="nom">Nom</label><input id="nom" name="nom" type="text" placeholder="Jean Dupont" autocomplete="name"></div>
 <div class="f"><label for="ent">Entreprise</label><input id="ent" name="ent" type="text" placeholder="Votre entreprise" autocomplete="organization"></div>
 </div>
 <div class="f"><label for="mail">Email professionnel</label><input id="mail" name="mail" type="email" placeholder="jean.dupont@entreprise.com" autocomplete="email"></div>
-<div class="f"><span class="l" id="sujet-l">Votre sujet</span>
-<div class="chips" role="group" aria-labelledby="sujet-l">
-<button type="button" class="chip" aria-pressed="true">IA</button><button type="button" class="chip" aria-pressed="false">Modernisation</button><button type="button" class="chip" aria-pressed="false">Cloud / plateforme</button><button type="button" class="chip" aria-pressed="false">Data</button><button type="button" class="chip" aria-pressed="false">Autre</button>
-</div></div>
 <div class="f"><label for="msg">Message (facultatif)</label><textarea id="msg" name="msg" placeholder="Vos enjeux, votre calendrier…"></textarea></div>
 <button class="btn" type="submit">Envoyer ma demande<i><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></button>
 <p class="sent" role="status">Prototype : la demande n'est pas réellement envoyée.</p>
