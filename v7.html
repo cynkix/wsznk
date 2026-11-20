@@ -1722,6 +1722,10 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 .cult .cv-grid li{padding-top:16px !important;padding-bottom:18px !important}
 .cult .cv-grid h3{line-height:1.2 !important}
 .cult .cv-grid p{margin-top:3px !important;line-height:1.4 !important;font-size:15px !important}
+
+/* V6 : Z 3D plus transparent, davantage encore sur « Nos convictions techniques » (sans fond de page) */
+.zv{opacity:.6;transition:opacity .5s ease}
+body.cv-on .zv{opacity:.22}
 </style>
 
 <header class="hdr" id="hdr">
@@ -2226,5 +2230,10 @@ h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect(); h.
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
   addEventListener('resize',upd);upd();
 })();
+</script>
+<script>
+(function(){var c=document.getElementById('culture'); if(!c) return;
+function u(){var r=c.getBoundingClientRect(),vh=innerHeight; document.body.classList.toggle('cv-on', r.top<vh*.7 && r.bottom>vh*.3);}
+addEventListener('scroll',u,{passive:true}); addEventListener('resize',u); u();})();
 </script>
 </body></html>

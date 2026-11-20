@@ -288,6 +288,21 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 .cvx .cv-grid li{padding-top:16px !important;padding-bottom:18px !important}
 .cvx .cv-grid h3{line-height:1.2 !important}
 .cvx .cv-grid p{margin-top:3px !important;line-height:1.4 !important;font-size:15px !important}
+
+/* Chronomètre « Depuis 20 ans » : frise 2006 → aujourd'hui (repris de la page Nos engagements) */
+.dmx{margin-top:clamp(28px,3.4vw,44px)}
+.dmx-in{display:grid;gap:16px;padding:clamp(22px,2.6vw,34px) clamp(22px,3vw,40px);border-radius:var(--radius-zika,32px);background:var(--wash,#fff);box-shadow:var(--shadozika,0 20px 50px -20px rgba(0,0,0,.2))}
+.dmx-row{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:20px}
+.dmx-row b{font-family:var(--display);font-weight:700;font-size:15px}
+.dmx-trk{position:relative;height:8px;border-radius:8px;background:rgba(120,125,140,.18);overflow:hidden}
+.dmx-trk i{position:absolute;top:0;bottom:0;left:var(--l);width:var(--w);border-radius:8px;transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.22,1,.36,1) .3s}
+.dmx.in .dmx-trk i{transform:none}
+.dmx-axis{position:relative;margin:2px 0 0 170px;display:flex;justify-content:space-between;font-family:var(--display);font-weight:700;font-size:14px;padding-top:18px}
+.dmx-axis::before{content:"";position:absolute;left:0;right:0;top:4px;height:1px;background:rgba(120,125,140,.35)}
+.dmx-axis::after{content:"";position:absolute;left:0;top:0;width:9px;height:9px;border-radius:50%;background:#E2001A}
+.dmx-axis .m{position:absolute;left:50%;transform:translateX(-50%);color:#E2001A;letter-spacing:.12em;font-size:13px}
+@media (max-width:700px){.dmx-row{grid-template-columns:96px minmax(0,1fr);gap:12px}.dmx-axis{margin-left:108px}}
+@media (prefers-reduced-motion:reduce){.dmx-trk i{transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -351,6 +366,14 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 <div class="row"><a class="btn" href="v1-engagements.html">Découvrez nos valeurs<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a></div>
 </div>
 <div class="rv free"><div class="card an-card" style="--d:1"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><p>Une même exigence, de l’agilité à l’intelligence artificielle.</p></div></div>
+</div>
+<div class="rv free dmx"><div class="dmx-in" aria-label="Notre histoire en un chronomètre : de 2006 à aujourd'hui">
+<div class="dmx-row"><b>Agile</b><div class="dmx-trk"><i style="--l:0%;--w:100%;background:linear-gradient(90deg,#E2001A,#C01B6B)"></i></div></div>
+<div class="dmx-row"><b>Craft &amp; DevOps</b><div class="dmx-trk"><i style="--l:28%;--w:72%;background:linear-gradient(90deg,#E2001A,#B3226E)"></i></div></div>
+<div class="dmx-row"><b>Cloud &amp; Data</b><div class="dmx-trk"><i style="--l:48%;--w:52%;background:linear-gradient(90deg,#E2001A,#B3226E)"></i></div></div>
+<div class="dmx-row"><b>IA</b><div class="dmx-trk"><i style="--l:70%;--w:30%;background:linear-gradient(90deg,#F59E0B,#EF4444)"></i></div></div>
+<div class="dmx-axis"><span class="a">2006</span><span class="m">20 ANS</span><span class="z">Aujourd’hui</span></div>
+</div></div>
 </div></div>
 </section>
 
