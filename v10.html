@@ -1715,9 +1715,8 @@ html[data-theme="dark"] .tl20-top{background:rgba(14,16,21,.8)}
 .zx-w{max-width:1240px}
 .zx-h{margin:0 auto;max-width:21em;text-align:center;font-family:var(--display);font-weight:700;font-size:clamp(28px,3.6vw,50px);line-height:1.12;letter-spacing:-.015em;color:var(--ink)}
 .zx-h,.zx-h2,.zx-intro p{position:relative;z-index:5}
-.zx-h{background:radial-gradient(ellipse 60% 62% at center,var(--white,#fff) 58%,transparent 100%);padding:14px 2%}
-.zx-h,.zx-h2{text-shadow:0 0 22px var(--bg,#fff),0 0 10px var(--bg,#fff),0 0 4px var(--bg,#fff)}
-.zx-g{text-shadow:none;background:linear-gradient(86deg,#EE2238 6%,#BF1D67 94%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.zx-h{padding:14px 2%}
+.zx-g{background:linear-gradient(86deg,#EE2238 6%,#BF1D67 94%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .zx-card{margin-top:clamp(28px,3.4vw,48px);padding:clamp(18px,2.4vw,32px) clamp(20px,3vw,44px);border-radius:var(--radius-zika,32px);background:var(--wash,#fff);box-shadow:var(--shadozika,0 20px 50px -20px rgba(0,0,0,.2))}
 .zx-hd,.zx-row{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1.25fr);align-items:center;column-gap:12px}
 .zx-hd{padding:0 0 12px;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -1777,6 +1776,13 @@ html[data-theme="dark"] .tl20-top{background:rgba(14,16,21,.8)}
 @media (max-width:1100px){.zx-flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 22px}.zx-flow::before,.zx-flow::after{display:none}}
 @media (max-width:760px){.zx-flow{grid-template-columns:minmax(0,1fr);gap:0}.zx-flow::before{display:block;left:27px;right:auto;top:28px;bottom:28px;width:2px;height:auto}.zx-flow::after{display:none}.zx-way .zx-flow li.zx-st{display:grid;grid-template-columns:56px 1fr;column-gap:18px;padding-bottom:26px}.zx-st:last-child{padding-bottom:0}.zx-nd{grid-row:1/4;align-self:start}.zx-n{align-self:end}.zx-n{margin:2px 0 2px}.zx-d{margin-top:4px}}
 @media (prefers-reduced-motion:reduce){.zx-nd{opacity:1;transform:none;transition:none}.zx-flow::after{transform:none;transition:none}}
+
+/* logos clients : toujours dans une carte blanche, aussi en mode sombre */
+html[data-theme="dark"] .mtrack div{background:#fff !important;border-color:transparent !important}
+html[data-theme="dark"] .mtrack div img{filter:none !important;opacity:1 !important}
+
+/* mode sombre : cartes lisibles sur le fond */
+html[data-theme="dark"] .zx-card,html[data-theme="dark"] .zx-of{background:#14171E;box-shadow:0 22px 50px rgba(0,0,0,.4);outline:1px solid rgba(255,255,255,.07);outline-offset:-1px}
 </style>
 
 <header class="hdr" id="hdr">
