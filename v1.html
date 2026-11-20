@@ -1592,12 +1592,17 @@ html[data-theme="dark"] .cult .cv-pills li{border-color:rgba(255,255,255,.6)}
 .cult[data-prop="b"] .cv-grid li:last-child p{margin-top:3px}
 html[data-theme="dark"] .cult[data-prop="b"] .cv-grid{background:var(--surface)}
 /* C : cartes numérotées */
-.cult[data-prop="c"] .cv-grid{column-gap:22px;row-gap:22px}
-.cult[data-prop="c"] .cv-grid li{border-top:0;padding:32px 34px 34px;border-radius:var(--radius-zika);background:var(--wash);box-shadow:var(--shadozika)}
+.cult[data-prop="c"] .cv-grid{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px;row-gap:16px}
+.cult[data-prop="c"] .cv-grid li:last-child{grid-column:span 2 !important}
+.cult[data-prop="c"] .cv-grid li,.cult[data-prop="c"] .cv-grid li:last-child{text-align:left;border-top:0;padding:22px 22px 24px;border-radius:var(--radius-zika);background:var(--wash);box-shadow:var(--shadozika)}
+.cult[data-prop="c"] .cv-grid li:last-child h3,.cult[data-prop="c"] .cv-grid li:last-child p{margin-left:0;margin-right:0;max-width:none}
 html[data-theme="dark"] .cult[data-prop="c"] .cv-grid li{background:var(--surface)}
-.cult[data-prop="c"] .cv-grid li::before{counter-increment:cv;content:counter(cv,decimal-leading-zero);display:block;margin-bottom:12px;font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.14em;color:#E2001A}
+.cult[data-prop="c"] .cv-grid li::before{content:none}
+.cult[data-prop="c"] .cv-grid h3{font-size:clamp(16px,1.25vw,18px);line-height:1.3}
+.cult[data-prop="c"] .cv-grid p{margin-top:6px;font-size:14.5px;line-height:1.45}
+@media (max-width:1100px){.cult[data-prop="c"] .cv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .cult[data-prop="c"] .cv-pills li{border-color:transparent;background:var(--wash);box-shadow:var(--shadozika)}
-@media (max-width:760px){.cult .cv-grid{grid-template-columns:minmax(0,1fr)}.cult .cv-grid li:last-child{text-align:left}.cult[data-prop="c"] .cv-grid li{padding:26px 24px 28px}}
+@media (max-width:760px){.cult .cv-grid{grid-template-columns:minmax(0,1fr)}.cult .cv-grid li:last-child{text-align:left}.cult[data-prop="c"] .cv-grid{grid-template-columns:minmax(0,1fr)}.cult[data-prop="c"] .cv-grid li:last-child{grid-column:auto !important}.cult[data-prop="c"] .cv-grid li,.cult[data-prop="c"] .cv-grid li:last-child{padding:20px 20px 22px}}
 </style>
 
 <header class="hdr" id="hdr">
