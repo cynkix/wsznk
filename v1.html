@@ -1976,7 +1976,7 @@ sel.addEventListener('change',function(){var id=sel.value;
 /* zk-morph : Z -> case cochée -> horloge, selon la section et le scroll */
 (function(){
   var zm=document.getElementById('zm'); if(!zm) return;
-  var ids=['top-z','sequence','solutions','histoire','clients','contact'], K=[0,0,1,2,3,3];
+  var ids=['top-z','sequence','solutions','histoire','clients','contact'], K=[0,0,1,0,3,3];
   var secs=ids.map(function(i){return document.getElementById(i);});
   var dark=function(){return document.documentElement.getAttribute('data-theme')==='dark';};
   function upd(){
