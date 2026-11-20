@@ -1783,6 +1783,17 @@ html[data-theme="dark"] .mtrack div img{filter:none !important;opacity:1 !import
 
 /* mode sombre : cartes lisibles sur le fond */
 html[data-theme="dark"] .zx-card,html[data-theme="dark"] .zx-of{background:#14171E;box-shadow:0 22px 50px rgba(0,0,0,.4);outline:1px solid rgba(255,255,255,.07);outline-offset:-1px}
+
+/* Façon de travailler : parallaxe douce + onde qui parcourt les étapes */
+.zx-way{background-size:150% 150%;background-position:calc(var(--wp,.5) * 100%) 50%}
+.zx-nd{translate:0 calc((.5 - var(--wp,.5)) * (14px + var(--i) * 7px))}
+.zx-n,.zx-st b,.zx-d{translate:0 calc((.5 - var(--wp,.5)) * 6px)}
+.zx-nd::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;opacity:0;pointer-events:none}
+.zx-way.in .zx-nd::after{animation:zxring 4.5s ease-out infinite;animation-delay:calc(1.6s + var(--i) * .6s)}
+@keyframes zxring{0%{transform:scale(1);opacity:.65}35%,100%{transform:scale(1.7);opacity:0}}
+.zx-way.in .zx-nd .zx-ic{animation:zxbob 4.5s ease-in-out infinite;animation-delay:calc(1.6s + var(--i) * .6s)}
+@keyframes zxbob{0%,30%,100%{transform:none}12%{transform:translateY(-2px) scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.zx-way{background-position:50% 50%}.zx-nd,.zx-n,.zx-st b,.zx-d{translate:none}.zx-nd::after,.zx-way.in .zx-nd .zx-ic{animation:none}}
 </style>
 
 <header class="hdr" id="hdr">
@@ -2225,6 +2236,14 @@ function draw(p){f.style.width=(p*100)+'%';d.style.left=(p*100)+'%';y.textConten
 function loop(){var g=reduce?1:target();cur+=(g-cur)*.14;if(Math.abs(g-cur)<.001)cur=g;draw(cur);raf=(cur!==g)?requestAnimationFrame(loop):0;}
 function kick(){if(!raf)raf=requestAnimationFrame(loop);}
 addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);kick();
+})();
+</script>
+<script>
+(function(){var el=document.querySelector('.zx-way');if(!el)return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var tick=false;function upd(){tick=false;var r=el.getBoundingClientRect(),vh=innerHeight;
+var p=(vh-r.top)/(vh+r.height);p=Math.max(0,Math.min(1,p));el.style.setProperty('--wp',p.toFixed(3));}
+addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});addEventListener('resize',upd);upd();
 })();
 </script>
 </body></html>
