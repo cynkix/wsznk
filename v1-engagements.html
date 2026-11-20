@@ -1366,6 +1366,27 @@ effect-3d-morph{opacity:.9}
 
 /* ombre des boutons (maquette Figma « Link:shadow ») */
 .zl-go,.lnk,.btn-arrow,.dm-more a,.dm-adn,.btn,.ghost,.fcta,.zl-go:hover,.lnk:hover,.btn-arrow:hover,.dm-more a:hover,.dm-adn:hover,.btn:hover,.ghost:hover,.fcta:hover{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1) !important}
+
+/* ancienne section démarche (20 ans) */
+.dem{background:transparent !important}
+.dm-trk i{transform:scaleX(var(--r,0)) !important;transition:none !important;will-change:transform}
+.dm-row:nth-child(1) .dm-trk i{--r:var(--r1,0)}
+.dm-row:nth-child(2) .dm-trk i{--r:var(--r2,0)}
+.dm-row:nth-child(3) .dm-trk i{--r:var(--r3,0)}
+.dm-axis::before{clip-path:inset(0 calc((1 - var(--ra,0)) * 100%) 0 0)}
+.dm-axis::after{opacity:var(--ra,0)}
+.dm-axis .m,.dm-axis .a,.dm-axis .z{opacity:var(--ra,0)}
+@media (prefers-reduced-motion: reduce){.dm-trk i{transform:none !important}.dm-axis::before{clip-path:none}.dm-axis::after,.dm-axis .m,.dm-axis .a,.dm-axis .z{opacity:1}}
+.dem-lead .dm-adn{display:inline-flex;align-items:center;gap:8px;margin-left:14px;white-space:nowrap;vertical-align:baseline;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#E2001A;text-decoration:none}
+.dem-lead .dm-adn:hover{text-decoration:underline}
+.dem-lead .dm-adn .arrow{width:16px;height:16px;flex:none}
+.dem-lead .dm-adn{display:flex !important;width:fit-content;margin:18px 0 0 auto !important}
+.dem-card .dm-bars{margin-top:44px !important}
+.dem-card .dm-vals{margin-top:56px !important;padding-top:48px;border-top:1px solid rgba(120,125,140,.2)}
+.dem-card .dm-more{justify-content:flex-end !important;margin-top:44px !important}
+.dem-card .dm-sep{display:flex;align-items:center;gap:18px;margin:56px 0 0;font-family:var(--display);font-weight:700;font-size:12px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dem-card .dm-sep::after{content:"";flex:1;height:1px;background:rgba(120,125,140,.25)}
+.dem-card .dm-vals{margin-top:36px !important;padding-top:0 !important;border-top:0 !important}
 </style>
 
 <header class="hdr" id="hdr">
@@ -1383,6 +1404,8 @@ effect-3d-morph{opacity:.9}
 
 
 <!-- 7 · Contact -->
+<section class="dem" id="histoire"><div class="wrap"><div class="dem-card rv4"><h2>Notre démarche est le fruit de 20 ans d'expérience</h2><p class="dem-lead">Depuis notre création en 2006, nous avons traversé avec nos clients <strong>transformations, évolutions et révolutions</strong>, nous préparant aujourd'hui pour le virage de l'intelligence artificielle, tout en restant fidèles à nos valeurs cardinales. <a class="dm-adn" href="v1-adn.html">Découvrir notre ADN <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p><div class="dm-bars"><div class="dm-row"><b>Agile</b><div class="dm-trk"><i style="--l:0%;--w:100%;background:linear-gradient(90deg,#E2001A,#C01B6B)"></i></div></div><div class="dm-row"><b>Craft &amp; DevOps</b><div class="dm-trk"><i style="--l:28%;--w:72%;background:linear-gradient(90deg,#E2001A,#B3226E)"></i></div></div><div class="dm-row"><b>iA</b><div class="dm-trk"><i style="--l:70%;--w:30%;background:linear-gradient(90deg,#F59E0B,#EF4444)"></i></div></div><div class="dm-axis"><span class="a">2006</span><span class="m">20 ANS</span><span class="z">Aujourd'hui</span></div></div><p class="dm-sep" aria-hidden="true">Nos valeurs cardinales</p><div class="dm-vals"><ul><li class="rv4" style="--i:0;--c:#16A34A"><span class="dm-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14M5 19c3-4 6-6 9-7"/></svg></span><div><b>Numérique responsable</b><p>Bilan carbone sur tous nos volets (2019), démarche de sobriété et conception durable.</p></div></li><li class="rv4" style="--i:1;--c:#2563EB"><span class="dm-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><div><b>Tech for good</b><p>Des solutions tech au service de l'humain, de la société et du climat.</p></div></li><li class="rv4" style="--i:2;--c:#7C3AED"><span class="dm-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5M15 15c3 0 5.5 1.5 5.5 4"/></svg></span><div><b>Égalité des chances</b><p>50/50 à tous les échelons, recrutement sans biais, accompagnement de carrière pour chaque collaborateur.</p></div></li><li class="rv4" style="--i:3;--c:#EA580C"><span class="dm-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><b>Éthique et transparence</b><p>Gouvernance claire, charte éthique, et exigence de transparence dans toutes nos pratiques.</p></div></li></ul></div></div></div></section>
+
 <section class="contact" id="contact">
 <div class="wrap">
 <div class="cband rv">
@@ -1642,5 +1665,18 @@ sel.addEventListener('change',function(){var id=sel.value;
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{rootMargin:'0px 0px -12% 0px',threshold:0.12});
   els.forEach(function(e){io.observe(e);});
 })();
+</script>
+<script>
+/* démarche : progression des lignes liée au scroll */
+(function(){var bars=document.querySelector('.dm-bars');if(!bars)return;
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function c(x){return x<0?0:x>1?1:x}
+function u(){var r=bars.getBoundingClientRect(),h=window.innerHeight;
+var p=reduce?1:c((h*0.92-r.top)/(h*0.55));
+bars.style.setProperty('--r1',c(p*1.6).toFixed(3));
+bars.style.setProperty('--r2',c(p*1.6-0.3).toFixed(3));
+bars.style.setProperty('--r3',c(p*1.6-0.6).toFixed(3));
+bars.style.setProperty('--ra',c(p*1.5-0.5).toFixed(3));}
+window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
 </script>
 </body></html>
