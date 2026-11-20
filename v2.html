@@ -1515,15 +1515,14 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 .contact .wrap{padding-block:96px !important}
 @media (max-width:900px){.contact .wrap{padding-block:56px !important}}
 
-/* clients : même traitement que la V7 (fond uni, cartes logos en relief, ombres non rognées) */
-.clients{background:#f8fafc !important;position:relative;z-index:1;overflow:visible}
-html[data-theme="dark"] .clients{background:#12141A !important}
-.clients .marq{overflow:hidden}
-.clients .mtrack{padding:30px 0 56px !important;gap:16px}
-.clients .mtrack div{border-radius:20px !important;border:1px solid #dde3ec;background:#fff !important;box-shadow:0px 25px 50px -12px rgba(0,0,0,.25) !important}
-html[data-theme="dark"] .clients .mtrack div{border-color:rgba(255,255,255,.12);background:#1b1f2a !important}
-.clients .wrap{padding-bottom:0 !important}
-.clients{padding-bottom:0 !important}
+/* offres : composant de la V7 (lignes de séparation + pastilles « + » sur les lignes) */
+.sl4-acc{background:linear-gradient(135deg,#E30038 0%,#BF1D67 100%) !important;border:0 !important;padding:clamp(20px,2.2vw,30px) clamp(24px,2.8vw,38px) !important;justify-content:flex-start !important}
+.sl4-acc b{flex:1 1 auto;display:flex !important;flex-direction:column;justify-content:center;background:transparent !important;color:#fff !important;border-radius:0 !important;padding:20px 0 !important;font-size:clamp(17px,1.4vw,20px) !important}
+.sl4-acc b:has(+ .plus){border-bottom:1px solid rgba(255,255,255,.35)}
+.sl4-acc b .sl4-d{color:rgba(255,255,255,.85) !important}
+.sl4-acc .plus{background:#fff !important;width:28px !important;height:28px !important;margin:-14px auto !important;z-index:2;box-shadow:0 4px 10px rgba(0,0,0,.18)}
+.sl4-acc .plus::before,.sl4-acc .plus::after{background:#e60039 !important}
+.sl4-acc .plus::before{width:12px !important;height:2px !important}.sl4-acc .plus::after{width:2px !important;height:12px !important}
 </style>
 
 <header class="hdr" id="hdr">
