@@ -1976,13 +1976,14 @@ sel.addEventListener('change',function(){var id=sel.value;
 /* zk-morph : Z -> case cochée -> horloge, selon la section et le scroll */
 (function(){
   var zm=document.getElementById('zm'); if(!zm) return;
-  var ids=['top-z','sequence','solutions','histoire','clients','contact'], K=[0,0,1,0,3,3];
+  var ids=['top-z','sequence','solutions','culture','histoire','clients','contact'], K=[0,0,1,0,2,3,3];
   var secs=ids.map(function(i){return document.getElementById(i);});
   var dark=function(){return document.documentElement.getAttribute('data-theme')==='dark';};
   function upd(){
     var vh=innerHeight, m=K[0];
     /* forme franche : celle de la section qui occupe le milieu de l'écran (pas d'état intermédiaire) */
-    secs.forEach(function(e,i){ if(e && e.getBoundingClientRect().top<=vh*.5) m=K[i]; });
+    var T=[.5,.5,.5,.9,.5,.5,.5];
+    secs.forEach(function(e,i){ if(e && e.getBoundingClientRect().top<=vh*T[i]) m=K[i]; });
     zm.setMorph&&zm.setMorph(m);
     zm.setPlace&&zm.setPlace(0);
     var th=dark()?'gradient':'clair'; if(zm.getAttribute('theme')!==th) zm.setAttribute('theme',th);
