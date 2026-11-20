@@ -66,7 +66,15 @@
     }
     disconnectedCallback() { cancelAnimationFrame(this._raf); this._ro && this._ro.disconnect(); this._onMove && window.removeEventListener('pointermove', this._onMove); this._started = false; }
     attributeChangedCallback() { if (this._T && this._lines) this._applyTheme(); }
-    setMorph(v) { this._mt = Math.max(0, Math.min(SHAPES.length - 1, v)); }
+    setMorph(v) {
+      v = Math.max(0, Math.min(SHAPES.length - 1, v));
+      if (v === this._mt || !this._cur) { this._mt = v; return; }
+      // transition directe de la forme courante vers la forme cible (sans repasser par les formes intermédiaires)
+      this._from = Float32Array.from(this._cur); this._mFrom = this._m; this._mt = v;
+      const a = Math.min(SHAPES.length - 2, Math.floor(v)), f0 = v - a, A = SHAPES[a], B = SHAPES[a + 1];
+      this._to = new Float32Array(A.length); for (let i = 0; i < A.length; i++) this._to[i] = A[i] + (B[i] - A[i]) * f0;
+      this._u = 0; this._k = -1;
+    }
     setPlace(k) { this._pt = Math.max(0, Math.min(1, k)); }
     get theme() { return this.getAttribute('theme') || 'clair'; }
     _init(T) {
@@ -95,7 +103,7 @@
         const k01 = n > 1 ? i / (n - 1) : 0.5;
         this._lines.push({ line, geo, mat, i, oz: (0.5 - k01) * spacing, birth: 0.3 + i * (2.2 / n), rnd: 1 - k01 * 0.6 });
       }
-      this._m = 0; this._mt = 0; this._p = 0; this._pt = 0; this._k = -1;
+      this._m = 0; this._mt = 0; this._p = 0; this._pt = 0; this._k = -1; this._cur = Float32Array.from(SHAPES[0]); this._from = this._cur; this._to = this._cur; this._u = 1; this._mFrom = 0;
       this._applyTheme();
       this._ro = new ResizeObserver(() => this._resize()); this._ro.observe(this); this._resize();
       this._mx = this._my = this._sx = this._sy = 0;
@@ -125,15 +133,17 @@
       this._k = -1;
     }
     _tick(t, dt) {
-      this._m += (this._mt - this._m) * Math.min(1, dt * 3.2);
+      this._u += (1 - this._u) * Math.min(1, dt * 3.2); if (1 - this._u < 1e-3) this._u = 1;
+      this._m = this._mFrom + (this._mt - this._mFrom) * this._u;
       this._p += (this._pt - this._p) * Math.min(1, dt * 3.2);
-      // forme courante (mélange de deux formes voisines)
-      if (Math.abs(this._m - this._k) > 1e-4) {
-        this._k = this._m;
-        const a = Math.min(SHAPES.length - 2, Math.floor(this._m)), f0 = this._m - a, f = f0 * f0 * (3 - 2 * f0), A = SHAPES[a], B = SHAPES[a + 1];
+      // forme courante : mélange direct entre la forme de départ et la forme cible
+      if (Math.abs(this._u - this._k) > 1e-4) {
+        this._k = this._u;
+        const f = this._u * this._u * (3 - 2 * this._u), A = this._from, B = this._to, cur = this._cur;
+        for (let k = 0; k <= SEG; k++) { cur[2 * k] = A[2 * k] + (B[2 * k] - A[2 * k]) * f; cur[2 * k + 1] = A[2 * k + 1] + (B[2 * k + 1] - A[2 * k + 1]) * f; }
         this._lines.forEach((L) => {
           const pos = L.geo.attributes.position.array;
-          for (let k = 0; k <= SEG; k++) { pos[3 * k] = A[2 * k] + (B[2 * k] - A[2 * k]) * f; pos[3 * k + 1] = A[2 * k + 1] + (B[2 * k + 1] - A[2 * k + 1]) * f; pos[3 * k + 2] = L.oz; }
+          for (let k = 0; k <= SEG; k++) { pos[3 * k] = cur[2 * k]; pos[3 * k + 1] = cur[2 * k + 1]; pos[3 * k + 2] = L.oz; }
           L.geo.attributes.position.needsUpdate = true;
         });
       }
