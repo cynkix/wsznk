@@ -307,10 +307,11 @@ html[data-theme="light"] .fbot{border-top-color:#dde3ec}
 /* Depuis 20 ans : petite bille qui tourne autour du badge, comme une aiguille (le temps qui passe) */
 .an-card .orb{position:relative;display:block;width:min(260px,70%);aspect-ratio:1}
 .an-card .orb img{width:100%;height:100%}
-.orb-h{position:absolute;inset:-14px;border-radius:50%;animation:orbspin 24s linear infinite;pointer-events:none}
-.orb-h b{position:absolute;left:50%;top:0;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#E2001A;box-shadow:0 0 0 4px rgba(226,0,26,.14),0 2px 8px rgba(226,0,26,.45)}
+.orb-h{position:absolute;inset:11px;border-radius:50%;opacity:0;transition:opacity .8s ease .5s;pointer-events:none}
+.rv.in .orb-h{opacity:1;animation:orbspin 24s linear 0.5s infinite}
+.orb-h b{position:absolute;left:50%;top:0;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.2),0 1px 6px rgba(120,0,40,.35)}
 @keyframes orbspin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.orb-h{animation:none}}
+@media (prefers-reduced-motion:reduce){.rv.in .orb-h{animation:none}}
 </style>
 </head>
 <body>
