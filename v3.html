@@ -1630,6 +1630,9 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 /* constat → solutions : respiration entre les deux sections */
 #sequence + #solutions.sl4{padding-top:84px !important}
 @media (max-width:900px){#sequence + #solutions.sl4{padding-top:56px !important}}
+
+/* V3 : sous-titre du hero plus lisible */
+.zin .zl-sub{font-weight:600 !important;color:#2A3140 !important;text-shadow:0 0 14px rgba(255,255,255,.95),0 0 4px rgba(255,255,255,.9)}
 </style>
 
 <header class="hdr" id="hdr">
@@ -2127,7 +2130,7 @@ window.addEventListener('scroll',u,{passive:true});window.addEventListener('resi
 <script>
 /* V3 : la forme 3D s'estompe au scroll */
 (function(){var z=document.querySelector('.zv');if(!z)return;z.style.transition='opacity .25s linear';var t=false;
-function u(){t=false;var p=Math.max(0,Math.min(1,scrollY/(innerHeight*.7)));z.style.opacity=(1-.72*p).toFixed(2);}
+function u(){t=false;var p=Math.max(0,Math.min(1,scrollY/(innerHeight*.7)));z.style.opacity=(.82-.58*p).toFixed(2);}
 addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u);}},{passive:true});u();})();
 </script>
 </body></html>
