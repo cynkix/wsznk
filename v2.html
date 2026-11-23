@@ -1542,6 +1542,25 @@ html[data-theme="dark"] .cult-card{background:var(--surface)}
 .dz2 .dz-chips{gap:10px !important}.dz2 .dz-chips li + li{margin-left:0 !important}.dz2 .dz-chips li + li::before{display:none !important}
 .dz2 .dz-ctas .dz-more{text-align:left !important}
 @media (max-width:900px){.dz.dz2{grid-template-columns:minmax(0,1fr)}}
+/* Carte « 20 ans » en carrousel de 4 images */
+.dz2 .dzc{gap:14px}
+.dzc-stage{display:grid;width:100%}
+.dzs{grid-area:1/1;margin:0;display:grid;place-items:center;align-content:center;gap:16px;text-align:center;opacity:0;visibility:hidden;transition:opacity .5s ease,visibility .5s}
+.dzs.on{opacity:1;visibility:visible}
+.dzs figcaption{max-width:20em;font-size:15.5px;line-height:1.55;color:#566176}
+.dzs figcaption strong{font-family:var(--display,inherit);font-weight:600;font-size:18px;color:#1B2230}
+.dz2 .dzs img{width:min(260px,70%);height:auto;display:block}
+.dz2 .dzs img.dzs-ph{width:min(260px,70%);aspect-ratio:1;object-fit:cover;border-radius:50%}
+.dzs-ag{width:min(300px,100%);display:grid;gap:14px;justify-items:center}
+.dzs-ag b{font-family:var(--display,inherit);font-weight:600;font-size:20px;color:#1B2230}
+.dzs-ag ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.dzs-ag li{padding:6px 12px;border-radius:999px;border:1px solid #e3e7ee;font-size:14px;color:#3A4254;background:#fff}
+.dzc-dots{display:flex;gap:8px;justify-content:center}
+.dzc-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:#cfd4de;cursor:pointer;transition:background .2s,transform .2s}
+.dzc-dots button.on{background:#EE2238;transform:scale(1.25)}
+.dzc-dots button:focus-visible{outline:2px solid #EE2238;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.dzs{transition:none}}
+
 
 /* constat : moins de vide sous l'accueil, apparition plus tôt, léger parallaxe */
 @media (min-width:901px){.cst{margin-top:clamp(-190px,-13vw,-70px) !important}}
@@ -1713,7 +1732,7 @@ html[data-theme="dark"] .contact .cband h2,html[data-theme="dark"] .contact .cba
 
 
 <!-- 5 · Histoire -->
-<section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz dz2 rv4"><div class="dz-t"><h2 class="dz-h">Depuis 20&nbsp;ans, nous transformons les&nbsp;SI. <span class="dz-r">Construisons ensemble les 20&nbsp;prochaines&nbsp;années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. <span class="nb">L’IA ne fera pas exception.</span></p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li></ul><div class="dz-ctas"><a class="dz-btn" href="v1-engagements.html">Découvrez nos valeurs<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a></div></div><div class="dz-fig"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><p>Une même exigence, de l’agilité à l’intelligence artificielle.</p></div></div></div></section>
+<section class="dem" id="histoire"><div class="wrap"><div class="dem-card dz dz2 rv4"><div class="dz-t"><h2 class="dz-h">Depuis 20&nbsp;ans, nous transformons les&nbsp;SI. <span class="dz-r">Construisons ensemble les 20&nbsp;prochaines&nbsp;années.</span></h2><p class="dz-p">Les technologies changent, nos valeurs restent. Chaque transformation, nous l’avons traversée avec nos clients, sans jamais transiger sur l’intégrité. <span class="nb">L’IA ne fera pas exception.</span></p><ul class="dz-chips"><li>Agilité</li><li>Craft &amp; DevOps</li><li>Cloud &amp; Data</li><li class="on">IA</li></ul><div class="dz-ctas"><a class="dz-btn" href="v1-engagements.html">Découvrez nos valeurs<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><a class="dz-ghost" href="https://jobs.zenika.com" target="_blank" rel="noopener">Rejoignez-nous</a></div></div><div class="dz-fig dzc" role="group" aria-roledescription="carrousel" aria-label="Zenika en quatre images"><div class="dzc-stage"><figure class="dzs on"><img src="img/20ans.svg" alt="Zenika, 20 ans" width="260" height="260"><figcaption>Une même exigence, de l’agilité à l’intelligence artificielle.</figcaption></figure><figure class="dzs"><img class="dzs-ph" src="img/carl-azoury.jpg" alt="Portrait de Carl Azoury, fondateur de Zenika" width="260" height="260" loading="lazy"><figcaption><strong>Carl Azoury</strong><br>Fondateur de Zenika</figcaption></figure><figure class="dzs"><div class="dzs-ag"><b>11 agences en France</b><ul><li>Bordeaux</li><li>Brest</li><li>Clermont-Ferrand</li><li>Grenoble</li><li>Lille</li><li>Lyon</li><li>Nantes</li><li>Niort</li><li>Paris</li><li>Rennes</li><li>Toulouse</li></ul></div><figcaption>Au plus près de vos équipes.</figcaption></figure><figure class="dzs"><img class="dzs-pi" src="img/pictos-zenika.svg" alt="Pictogrammes Zenika autour du Z" width="260" height="260" loading="lazy"><figcaption>La tech et le digital, nos terrains de jeu.</figcaption></figure></div><div class="dzc-dots"><button type="button" class="on" aria-label="Image 1 sur 4"></button><button type="button" aria-label="Image 2 sur 4"></button><button type="button" aria-label="Image 3 sur 4"></button><button type="button" aria-label="Image 4 sur 4"></button></div></div></div></div></section>
 
 <!-- 6 · Clients -->
 <section class="clients" id="clients">
@@ -2105,5 +2124,17 @@ function loop(){var g=reduce?1:target();cur+=(g-cur)*.14;if(Math.abs(g-cur)<.001
 function kick(){if(!raf)raf=requestAnimationFrame(loop);}
 addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);kick();
 })();
+</script>
+<script>
+(function(){var c=document.querySelector('.dzc');if(!c)return;var s=c.querySelectorAll('.dzs'),d=c.querySelectorAll('.dzc-dots button'),i=0,t=null,rm=false;
+try{rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;}catch(e){}
+function go(n){i=(n+s.length)%s.length;for(var k=0;k<s.length;k++){s[k].classList.toggle('on',k===i);d[k].classList.toggle('on',k===i);}}
+function start(){if(rm||t)return;t=setInterval(function(){go(i+1);},5000);}
+function stop(){clearInterval(t);t=null;}
+for(var k=0;k<d.length;k++)(function(n){d[n].addEventListener('click',function(){go(n);stop();});})(k);
+c.addEventListener('mouseenter',stop);c.addEventListener('mouseleave',start);c.addEventListener('focusin',stop);c.addEventListener('focusout',start);
+var x0=null;c.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;stop();},{passive:true});
+c.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)go(i+(dx<0?1:-1));x0=null;},{passive:true});
+start();})();
 </script>
 </body></html>
