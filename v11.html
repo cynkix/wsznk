@@ -1756,7 +1756,8 @@ html[data-theme="dark"] .tl20-top{background:rgba(14,16,21,.8)}
 </section>
 
 <section class="sv" id="sequence">
-<div class="wrap"><div class="svp" role="tablist" aria-label="Propositions de présentation"><span class="svp-k">Propositions</span><button type="button" class="on" data-v="a" role="tab">A · Deux cartes</button><button type="button" data-v="b" role="tab">B · Éditorial</button><button type="button" data-v="c" role="tab">C · Deux colonnes</button></div></div>
+<div class="wrap"><div class="svp" role="tablist" aria-label="Propositions de présentation"><span class="svp-k">Propositions</span><button type="button" class="on" data-v="a" role="tab">A · Deux cartes</button><button type="button" data-v="b" role="tab">B · Une phrase</button><button type="button" data-v="c" role="tab">C · Deux colonnes</button></div></div>
+<div class="wrap svb"><div class="svb-card rv4"><h3 class="svb-h"><em>Nous maîtrisons la complexité</em> des SI et des organisations <em>pour traduire les investissements IT en valeur métier mesurable.</em></h3><ul class="svb-kw"><li>Données fragmentées</li><li>Architecture mille-feuilles</li><li>Silos organisationnels</li><li>Transformation permanente</li><li>Complexité croissante</li><li>Pression sur les coûts</li><li>Systèmes legacy</li><li>Alignement avec la stratégie d'entreprise</li><li>Sécurité, conformité, durabilité</li><li>Pertinence des logiciels pour les métiers</li><li>Bénéfices tangibles de l'IA</li><li>Réduction du time-to-market</li><li>Innovation continue</li></ul><h4 class="svb-t">Nos solutions</h4><div class="svb-cols"><ul class="sv-offs"><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>AI-augmented SDLC</b><span>Conception, analyse de code, test, documentation…</span></div></li><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>Lean Strike teams</b><span>Petites équipes expertes, rapides et autonomes</span></div></li><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>Platform engineering</b><span>Infra as a service, Portail, self service, automatisation</span></div></li><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>Product strategy &amp; discovery</b><span>Accélération du produit par les usages et la valeur</span></div></li><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>Performance-driven delivery</b><span>Mesure, DORA, brain intelligence, amélioration continue</span></div></li></ul><ul class="sv-offs sv-offs-r"><li class="sv-off sv-off-r"><div><b>AI for Business Performance</b><span>Déploiement de l'IA dans les applicatifs métier pour accélérer les opérations, améliorer les parcours et générer un impact mesurable.</span></div></li><li class="sv-off sv-off-r"><div><b>Data-driven Organization</b><span>Faire de la data un levier de décision, en maîtrisant la gouvernance, la plateforme et les usages métier. Créer de la valeur et tirer de la valeur.</span></div></li><li class="sv-off sv-off-r"><div><b>Cloud, from strategy to value</b><span>S'appuyer sur les services Cloud pour gagner en agilité, résilience et maîtrise des coûts, du cadrage à l'industrialisation.</span></div></li><li class="sv-off sv-off-r"><div><b>Modernisation des SI</b><span>Valoriser le legacy, rationaliser les architectures et moderniser étape par étape un SI plus simple, performant et durable.</span></div></li></ul></div></div></div>
 <div class="wrap sv-in">
 <article class="sv-card rv4">
 <h3><em>Nous maîtrisons la complexité</em> des SI et des organisations…</h3>
@@ -2380,4 +2381,24 @@ function setV(v){sec.classList.remove('v-b','v-c');if(v!=='a')sec.classList.add(
 sec.querySelectorAll('.svp button').forEach(function(b){b.addEventListener('click',function(){setV(b.dataset.v)})});
 })();
 </script>
+<style>
+/* B : phrase unique, mots-clés en bullets, puis « Nos solutions » */
+.svb{display:none}
+.sv.v-b .svb{display:block}
+.sv.v-b .sv-in{display:none}
+.svb-card{background:var(--wash,#fff);border-radius:var(--radius-zika,32px);box-shadow:var(--shadozika);padding:clamp(28px,4vw,56px) clamp(22px,4.6vw,64px)}
+.svb-h{margin:0;font-size:clamp(26px,3vw,42px);line-height:1.12;letter-spacing:-.02em;font-weight:700;color:var(--ink);max-width:26em}
+.svb-h em{font-style:normal;color:#E2001A}
+.svb-kw{list-style:none;margin:clamp(22px,3vw,36px) 0 0;padding:0;columns:3;column-gap:32px}
+.svb-kw li{break-inside:avoid;position:relative;padding:9px 0 9px 20px;border-bottom:1px solid var(--line,rgba(120,125,140,.25));font-size:15px;color:var(--muted)}
+.svb-kw li::before{content:"";position:absolute;left:0;top:18px;width:7px;height:7px;border-radius:50%;background:#E2001A}
+.svb-t{margin:clamp(30px,4vw,52px) 0 0;font-size:clamp(22px,2.2vw,30px);font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.svb-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(28px,5vw,72px);margin-top:10px}
+.svb-cols .sv-offs,.svb-cols .sv-offs-r{margin-top:0 !important;gap:0;align-content:start}
+.svb-cols .sv-off{padding:16px 0;border-bottom:1px solid var(--line,rgba(120,125,140,.25))}
+.svb-cols .sv-plus{width:30px;height:30px;box-shadow:none;border:1px solid var(--line,rgba(120,125,140,.4))}
+.svb-cols .sv-off b{font-size:17px}
+@media(max-width:900px){.svb-kw{columns:2}.svb-cols{grid-template-columns:1fr}}
+@media(max-width:560px){.svb-kw{columns:1}}
+</style>
 </body></html>
