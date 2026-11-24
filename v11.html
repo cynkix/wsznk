@@ -2508,4 +2508,9 @@ document.querySelectorAll('.svp button').forEach(function(b){b.addEventListener(
 .sv:not(.v-c) .sv-offs-r,.svb .svb-cols .sv-offs-r{gap:26px !important}
 .svb .svb-cols .sv-off-r{padding-top:0 !important;padding-bottom:0 !important}
 </style>
+<style>
+/* A et C : colonnes de mots-clés égales, moins d'espace au centre, rien ne dépasse */
+.sv .sv-dots,.sv .sv-chk{grid-template-columns:repeat(2,minmax(0,1fr)) !important;justify-content:stretch !important;column-gap:14px !important}
+.sv .sv-dots li,.sv .sv-chk li{min-width:0;overflow-wrap:anywhere}
+</style>
 </body></html>
