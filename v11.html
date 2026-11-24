@@ -2513,4 +2513,15 @@ document.querySelectorAll('.svp button').forEach(function(b){b.addEventListener(
 .sv .sv-dots,.sv .sv-chk{grid-template-columns:repeat(2,minmax(0,1fr)) !important;justify-content:stretch !important;column-gap:14px !important}
 .sv .sv-dots li,.sv .sv-chk li{min-width:0;overflow-wrap:anywhere}
 </style>
+<style>html,body{overflow-x:clip;max-width:100%}effect-3d-morph{max-width:100vw}</style>
+<style>
+/* mobile : frise lisible, listes en une colonne */
+@media(max-width:560px){
+.ct-row{height:auto !important;margin-bottom:12px}
+.ct-lab{position:static !important;display:block;white-space:nowrap;margin:0 0 3px 2px;font-size:13px}
+.ct-lab br{display:none}
+.ct-tl{padding-top:6px !important}
+.sv .sv-dots,.sv .sv-chk{grid-template-columns:minmax(0,1fr) !important}
+}
+</style>
 </body></html>
