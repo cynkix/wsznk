@@ -2408,4 +2408,19 @@ sec.querySelectorAll('.svp button').forEach(function(b){b.addEventListener('clic
 .cg li{border:0 !important;background:rgba(120,125,140,.12) !important}
 .cg-i li{background:linear-gradient(135deg,#EE2238,#C93B7E) !important}
 </style>
+<style>
+/* mots-clés : texte seul, sans fond ni contour */
+.sv.v-c .sv-dots li,.sv.v-c .sv-chk li{background:none !important;border:0 !important;padding:5px 0 !important;border-radius:0 !important}
+.sv.v-c .sv-dots,.sv.v-c .sv-chk{gap:6px 26px !important}
+.sv.v-c .sv-chk li{position:relative;padding-left:16px !important}
+.sv.v-c .sv-chk li::before{display:block !important;content:"";position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%;background:#E2001A;border:0;box-shadow:none;transform:none}
+.cg:not(.x) ul:not(.cg-i) li{background:none !important;padding:3px 0 !important;border-radius:0}
+.cg:not(.x) ul:not(.cg-i){gap:4px 22px}
+</style>
+<style>
+.sv.v-c .sv-dots,.sv.v-c .sv-chk{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 20px !important;justify-content:stretch !important}
+.sv.v-c .sv-chk li::before{top:.72em !important}
+@media(max-width:560px){.sv.v-c .sv-dots,.sv.v-c .sv-chk{grid-template-columns:1fr}}
+</style>
+<style>.sv.v-c .sv-chk li{display:block !important;align-self:start}.sv.v-c .sv-chk li::before{top:.62em !important}</style>
 </body></html>
