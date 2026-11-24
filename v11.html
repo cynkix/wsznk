@@ -2446,4 +2446,14 @@ sec.querySelectorAll('.svp button').forEach(function(b){b.addEventListener('clic
 <script>
 (function(){var r=document.querySelector('#ct20 .ct-rule');if(!r)return;var t=r.querySelectorAll('i');var n=t.length;t.forEach(function(e,i){e.style.setProperty('--d',(i/n*3.6).toFixed(2)+'s')})})();
 </script>
+<style>
+/* mots-clés de la carte valeur : puces rouges comme la colonne de gauche */
+.sv-chk{display:grid;grid-template-columns:repeat(2,auto);justify-content:space-between;gap:12px 20px;margin-top:26px;font-size:clamp(14px,1.3vw,17px);color:#5B6475}
+.sv-chk li{display:flex;align-items:center;gap:12px;color:#5B6475;font-size:inherit}
+.sv-chk li::before{width:7px;height:7px;border:0;border-radius:50%;background:#E2001A;flex:none}
+.sv.v-c .sv-chk li::before{width:6px !important;height:6px !important;border-radius:50% !important;background:#E2001A !important}
+.sv.v-b .sv-chk li::before{display:none}
+@media(max-width:900px){.sv-chk{grid-template-columns:minmax(0,1fr)}}
+</style>
+<style>.sv-chk li{font-size:14.5px !important;line-height:1.35}.sv-chk{gap:12px 20px;margin-top:26px}</style>
 </body></html>
