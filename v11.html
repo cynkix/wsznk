@@ -2601,4 +2601,25 @@ html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,2
 .sv .sv-dots,.sv .sv-chk{grid-template-columns:max-content minmax(0,1fr) !important;column-gap:clamp(16px,1.6vw,24px) !important}
 }
 </style>
+<style>
+/* frise : chaque étape (naissance d'une technologie) est marquée par le trait vertical qui grandit puis revient */
+.ct-rule i.S{transform-origin:50% 100%;scale:1 1}
+.ct-card.on .ct-rule i.S{animation:ctStep 1.5s cubic-bezier(.3,.9,.3,1) var(--pd,0s) both}
+@keyframes ctStep{0%{scale:1 1}30%{scale:1.9 2.1}55%{scale:.9 .85}100%{scale:1 1}}
+@media(prefers-reduced-motion:reduce){.ct-card.on .ct-rule i.S{animation:none}}
+</style>
+<script>
+(function(){
+  var c=document.getElementById('ct20');if(!c)return;
+  var rows=[].slice.call(c.querySelectorAll('.ct-row')),ticks=[].slice.call(c.querySelectorAll('.ct-rule i.M'));
+  if(!rows.length||!ticks.length)return;
+  var delays={'ct-cr':.2,'ct-ag':.9,'ct-cd':1.6,'ct-ia':2.3};
+  rows.forEach(function(r){
+    var l=parseFloat(r.style.getPropertyValue('--l')),best=null,bd=1e9;
+    ticks.forEach(function(t){var d=Math.abs(parseFloat(t.style.left)-l);if(d<bd){bd=d;best=t;}});
+    var key=Object.keys(delays).filter(function(k){return r.classList.contains(k);})[0];
+    if(best&&key){best.classList.add('S');var fade=parseFloat(best.style.getPropertyValue('--d'))||0;best.style.setProperty('--pd',(Math.max(delays[key],fade)+.1).toFixed(2)+'s');}
+  });
+})();
+</script>
 </body></html>
