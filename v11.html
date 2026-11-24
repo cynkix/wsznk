@@ -2654,4 +2654,45 @@ html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,2
 .mtrack div img{height:78px !important;max-width:100% !important}
 @media(max-width:560px){.mtrack div{width:200px !important;height:100px !important}.mtrack div img{height:64px !important}}
 </style>
+<style>
+/* menu burger (mobile et tablette) */
+.bgr{display:none;appearance:none;width:36px;height:36px;margin-left:4px;border-radius:50%;border:1px solid var(--line,rgba(120,125,140,.35));background:transparent;color:var(--ink,#14171F);cursor:pointer;flex:none;position:relative;padding:0}
+.bgr i{position:absolute;left:10px;right:10px;height:2px;border-radius:2px;background:currentColor;transition:transform .25s ease,opacity .2s ease,top .25s ease}
+.bgr i:nth-child(1){top:12px}.bgr i:nth-child(2){top:17px}.bgr i:nth-child(3){top:22px}
+.bgr[aria-expanded="true"] i:nth-child(1){top:17px;transform:rotate(45deg)}
+.bgr[aria-expanded="true"] i:nth-child(2){opacity:0}
+.bgr[aria-expanded="true"] i:nth-child(3){top:17px;transform:rotate(-45deg)}
+.bgm{display:none}
+@media(max-width:900px){
+.bgr{display:inline-block;order:9}
+.bgm{display:block;position:fixed;left:0;right:0;top:0;z-index:49;padding:calc(env(safe-area-inset-top,0px) + 84px) 24px 26px;background:#FFF;border-radius:0 0 28px 28px;box-shadow:0 24px 50px -20px rgba(20,23,31,.35);transform:translateY(-102%);visibility:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),visibility 0s .35s}
+.bgm.open{transform:none;visibility:visible;transition:transform .35s cubic-bezier(.22,1,.36,1),visibility 0s}
+.bgm a{display:flex;align-items:center;justify-content:space-between;padding:16px 4px;border-bottom:1px solid var(--line,rgba(120,125,140,.25));font-family:var(--display,inherit);font-weight:600;font-size:20px;color:var(--ink,#14171F);text-decoration:none}
+.bgm a.ext::after{content:"\2197";font-size:16px;color:var(--muted,#6B7280)}
+.bgm a.cta{margin-top:18px;border:0;justify-content:center;padding:15px 24px;border-radius:999px;background:linear-gradient(86deg,#EE2238 6%,#BF1D67 94%);color:#fff;font-size:17px}
+html[data-theme="dark"] .bgm{background:#0E1015}
+html[data-theme="dark"] .bgm a{color:#fff}
+}
+@media(prefers-reduced-motion:reduce){.bgm,.bgr i{transition:none}}
+</style>
+<script>
+(function(){
+  var hdr=document.getElementById('hdr'),act=hdr&&hdr.querySelector('.hact');if(!act)return;
+  var btn=document.createElement('button');btn.type='button';btn.className='bgr';btn.setAttribute('aria-label','Ouvrir le menu');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-controls','bgm');
+  btn.innerHTML='<i></i><i></i><i></i>';act.appendChild(btn);
+  var m=document.createElement('nav');m.className='bgm';m.id='bgm';m.setAttribute('aria-label','Menu');
+  function add(href,txt,cls,ext){var a=document.createElement('a');a.href=href;a.textContent=txt;if(cls)a.className=cls;if(ext){a.target='_blank';a.rel='noopener';}m.appendChild(a);}
+  [].forEach.call(hdr.querySelectorAll('.nav a'),function(a){add(a.getAttribute('href'),a.textContent.trim());});
+  [].forEach.call(hdr.querySelectorAll('.join.ext'),function(a){add(a.getAttribute('href'),a.textContent.replace(/\(.*\)/,'').trim(),'ext',true);});
+  var ct=hdr.querySelector('.hct');if(ct)add(ct.getAttribute('href'),'Nous contacter','cta');
+  document.body.appendChild(m);
+  function set(o){m.classList.toggle('open',o);btn.setAttribute('aria-expanded',o?'true':'false');btn.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu');}
+  btn.addEventListener('click',function(){set(!m.classList.contains('open'));});
+  m.addEventListener('click',function(e){if(e.target.closest('a'))set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  document.addEventListener('click',function(e){if(m.classList.contains('open')&&!m.contains(e.target)&&!btn.contains(e.target))set(false);});
+  addEventListener('resize',function(){if(innerWidth>900)set(false);});
+})();
+</script>
+<style>@media(max-width:900px){.hact{gap:6px !important}.vpick .vcur{white-space:nowrap !important}.vpick{flex:none}.hact .thm{margin-left:0 !important}.hact .hct{margin-left:0 !important}}</style>
 </body></html>
