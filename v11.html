@@ -2580,4 +2580,11 @@ document.querySelectorAll('.svp button').forEach(function(b){b.addEventListener(
 .ct-card.on .ct-bar{clip-path:inset(0 0 0 0 round 99px)}
 @media(prefers-reduced-motion:reduce){.ct-bar{clip-path:none !important;transition:none !important}}
 </style>
+<style>
+/* puces rouges un peu plus grandes (7 px -> 10 px) */
+.sv-dots li::before,.sv-chk li::before{width:10px !important;height:10px !important}
+.svb-kw li::before{width:10px !important;height:10px !important;top:11px !important}
+.sv.v-c .sv-dots li::before,.sv.v-c .sv-chk li::before{width:10px !important;height:10px !important;top:11px !important}
+.svb-kw li,.sv.v-c .sv-dots li,.sv.v-c .sv-chk li{padding-left:22px !important}
+</style>
 </body></html>
