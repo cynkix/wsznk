@@ -2609,16 +2609,19 @@ html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,2
 @media(prefers-reduced-motion:reduce){.ct-card.on .ct-rule i.S{animation:none}}
 </style>
 <script>
+/* frise : tout est calé sur la flèche rouge (6 s). Barre, légende et trait vertical démarrent quand la flèche arrive à leur position. */
 (function(){
   var c=document.getElementById('ct20');if(!c)return;
-  var rows=[].slice.call(c.querySelectorAll('.ct-row')),ticks=[].slice.call(c.querySelectorAll('.ct-rule i.M'));
-  if(!rows.length||!ticks.length)return;
-  var delays={'ct-cr':.2,'ct-ag':.9,'ct-cd':1.6,'ct-ia':2.3};
+  var T0=.2,DUR=6;
+  c.style.setProperty('--ad',DUR+'s');
+  var rows=[].slice.call(c.querySelectorAll('.ct-row')),ticks=[].slice.call(c.querySelectorAll('.ct-rule i'));
+  ticks.forEach(function(t){var p=parseFloat(t.style.left)/100;t.style.setProperty('--d',Math.max(0,T0+DUR*p-.35).toFixed(2)+'s');});
+  var maj=ticks.filter(function(t){return t.classList.contains('M');});
   rows.forEach(function(r){
-    var l=parseFloat(r.style.getPropertyValue('--l')),best=null,bd=1e9;
-    ticks.forEach(function(t){var d=Math.abs(parseFloat(t.style.left)-l);if(d<bd){bd=d;best=t;}});
-    var key=Object.keys(delays).filter(function(k){return r.classList.contains(k);})[0];
-    if(best&&key){best.classList.add('S');var fade=parseFloat(best.style.getPropertyValue('--d'))||0;best.style.setProperty('--pd',(Math.max(delays[key],fade)+.1).toFixed(2)+'s');}
+    var l=parseFloat(r.style.getPropertyValue('--l')),p=l/100;
+    r.style.setProperty('--bd',(T0+DUR*p).toFixed(2)+'s');
+    var best=null,bd=1e9;maj.forEach(function(t){var d=Math.abs(parseFloat(t.style.left)-l);if(d<bd){bd=d;best=t;}});
+    if(best){best.classList.add('S');best.style.setProperty('--pd',(T0+DUR*(parseFloat(best.style.left)/100)).toFixed(2)+'s');}
   });
 })();
 </script>
@@ -2630,5 +2633,12 @@ html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,2
 .cult .cv-grid li:nth-child(even){padding-right:6px}
 .cult .cv-grid li{align-content:start !important;row-gap:3px}
 }
+</style>
+<style>
+.ct-arrow{transition-duration:var(--ad,6s) !important}
+.ct-ah{transition:left var(--ad,6s) linear .2s,opacity .3s .2s !important}
+#ct20.on .ct-row .ct-bar{transition-duration:1.8s !important;transition-delay:var(--bd,0s) !important}
+#ct20.on .ct-row .ct-lab{transition-delay:calc(var(--bd,0s) + .25s) !important}
+.ct-card.on .ct-rule i.S{animation-duration:1.4s}
 </style>
 </body></html>
