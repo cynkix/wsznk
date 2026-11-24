@@ -2566,4 +2566,12 @@ document.querySelectorAll('.svp button').forEach(function(b){b.addEventListener(
   addEventListener('scroll',req,{passive:true});addEventListener('resize',req);req();
 })();
 </script>
+<style>
+/* solutions : moins de vide au centre des listes, plus de marge à droite */
+@media(min-width:561px){
+.sv .sv-dots,.sv .sv-chk{grid-template-columns:fit-content(58%) minmax(0,1fr) !important;column-gap:clamp(18px,1.8vw,26px) !important}
+@media(min-width:901px){.sv:not(.v-b):not(.v-c) .sv-in{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) !important;column-gap:24px !important}}
+.sv .sv-card{padding-left:clamp(30px,2.8vw,40px) !important;padding-right:clamp(34px,3vw,44px) !important}
+}
+</style>
 </body></html>
