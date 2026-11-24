@@ -2306,10 +2306,9 @@ html[data-theme="dark"] .sv-plus{background:#1F232C}
 @media(max-width:640px){.ct-lab{font-size:12px}.ct-rule i:not(.M):nth-child(2n){display:none}}
 </style>
 <script>
-(function(){var c=document.getElementById('ct20');if(!c)return;
-function on(){c.classList.add('on')}
-if(!('IntersectionObserver' in window)){on();return}
-var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){on();o.disconnect()}},{threshold:.35});o.observe(c)})();
+(function(){var c=document.getElementById('ct20');if(!c)return;var t=c.querySelector('.ct-tl')||c;
+if(!('IntersectionObserver' in window)){c.classList.add('on');return}
+var o=new IntersectionObserver(function(e){var v=e[0].isIntersecting;c.classList.toggle('on',v)},{threshold:.7});o.observe(t)})();
 </script>
 <style>
 .ag{position:relative;z-index:1;padding:clamp(28px,4vw,56px) 0 0}
