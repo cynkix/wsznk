@@ -2593,4 +2593,12 @@ document.querySelectorAll('.svp button').forEach(function(b){b.addEventListener(
 .cg:not(.x) ul:not(.cg-i) li{background:none !important;border:1.5px solid rgba(20,23,31,.5) !important;border-radius:99px !important;padding:6px 16px !important}
 html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,255,.55) !important}
 </style>
+<style>
+/* solutions : la carte de droite prend plus de place, colonnes de mots-clés ajustées au contenu */
+@media(min-width:901px){
+.sv:not(.v-b):not(.v-c) .sv-in{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr) !important;column-gap:20px !important}
+.sv .sv-card{padding-left:clamp(28px,2.6vw,38px) !important;padding-right:clamp(30px,2.8vw,40px) !important}
+.sv .sv-dots,.sv .sv-chk{grid-template-columns:max-content minmax(0,1fr) !important;column-gap:clamp(16px,1.6vw,24px) !important}
+}
+</style>
 </body></html>
