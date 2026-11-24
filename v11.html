@@ -2574,4 +2574,10 @@ document.querySelectorAll('.svp button').forEach(function(b){b.addEventListener(
 .sv .sv-card{padding-left:clamp(30px,2.8vw,40px) !important;padding-right:clamp(34px,3vw,44px) !important}
 }
 </style>
+<style>
+/* frise : rien n'apparaît avant le démarrage ; la barre se dévoile (point blanc non déformé) */
+.ct-bar{transform:none !important;transition-property:clip-path !important;clip-path:inset(0 100% 0 0 round 99px)}
+.ct-card.on .ct-bar{clip-path:inset(0 0 0 0 round 99px)}
+@media(prefers-reduced-motion:reduce){.ct-bar{clip-path:none !important;transition:none !important}}
+</style>
 </body></html>
