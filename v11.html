@@ -1756,6 +1756,7 @@ html[data-theme="dark"] .tl20-top{background:rgba(14,16,21,.8)}
 </section>
 
 <section class="sv" id="sequence">
+<div class="wrap"><div class="svp" role="tablist" aria-label="Propositions de présentation"><span class="svp-k">Propositions</span><button type="button" class="on" data-v="a" role="tab">A · Deux cartes</button><button type="button" data-v="b" role="tab">B · Bascule</button><button type="button" data-v="c" role="tab">C · Bandeau + grille</button></div><div class="svp-sw" role="tablist"><button type="button" class="on" data-s="0" role="tab">Votre constat</button><button type="button" data-s="1" role="tab">Notre valeur</button></div></div>
 <div class="wrap sv-in">
 <article class="sv-card rv4">
 <h3><em>Nous maîtrisons la complexité</em> des SI et des organisations…</h3>
@@ -2338,4 +2339,39 @@ var o=new IntersectionObserver(function(e){var v=e[0].isIntersecting;c.classList
 .cg-i li{background:linear-gradient(135deg,#EE2238,#C93B7E);color:#fff;border-color:transparent}
 html[data-theme="dark"] .cg,html[data-theme="dark"] .cg li:not(.x){color:#fff}
 </style>
+<style>
+/* V9 : sélecteur de propositions pour la section solutions */
+.svp{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:0 auto clamp(18px,2.4vw,30px)}
+.svp-k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-right:6px}
+.svp button,.svp-sw button{font:inherit;font-size:14px;font-weight:600;padding:8px 16px;border-radius:99px;border:1px solid var(--line,rgba(120,125,140,.4));background:var(--wash,#fff);color:var(--ink);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.svp button.on,.svp-sw button.on{background:linear-gradient(135deg,#EE2238,#C93B7E);border-color:transparent;color:#fff}
+.svp-sw{display:none;justify-content:center;gap:8px;margin:0 auto clamp(16px,2vw,24px)}
+/* B : bascule, une carte à la fois */
+.sv.v-b .svp-sw{display:flex}
+.sv.v-b .sv-in{grid-template-columns:minmax(0,1fr);max-width:900px;margin-left:auto;margin-right:auto}
+.sv.v-b .sv-card{display:none}
+.sv.v-b .sv-dots{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch}
+.sv.v-b.s-0 .sv-card:nth-child(1),.sv.v-b.s-1 .sv-card:nth-child(2){display:block}
+/* C : bandeau de constat + grille d'offres */
+.sv.v-c .sv-in{display:block}
+.sv.v-c .sv-card{background:transparent !important;box-shadow:none !important;padding:0 0 clamp(26px,3vw,44px)}
+.sv.v-c .sv-card h3{text-align:center;max-width:26em;margin-left:auto;margin-right:auto}
+.sv.v-c .sv-dots,.sv.v-c .sv-chk{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}
+.sv.v-c .sv-dots li,.sv.v-c .sv-chk li{padding:6px 14px;border-radius:99px;border:1px solid var(--line,rgba(120,125,140,.35));background:var(--wash,#fff);font-size:14px;color:var(--ink)}
+.sv.v-c .sv-chk li::before{display:none}
+.sv.v-c .sv-tag{text-align:center;margin-top:24px}
+.sv.v-c .sv-offs{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:22px}
+.sv.v-c .sv-offs-r{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sv.v-c .sv-off{padding:18px 20px;border-radius:24px;background:var(--wash,#fff);box-shadow:var(--shadozika);align-items:flex-start}
+.sv.v-c .sv-plus{display:none}
+@media(max-width:900px){.sv.v-c .sv-offs,.sv.v-c .sv-offs-r{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script>
+(function(){var sec=document.getElementById('sequence');if(!sec)return;
+function setV(v){sec.classList.remove('v-b','v-c');if(v!=='a')sec.classList.add('v-'+v);sec.querySelectorAll('.svp button').forEach(function(b){b.classList.toggle('on',b.dataset.v===v)})}
+function setS(n){sec.classList.remove('s-0','s-1');sec.classList.add('s-'+n);sec.querySelectorAll('.svp-sw button').forEach(function(b){b.classList.toggle('on',b.dataset.s===String(n))})}
+sec.querySelectorAll('.svp button').forEach(function(b){b.addEventListener('click',function(){setV(b.dataset.v)})});
+sec.querySelectorAll('.svp-sw button').forEach(function(b){b.addEventListener('click',function(){setS(+b.dataset.s)})});
+setS(0)})();
+</script>
 </body></html>
