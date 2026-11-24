@@ -2619,7 +2619,7 @@ html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,2
   var maj=ticks.filter(function(t){return t.classList.contains('M');});
   rows.forEach(function(r){
     var l=parseFloat(r.style.getPropertyValue('--l')),p=l/100;
-    r.style.setProperty('--bd',(T0+DUR*p).toFixed(2)+'s');
+    r.style.setProperty('--bd',(T0+DUR*p).toFixed(2)+'s');r.style.setProperty('--bdur',(DUR*(1-p)).toFixed(3)+'s');
     var best=null,bd=1e9;maj.forEach(function(t){var d=Math.abs(parseFloat(t.style.left)-l);if(d<bd){bd=d;best=t;}});
     if(best){best.classList.add('S');best.style.setProperty('--pd',(T0+DUR*(parseFloat(best.style.left)/100)).toFixed(2)+'s');}
   });
@@ -2637,7 +2637,7 @@ html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,2
 <style>
 .ct-arrow{transition-duration:var(--ad,6s) !important}
 .ct-ah{transition:left var(--ad,6s) linear .2s,opacity .3s .2s !important}
-#ct20.on .ct-row .ct-bar{transition-duration:1.8s !important;transition-delay:var(--bd,0s) !important}
+#ct20.on .ct-row .ct-bar{transition-duration:var(--bdur,1.8s) !important;transition-delay:var(--bd,0s) !important;transition-timing-function:linear !important}
 #ct20.on .ct-row .ct-lab{transition-delay:calc(var(--bd,0s) + .25s) !important}
 .ct-card.on .ct-rule i.S{animation-duration:1.4s}
 </style>
