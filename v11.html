@@ -2545,4 +2545,25 @@ document.querySelectorAll('.svp button').forEach(function(b){b.addEventListener(
 @media(max-width:560px){.ct-lg{height:auto;margin-top:18px}.ct-lg .ct-20{position:static;width:76px}}
 @media(prefers-reduced-motion:reduce){.ct-20 *{animation:none !important}}
 </style>
+<style>.sv-card,.svb-card{translate:0 var(--py,0px);will-change:translate}@media(prefers-reduced-motion:reduce){.sv-card,.svb-card{translate:none}}</style>
+<script>
+/* solutions : arrivée un peu plus tôt + léger parallaxe (les deux blocs ne bougent pas à la même vitesse) */
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('.sv-card,.svb-card'));
+  if(!cards.length)return;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px 14% 0px',threshold:0});
+    cards.forEach(function(c){io.observe(c);});
+  }
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var amp=[14,26],tick=false;
+  function upd(){tick=false;var vh=innerHeight||800;
+    cards.forEach(function(c,i){var r=c.getBoundingClientRect();
+      if(r.bottom<-200||r.top>vh+200||!r.width){return;}
+      var p=1-2*((vh-r.top)/(vh+r.height));p=Math.max(-1,Math.min(1,p));
+      c.style.setProperty('--py',(p*(c.matches('.sv-card + .sv-card')?amp[1]:amp[0])).toFixed(1)+'px');});}
+  function req(){if(!tick){tick=true;requestAnimationFrame(upd);}}
+  addEventListener('scroll',req,{passive:true});addEventListener('resize',req);req();
+})();
+</script>
 </body></html>
