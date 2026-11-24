@@ -2622,4 +2622,13 @@ html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,2
   });
 })();
 </script>
+<style>
+/* convictions : moins de vide central, plus de place pour la colonne de droite */
+@media(min-width:861px){
+.cult .cv-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr) !important;column-gap:clamp(24px,2.6vw,40px) !important}
+.cult .cv-grid li h3{max-width:none !important}
+.cult .cv-grid li:nth-child(even){padding-right:6px}
+.cult .cv-grid li{align-content:start !important;row-gap:3px}
+}
+</style>
 </body></html>
