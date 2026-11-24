@@ -2439,4 +2439,15 @@ sec.querySelectorAll('.svp button').forEach(function(b){b.addEventListener('clic
 </style>
 <style>.sv-chk li{font-size:14.5px !important;line-height:1.35}.sv-chk{gap:12px 20px;margin-top:26px}</style>
 <style>.sv-tag{display:none !important}.sv.v-b .sv-in{direction:ltr}.sv.v-b .sv-card:nth-child(1){order:2}.sv.v-b .sv-card:nth-child(2){order:1}.sv.v-b .sv-offs{margin-top:26px}</style>
+<style>
+/* mise en page équilibrée : titre, mots-clés, offres avec des espaces égaux et alignés d'une carte à l'autre */
+@supports (grid-template-rows:subgrid){
+.sv .sv-in{grid-template-rows:auto auto 1fr;row-gap:0 !important}
+.sv .sv-card{display:grid !important;grid-row:span 3;grid-template-rows:subgrid;row-gap:clamp(24px,2.6vw,36px) !important;align-content:start}
+.sv .sv-card>h3,.sv .sv-card>ul{margin:0 !important}
+}
+.sv .sv-card h3{text-wrap:balance}
+.sv .sv-card .sv-offs{align-content:start}
+@media(max-width:900px){.sv .sv-in{grid-template-rows:none}.sv .sv-card{grid-row:auto;grid-template-rows:none}}
+</style>
 </body></html>
