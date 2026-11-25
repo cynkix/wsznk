@@ -2972,7 +2972,8 @@ setTimeout(upd,200);
 .zin h1 .w{display:inline-block;white-space:nowrap}
 .zin h1 em{background:none !important;color:inherit}
 .zin h1 em .l{background:var(--red);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
-.zin h1 .l{opacity:.14;animation:h1l .25s ease both;animation-delay:calc(.35s + var(--i) * 40ms)}
+.zin h1 .l{opacity:.14}
+.zin h1.anim .l{animation:h1l .3s ease both;animation-delay:calc(.35s + var(--i) * 55ms)}
 @keyframes h1l{from{opacity:.14}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.zin h1 .l{opacity:1;animation:none}}
 </style>
@@ -2990,6 +2991,12 @@ var n=0;
    f.appendChild(w);});
   c.parentNode.replaceChild(f,c);}
  else if(c.nodeType===1)split(c);});})(h);
+/* l'animation se rejoue chaque fois que le titre revient à l'écran */
+h.classList.add('anim');
+if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){
+ if(!e.isIntersecting){h.classList.remove('anim');}
+ else if(!h.classList.contains('anim')){void h.offsetWidth;h.classList.add('anim');}
+});},{threshold:.5}).observe(h);}
 })();
 </script>
 <style>
