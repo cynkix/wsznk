@@ -21,8 +21,10 @@
     }`;
   const PVERT = `attribute float aA; varying float vA; uniform float uSize;
     void main(){ vA=aA; vec4 mv=modelViewMatrix*vec4(position,1.0); gl_PointSize=uSize*(10.0/-mv.z); gl_Position=projectionMatrix*mv; }`;
-  const PFRAG = `uniform vec3 uBeam; varying float vA;
-    void main(){ float r=length(gl_PointCoord-0.5)*2.0; float g=exp(-r*r*5.0); if(g<0.01) discard; gl_FragColor=vec4(uBeam, g*vA); }`;
+  const PFRAG = `uniform vec3 uBeam; uniform float uHard; varying float vA;
+    void main(){ float r=length(gl_PointCoord-0.5)*2.0;
+      if(uHard>0.5){ float d=1.0-smoothstep(0.78,0.98,r); if(d<0.01) discard; gl_FragColor=vec4(0.933,0.133,0.22,d*vA); return; }
+      float g=exp(-r*r*5.0); if(g<0.01) discard; gl_FragColor=vec4(uBeam, g*vA); }`;
 
   // un seul effet 3D actif à la fois : celui dont la surface visible est la plus grande
   const REG = new Set();
@@ -80,7 +82,7 @@
       this._pGeo.setAttribute('position', new T.BufferAttribute(pPos, 3));
       this._pGeo.setAttribute('aA', new T.BufferAttribute(pA, 1));
       this._pMat = new T.ShaderMaterial({ vertexShader: PVERT, fragmentShader: PFRAG, transparent: true, depthWrite: false,
-        uniforms: { uSize: { value: 26 }, uBeam: { value: new T.Color() } } });
+        uniforms: { uSize: { value: 26 }, uBeam: { value: new T.Color() }, uHard: { value: this.hasAttribute('dot') ? 1 : 0 } } });
       this._group.add(new T.Points(this._pGeo, this._pMat));
       for (let i = 0; i < n; i++) {
         const geo = new T.BufferGeometry();
