@@ -2749,13 +2749,52 @@ upd();
 /* points : un par un */
 var cols=document.querySelectorAll('.svb-kws>div');
 cols.forEach(function(c){c.querySelectorAll('.svb-kw li').forEach(function(li,i){li.style.setProperty('--dd',(i*.22)+'s');});});
-if('IntersectionObserver' in window){
- var io=new IntersectionObserver(function(es){es.forEach(function(e){
-  if(e.isIntersecting){
-   var ul=e.target;ul.querySelectorAll('li').forEach(function(li){li.classList.add('lit');});io.unobserve(ul);}
- });},{threshold:.6});
- document.querySelectorAll('.svb-kw').forEach(function(u){io.observe(u);});
-}else document.querySelectorAll('.svb-kw li').forEach(function(li){li.classList.add('lit');});
+if(rm)document.querySelectorAll('.svb-kw li').forEach(function(li){li.classList.add('lit');});
+})();
+</script>
+<style>
+/* séquence : phrases l'une après l'autre (bullets synchronisés), filets rouges seulement quand les offres sont visibles */
+.sv-card:not(.ph) h3 em,.svb-card:not(.ph) .svb-h em{color:var(--ink,#14171F) !important}
+.sv:not(.v-c) .sv-card .sv-dots li::before,.sv:not(.v-c) .sv-card .sv-chk li::before{background:#C9CCD4 !important;transform:scale(.5);transition:background .5s ease,transform .55s cubic-bezier(.3,1.6,.5,1),box-shadow .6s ease;transition-delay:var(--dd,0s)}
+.sv:not(.v-c) .sv-card.ph .sv-dots li::before,.sv:not(.v-c) .sv-card.ph .sv-chk li::before{background:#E2001A !important;transform:none;box-shadow:0 0 0 5px rgba(226,0,26,.14)}
+.sv-offs-r .sv-off-r::before{transform:scaleY(.012) !important}
+.sv-offs-r.go .sv-off-r::before{transform:none !important}
+.sv-offs-r .sv-off-r:nth-child(1)::before{transition-delay:.1s !important}
+.sv-offs-r .sv-off-r:nth-child(2)::before{transition-delay:.6s !important}
+.sv-offs-r .sv-off-r:nth-child(3)::before{transition-delay:1.1s !important}
+.sv-offs-r .sv-off-r:nth-child(4)::before{transition-delay:1.6s !important}
+.svb-kw li::before{transition-delay:0s !important}
+@media(prefers-reduced-motion:reduce){.sv-card:not(.ph) h3 em{color:inherit !important}.sv .sv-card .sv-dots li::before,.sv .sv-card .sv-chk li::before{background:#E2001A !important;transform:none;transition:none}.sv-offs-r .sv-off-r::before{transform:none !important}}
+</style>
+<script>
+(function(){
+var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+var cards=[].slice.call(document.querySelectorAll('.sv-in .sv-card'));
+cards.forEach(function(c){c.querySelectorAll('.sv-dots li,.sv-chk li').forEach(function(li,i){li.style.setProperty('--dd',(.3+i*.25)+'s');});});
+function playA(){cards.forEach(function(c,i){setTimeout(function(){c.classList.add('ph');},rm?0:i*1700);});}
+var h0=cards[0]&&cards[0].querySelector('h3');
+var offs=[].slice.call(document.querySelectorAll('.sv-offs-r'));
+if(!('IntersectionObserver' in window)||rm){playA();offs.forEach(function(o){o.classList.add('go');});}
+else{
+ if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -22% 0px',threshold:.9});a.observe(h0);}
+ var b=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('go');b.unobserve(e.target);}});},{rootMargin:'0px 0px -25% 0px',threshold:.7});
+ offs.forEach(function(o){b.observe(o);});
+}
+/* B : bullets calés sur l'avancement de la phrase */
+var bh=document.querySelector('.svb-h'),bc=document.querySelector('.svb-card');
+if(bh&&bc){
+ var cols=[].slice.call(document.querySelectorAll('.svb-kws>div')).map(function(d){return [].slice.call(d.querySelectorAll('.svb-kw li'));});
+ var M=Math.max.apply(null,cols.map(function(c){return c.length;}));
+ function sync(){
+  if(!bh.offsetParent)return;
+  var ls=bh.querySelectorAll('.l'),on=bh.querySelectorAll('.l.on').length,p=ls.length?on/ls.length:0;
+  bc.classList.toggle('ph',p>=.999);
+  cols.forEach(function(c){c.forEach(function(li,i){var t=.12+i*(.8/M);li.classList.toggle('lit',p>=t);});});
+ }
+ addEventListener('scroll',function(){requestAnimationFrame(sync);},{passive:true});
+ document.querySelectorAll('.svp button').forEach(function(x){x.addEventListener('click',function(){setTimeout(sync,120);});});
+ setTimeout(sync,200);
+}
 })();
 </script>
 </body></html>
