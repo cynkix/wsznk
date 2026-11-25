@@ -2853,4 +2853,24 @@ if(bh&&bc){
 .sv-in .sv-card .sv-dots,.sv-in .sv-card .sv-chk{align-items:start;align-content:start;row-gap:12px !important}
 @media(max-width:900px){.sv-in .sv-card .sv-offs{align-content:start;gap:16px}.sv-in .sv-card .sv-offs-r{gap:26px !important}}
 </style>
+<style>
+/* A : mots-clés de droite sur 2 colonnes égales (2 lignes maximum) */
+@media(min-width:901px){.sv:not(.v-c) .sv-in .sv-chk{grid-template-columns:repeat(2,minmax(0,1fr)) !important;column-gap:22px !important}}
+/* C : version compacte pour tenir presque entièrement dans l'écran */
+@media(min-width:901px){
+.sv.v-c .sv-in{row-gap:16px !important}
+.sv.v-c .sv-card{padding-top:clamp(18px,1.9vw,26px) !important;padding-bottom:clamp(18px,1.9vw,26px) !important;row-gap:12px !important}
+.sv.v-c .sv-card h3{font-size:clamp(20px,2vw,27px) !important}
+.sv.v-c .sv-card>.sv-dots,.sv.v-c .sv-card>.sv-chk{row-gap:6px !important;margin-top:0 !important;font-size:14px !important}
+.sv.v-c .sv-card .sv-dots li,.sv.v-c .sv-card .sv-chk li{padding-top:2px !important;padding-bottom:2px !important}
+.sv.v-c .sv-card .sv-offs{row-gap:10px !important;gap:10px !important;align-content:center !important}
+.sv.v-c .sv-card .sv-offs-r{gap:12px !important}
+.sv.v-c .sv-off{gap:14px}
+.sv.v-c .sv-off b{font-size:15.5px !important}
+.sv.v-c .sv-off span{font-size:12.5px !important;line-height:1.35 !important;margin-top:1px !important}
+.sv.v-c .sv-plus{width:30px !important;height:30px !important}
+.sv.v-c .sv-plus::before,.sv.v-c .sv-plus::after{width:11px !important;margin:-1px 0 0 -5.5px !important}
+.sv.v-c .sv-card{translate:none !important}
+}
+</style>
 </body></html>
