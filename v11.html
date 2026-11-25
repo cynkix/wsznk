@@ -2611,10 +2611,10 @@ html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,2
 @media(prefers-reduced-motion:reduce){.ct-card.on .ct-rule i.S{animation:none}}
 </style>
 <script>
-/* frise : tout est calé sur la flèche rouge (6 s). Barre, légende et trait vertical démarrent quand la flèche arrive à leur position. */
+/* frise : tout est calé sur la flèche rouge (4,2 s). Barre, légende et trait vertical démarrent quand la flèche arrive à leur position. */
 (function(){
   var c=document.getElementById('ct20');if(!c)return;
-  var T0=.2,DUR=6;
+  var T0=.2,DUR=4.2;
   c.style.setProperty('--ad',DUR+'s');
   var rows=[].slice.call(c.querySelectorAll('.ct-row')),ticks=[].slice.call(c.querySelectorAll('.ct-rule i'));
   ticks.forEach(function(t){var p=parseFloat(t.style.left)/100;t.style.setProperty('--d',Math.max(0,T0+DUR*p-.35).toFixed(2)+'s');});
