@@ -2859,9 +2859,9 @@ setTimeout(upd,200);
 @media(max-width:640px){.ct-lab{font-size:12px}.ct-rule i:not(.M):nth-child(2n){display:none}}
 </style>
 <script>
-(function(){var c=document.getElementById('ct20');if(!c)return;var t=c.querySelector('.ct-tl')||c;
+(function(){var c=document.getElementById('ct20');if(!c)return;var t=c.querySelector('.v20-tl')||c.querySelector('.ct-tl')||c;
 if(!('IntersectionObserver' in window)){c.classList.add('on');return}
-var o=new IntersectionObserver(function(e){var v=e[0].isIntersecting;c.classList.toggle('on',v)},{threshold:1,rootMargin:'0px 0px -22% 0px'});o.observe(t)})();
+var o=new IntersectionObserver(function(e){var v=e[0].isIntersecting;c.classList.toggle('on',v)},{threshold:.3,rootMargin:'0px 0px -22% 0px'});o.observe(t)})();
 </script>
 <style>
 /* frise : évolution plus lente et plus fine, flèche comprise */
