@@ -35,6 +35,7 @@
   class Effect3D extends HTMLElement {
     static get observedAttributes() { return ['theme', 'count', 'speed', 'parallax', 'beam', 'spacing', 'intensity', 'shape', 'thick', 'warp']; }
     connectedCallback() {
+      if (/[?&]no3d\b/.test(location.search) || /[?&]no3d\b/.test(document.referrer)) { this.style.display = 'none'; return; }
       this.style.display = 'block';
       this.style.position = this.style.position || 'absolute';
       if (!this.style.inset) this.style.inset = '0';
