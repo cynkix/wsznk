@@ -2788,10 +2788,12 @@ html[data-theme="dark"] .ost .oh h1{text-shadow:none}
 function sy(){z.setAttribute('theme',dk()?'sombre':'rougenoir')}sy();z.setShape&&z.setShape('duo');customElements.whenDefined('effect-3d-duo').then(function(){z.setShape('duo')});
 new MutationObserver(sy).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});})();</script>
 <style id="ost-next-css">
-.ost-next{position:absolute;right:max(24px,calc((100vw - 1196px)/2));bottom:10px;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font:600 13px var(--display,inherit);color:#6b7280;text-decoration:none;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);border:1px solid #E5E7EB;transition:color .2s,border-color .2s}
+@media(min-width:901px){.ost-stick{padding-bottom:56px !important}}
+.ost-next{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font:600 13px var(--display,inherit);color:#6b7280;text-decoration:none;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);border:1px solid #E5E7EB;transition:color .2s,border-color .2s}
 .ost-next svg{animation:ostnx 1.8s ease-in-out infinite}
 .ost-next:hover{color:#EE2238;border-color:#EE2238}
 html[data-theme="dark"] .ost-next{color:#aab1c0;background:rgba(17,20,28,.6);border-color:rgba(255,255,255,.14)}
+@media(max-height:780px) and (min-width:901px){.ost-next{left:auto;right:max(24px,calc((100vw - 1196px)/2));transform:none;bottom:6px}}
 @keyframes ostnx{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 @media(prefers-reduced-motion:reduce){.ost-next svg{animation:none}}
 </style>
