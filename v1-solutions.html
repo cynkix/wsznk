@@ -1883,10 +1883,10 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 </div>
 </section>
 <section class="ost" id="offres-pile" aria-labelledby="ost-t">
-<div class="wrap ost-intro"><span class="ost-eb">Nos offres</span><h2 id="ost-t">Quatre offres, <em>un même système de delivery.</em></h2><p>Chaque offre mobilise des expertises précises et s’appuie sur nos modèles opératoires. Faites défiler : les offres s’empilent à gauche, et la boussole montre en direct ce qui est mobilisé.</p></div>
+<div class="wrap ost-intro"><span class="ost-eb">Nos offres</span><h1 id="ost-t">Quatre offres, <em>un même système de delivery.</em></h1><p>Du cadrage à l’industrialisation, chaque offre s’appuie sur nos expertises et nos modèles opératoires. Faites défiler pour les découvrir une à une : elles s’empilent à gauche, et le cadran à droite vous montre où vous en êtes.</p></div>
 <div class="ost-track" id="ost-track"><div class="ost-stick"><div class="wrap ost-grid">
 <ol class="ost-list" id="ost-list"></ol>
-<div class="ost-dial" aria-hidden="true"><svg id="ost-svg" viewBox="-100 0 800 600"></svg></div>
+<div class="ost-dial" aria-hidden="true"><svg id="ost-svg" viewBox="0 0 600 600"></svg></div>
 </div></div></div></section>
 <section class="sx sx2" id="reponses" aria-labelledby="sx-t"><div class="wrap">
 <div class="sx-pin"><div class="sx-b sx-b1"><h2 id="sx-t" class="sx-h2 rv4">Nos modèles opératoires <em>intègrent</em><br>vos équipes et votre organisation…</h2>
@@ -2347,8 +2347,8 @@ function key(e){if(e.key==='Escape'){e.preventDefault();close()}else if(e.key===
 .ost::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(900px 520px at 90% 18%,rgba(238,34,56,.28),transparent 60%),radial-gradient(700px 480px at -6% 88%,rgba(139,92,246,.16),transparent 60%)}
 .ost-intro{position:relative;padding-block:clamp(70px,10vw,130px) clamp(30px,4vw,56px)}
 .ost-eb{display:block;font:700 13px var(--display,inherit);letter-spacing:.2em;text-transform:uppercase;color:#ff5a70;margin-bottom:14px}
-.ost h2{margin:0;font-family:var(--display,inherit);font-weight:700;font-size:clamp(32px,4.6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#fff;max-width:18ch;text-wrap:balance}
-.ost h2 em{font-style:normal;color:#ff5a70}
+.ost h1,.ost h2{margin:0;font-family:var(--display,inherit);font-weight:700;font-size:clamp(32px,4.6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#fff;max-width:18ch;text-wrap:balance}
+.ost h1 em,.ost h2 em{font-style:normal;color:#ff5a70}
 .ost-intro p{margin:18px 0 0;max-width:56ch;font-size:clamp(16px,1.5vw,20px);line-height:1.55;color:#aab4c6}
 .ost-track{position:relative;height:420vh}
 .ost-stick{position:sticky;top:0;height:100vh;height:100dvh;display:flex;align-items:center;padding-top:76px}
@@ -2424,17 +2424,16 @@ list.innerHTML=O.map(function(o,i){return '<li class="ost-it next" style="--k:'+
 var items=[].slice.call(list.children);
 function P(r,a){a=a*Math.PI/180;return [300+r*Math.sin(a),300-r*Math.cos(a)]}
 function arc(a0,a1,r0,r1){var p=P(r1,a0),q=P(r1,a1),u=P(r0,a1),v=P(r0,a0);return 'M'+p+'A'+r1+' '+r1+' 0 0 1 '+q+'L'+u+'A'+r0+' '+r0+' 0 0 0 '+v+'Z'}
-var h='<circle class="ring" cx="300" cy="300" r="215"/><circle class="ring" cx="300" cy="300" r="150" style="stroke-dasharray:1 5"/>';
-X.forEach(function(x,k){var a=k*45+22.5,p=P(203,a);h+='<line class="ln" data-k="'+k+'" x1="300" y1="300" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'"/>'});
-for(var k=0;k<4;k++){var m=P(122,k*90+45);h+='<path class="q" data-q="'+k+'" d="'+arc(k*90+4,k*90+86,100,146)+'"/><text class="qn" x="'+m[0].toFixed(1)+'" y="'+m[1].toFixed(1)+'">0'+(k+1)+'</text>'}
-X.forEach(function(x,k){var a=k*45+22.5,p=P(215,a),l=P(238,a),an=a<180?'start':'end';if(a>175&&a<185)an='middle';h+='<circle class="nd" data-k="'+k+'" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="8"/><text class="nl" data-k="'+k+'" x="'+l[0].toFixed(1)+'" y="'+l[1].toFixed(1)+'" text-anchor="'+an+'" dominant-baseline="central">'+esc(x)+'</text>'});
-h+='<g class="needle" id="ost-nd"><line x1="300" y1="250" x2="300" y2="196" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="300" cy="190" r="5" fill="#fff"/></g><circle class="hub" cx="300" cy="300" r="48"/><text class="hn" id="ost-hn" x="300" y="302" dominant-baseline="central">01</text><text class="hs" x="300" y="328">/ 04 OFFRES</text>';
+var SN=["AI for Business Performance","Data-driven Organization","Cloud, from strategy to value","Modernisation des SI"],SH=[["AI for","Business","Performance"],["Data-driven","Organization"],["Cloud,","from strategy","to value"],["Modernisation","des SI"]];
+var h='<circle class="ring" cx="300" cy="300" r="292"/>';
+for(var k=0;k<4;k++){var m=P(172,k*90+45),ls=SH[k];h+='<path class="q" data-q="'+k+'" d="'+arc(k*90+3,k*90+87,72,268)+'"/><text class="qn" x="'+m[0].toFixed(1)+'" y="'+(m[1]-26).toFixed(1)+'" data-q="'+k+'">0'+(k+1)+'</text><text class="qt" data-q="'+k+'" x="'+m[0].toFixed(1)+'" y="'+(m[1]-2).toFixed(1)+'">'+ls.map(function(t,j){return '<tspan x="'+m[0].toFixed(1)+'" dy="'+(j?18:0)+'">'+esc(t)+'</tspan>'}).join('')+'</text>'}
+h+='<g class="needle" id="ost-nd"><circle cx="300" cy="8" r="7"/></g><circle class="hub" cx="300" cy="300" r="52"/><text class="hn" id="ost-hn" x="300" y="302" dominant-baseline="central">01</text><text class="hs" x="300" y="328">/ 04</text>';
 svg.innerHTML=h;
 var cur=-1;
+[].forEach.call(svg.querySelectorAll('path.q'),function(q){q.style.cursor='pointer';q.addEventListener('click',function(){items[+q.dataset.q].querySelector('.ost-hd').click()})});
 function set(i){if(i===cur)return;cur=i;
 items.forEach(function(el,k){el.classList.toggle('on',k===i);el.classList.toggle('done',k<i);el.classList.toggle('next',k>i)});
-[].forEach.call(svg.querySelectorAll('.q'),function(q){q.classList.toggle('on',+q.dataset.q===i)});
-[].forEach.call(svg.querySelectorAll('[data-k]'),function(n){n.classList.toggle('on',O[i].e.indexOf(+n.dataset.k)>-1)});
+[].forEach.call(svg.querySelectorAll('[data-q]'),function(q){q.classList.toggle('on',+q.dataset.q===i)});
 document.getElementById('ost-nd').style.transform='rotate('+(i*90+45)+'deg)';
 document.getElementById('ost-hn').textContent='0'+(i+1)}
 var tick=false;
@@ -2447,14 +2446,14 @@ el.querySelector('.ost-go').addEventListener('click',function(e){e.stopPropagati
 })();</script>
 <style id="ost-first">/* la page démarre par « Nos offres » : l’ancien bandeau reste dans le DOM (il alimente le détail plein page) mais n’est plus affiché */
 #solutions{display:none !important}
-.ost-intro{padding-top:clamp(110px,12vw,150px);padding-bottom:0}.ost-track{margin-top:-6vh}
+.ost-intro{padding-top:clamp(110px,12vw,150px);padding-bottom:clamp(60px,9vh,110px);min-height:min(78vh,720px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}.ost-track{margin-top:0}
 </style>
 <style id="ost-light">
 /* mode clair par défaut ; le mode sombre garde le fond bleu nuit */
 html:not([data-theme="dark"]) .ost{background:#fff;color:#0b0f19}
 html:not([data-theme="dark"]) .ost::before{background:radial-gradient(900px 520px at 90% 18%,rgba(238,34,56,.10),transparent 60%),radial-gradient(700px 480px at -6% 88%,rgba(139,92,246,.07),transparent 60%)}
-html:not([data-theme="dark"]) .ost h2{color:#0b0f19}
-html:not([data-theme="dark"]) .ost h2 em,html:not([data-theme="dark"]) .ost-eb{color:#E2001A}
+html:not([data-theme="dark"]) .ost h1,.ost h2{color:#0b0f19}
+html:not([data-theme="dark"]) .ost h1 em,html:not([data-theme="dark"]) .ost h2 em,html:not([data-theme="dark"]) .ost-eb{color:#E2001A}
 html:not([data-theme="dark"]) .ost-intro p{color:#4b5468}
 html:not([data-theme="dark"]) .ost-it{background:#fff;border-color:rgba(11,15,25,.12);box-shadow:0 8px 24px rgba(11,15,25,.06)}
 html:not([data-theme="dark"]) .ost-n{border-color:rgba(11,15,25,.3);color:#3a4152}
@@ -2498,5 +2497,19 @@ html:not([data-theme="dark"]) .od-c.red .od-p span{border-color:rgba(255,255,255
 html:not([data-theme="dark"]) .od-x{background:#0b0f19;color:#fff}
 html:not([data-theme="dark"]) .od-nav{background:rgba(11,15,25,.08);color:#0b0f19}
 html:not([data-theme="dark"]) .od-nav button{background:rgba(11,15,25,.12);color:#0b0f19}
+</style>
+<style id="ost-dial2">
+.ost-dial .qn,.ost-dial .qt{pointer-events:none}
+.ost-dial .qn{font:700 24px var(--display,inherit);fill:#fff;opacity:.55}
+.ost-dial .qt{fill:#c7cfdd;font:700 15px/1.2 var(--display,inherit);text-anchor:middle;transition:fill .4s}
+.ost-dial .qn{text-anchor:middle}
+.ost-dial .q.on,.ost-dial .qn.on{opacity:1}
+.ost-dial .q.on~.qt.on,.ost-dial .qt.on{fill:#fff}
+.ost-dial .needle circle{fill:#ee2238;filter:drop-shadow(0 0 8px rgba(238,34,56,.9))}
+html:not([data-theme="dark"]) .ost-dial .qt{fill:#4b5468}
+html:not([data-theme="dark"]) .ost-dial .qn{fill:#3a4152}
+html:not([data-theme="dark"]) .ost-dial .qn.on,html:not([data-theme="dark"]) .ost-dial .qt.on{fill:#fff}
+html:not([data-theme="dark"]) .ost-dial .needle circle{fill:#ee2238}
+.ost-dial svg{width:min(100%,calc(100vh - 150px),640px)}
 </style>
 </body></html>
