@@ -1886,7 +1886,7 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 <div class="oh" id="oh"><effect-3d-duo id="oh-fx" count="30" speed="1.4" parallax="0.4" beam="7" aria-hidden="true"></effect-3d-duo><h1 id="ost-t">Quatre offres, sept modèles,<br>huit expertises :<br><em>un même système de delivery.</em></h1><p class="oh-p">L’offre dit ce que nous livrons. Le modèle opératoire dit comment nous intégrons vos équipes et votre organisation, et y déployons nos expertises.</p><a class="oh-cta" href="#ost-track" id="oh-cta">Découvrir</a></div>
 <div class="ost-track" id="ost-track"><div class="ost-stick"><a class="ost-next" href="#reponses" aria-label="Passer aux modèles opératoires">Les modèles opératoires <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 2v11M3 8.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="wrap ost-grid">
 <ol class="ost-list" id="ost-list"></ol>
-<div class="ost-dial" aria-hidden="true"><svg id="ost-svg" viewBox="0 0 600 650"></svg></div>
+<div class="ost-dial" aria-hidden="true"><svg id="ost-svg" viewBox="0 0 600 650"></svg><div class="ost-car" id="ost-car"><div class="ost-cr" id="ost-cr"></div></div></div>
 </div></div></div></section>
 <section class="sx sx2" id="reponses-old" aria-hidden="true" hidden><div class="wrap">
 <div class="sx-pin"><div class="sx-b sx-b1"><h2 id="sx-t" class="sx-h2 rv4">Nos modèles opératoires <em>intègrent</em><br>vos équipes et votre organisation…</h2>
@@ -2652,7 +2652,7 @@ html:not([data-theme="dark"]) .od-leg button{color:#7a8294}html:not([data-theme=
 </style>
 <script>(function(){var d=document.querySelector('.ost-dial'),l=document.getElementById('ost-list');if(!d||!l)return;
 var N=['AI & Business','Data','Cloud','Modernisation SI'];
-var chip=document.createElement('div');chip.className='od-chip';chip.innerHTML='<b>Les offres</b> · quatre arcs, un même cycle';d.appendChild(chip);
+var chip=document.createElement('div');chip.className='od-chip';chip.innerHTML='<b>Les offres</b>';d.appendChild(chip);
 var lg=document.createElement('div');lg.className='od-leg';lg.setAttribute('role','group');lg.setAttribute('aria-label','Les quatre offres');
 N.forEach(function(n,i){var b=document.createElement('button');b.type='button';b.textContent=n;b.addEventListener('click',function(){var h=l.children[i]&&l.children[i].querySelector('.ost-hd');if(h)h.click()});lg.appendChild(b)});d.appendChild(lg);
 function sync(){[].forEach.call(l.children,function(li,i){lg.children[i].classList.toggle('on',li.classList.contains('on'))})}
@@ -2804,4 +2804,33 @@ html[data-theme="dark"] .md-intro>effect-3d-duo{opacity:.85}
 .md-intro>*:not(effect-3d-duo){position:relative;z-index:1}
 @media(max-width:900px){.md-intro>effect-3d-duo{display:none}}
 </style>
+<style id="ost-car-css">
+.ost-dial #ost-svg{display:none !important}
+.ost-car{position:relative;overflow:hidden;border-radius:26px;height:min(54vh,520px);min-height:300px;box-shadow:0 22px 50px -26px rgba(120,10,40,.5)}
+.ost-cr{display:flex;height:100%;transition:transform .7s cubic-bezier(.22,.8,.24,1)}
+.ost-cs{position:relative;flex:0 0 100%;height:100%;background:var(--g);color:#fff;display:grid;place-items:center}
+.ost-cs::after{content:"";position:absolute;inset:0;background:radial-gradient(520px 320px at 12% 0%,rgba(255,255,255,.16),transparent 60%);pointer-events:none}
+.ost-cs svg{position:relative;z-index:1;width:78%;max-width:420px;height:auto;overflow:visible}
+.ost-cs .f{fill:rgba(255,255,255,.18)}.ost-cs .f2{fill:rgba(255,255,255,.32)}.ost-cs .f3{fill:#fff}
+.ost-cs .s{fill:none;stroke:rgba(255,255,255,.75);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ost-cs .s2{fill:none;stroke:rgba(255,255,255,.35);stroke-width:2;stroke-dasharray:3 9;stroke-linecap:round}
+.ost-cs .fl{animation:ocfl 6s ease-in-out infinite}.ost-cs .fl2{animation:ocfl 7.5s ease-in-out infinite reverse}
+@keyframes ocfl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.ost-cs .rt{transform-origin:200px 160px;animation:ocrt 40s linear infinite}
+@keyframes ocrt{to{transform:rotate(360deg)}}
+.ost-cs b{position:absolute;z-index:2;left:22px;bottom:18px;font:700 15px var(--display,inherit);letter-spacing:.02em;color:#fff}
+@media(prefers-reduced-motion:reduce){.ost-cs .fl,.ost-cs .fl2,.ost-cs .rt{animation:none}.ost-cr{transition:none}}
+@media(max-width:900px){.ost-car{height:240px;min-height:0}}
+</style>
+<script>(function(){
+var S=[
+{n:"AI for Business Performance",g:"linear-gradient(135deg,#ee2238,#bf1d67)",i:'<rect class="f" x="70" y="190" width="56" height="90" rx="14"/><rect class="f2" x="152" y="140" width="56" height="140" rx="14"/><rect class="fl" x="234" y="80" width="56" height="200" rx="14" style="fill:rgba(255,255,255,.92)"/><circle class="f3 fl2" cx="330" cy="62" r="16"/><path class="s" d="M70 160 L150 112 L232 60 L318 52"/><path class="s2" d="M60 292 H340"/>'},
+{n:"Data-driven Organization",g:"linear-gradient(135deg,#d11f55,#7b2a9e)",i:'<g class="rt"><circle class="s2" cx="200" cy="160" r="128"/><circle class="s2" cx="200" cy="160" r="88"/></g><circle class="f" cx="200" cy="160" r="62"/><path class="s" d="M200 98 A62 62 0 0 1 262 160"/><circle class="f3 fl" cx="262" cy="160" r="13"/><circle class="f2 fl2" cx="112" cy="160" r="11"/><circle class="f3" cx="200" cy="72" r="9"/><circle class="f2" cx="200" cy="248" r="9"/><circle class="f3" cx="328" cy="160" r="8"/>'},
+{n:"Cloud, from strategy to value",g:"linear-gradient(135deg,#bf1d67,#3f2a8c)",i:'<circle class="f fl2" cx="130" cy="190" r="70"/><circle class="f2 fl" cx="226" cy="150" r="88"/><circle class="f" cx="296" cy="206" r="56"/><path class="s" d="M70 262 C150 262 190 190 330 96"/><circle class="f3" cx="330" cy="96" r="12"/><path class="s2" d="M60 292 H340"/>'},
+{n:"Modernisation des SI",g:"linear-gradient(135deg,#a3173f,#ee2238 55%,#f2745f)",i:'<rect class="f" x="60" y="190" width="84" height="84" rx="10"/><rect class="f2 fl2" x="156" y="152" width="84" height="84" rx="22"/><rect class="fl" x="252" y="114" width="84" height="84" rx="42" style="fill:rgba(255,255,255,.92)"/><path class="s" d="M102 172 L102 136 M102 136 L196 136 L196 104"/><path class="s" d="M196 104 L296 104 L296 74"/><circle class="f3" cx="296" cy="64" r="9"/>'}];
+var cr=document.getElementById('ost-cr'),l=document.getElementById('ost-list');if(!cr||!l)return;
+cr.innerHTML=S.map(function(d){return '<div class="ost-cs" style="--g:'+d.g+'"><svg viewBox="0 0 400 320">'+d.i+'</svg><b>'+d.n+'</b></div>'}).join('');
+function sync(){var k=0;[].forEach.call(l.children,function(li,i){if(li.classList.contains('on'))k=i});cr.style.transform='translateX(-'+(k*100)+'%)'}
+new MutationObserver(sync).observe(l,{subtree:true,attributes:true,attributeFilter:['class']});sync();
+})();</script>
 </body></html>
