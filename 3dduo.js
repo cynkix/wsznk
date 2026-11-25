@@ -24,6 +24,14 @@
   const PFRAG = `uniform vec3 uBeam; varying float vA;
     void main(){ float r=length(gl_PointCoord-0.5)*2.0; float g=exp(-r*r*5.0); if(g<0.01) discard; gl_FragColor=vec4(uBeam, g*vA); }`;
 
+  // un seul effet 3D actif à la fois : celui dont la surface visible est la plus grande
+  const REG = new Set();
+  function arbitrate() {
+    let best = null, ba = 0;
+    REG.forEach((e) => { if (e._area > ba) { ba = e._area; best = e; } });
+    if (ba < innerWidth * innerHeight * 0.18) best = null;
+    REG.forEach((e) => { e._vis = e === best; e._kick && e._kick(); });
+  }
   class Effect3D extends HTMLElement {
     static get observedAttributes() { return ['theme', 'count', 'speed', 'parallax', 'beam', 'spacing', 'intensity', 'shape', 'thick', 'warp']; }
     connectedCallback() {
@@ -34,7 +42,7 @@
       this._started = true;
       import(new URL('three.module.js',BASE0).href).then((T) => this._init(T)).catch(() => {});
     }
-    disconnectedCallback() { cancelAnimationFrame(this._raf); this._raf = 0; this._io && this._io.disconnect(); this._onVis && document.removeEventListener('visibilitychange', this._onVis); this._ro && this._ro.disconnect(); this._onMove && window.removeEventListener('pointermove', this._onMove); this._started = false; }
+    disconnectedCallback() { cancelAnimationFrame(this._raf); this._raf = 0; this._io && this._io.disconnect(); REG.delete(this); arbitrate(); this._onVis && document.removeEventListener('visibilitychange', this._onVis); this._ro && this._ro.disconnect(); this._onMove && window.removeEventListener('pointermove', this._onMove); this._started = false; }
     attributeChangedCallback(name, o, v) {
       if (!this._T || !this._lines) return;
       if (name === 'spacing' && o !== v) this._lines.forEach((L) => this._spawn(L, L.birth));
@@ -115,7 +123,9 @@
         this._tick(this._time, dt);
       };
       this._kick = () => { if (this._raf || !this._vis || document.hidden) return; this._last = performance.now(); this._raf = requestAnimationFrame(loop); };
-      this._io = new IntersectionObserver((es) => { this._vis = es[es.length - 1].isIntersecting; this._kick(); }, { rootMargin: '80px' });
+      this._area = 0;
+      this._io = new IntersectionObserver((es) => { const r = es[es.length - 1].intersectionRect; this._area = es[es.length - 1].isIntersecting ? r.width * r.height : 0; arbitrate(); }, { threshold: [0, 0.05, 0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 1] });
+      REG.add(this);
       this._io.observe(this);
       this._onVis = () => this._kick();
       document.addEventListener('visibilitychange', this._onVis);
