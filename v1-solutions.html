@@ -2731,6 +2731,10 @@ html[data-theme="dark"] .md-tile{background:rgba(255,255,255,.04);border-color:r
 html[data-theme="dark"] .md-tile .k{color:#ff5a70}
 .md-tile b{display:block;font:700 clamp(18px,1.6vw,22px)/1.2 var(--display,inherit)}
 .md-tile .of{display:flex;gap:6px;margin-top:auto;padding-top:16px}
+.md-tile .kw{display:flex;flex-wrap:wrap;gap:4px 6px;margin:10px 0 0;padding:0}
+.md-tile .kw span{font:600 11.5px/1 var(--display,inherit);color:#6b7280;padding:4px 8px;border-radius:999px;background:#f3f4f6}
+html[data-theme="dark"] .md-tile .kw span{color:#aab1c0;background:rgba(255,255,255,.07)}
+.md-tile .of{padding-top:14px}
 .md-tile .of i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1.5px solid #c4c9d4;font:700 11px var(--display,inherit);font-style:normal;color:#9aa1b0}
 .md-tile .of i.y{background:linear-gradient(135deg,#EE2238,#BF1D67);border-color:transparent;color:#fff}
 @media(max-width:1000px){.md-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -2747,13 +2751,14 @@ var M=[{t:"Diagnostic Flash, Audit 360° et Études",w:"1 à 3 semaines",r:[1,3]
 {t:"Expertise Ponctuelle, Coaching & Formation",w:"1 jour à quelques semaines",r:[.2,4],g:"Interventions chirurgicales et montée en compétences par la pratique",d:"Bénéficiez de nos meilleurs spécialistes pour résoudre un problème critique d’architecture, de performance ou de sécurité, et formez vos équipes via notre catalogue de formations de pointe.",l:["Recommandations techniques chirurgicales","Formations certifiantes (Zenika Training)","Supports pédagogiques et labs pratiques","Coaching individuel ou d’équipe"],q:"Résolution d’incidents de performance, sécurisation pré-audit, formation certifiante des collaborateurs.",o:[1]},
 {t:"Programmes de Transformation Pilotés",w:"6 à 24 mois",r:[26,104],g:"Accompagnement holistique des grandes métamorphoses du SI",d:"Pilotage de bout en bout des transformations stratégiques : passage au Cloud, adoption de l’IA à l’échelle de l’entreprise, réorganisation en Team Topologies.",l:["Gouvernance de transformation globale","Tableaux de bord d’impact et ROI","Plan de conduite du changement","Transformation culturelle pérenne"],q:"Transformation digitale globale, transition vers un modèle produit, adoption massive de l’IA générative.",o:[0,1,3]}];
 var X=[["Agentic systems",[0]],["Architectures modernes",[1,2,3]],["Software Excellence",[0,3]],["Data & IA",[0,1]],["Infrastructures & Cloud",[2]],["Product design & management",[0]],["Delivery Management",[2,3]],["Organisations, conduite du changement",[1,3]]];
+var KW=[['Agents IA','Orchestration','MCP'],['Microservices','Event-driven','Cloud native'],['Craft','Tests','CI/CD'],['Data platform','MLOps','GenAI'],['Kubernetes','FinOps','Plateformes'],['Discovery','UX','Product ops'],['Agilité','Pilotage','Run'],['Coaching','Gouvernance','Culture']];
 var track=document.getElementById('md-track'),list=document.getElementById('md-list'),tiles=document.getElementById('md-tiles'),pn=document.getElementById('md-pn');if(!track||!list||!pn)return;
 function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function badges(o){var h='';for(var k=0;k<4;k++)h+='<i class="'+(o.indexOf(k)>=0?'y':'')+'">'+(k+1)+'</i>';return h}
 var SH=["Diagnostic Flash, Audit 360° et Études","Cadrage Produit, Solution ou Projet","Solution Logicielle Clé en Mains","Régie & Renfort d’Équipe","Centre de Services & de Compétences","Expertise Ponctuelle, Coaching & Formation","Programmes de Transformation Pilotés"];
 var WS=["1 à 3 semaines","3 à 6 semaines","2 à 6 mois+","Trimestriel / semestriel","Engagement pluriannuel","1 jour à quelques semaines","6 à 24 mois"];
 list.innerHTML=M.map(function(m,i){return '<li class="md-it" data-i="'+i+'"><button type="button" class="md-hd" aria-label="Modèle '+(i+1)+' : '+esc(SH[i])+'"><span class="md-n">'+(i+1)+'</span><span class="md-t">'+esc(SH[i])+'<small>'+esc(WS[i])+'</small></span></button></li>'}).join('');
-if(tiles)tiles.innerHTML=X.map(function(x,i){return '<li class="md-tile" style="transition-delay:'+(i%4)*90+'ms"><span class="k">Expertise 0'+(i+1)+'</span><b>'+esc(x[0])+'</b><div class="of" aria-label="Offres concernées">'+badges(x[1])+'</div></li>'}).join('');
+if(tiles)tiles.innerHTML=X.map(function(x,i){return '<li class="md-tile" style="transition-delay:'+(i%4)*90+'ms"><span class="k">Expertise 0'+(i+1)+'</span><b>'+esc(x[0])+'</b><p class="kw">'+(KW[i]||[]).map(function(w){return '<span>'+esc(w)+'</span>'}).join('')+'</p><div class="of" aria-label="Offres concernées">'+badges(x[1])+'</div></li>'}).join('');
 var items=[].slice.call(list.children),n=M.length;
 var L0=Math.log10(.2),SP=Math.log10(104)-L0;function pos(w){return Math.max(0,Math.min(1,(Math.log10(w)-L0)/SP))*100}
 var bar=document.getElementById('md-bar');
