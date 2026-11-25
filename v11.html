@@ -3001,20 +3001,26 @@ var n=0;
 .sv-offs-r .sv-off-r::before{transition-duration:.6s !important}
 </style>
 <style>
-/* mobile : la frise des 20 ans devient verticale (de haut en bas, chronologique) */
+/* mobile : la frise des 20 ans est entièrement verticale (axe, barres et légendes), le temps descend */
 @media(max-width:700px){
-#ct20 .ct-tl{display:flex !important;flex-direction:column-reverse;position:relative;margin-top:22px !important;padding:4px 0 6px 34px !important}
+#ct20 .ct-tl{display:block !important;position:relative;height:400px;margin-top:26px !important;padding:0 !important}
 #ct20 .ct-rule,#ct20 .ct-arrow{display:none !important}
-#ct20 .ct-tl::before{content:"";position:absolute;left:9px;top:0;bottom:6px;width:2px;border-radius:2px;background:linear-gradient(180deg,rgba(120,125,140,.35),#EE2238);transform-origin:top;transform:scaleY(0);transition:transform 4.2s linear .2s}
+#ct20 .ct-tl::before{content:"";position:absolute;left:9px;top:0;bottom:8px;width:2px;border-radius:2px;background:linear-gradient(180deg,rgba(120,125,140,.35),#EE2238);transform-origin:top;transform:scaleY(0);transition:transform 4.2s linear .2s}
 #ct20.on .ct-tl::before{transform:none}
 #ct20 .ct-tl::after{content:"";position:absolute;left:5px;bottom:2px;width:10px;height:10px;border-right:2px solid #EE2238;border-bottom:2px solid #EE2238;transform:rotate(45deg);opacity:0;transition:opacity .4s 4.2s}
 #ct20.on .ct-tl::after{opacity:1}
-#ct20 .ct-row{margin-left:0 !important;height:auto !important;margin-bottom:26px !important;position:relative}
-#ct20 .ct-row::before{content:"";position:absolute;left:-33px;top:2px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #EE2238;opacity:0;transform:scale(.4);transition:opacity .4s,transform .5s cubic-bezier(.3,1.6,.5,1);transition-delay:var(--bd,0s)}
-#ct20.on .ct-row::before{opacity:1;transform:none}
-#ct20 .ct-lab{position:static !important;display:block;margin:0 0 8px !important;font-size:16px !important;font-weight:600;color:var(--ink) !important;line-height:1.2;white-space:normal}
-#ct20 .ct-lab br{display:inline-block;width:.3em;height:0}
-#ct20 .ct-bar{width:calc(100% - var(--l) * .6);height:12px;margin:0}
+#ct20 .ct-cr{--k:0}#ct20 .ct-ag{--k:1}#ct20 .ct-cd{--k:2}#ct20 .ct-ia{--k:3}
+#ct20 .ct-row{position:absolute !important;top:var(--l);bottom:8px;left:calc(40px + var(--k) * 56px);width:14px;height:auto !important;margin:0 !important}
+#ct20 .ct-row::before{content:"";position:absolute;top:6px;left:calc(-30px - var(--k) * 56px);width:calc(30px + var(--k) * 56px);border-top:1.5px dashed rgba(238,34,56,.5);opacity:0;transition:opacity .4s;transition-delay:var(--bd,0s)}
+#ct20 .ct-row::after{content:"";position:absolute;top:1px;left:calc(-35px - var(--k) * 56px);width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #EE2238;opacity:0;transform:scale(.4);transition:opacity .4s,transform .5s cubic-bezier(.3,1.6,.5,1);transition-delay:var(--bd,0s)}
+#ct20.on .ct-row::before{opacity:1}
+#ct20.on .ct-row::after{opacity:1;transform:none}
+#ct20 .ct-bar{position:absolute !important;left:0;top:0;width:14px !important;height:100% !important;margin:0 !important;background:linear-gradient(180deg,#EE2238,#C93B7E) !important;clip-path:inset(0 0 100% 0 round 99px) !important}
+#ct20.on .ct-bar{clip-path:inset(0 0 0 0 round 99px) !important}
+#ct20 .ct-cd .ct-bar{background:linear-gradient(180deg,#FF1A2E,#B0005A) !important}
+#ct20 .ct-bar::before{left:50% !important;top:5px !important;margin:0 0 0 -3px !important}
+#ct20 .ct-lab{position:absolute !important;left:22px !important;top:-2px !important;bottom:auto !important;margin:0 !important;display:block;font-size:15px !important;font-weight:600;color:var(--ink) !important;line-height:1.15;white-space:nowrap}
+#ct20 .ct-lab br{display:inline}
 }
 </style>
 </body></html>
