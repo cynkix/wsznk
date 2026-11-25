@@ -28,6 +28,7 @@ body.in-proto{overflow:hidden}body.in-proto iframe{display:block}body.in-proto #
 .hero .eb{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 .hero h1{margin:12px 0 14px;font-weight:200;font-size:clamp(34px,5.6vw,72px);line-height:1.05;letter-spacing:.01em;max-width:none}
 .hero h1 span{text-transform:none;font-size:.3em;letter-spacing:.04em;margin-left:.35em;white-space:nowrap}
+.hero p+p{margin-top:12px}
 .hero p{margin:0;max-width:62ch;color:var(--muted);font-size:clamp(15px,1.3vw,18px);line-height:1.5}
 .grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s,border-color .25s,box-shadow .25s}
@@ -56,7 +57,7 @@ body.in-proto{overflow:hidden}body.in-proto iframe{display:block}body.in-proto #
     <label class="vp"><span id="vpcur">Accueil · toutes les versions</span><select id="hsel" aria-label="Version du prototype"></select></label></div>
   <section class="hero"><div class="eb">Prototypes · novembre 2026</div>
     <h1>DESIGN ZENIKA <span>website v4</span></h1>
-    <p>Même contenu, quatre parti pris graphiques. Cliquez sur une vignette pour ouvrir le prototype ; le sélecteur de version en haut à droite permet de passer de l’un à l’autre, ou de revenir ici.</p></section>
+    <p>Voici quatre partis pris graphiques pour un même contenu.<br>Mode clair par défaut, mode sombre disponible. Version mobile en cours.</p><p class="p2">Le sélecteur de version, en haut à droite, permet de passer de l’une à l’autre ou de revenir ici.<br>Certaines versions proposent des variantes intégrées.</p></section>
   <div class="grid" id="grid"></div>
   <div class="arch" id="arch"></div>
   <p class="conf">Rappel confidentialité : ces prototypes sont internes à Zenika, contenus et chiffres provisoires.</p>
