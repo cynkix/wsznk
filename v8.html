@@ -1524,17 +1524,23 @@ html:not([data-theme="light"]) .hero-zf .zb-sh{filter:drop-shadow(0 1.5px 2px rg
     var ps=[].slice.call(s.querySelectorAll('path')); ps.forEach(function(p){p.style.setProperty('fill','url(#'+id+')','important')});
     items.push({g:g,vx:vb[0],vy:vb[1],vw:vb[2],vh:vb[3],x:+s.getAttribute('x')||0,y:+s.getAttribute('y')||0,w:+s.getAttribute('width')||vb[2],h:+s.getAttribute('height')||vb[3]});
   });
-  var mx=null,my=null,raf=0;
+  var mx=null,my=null,raf=0,cur=null;
   function apply(){
     raf=0; if(document.body.getAttribute('data-ill')!=='flat') return;
     var r=sv.getBoundingClientRect(), s=r.width/640; if(!r.width) return;
-    var px=mx==null?r.left+r.width*.6:mx, py=my==null?r.top+r.height*.5:my;
-    var ox=(px-r.left)/s, oy=(py-r.top)/s, R=330;
+    /* la lumière suit la souris seulement sur le logo ; sinon elle revient au centre */
+    var on=mx!=null&&mx>=r.left&&mx<=r.right&&my>=r.top&&my<=r.bottom;
+    var tx=on?mx:r.left+r.width*.6, ty=on?my:r.top+r.height*.5;
+    if(!cur) cur={x:tx,y:ty};
+    cur.x+=(tx-cur.x)*.18; cur.y+=(ty-cur.y)*.18;
+    var more=Math.abs(tx-cur.x)>.5||Math.abs(ty-cur.y)>.5; if(!more){cur.x=tx;cur.y=ty}
+    var px=cur.x, py=cur.y, ox=(px-r.left)/s, oy=(py-r.top)/s, R=330;
     items.forEach(function(it){var k=it.vw/it.w,cx=it.vx+(ox-it.x)*k,cy=it.vy+(oy-it.y)*(it.vh/it.h);
       it.g.setAttribute('cx',cx);it.g.setAttribute('cy',cy);it.g.setAttribute('fx',cx);it.g.setAttribute('fy',cy);it.g.setAttribute('r',R*k)});
-    var dx=px-(r.left+r.width/2),dy=py-(r.top+r.height/2),dist=Math.sqrt(dx*dx+dy*dy)||1,gi=Math.max(0,1-dist/(r.width*1.1));
-    if(mx==null){sv.style.setProperty('--sx','-16px');sv.style.setProperty('--sy','6px');sv.style.setProperty('--gi','.85');return}
-    sv.style.setProperty('--sx',(-dx/dist*20)+'px');sv.style.setProperty('--sy',(-dy/dist*20)+'px');sv.style.setProperty('--gi',gi.toFixed(2));
+    var dx=px-(r.left+r.width/2),dy=py-(r.top+r.height/2),dist=Math.sqrt(dx*dx+dy*dy)||1;
+    if(!on&&!more){sv.style.setProperty('--sx','-16px');sv.style.setProperty('--sy','6px');sv.style.setProperty('--gi','.85')}
+    else{var gi=Math.max(0,1-dist/(r.width*1.1));sv.style.setProperty('--sx',(-dx/dist*20)+'px');sv.style.setProperty('--sy',(-dy/dist*20)+'px');sv.style.setProperty('--gi',gi.toFixed(2))}
+    if(more) q();
   }
   function q(){if(!raf)raf=requestAnimationFrame(apply)}
   addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;q()},{passive:true});
