@@ -131,6 +131,11 @@
       this._onVis = () => this._kick();
       document.addEventListener('visibilitychange', this._onVis);
       this._raf = requestAnimationFrame(loop);
+      // préchauffage : compile les shaders et dessine une image hors écran, pour éviter la saccade au premier tracé
+      if (this.hasAttribute('always')) {
+        const warm = () => { try { this._renderer && this._renderer.compile && this._scene && this._cam && this._renderer.compile(this._scene, this._cam); this._tick(this._time || 0, 0.016); } catch (e) {} };
+        (window.requestIdleCallback || ((f) => setTimeout(f, 500)))(() => setTimeout(warm, 300));
+      }
     }
     _applyTheme() {
       const th = THEMES[this.theme] || THEMES.gradient;
