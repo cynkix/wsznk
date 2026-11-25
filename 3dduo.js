@@ -29,7 +29,7 @@
   function arbitrate() {
     let best = null, ba = 0;
     REG.forEach((e) => { if (e._area > ba) { ba = e._area; best = e; } });
-    if (ba < innerWidth * innerHeight * 0.18) best = null;
+    if (best && ba < innerWidth * innerHeight * 0.18 && !best.hasAttribute('always')) best = null;
     REG.forEach((e) => { e._vis = e === best; e._kick && e._kick(); });
   }
   class Effect3D extends HTMLElement {
