@@ -1917,6 +1917,7 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 <div class="chips" role="group" aria-labelledby="sujet-l">
 <button type="button" class="chip" aria-pressed="true">IA</button><button type="button" class="chip" aria-pressed="false">Modernisation</button><button type="button" class="chip" aria-pressed="false">Cloud / plateforme</button><button type="button" class="chip" aria-pressed="false">Data</button><button type="button" class="chip" aria-pressed="false">Autre</button>
 </div></div>
+<div class="f"><label for="objet">Objet</label><input id="objet" name="objet" type="text" placeholder="Votre demande"></div>
 <div class="f"><label for="msg">Message (facultatif)</label><textarea id="msg" name="msg" placeholder="Vos enjeux, votre calendrier…"></textarea></div>
 <button class="btn" type="submit">Envoyer ma demande<i><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></button>
 <p class="sent" role="status">Prototype : la demande n'est pas réellement envoyée.</p>
@@ -2918,4 +2919,8 @@ html[data-theme="dark"] .md-inf effect-3d-duo{opacity:1}
 <script>(function(){if(!window.IntersectionObserver)return;var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('zk-paused',!e.isIntersecting)})},{rootMargin:'120px'});
 [].forEach.call(document.querySelectorAll('section,.oh,.ost-track,.md-inf'),function(n){io.observe(n)});
 document.addEventListener('visibilitychange',function(){document.documentElement.classList.toggle('zk-paused',document.hidden)})})();</script>
+<script>(function(){var c=document.querySelector('.md-cta'),o=document.getElementById('objet');if(!c||!o)return;
+c.addEventListener('click',function(){var t=document.getElementById('md-pt'),n=t?t.textContent.replace(/\s+/g,' ').trim():'';
+o.value='Demande de renseignements'+(n?' : '+n:'');
+setTimeout(function(){var m=document.getElementById('msg');try{m&&m.focus({preventScroll:true})}catch(e){}},900)})})();</script>
 </body></html>
