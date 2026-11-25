@@ -2761,7 +2761,7 @@ else{
  if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -16% 0px',threshold:.9});a.observe(h0);}
  function chk(){var vh=innerHeight||800;
   if(!rm&&cards[0]&&cards[0].classList.contains('ph')&&plA&&!plA.dataset.plAt&&plA.offsetParent&&plA.getBoundingClientRect().top<vh*.92)startPl(plA);
-  offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(r.top<vh*.9&&r.bottom>vh*.15){o.classList.add('go0');var k=offs.indexOf(o),L=offsL[k],n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)startPl(k);var left=L&&!rm?Math.max(0,(+L.dataset.plAt)+(L.closest('.sv-in')?n*500+450+300:n*500+450+200)-Date.now()):0;setTimeout(function(){if(o.classList.contains('go0'))o.classList.add('go');},left);}});}
+  offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(r.top<vh*.9&&r.bottom>vh*.15){o.classList.add('go0');var k=offs.indexOf(o),L=offsL[k],n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)startPl(k);var left=L&&!rm?Math.max(0,(+L.dataset.plAt)+(L.closest('.sv-in')?500:300)-Date.now()):0;setTimeout(function(){if(o.classList.contains('go0'))o.classList.add('go');},left);}});}
  addEventListener('scroll',function(){requestAnimationFrame(chk);},{passive:true});addEventListener('resize',chk);
  document.querySelectorAll('.svp button').forEach(function(x){x.addEventListener('click',function(){setTimeout(chk,150);});});
  function resetA(){cards.forEach(function(c){c.classList.remove('ph');});offsL.forEach(function(L){L.classList.remove('pl');delete L.dataset.plAt;});offs.forEach(function(o){o.classList.remove('go','go0');});}
@@ -2992,4 +2992,12 @@ var n=0;
  else if(c.nodeType===1)split(c);});})(h);
 })();
 </script>
+<style>
+/* traits verticaux : démarrent presque tout de suite avec les « + », enchaînés plus vite */
+.sv-offs-r .sv-off-r:nth-child(1)::before{transition-delay:.05s !important}
+.sv-offs-r .sv-off-r:nth-child(2)::before{transition-delay:.3s !important}
+.sv-offs-r .sv-off-r:nth-child(3)::before{transition-delay:.55s !important}
+.sv-offs-r .sv-off-r:nth-child(4)::before{transition-delay:.8s !important}
+.sv-offs-r .sv-off-r::before{transition-duration:.6s !important}
+</style>
 </body></html>
