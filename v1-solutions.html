@@ -2449,4 +2449,54 @@ el.querySelector('.ost-go').addEventListener('click',function(e){e.stopPropagati
 #solutions{display:none !important}
 .ost-intro{padding-top:clamp(110px,12vw,150px);padding-bottom:0}.ost-track{margin-top:-6vh}
 </style>
+<style id="ost-light">
+/* mode clair par défaut ; le mode sombre garde le fond bleu nuit */
+html:not([data-theme="dark"]) .ost{background:#fff;color:#0b0f19}
+html:not([data-theme="dark"]) .ost::before{background:radial-gradient(900px 520px at 90% 18%,rgba(238,34,56,.10),transparent 60%),radial-gradient(700px 480px at -6% 88%,rgba(139,92,246,.07),transparent 60%)}
+html:not([data-theme="dark"]) .ost h2{color:#0b0f19}
+html:not([data-theme="dark"]) .ost h2 em,html:not([data-theme="dark"]) .ost-eb{color:#E2001A}
+html:not([data-theme="dark"]) .ost-intro p{color:#4b5468}
+html:not([data-theme="dark"]) .ost-it{background:#fff;border-color:rgba(11,15,25,.12);box-shadow:0 8px 24px rgba(11,15,25,.06)}
+html:not([data-theme="dark"]) .ost-n{border-color:rgba(11,15,25,.3);color:#3a4152}
+html:not([data-theme="dark"]) .ost-t{color:#0b0f19}
+html:not([data-theme="dark"]) .ost-it.done{background:#f1f2f6}
+html:not([data-theme="dark"]) .ost-it.on{background:linear-gradient(135deg,#ee2238,#bf1d67);box-shadow:0 18px 40px rgba(238,34,56,.28)}
+html:not([data-theme="dark"]) .ost-it.on .ost-t{color:#fff}
+html:not([data-theme="dark"]) .ost-it.on .ost-n{color:#bf1d67;border-color:#fff}
+html:not([data-theme="dark"]) .ost-it.on .ost-bd p{color:rgba(255,255,255,.92)}
+html:not([data-theme="dark"]) .ost-it:not(.on) .ost-ch span{border-color:rgba(11,15,25,.2);background:rgba(11,15,25,.05);color:#0b0f19}
+html:not([data-theme="dark"]) .ost-it:not(.on) .ost-ch b{color:#E2001A}
+html:not([data-theme="dark"]) .ost-it:not(.on) .ost-bd p{color:#4b5468}
+html:not([data-theme="dark"]) .ost-dial .q{fill:rgba(11,15,25,.08)}
+html:not([data-theme="dark"]) .ost-dial .q.on{fill:#ee2238}
+html:not([data-theme="dark"]) .ost-dial .qn{fill:#3a4152}
+html:not([data-theme="dark"]) .ost-dial .q.on+.qn{fill:#fff}
+html:not([data-theme="dark"]) .ost-dial .ring{stroke:rgba(11,15,25,.18)}
+html:not([data-theme="dark"]) .ost-dial .nd{fill:#c3c8d4}
+html:not([data-theme="dark"]) .ost-dial .nd.on{fill:#ee2238;filter:drop-shadow(0 0 6px rgba(238,34,56,.5))}
+html:not([data-theme="dark"]) .ost-dial .nl{fill:#7a8396}
+html:not([data-theme="dark"]) .ost-dial .nl.on{fill:#0b0f19}
+html:not([data-theme="dark"]) .ost-dial .needle line{stroke:#0b0f19}
+html:not([data-theme="dark"]) .ost-dial .needle circle{fill:#0b0f19}
+html:not([data-theme="dark"]) .ost-dial .hub{fill:#fff;stroke:rgba(11,15,25,.25)}
+html:not([data-theme="dark"]) .ost-dial .hn{fill:#0b0f19}
+html:not([data-theme="dark"]) .ost-dial .hs{fill:#6b7488}
+@media(max-width:900px){html:not([data-theme="dark"]) .ost-it,html:not([data-theme="dark"]) .ost-it.done,html:not([data-theme="dark"]) .ost-it.on,html:not([data-theme="dark"]) .ost-it.next{background:#fff}html:not([data-theme="dark"]) .ost-it.on{background:#fff;box-shadow:0 8px 24px rgba(11,15,25,.06)}html:not([data-theme="dark"]) .ost-it.on .ost-t{color:#0b0f19}html:not([data-theme="dark"]) .ost-it.on .ost-bd p{color:#4b5468}html:not([data-theme="dark"]) .ost-it.on .ost-ch span{border-color:rgba(11,15,25,.2);background:rgba(11,15,25,.05)}html:not([data-theme="dark"]) .ost-it.on .ost-ch b{color:#E2001A}html:not([data-theme="dark"]) .ost-it .ost-n,html:not([data-theme="dark"]) .ost-it.on .ost-n{background:linear-gradient(135deg,#ee2238,#bf1d67);color:#fff;border-color:transparent}}
+/* détail plein page en clair */
+html:not([data-theme="dark"]) .od.full{background:#f6f7fb}
+html:not([data-theme="dark"]) .od::before{background:radial-gradient(900px 520px at 88% -8%,rgba(238,34,56,.14),transparent 60%),radial-gradient(700px 440px at -8% 108%,rgba(139,92,246,.08),transparent 60%)}
+html:not([data-theme="dark"]) .od h2,html:not([data-theme="dark"]) .od-c h3,html:not([data-theme="dark"]) .od-rel b,html:not([data-theme="dark"]) .od-rel span.pl{color:#0b0f19}
+html:not([data-theme="dark"]) .od-eb,html:not([data-theme="dark"]) .od-c .tag{color:#E2001A}
+html:not([data-theme="dark"]) .od-lead,html:not([data-theme="dark"]) .od-c p,html:not([data-theme="dark"]) .od-rel{color:#4b5468}
+html:not([data-theme="dark"]) .od-rel span.pl{border-color:rgba(11,15,25,.3)}
+html:not([data-theme="dark"]) .od-c{background:#fff;border-color:rgba(11,15,25,.1);box-shadow:0 10px 28px rgba(11,15,25,.06)}
+html:not([data-theme="dark"]) .od-c.red{background:linear-gradient(135deg,#ee2238,#bf1d67)}
+html:not([data-theme="dark"]) .od-c.red h3,html:not([data-theme="dark"]) .od-c.red .tag{color:#fff}
+html:not([data-theme="dark"]) .od-c.red p{color:rgba(255,255,255,.92)}
+html:not([data-theme="dark"]) .od-p span{border-color:rgba(11,15,25,.2);background:rgba(11,15,25,.05);color:#0b0f19}
+html:not([data-theme="dark"]) .od-c.red .od-p span{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.16);color:#fff}
+html:not([data-theme="dark"]) .od-x{background:#0b0f19;color:#fff}
+html:not([data-theme="dark"]) .od-nav{background:rgba(11,15,25,.08);color:#0b0f19}
+html:not([data-theme="dark"]) .od-nav button{background:rgba(11,15,25,.12);color:#0b0f19}
+</style>
 </body></html>
