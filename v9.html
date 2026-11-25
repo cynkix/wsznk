@@ -3154,4 +3154,11 @@ html[data-theme="dark"] .v20-eb,html[data-theme="dark"] .v20-h{color:#8f99ad !im
 .v20-tl{margin-left:clamp(8px,2.6vw,36px);margin-right:clamp(0px,1.4vw,20px)}
 @media(max-width:700px){#ct20 .ct-lg{width:60px !important;top:16px;right:16px}#ct20 .ct-h{padding-right:70px}.v20-tl{margin-left:6px;margin-right:0}.v20-hd{flex-wrap:wrap}}
 </style>
+<style id="ct20-tl-v1-look">
+/* Même rendu que la V1 : trait fin 2px, dégradé gris -> rouge, flèche en chevron ouvert */
+.v20-tl::before{width:2px !important;left:17.5px !important;border-radius:2px !important;background:linear-gradient(180deg,rgba(120,125,140,.35),#EE2238) !important}
+.v20-tl::after{width:10px !important;height:10px !important;left:13.5px !important;bottom:8px !important;border:0 !important;border-right:2px solid #EE2238 !important;border-bottom:2px solid #EE2238 !important;background:none !important;transform:rotate(45deg) translate(-4px,-4px) !important}
+.v20-tl.done::after{transform:rotate(45deg) !important}
+@media(max-width:700px){.v20-tl::before{left:12.5px !important}.v20-tl::after{left:8.5px !important}}
+</style>
 </body></html>
