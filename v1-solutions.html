@@ -2796,7 +2796,7 @@ html[data-theme="dark"] .ost .oh h1{text-shadow:none}
 <script>(function(){var z=document.getElementById('oh-fx'),m=document.getElementById('md-fx');if(!z)return;function dk(){return document.documentElement.getAttribute('data-theme')==='dark'}
 function sy(){var t=dk()?'sombre':'rougenoir';z.setAttribute('theme',t);if(m)m.setAttribute('theme',t)}sy();customElements.whenDefined('effect-3d-duo').then(function(){z.setShape('duo');if(m)m.setShape('timeline')});
 var m2=document.getElementById('md-fx2');if(m2){var t0=dk()?'sombre':'rougenoir';m2.setAttribute('theme',t0);customElements.whenDefined('effect-3d-duo').then(function(){m2.setShape('duo')});new MutationObserver(function(){m2.setAttribute('theme',dk()?'sombre':'rougenoir')}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})}
-if(m){var vis=false;new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!vis&&m.setShape){m._cur=null;m.setShape('timeline')}vis=e.isIntersecting})},{threshold:0,rootMargin:'0px 0px 30% 0px'}).observe(m.parentNode)}
+if(m){var vis=false;new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!vis&&m.setShape){m._cur=null;m.setShape('timeline')}vis=e.isIntersecting})},{threshold:0,rootMargin:'0px 0px 0px 0px'}).observe(m.parentNode)}
 new MutationObserver(sy).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});})();</script>
 <style id="ost-next-css">
 @media(min-width:901px){.ost-stick{padding-bottom:56px !important}}
@@ -2810,7 +2810,7 @@ html[data-theme="dark"] .ost-next{color:#aab1c0;background:rgba(17,20,28,.6);bor
 </style>
 <style id="md-fx-css">
 .md{overflow-x:clip;position:relative}
-.md-intro>effect-3d-duo{position:absolute;top:40px;left:0;right:0;height:clamp(520px,68vh,620px);z-index:0;pointer-events:none;opacity:.95}
+.md-intro>effect-3d-duo{position:absolute;top:40px;left:0;right:0;height:clamp(520px,68vh,620px);z-index:0;pointer-events:none;opacity:.95;will-change:transform}
 html[data-theme="dark"] .md-intro>effect-3d-duo{opacity:.85}
 .md-intro>*:not(effect-3d-duo){position:relative;z-index:1}
 @media(max-width:900px){.md-intro>effect-3d-duo{display:none}}
@@ -2923,4 +2923,7 @@ document.addEventListener('visibilitychange',function(){document.documentElement
 c.addEventListener('click',function(){var t=document.getElementById('md-pt'),n=t?t.textContent.replace(/\s+/g,' ').trim():'';
 o.value='Demande de renseignements'+(n?' : '+n:'');
 setTimeout(function(){var m=document.getElementById('msg');try{m&&m.focus({preventScroll:true})}catch(e){}},900)})})();</script>
+<script>(function(){var m=document.getElementById('md-fx');if(!m)return;var it=m.parentNode,tk=false,OFF=540;
+function u(){tk=false;var vh=innerHeight,t=it.getBoundingClientRect().top,p=Math.max(0,Math.min(1,(vh-60-t)/(vh-60-230)));m.style.transform='translate3d(0,'+(-(1-p)*OFF).toFixed(1)+'px,0)'}
+addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(u)}},{passive:true});addEventListener('resize',u);u()})();</script>
 </body></html>
