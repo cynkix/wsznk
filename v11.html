@@ -2718,7 +2718,7 @@ split(h);
 function upd(){
  if(!h.offsetParent)return;
  var r=h.getBoundingClientRect(),vh=innerHeight||800;
- var p=rm?1:Math.max(0,Math.min(1,(vh*.72-r.top)/(vh*.22)));
+ var p=rm?1:Math.max(0,Math.min(1,(vh*.95-r.top)/(vh*.14)));
  var n=Math.round(p*L.length);
  for(var i=0;i<L.length;i++){var on=i<n;if(L[i].classList.contains('on')!==on)L[i].classList.toggle('on',on);}
 }
@@ -2739,9 +2739,9 @@ if(rm)document.querySelectorAll('.svb-kw li').forEach(function(li){li.classList.
 .sv-offs-r .sv-off-r::before{transform:scaleY(.012) !important}
 .sv-offs-r.go .sv-off-r::before{transform:none !important}
 .sv-offs-r .sv-off-r:nth-child(1)::before{transition-delay:.1s !important}
-.sv-offs-r .sv-off-r:nth-child(2)::before{transition-delay:.6s !important}
-.sv-offs-r .sv-off-r:nth-child(3)::before{transition-delay:1.1s !important}
-.sv-offs-r .sv-off-r:nth-child(4)::before{transition-delay:1.6s !important}
+.sv-offs-r .sv-off-r:nth-child(2)::before{transition-delay:.4s !important}
+.sv-offs-r .sv-off-r:nth-child(3)::before{transition-delay:.7s !important}
+.sv-offs-r .sv-off-r:nth-child(4)::before{transition-delay:1s !important}
 .svb-kw li::before{transition-delay:0s !important}
 @media(prefers-reduced-motion:reduce){.sv-card:not(.ph) h3 em{color:inherit !important}.sv .sv-card .sv-dots li::before,.sv .sv-card .sv-chk li::before{background:#E2001A !important;transform:none;transition:none}.sv-offs-r .sv-off-r::before{transform:none !important}}
 </style>
@@ -2761,7 +2761,7 @@ else{
  if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -16% 0px',threshold:.9});a.observe(h0);}
  function chk(){var vh=innerHeight||800;
   if(!rm&&cards[0]&&cards[0].classList.contains('ph')&&plA&&!plA.dataset.plAt&&plA.offsetParent&&plA.getBoundingClientRect().top<vh*.92)startPl(plA);
-  offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(r.top<vh*.9&&r.bottom>vh*.15){o.classList.add('go0');var k=offs.indexOf(o),L=offsL[k],n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)startPl(k);var left=L&&!rm?Math.max(0,(+L.dataset.plAt)+(L.closest('.sv-in')?500:300)-Date.now()):0;setTimeout(function(){if(o.classList.contains('go0'))o.classList.add('go');},left);}});}
+  offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;var inB=!!o.closest('.svb-cols');if(r.top<vh*(inB?.99:.9)&&r.bottom>vh*.1){o.classList.add('go0');var k=offs.indexOf(o),L=offsL[k],n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)startPl(k);var left=L&&!rm?Math.max(0,(+L.dataset.plAt)+(L.closest('.sv-in')?500:2000)-Date.now()):0;setTimeout(function(){if(o.classList.contains('go0'))o.classList.add('go');},left);}});}
  addEventListener('scroll',function(){requestAnimationFrame(chk);},{passive:true});addEventListener('resize',chk);
  document.querySelectorAll('.svp button').forEach(function(x){x.addEventListener('click',function(){setTimeout(chk,150);});});
  function resetA(){cards.forEach(function(c){c.classList.remove('ph');});offsL.forEach(function(L){L.classList.remove('pl');delete L.dataset.plAt;});offs.forEach(function(o){o.classList.remove('go','go0');});}
@@ -2929,7 +2929,7 @@ var data=cards.map(function(c){var h=c.querySelector('h3'),L=[];if(!h)return nul
 function upd(){var vh=innerHeight||800;
  data.forEach(function(d){if(!d.h.offsetParent)return;
   var r=d.h.getBoundingClientRect();
-  var p=rm?1:Math.max(0,Math.min(1,(vh*.72-r.top)/(vh*.22)));
+  var p=rm?1:Math.max(0,Math.min(1,(vh*.95-r.top)/(vh*.14)));
   var n=Math.round(p*d.L.length);
   for(var i=0;i<d.L.length;i++){var on=i<n;if(d.L[i].classList.contains('on')!==on)d.L[i].classList.toggle('on',on);}
   var ph=p>=.999;
@@ -3164,4 +3164,13 @@ new IntersectionObserver(function(en){en[0].isIntersecting?start():stop()},{thre
 .sv.v-c .sv-card .sv-dots li,.sv.v-c .sv-card .sv-chk li{padding-top:2px !important;padding-bottom:2px !important}
 .sv.v-c .sv-card .sv-dots li::before,.sv.v-c .sv-card .sv-chk li::before{margin-top:calc((1.3em - 5px)/2 + 2px) !important}
 </style>
+<script>
+(function(){var b=document.querySelector('a.hz-ghost[href="#sequence"]');if(!b)return;
+b.addEventListener('click',function(e){var sec=document.getElementById('sequence');if(!sec)return;
+ var t=[].slice.call(sec.querySelectorAll('.sv-in,.svb-card')).filter(function(x){return x.offsetParent})[0]||sec;
+ e.preventDefault();var r=t.getBoundingClientRect(),vh=innerHeight,hd=76;
+ var y=r.top+scrollY-Math.max(hd+16,hd+(vh-hd-r.height)/2);
+ var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;scrollTo({top:Math.max(0,y),behavior:rm?'auto':'smooth'});
+ try{history.replaceState(null,'','#sequence')}catch(x){}});})();
+</script>
 </body></html>
