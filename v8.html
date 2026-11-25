@@ -377,12 +377,12 @@ html[data-theme="light"] .cvx .cv-list span::before{background:#E2001A}
 
 <main id="top">
 <section class="sec s-dark hero" aria-label="Accueil">
-<div class="hero-fx"><effect-3d theme="sombre" count="36" speed="1.8" spacing="6.8" beam="7" parallax="0.5"></effect-3d></div>
+<div class="hero-fx"><effect-3d theme="sombre" count="36" speed="1.8" spacing="6.8" beam="7" parallax="0.5"></effect-3d><div class="hero-zf" aria-hidden="true"><svg viewBox="0 0 640 540" focusable="false"><g class="hz-g"><g class="zb-sh"><svg x="-17.95" y="-67.8" width="668.2" height="676.8" viewBox="149 131 78 79" overflow="visible"><path fill="#FDFDFD" d="M228.34,170.42c0,1.01-.03,2.02-.11,3.01l-43,7.83,23.31-23.08.24-.23c1.4-1.44,2.03-3.47,1.67-5.45-.49-2.57-2.5-4.57-5.07-5.03q-.42-.07-.85-.07c-.31,0-.6.02-.9.08l-1.51.27-51.27,9.36c5.48-15.48,20.25-26.57,37.61-26.57C210.48,130.54,228.34,148.4,228.34,170.42Z"/><path fill="#FDFDFD" d="M148.56,170.43c0-.98.04-1.96.11-2.92,0-.06,0-.12.01-.19h.06l44.87-8.13-24.18,24.17c-.18.29-.36.6-.5.9-1.1,2.37-.59,5.15,1.26,6.98.89.87,2,1.46,3.22,1.69h.01c.32.05.65.09.98.09.36,0,.72-.04,1.07-.1h-.01l1.04-.18,49.57-9.03c-5.48,15.51-20.26,26.61-37.63,26.61C166.42,210.32,148.56,192.46,148.56,170.43Z"/></svg></g><svg x="-17.95" y="-67.8" width="668.2" height="676.8" viewBox="149 131 78 79" overflow="visible"><path fill="#FDFDFD" d="M228.34,170.42c0,1.01-.03,2.02-.11,3.01l-43,7.83,23.31-23.08.24-.23c1.4-1.44,2.03-3.47,1.67-5.45-.49-2.57-2.5-4.57-5.07-5.03q-.42-.07-.85-.07c-.31,0-.6.02-.9.08l-1.51.27-51.27,9.36c5.48-15.48,20.25-26.57,37.61-26.57C210.48,130.54,228.34,148.4,228.34,170.42Z"/><path fill="#FDFDFD" d="M148.56,170.43c0-.98.04-1.96.11-2.92,0-.06,0-.12.01-.19h.06l44.87-8.13-24.18,24.17c-.18.29-.36.6-.5.9-1.1,2.37-.59,5.15,1.26,6.98.89.87,2,1.46,3.22,1.69h.01c.32.05.65.09.98.09.36,0,.72-.04,1.07-.1h-.01l1.04-.18,49.57-9.03c-5.48,15.51-20.26,26.61-37.63,26.61C166.42,210.32,148.56,192.46,148.56,170.43Z"/></svg></g></svg></div></div>
 <div class="wrap"><div class="hero-in">
 <p class="hero-tags" style="margin:0">Conseil <i></i> Réalisation <i></i> Formation</p>
 <h1>Votre <span class="grad">partenaire</span> technologique <span class="grad">de&nbsp;proximité</span></h1>
 <p class="lead">L’IA et le Cloud ont propulsé la tech au cœur de vos enjeux stratégiques.<br>Nous augmentons son impact métier sur le terrain.</p>
-<div class="row"><a class="ghost" href="#solutions">Découvrir nos offres</a></div>
+<div class="row"><a class="ghost" href="#solutions">Découvrir nos offres</a></div><div class="ill-sw" role="group" aria-label="Illustration du hero"><span>Illustration</span><button type="button" data-ill="3d" class="on">Z 3D</button><button type="button" data-ill="flat">Z Zenika</button></div>
 </div></div>
 </section>
 
@@ -1479,5 +1479,25 @@ html:not([data-theme="dark"]) .svp button:not(.on){border-color:#cfd6e2}
 #culture.cult{background:radial-gradient(46vw 46vw at -8% -10%,rgba(238,34,56,.75),rgba(238,34,56,0) 68%),radial-gradient(40vw 40vw at 108% 112%,rgba(191,29,103,.75),rgba(191,29,103,0) 68%),radial-gradient(26vw 26vw at 22% 70%,rgba(91,20,80,.55),rgba(91,20,80,0) 70%),#0A0B10 !important;overflow:hidden}
 #culture.cult .cv-grid{border-radius:32px !important;overflow:hidden;box-shadow:var(--shadozika,0 25px 50px -12px rgba(0,0,0,.45)) !important}
 </style>
+<style>
+/* V4 : choix de l'illustration du hero (Z 3D en code / Z Zenika de la V8) */
+.hero-zf{position:absolute;inset:0;display:none;align-items:center;justify-content:center}
+.hero-zf svg{width:min(560px,100%);height:auto;overflow:visible}
+.hero-zf .hz-g path{fill:#FDFDFD}
+.hero-zf .zb-sh{filter:drop-shadow(0 2px 3px rgba(0,0,0,.3)) drop-shadow(12px 4px 14px rgba(0,0,0,.45)) drop-shadow(0 30px 44px rgba(0,0,0,.35))}
+html:not([data-theme="light"]) .hero-zf .hz-g path{fill:#2a0b16}
+html:not([data-theme="light"]) .hero-zf .zb-sh{filter:drop-shadow(0 1.5px 1.5px rgba(238,34,56,.5)) drop-shadow(10px 4px 16px rgba(200,25,60,.42)) drop-shadow(0 28px 46px rgba(170,22,85,.55))}
+html:not([data-theme="light"]) .hero-zf .hz-g>svg:not(.zb-sh *){filter:none}
+body[data-ill="flat"] .hero-fx effect-3d{display:none !important;visibility:hidden !important}
+body[data-ill="flat"] .hero-zf{display:flex}
+.ill-sw{display:inline-flex;align-items:center;gap:6px;margin-top:2px;padding:4px;border-radius:999px;background:rgba(127,130,145,.16);width:max-content;font:600 12px var(--f-d)}
+.ill-sw span{padding:0 8px 0 10px;letter-spacing:.1em;text-transform:uppercase;font-size:11px;opacity:.7}
+.ill-sw button{font:inherit;font-size:13px;padding:7px 14px;border-radius:999px;border:0;background:transparent;color:inherit;cursor:pointer}
+.ill-sw button.on{background:linear-gradient(86deg,#EE2238 6%,#BF1D67 94%);color:#fff}
+</style>
+<script>(function(){var b=document.body,bt=[].slice.call(document.querySelectorAll('.ill-sw button'));
+function set(v){b.setAttribute('data-ill',v);bt.forEach(function(x){x.classList.toggle('on',x.getAttribute('data-ill')===v)});try{localStorage.setItem('zk-hero-ill',v)}catch(e){}}
+bt.forEach(function(x){x.addEventListener('click',function(){set(x.getAttribute('data-ill'))})});
+var s='3d';try{s=localStorage.getItem('zk-hero-ill')||'3d'}catch(e){}set(s==='flat'?'flat':'3d');})();</script>
 </body>
 </html>
