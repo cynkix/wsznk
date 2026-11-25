@@ -2125,7 +2125,7 @@ sel.addEventListener('change',function(){var id=sel.value;
     secs.forEach(function(e,i){ if(e && e.getBoundingClientRect().top<=vh*T[i]) m=K[i]; });
     zm.setMorph&&zm.setMorph(m);
     zm.setPlace&&zm.setPlace(0);
-    var th=dark()?'gradient':'clair'; if(zm.getAttribute('theme')!==th) zm.setAttribute('theme',th);
+    var th=dark()?'nuit':'clair'; if(zm.getAttribute('theme')!==th) zm.setAttribute('theme',th);
   }
   addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd);
   new MutationObserver(upd).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
