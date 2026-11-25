@@ -3062,4 +3062,22 @@ html[data-theme="dark"] .hdr.solid{background:rgba(0,0,0,.92) !important}
 </style>
 <style id="m-hero-center">@media(max-width:900px){.zl-stage{min-height:calc(100svh - 76px) !important;align-items:center !important;padding-top:0}.zl-stage effect-3d{height:40% !important;transform:translateY(-46%) !important}.zin{padding-block:150px 28px !important}}</style>
 <script>(function(){var z=document.getElementById('zm');if(!z)return;var mq=matchMedia('(max-width:900px)');function u(){if(!mq.matches){z.style.transform='';return}var vh=innerHeight,k=Math.max(0,1-scrollY/(vh*.55));z.style.transform=k>0?'translateY('+(-k*.24*vh).toFixed(1)+'px) scale('+(1-.15*k).toFixed(3)+')':''}addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u()})()</script>
+<style id="ct20-side">
+@media(min-width:901px){
+#ct20{position:relative}
+#ct20 .ct-h{max-width:none}
+#ct20 .ct-lg{position:static;height:0}
+#ct20 .ct-lg .ct-20{position:absolute;left:auto;top:clamp(30px,3vw,44px);right:clamp(32px,4vw,64px);width:clamp(120px,12.5vw,160px)}
+}
+#ct20 .ct-tl{--cl:rgba(238,34,56,.55)}
+#ct20 .ct-row::after{content:"";position:absolute;left:calc(clamp(3px,.45vw,6px) + clamp(6px,.8vw,10px)/2 - 1px);top:50%;width:2px;height:var(--dd,60px);margin-left:0;background:linear-gradient(180deg,var(--cl),rgba(238,34,56,.12));border-radius:2px;transform-origin:top;transform:scaleY(0);transition:transform .8s cubic-bezier(.4,0,.2,1) 0s;z-index:0;pointer-events:none}
+#ct20 .ct-row::before{content:"";position:absolute;left:calc(clamp(3px,.45vw,6px) + clamp(6px,.8vw,10px)/2 - 5px);top:calc(50% + var(--dd,60px) - 5px);width:10px;height:10px;border-radius:50%;background:#EE2238;box-shadow:0 0 0 4px rgba(238,34,56,.18);transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1) 0s;z-index:2;pointer-events:none}
+#ct20 .ct-bar{z-index:1}
+#ct20.on .ct-cr::after{transition-delay:.2s}#ct20.on .ct-ag::after{transition-delay:.9s}#ct20.on .ct-cd::after{transition-delay:1.6s}#ct20.on .ct-ia::after{transition-delay:2.3s}
+#ct20.on .ct-row::after{transform:scaleY(1)}
+#ct20.on .ct-row::before{transform:scale(1)}
+#ct20.on .ct-cr::before{transition-delay:.9s}#ct20.on .ct-ag::before{transition-delay:1.7s}#ct20.on .ct-cd::before{transition-delay:2.9s}#ct20.on .ct-ia::before{transition-delay:3.6s}
+@media(prefers-reduced-motion:reduce){#ct20 .ct-row::after,#ct20 .ct-row::before{transition:none}}
+</style>
+<script>(function(){var c=document.getElementById('ct20');if(!c)return;var rows=c.querySelectorAll('.ct-row'),ar=c.querySelector('.ct-arrow');function m(){if(!ar)return;var a=ar.getBoundingClientRect().top+1;rows.forEach(function(r){var b=r.getBoundingClientRect();r.style.setProperty('--dd',Math.max(0,Math.round(a-(b.top+b.height/2)))+'px')})}addEventListener('resize',m);addEventListener('load',m);document.fonts&&document.fonts.ready.then(m);m();setTimeout(m,600)})()</script>
 </body></html>
