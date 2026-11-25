@@ -342,12 +342,13 @@
       this._lines.forEach((L, idx) => {
         let age = t - L.birth;
         const u = L.mat.uniforms;
-        const sc = this._sp != null;
-        if (L.hidden || (!sc && age < 0)) { u.uFade.value = 0; pA[idx] = 0; return; }
+        const sc = this._sp != null, st2 = this._cur === 'timeline' && this.hasAttribute('static');
+        if (L.hidden || (!sc && !st2 && age < 0)) { u.uFade.value = 0; pA[idx] = 0; return; }
         if (!sc) age = age % L.life;
         const ease = (x) => x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
         let head, pulse;
-        if (sc) {
+        if (st2) { head = 1; pulse = ((t * 0.6) / L.period + L.poff) % 1; }
+        else if (sc) {
           const st = (L.i / Math.max(1, this._lines.length - 1)) * 0.12;
           const q = Math.max(0, Math.min(1, (this._sp - st) / (1 - 0.12)));
           head = ease(q);
