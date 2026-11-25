@@ -2791,10 +2791,7 @@ html[data-theme="dark"] .ost .oh h1{text-shadow:none}
 <script src="3dduo.js"></script>
 <script>(function(){var z=document.getElementById('oh-fx'),m=document.getElementById('md-fx');if(!z)return;function dk(){return document.documentElement.getAttribute('data-theme')==='dark'}
 function sy(){var t=dk()?'sombre':'rougenoir';z.setAttribute('theme',t);if(m)m.setAttribute('theme',t)}sy();customElements.whenDefined('effect-3d-duo').then(function(){z.setShape('duo');if(m)m.setShape('timeline')});
-if(m){var sec=document.getElementById('reponses'),tk=false;function sc(){tk=false;var vh=innerHeight,top=sec.getBoundingClientRect().top,p=(vh*.95-top)/(vh*.8);m._sp=Math.max(0,Math.min(1,p))}
-m._sp=0;addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(sc)}},{passive:true});addEventListener('resize',sc);sc()}
-if(m){var sec=document.getElementById('reponses'),tk=false;function sp(){tk=false;var vh=innerHeight,r=sec.getBoundingClientRect().top,a=vh*.5,b=vh*.15;if(m.setScroll)m.setScroll((a-r)/(a-b))}
-addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(sp)}},{passive:true});addEventListener('resize',sp);sp();customElements.whenDefined('effect-3d-duo').then(sp)}
+if(m){m._sp=null;var vis=false;new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!vis&&m.setShape){m._cur=null;m.setShape('timeline')}vis=e.isIntersecting})},{threshold:.15}).observe(m.parentNode)}
 new MutationObserver(sy).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});})();</script>
 <style id="ost-next-css">
 @media(min-width:901px){.ost-stick{padding-bottom:56px !important}}
