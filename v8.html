@@ -1424,15 +1424,15 @@ html[data-theme="dark"] .cult[data-prop="d"] .cv-grid li{background:var(--surfac
 #culture.cult h2 .r{color:#E2001A !important}</style>
 <style>@media(max-width:700px){.ct-lg{height:auto;margin-top:18px}.ct-lg .ct-20{position:static !important;width:96px !important}}</style>
 <style>
-.cg{margin-top:clamp(18px,2.4vw,30px);color:#fff}
-.cg-t{margin:0 0 10px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.7)}
+.cg{margin-top:clamp(18px,2.4vw,30px);color:var(--fg)}
+.cg-t{margin:0 0 10px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--mute)}
 .cg ul{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.cg li{font-size:14.5px;font-weight:600;color:#fff}
+.cg li{font-size:14.5px;font-weight:600;color:var(--fg)}
 .cg-i li{background:linear-gradient(135deg,#EE2238,#C93B7E) !important;color:#fff;border:0 !important;padding:6px 14px;border-radius:99px}
 .cg:not(.x) ul:not(.cg-i){gap:8px 10px !important}
-.cg:not(.x) ul:not(.cg-i) li{background:none !important;border:1.5px solid rgba(255,255,255,.55) !important;border-radius:99px !important;padding:6px 16px !important}
-html[data-theme="dark"] .cg,html[data-theme="dark"] .cg li:not(.x){color:#fff}
-html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,255,.55) !important}
+.cg:not(.x) ul:not(.cg-i) li{background:none !important;border:1.5px solid color-mix(in srgb,var(--fg) 55%,transparent) !important;border-radius:99px !important;padding:6px 16px !important}
+
+html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:color-mix(in srgb,var(--fg) 55%,transparent) !important}
 </style>
 <style>html[data-theme="dark"] .mtrack div{background:#fff !important;box-shadow:0 4px 18px rgba(0,0,0,.35) !important}html[data-theme="dark"] .mtrack div img,html[data-theme="dark"] .mtrack img{filter:none !important;opacity:1 !important}</style>
 <style>
@@ -1462,6 +1462,17 @@ html:not([data-theme="dark"]) #solutions{background:#f8fafc}
 html:not([data-theme="dark"]) #sequence .sv{padding-top:0 !important}
 html:not([data-theme="dark"]) #sequence .sv-card,html:not([data-theme="dark"]) #sequence .svb-card{box-shadow:0 14px 40px rgba(17,22,34,.14),0 2px 6px rgba(17,22,34,.06) !important}
 html:not([data-theme="dark"]) .svp button:not(.on){border-color:#cfd6e2}
+</style>
+<style>
+/* V4 : convictions sur fond sombre, section suivante sur le gris de la page */
+#culture.cult{background:#0b0f19 !important;color:#fff;--ink:#fff;--muted:rgba(255,255,255,.72);--line:rgba(255,255,255,.18)}
+#culture.cult::before,#culture.cult::after{display:none !important}
+#culture.cult .cv-head h2,#culture.cult .cv-head h2 *:not(.r){color:#fff !important}
+#culture.cult .cv-head h2 .r{color:#ff2e56 !important}
+#culture.cult .cv-lead{color:#fff !important}
+#culture.cult .cv-pills li{color:#fff !important;border-color:rgba(255,255,255,.35)}
+#culture.cult .cv-grid{--ink:#111622;--muted:#566176;--line:#dde3ec}
+#histoire{background:#f8fafc !important}
 </style>
 </body>
 </html>
