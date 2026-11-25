@@ -1666,5 +1666,11 @@ b.addEventListener('click',function(e){var sec=document.getElementById('sequence
  try{history.replaceState(null,'','#sequence')}catch(x){}});})();
 </script>
 <style id="sv-red-dark">html:not([data-theme="light"]) .sv .sv-in .sv-card .sv-offs::before{color:#FF4A5E !important}html:not([data-theme="light"]) .svb-t{color:#FF4A5E !important}</style>
+<style id="grey-continuity">
+/* Mode clair : un seul gris continu (pas de raccord entre sections) */
+html[data-theme="light"] .s-dark:not(.hero)::before{display:none !important}
+html[data-theme="light"] .s-light{--bg:#f8fafc}
+html[data-theme="light"] .s-light,html[data-theme="light"] #clients,html[data-theme="light"] #contact,html[data-theme="light"] #histoire,html[data-theme="light"] #sequence,html[data-theme="light"] #solutions,html[data-theme="light"] .ftr{background-color:#f8fafc !important}
+</style>
 </body>
 </html>
