@@ -3012,4 +3012,12 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
 html[data-theme="dark"] #zbig .zb-sh{filter:drop-shadow(12px 4px 16px rgba(0,0,0,.95)) drop-shadow(0 30px 50px rgba(0,0,0,.8)) !important}
 html[data-theme="dark"] #zf{filter:drop-shadow(0 18px 20px rgba(0,0,0,.85)) drop-shadow(0 5px 10px rgba(238,34,56,.4)) !important}
 </style>
+<style>
+/* V8 mode sombre : fond noir total, Z gris foncé avec ombre dense et douce */
+html[data-theme="dark"] body,html[data-theme="dark"] body::before{background:#000 !important}
+html[data-theme="dark"]{--bg:#000;--surface:#0a0a0c}
+html[data-theme="dark"] #zbig svg{opacity:1 !important}
+html[data-theme="dark"] #zbig path{fill:#17181c !important;stroke:#17181c !important}
+html[data-theme="dark"] #zbig .zb-sh{filter:drop-shadow(0 1.5px 1.5px rgba(95,98,110,.55)) drop-shadow(10px 4px 16px rgba(58,60,70,.85)) drop-shadow(0 28px 46px rgba(46,48,58,.9)) !important}
+</style>
 </body></html>
