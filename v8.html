@@ -1587,18 +1587,28 @@ html:not([data-theme="light"]) .sv .sv-card h3 span,html:not([data-theme="light"
 #ct20 .ct-lg{position:static;height:0}
 #ct20 .ct-lg .ct-20{position:absolute;left:auto;top:clamp(30px,3vw,44px);right:clamp(32px,4vw,64px);width:clamp(120px,12.5vw,160px)}
 }
-#ct20 .ct-tl{--cl:rgba(238,34,56,.55)}
-#ct20 .ct-row::after{content:"";position:absolute;left:calc(clamp(3px,.45vw,6px) + clamp(6px,.8vw,10px)/2 - 1px);top:50%;width:2px;height:var(--dd,60px);margin-left:0;background:linear-gradient(180deg,var(--cl),rgba(238,34,56,.12));border-radius:2px;transform-origin:top;transform:scaleY(0);transition:transform .8s cubic-bezier(.4,0,.2,1) 0s;z-index:0;pointer-events:none}
-#ct20 .ct-row::before{content:"";position:absolute;left:calc(clamp(3px,.45vw,6px) + clamp(6px,.8vw,10px)/2 - 5px);top:calc(50% + var(--dd,60px) - 5px);width:10px;height:10px;border-radius:50%;background:#EE2238;box-shadow:0 0 0 4px rgba(238,34,56,.18);transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1) 0s;z-index:2;pointer-events:none}
+/* règle : toutes les graduations sont des millimètres (fines) ; les traits rouges sont les centimètres */
+#ct20 .ct-rule i,#ct20 .ct-rule i.M{height:12px !important;width:1.5px !important}
+#ct20.on .ct-rule i.M{opacity:.55 !important}
+#ct20.on .ct-rule i.S{animation:none !important}
+@media(min-width:701px){
 #ct20 .ct-bar{z-index:1}
-#ct20.on .ct-cr::after{transition-delay:.2s}#ct20.on .ct-ag::after{transition-delay:.9s}#ct20.on .ct-cd::after{transition-delay:1.6s}#ct20.on .ct-ia::after{transition-delay:2.3s}
-#ct20.on .ct-row::after{transform:scaleY(1)}
-#ct20.on .ct-row::before{transform:scale(1)}
-#ct20.on .ct-cr::before{transition-delay:.9s}#ct20.on .ct-ag::before{transition-delay:1.7s}#ct20.on .ct-cd::before{transition-delay:2.9s}#ct20.on .ct-ia::before{transition-delay:3.6s}
-@media(prefers-reduced-motion:reduce){#ct20 .ct-row::after,#ct20 .ct-row::before{transition:none}}
+#ct20 .ct-row::after{content:"";position:absolute;left:calc(clamp(3px,.45vw,6px) + clamp(6px,.8vw,10px)/2 - 1px);bottom:calc(-1*var(--dd,60px) + 50%);top:50%;height:auto;width:2px;margin:0;background:#EE2238;border-radius:2px;transform-origin:50% 100%;transform:scaleY(0);transition:transform .7s cubic-bezier(.4,0,.2,1) 0s;z-index:0;pointer-events:none;opacity:1}
+#ct20 .ct-row::before{content:"";position:absolute;left:calc(clamp(3px,.45vw,6px) + clamp(6px,.8vw,10px)/2 - 5px);top:calc(50% + var(--dd,60px) - 5px);width:10px;height:10px;border-radius:50%;background:#EE2238;box-shadow:0 0 0 4px rgba(238,34,56,.18);transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1) 0s;z-index:2;pointer-events:none}
+#ct20.on .ct-row::before{transform:scale(1);transition-delay:var(--bd,0s)}
+#ct20.on .ct-row::after{transform:scaleY(1);transition-delay:calc(var(--bd,0s) + .2s)}
+}
+@media(max-width:700px){
+/* mobile vertical : règle graduée le long de l'axe, trait rouge entre chaque point et son étiquette */
+#ct20 .ct-tl{background-image:repeating-linear-gradient(to bottom,#EE2238 0 2px,transparent 2px 80px),repeating-linear-gradient(to bottom,rgba(120,125,140,.55) 0 1px,transparent 1px 8px);background-size:14px 100%,8px 100%;background-position:15px 0,15px 0;background-repeat:no-repeat;--tk:0}
+#ct20 .ct-row::after{display:block !important;content:"";position:absolute;left:-18px;top:12px;width:16px;height:2px;border-radius:2px;background:#EE2238;transform-origin:left;transform:scaleX(0);transition:transform .35s ease var(--bd,0s)}
+#ct20.on .ct-row::after{transform:scaleX(1);transition-delay:calc(var(--bd,0s) + .2s)}
+}
+@media(prefers-reduced-motion:reduce){#ct20 .ct-row::after,#ct20 .ct-row::before{transition:none !important}}
 </style>
 <script>(function(){var c=document.getElementById('ct20');if(!c)return;var rows=c.querySelectorAll('.ct-row'),ar=c.querySelector('.ct-arrow');function m(){if(!ar)return;var a=ar.getBoundingClientRect().top+1;rows.forEach(function(r){var b=r.getBoundingClientRect();r.style.setProperty('--dd',Math.max(0,Math.round(a-(b.top+b.height/2)))+'px')})}addEventListener('resize',m);addEventListener('load',m);document.fonts&&document.fonts.ready.then(m);m();setTimeout(m,600)})()</script>
 <style id="v4-mobile-z">@media(max-width:900px){.hero-fx{left:0;right:0;width:100%;height:50%}.hero-fx effect-3d{transform:scale(1.12);transform-origin:50% 55%}.hero-fx .hero-zf{padding:0 4%}.hero-fx .hero-zf svg{width:min(330px,84%);margin-top:30px}}</style>
 <script>(function(){var e=document.querySelector('.hero-fx effect-3d');if(!e)return;function a(){if(innerWidth<=900)e.setAttribute('align','center');else e.removeAttribute('align');dispatchEvent(new Event('resize'))}a();addEventListener('load',a)})()</script>
+<style>html:not([data-theme="light"]) #ct20 .ct-lab{color:#e8ecf4 !important}html:not([data-theme="light"]) #ct20 .ct-row::before{background:#0e1016}</style>
 </body>
 </html>
