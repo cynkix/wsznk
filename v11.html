@@ -2718,7 +2718,7 @@ split(h);
 function upd(){
  if(!h.offsetParent)return;
  var r=h.getBoundingClientRect(),vh=innerHeight||800;
- var p=rm?1:Math.max(0,Math.min(1,(vh*.95-r.top)/(vh*.14)));
+ var p=rm?1:Math.max(0,Math.min(1,(vh*.88-r.top)/(vh*.14)));
  var n=Math.round(p*L.length);
  for(var i=0;i<L.length;i++){var on=i<n;if(L[i].classList.contains('on')!==on)L[i].classList.toggle('on',on);}
 }
@@ -2929,7 +2929,7 @@ var data=cards.map(function(c){var h=c.querySelector('h3'),L=[];if(!h)return nul
 function upd(){var vh=innerHeight||800;
  data.forEach(function(d){if(!d.h.offsetParent)return;
   var r=d.h.getBoundingClientRect();
-  var p=rm?1:Math.max(0,Math.min(1,(vh*.95-r.top)/(vh*.14)));
+  var p=rm?1:Math.max(0,Math.min(1,(vh*.88-r.top)/(vh*.14)));
   var n=Math.round(p*d.L.length);
   for(var i=0;i<d.L.length;i++){var on=i<n;if(d.L[i].classList.contains('on')!==on)d.L[i].classList.toggle('on',on);}
   var ph=p>=.999;
