@@ -419,7 +419,7 @@ html[data-theme="light"] .cvx .cv-list span::before{background:#E2001A}
 <section class="sec contact s-dark" id="contact">
 <div class="wrap"><div class="ct">
 <div class="ct-l"><h2>Parlons-<wbr><span class="grad">en</span></h2><div class="cg"><p class="cg-t">11 agences en France</p><ul><li>Bordeaux</li><li>Brest</li><li>Clermont-Ferrand</li><li>Grenoble</li><li>Lille</li><li>Lyon</li><li>Nantes</li><li>Niort</li><li>Paris</li><li>Rennes</li><li>Toulouse</li></ul><p class="cg-t">Et à l’international</p><ul class="cg-i"><li>Casablanca</li><li>Singapour</li></ul></div>
-<div class="ct-z" aria-hidden="true"><effect-3d theme="sombre" count="36" speed="1.8" spacing="6.8" beam="7" parallax="0.5" align="center"></effect-3d></div></div>
+<div class="ct-z" aria-hidden="true"><effect-3d theme="sombre" count="36" speed="1.8" spacing="6.8" beam="7" parallax="0.5" align="center"></effect-3d><div class="hero-zf ct-zf" aria-hidden="true"><svg viewBox="0 0 640 540" focusable="false"><g class="hz-g"><g class="zb-sh"><svg x="-17.95" y="-67.8" width="668.2" height="676.8" viewBox="149 131 78 79" overflow="visible"><path fill="#FDFDFD" d="M228.34,170.42c0,1.01-.03,2.02-.11,3.01l-43,7.83,23.31-23.08.24-.23c1.4-1.44,2.03-3.47,1.67-5.45-.49-2.57-2.5-4.57-5.07-5.03q-.42-.07-.85-.07c-.31,0-.6.02-.9.08l-1.51.27-51.27,9.36c5.48-15.48,20.25-26.57,37.61-26.57C210.48,130.54,228.34,148.4,228.34,170.42Z"/><path fill="#FDFDFD" d="M148.56,170.43c0-.98.04-1.96.11-2.92,0-.06,0-.12.01-.19h.06l44.87-8.13-24.18,24.17c-.18.29-.36.6-.5.9-1.1,2.37-.59,5.15,1.26,6.98.89.87,2,1.46,3.22,1.69h.01c.32.05.65.09.98.09.36,0,.72-.04,1.07-.1h-.01l1.04-.18,49.57-9.03c-5.48,15.51-20.26,26.61-37.63,26.61C166.42,210.32,148.56,192.46,148.56,170.43Z"/></svg></g><svg x="-17.95" y="-67.8" width="668.2" height="676.8" viewBox="149 131 78 79" overflow="visible"><path fill="#FDFDFD" d="M228.34,170.42c0,1.01-.03,2.02-.11,3.01l-43,7.83,23.31-23.08.24-.23c1.4-1.44,2.03-3.47,1.67-5.45-.49-2.57-2.5-4.57-5.07-5.03q-.42-.07-.85-.07c-.31,0-.6.02-.9.08l-1.51.27-51.27,9.36c5.48-15.48,20.25-26.57,37.61-26.57C210.48,130.54,228.34,148.4,228.34,170.42Z"/><path fill="#FDFDFD" d="M148.56,170.43c0-.98.04-1.96.11-2.92,0-.06,0-.12.01-.19h.06l44.87-8.13-24.18,24.17c-.18.29-.36.6-.5.9-1.1,2.37-.59,5.15,1.26,6.98.89.87,2,1.46,3.22,1.69h.01c.32.05.65.09.98.09.36,0,.72-.04,1.07-.1h-.01l1.04-.18,49.57-9.03c-5.48,15.51-20.26,26.61-37.63,26.61C166.42,210.32,148.56,192.46,148.56,170.43Z"/></svg></g></svg></div></div></div>
 <form class="form" id="form" aria-label="Formulaire de contact">
 <div class="two"><div class="f"><label for="nom">Nom</label><input id="nom" name="nom" type="text" placeholder="Jean Dupont" autocomplete="name"></div><div class="f"><label for="ent">Entreprise</label><input id="ent" name="ent" type="text" placeholder="Votre entreprise" autocomplete="organization"></div></div>
 <div class="f"><label for="mail">Email professionnel</label><input id="mail" name="mail" type="email" placeholder="jean.dupont@entreprise.com" autocomplete="email"></div>
@@ -1488,7 +1488,7 @@ html:not([data-theme="dark"]) .svp button:not(.on){border-color:#cfd6e2}
 html:not([data-theme="light"]) .hero-zf .hz-g path{fill:#2a0b16}
 html:not([data-theme="light"]) .hero-zf .zb-sh{filter:drop-shadow(0 1.5px 1.5px rgba(238,34,56,.5)) drop-shadow(10px 4px 16px rgba(200,25,60,.42)) drop-shadow(0 28px 46px rgba(170,22,85,.55))}
 html:not([data-theme="light"]) .hero-zf .hz-g>svg:not(.zb-sh *){filter:none}
-body[data-ill="flat"] .hero-fx effect-3d{display:none !important;visibility:hidden !important}
+body[data-ill="flat"] .hero-fx effect-3d,body[data-ill="flat"] .ct-z effect-3d{display:none !important;visibility:hidden !important}
 body[data-ill="flat"] .hero-zf{display:flex}
 .ill-sw{display:inline-flex;align-items:center;gap:4px;margin-top:10px;padding:0;background:none;width:max-content;font:500 11px var(--f-d);opacity:.55;transition:opacity .2s}
 .ill-sw:hover,.ill-sw:focus-within{opacity:1}
@@ -1513,39 +1513,43 @@ html:not([data-theme="light"]) .hero-zf .zb-sh{filter:drop-shadow(0 1.5px 2px rg
 </style>
 <script>
 (function(){
-  var z=document.querySelector('.hero-zf'); if(!z) return;
-  var sv=z.querySelector('svg'), NS='http://www.w3.org/2000/svg', items=[];
-  [].slice.call(sv.querySelectorAll('svg')).forEach(function(s,i){
-    var vb=(s.getAttribute('viewBox')||'').split(/[ ,]+/).map(Number); if(vb.length<4) return;
-    var g=document.createElementNS(NS,'radialGradient'), id='hzl'+i;
-    g.setAttribute('id',id); g.setAttribute('gradientUnits','userSpaceOnUse');
-    [[0,'#ff5a70'],[.22,'#ee2238'],[.55,'#b3122f'],[1,'#5a0a1c']].forEach(function(o){var st=document.createElementNS(NS,'stop');st.setAttribute('offset',o[0]);st.setAttribute('stop-color',o[1]);g.appendChild(st)});
-    var d=document.createElementNS(NS,'defs'); d.appendChild(g); s.insertBefore(d,s.firstChild);
-    var ps=[].slice.call(s.querySelectorAll('path')); ps.forEach(function(p){p.style.setProperty('fill','url(#'+id+')','important')});
-    items.push({g:g,vx:vb[0],vy:vb[1],vw:vb[2],vh:vb[3],x:+s.getAttribute('x')||0,y:+s.getAttribute('y')||0,w:+s.getAttribute('width')||vb[2],h:+s.getAttribute('height')||vb[3]});
+  var NS='http://www.w3.org/2000/svg', mx=null,my=null,raf=0, uid=0;
+  var insts=[].slice.call(document.querySelectorAll('.hero-zf')).map(function(z){
+    var sv=z.querySelector('svg'), items=[], n=uid++;
+    [].slice.call(sv.querySelectorAll('svg')).forEach(function(s,i){
+      var vb=(s.getAttribute('viewBox')||'').split(/[ ,]+/).map(Number); if(vb.length<4) return;
+      var g=document.createElementNS(NS,'radialGradient'), id='hzl'+n+'_'+i;
+      g.setAttribute('id',id); g.setAttribute('gradientUnits','userSpaceOnUse');
+      [[0,'#ff5a70'],[.22,'#ee2238'],[.55,'#b3122f'],[1,'#5a0a1c']].forEach(function(o){var st=document.createElementNS(NS,'stop');st.setAttribute('offset',o[0]);st.setAttribute('stop-color',o[1]);g.appendChild(st)});
+      var d=document.createElementNS(NS,'defs'); d.appendChild(g); s.insertBefore(d,s.firstChild);
+      [].slice.call(s.querySelectorAll('path')).forEach(function(p){p.style.setProperty('fill','url(#'+id+')','important')});
+      items.push({g:g,vx:vb[0],vy:vb[1],vw:vb[2],vh:vb[3],x:+s.getAttribute('x')||0,y:+s.getAttribute('y')||0,w:+s.getAttribute('width')||vb[2],h:+s.getAttribute('height')||vb[3]});
+    });
+    return {sv:sv,items:items,cur:null};
   });
-  var mx=null,my=null,raf=0,cur=null;
-  function apply(){
-    raf=0; if(document.body.getAttribute('data-ill')!=='flat') return;
-    var r=sv.getBoundingClientRect(), s=r.width/640; if(!r.width) return;
-    /* la lumière suit la souris seulement sur le logo ; sinon elle revient au centre */
-    var on=mx!=null&&mx>=r.left&&mx<=r.right&&my>=r.top&&my<=r.bottom;
-    var tx=on?mx:r.left+r.width*.6, ty=on?my:r.top+r.height*.5;
-    if(!cur) cur={x:tx,y:ty};
-    cur.x+=(tx-cur.x)*.18; cur.y+=(ty-cur.y)*.18;
-    var more=Math.abs(tx-cur.x)>.5||Math.abs(ty-cur.y)>.5; if(!more){cur.x=tx;cur.y=ty}
-    var px=cur.x, py=cur.y, ox=(px-r.left)/s, oy=(py-r.top)/s, R=330;
-    items.forEach(function(it){var k=it.vw/it.w,cx=it.vx+(ox-it.x)*k,cy=it.vy+(oy-it.y)*(it.vh/it.h);
-      it.g.setAttribute('cx',cx);it.g.setAttribute('cy',cy);it.g.setAttribute('fx',cx);it.g.setAttribute('fy',cy);it.g.setAttribute('r',R*k)});
-    var dx=px-(r.left+r.width/2),dy=py-(r.top+r.height/2),dist=Math.sqrt(dx*dx+dy*dy)||1;
-    if(!on&&!more){sv.style.setProperty('--sx','-16px');sv.style.setProperty('--sy','6px');sv.style.setProperty('--gi','.85')}
-    else{var gi=Math.max(0,1-dist/(r.width*1.1));sv.style.setProperty('--sx',(-dx/dist*20)+'px');sv.style.setProperty('--sy',(-dy/dist*20)+'px');sv.style.setProperty('--gi',gi.toFixed(2))}
-    if(more) q();
+  function frame(){
+    raf=0; if(document.body.getAttribute('data-ill')!=='flat') return; var again=false;
+    insts.forEach(function(I){
+      var sv=I.sv, r=sv.getBoundingClientRect(), s=r.width/640; if(!r.width) return;
+      /* la lumière suit la souris seulement sur le logo ; sinon elle revient au centre */
+      var on=mx!=null&&mx>=r.left&&mx<=r.right&&my>=r.top&&my<=r.bottom;
+      var tx=on?mx:r.left+r.width*.6, ty=on?my:r.top+r.height*.5;
+      if(!I.cur) I.cur={x:tx,y:ty};
+      I.cur.x+=(tx-I.cur.x)*.18; I.cur.y+=(ty-I.cur.y)*.18;
+      var more=Math.abs(tx-I.cur.x)>.5||Math.abs(ty-I.cur.y)>.5; if(!more){I.cur.x=tx;I.cur.y=ty} else again=true;
+      var px=I.cur.x, py=I.cur.y, ox=(px-r.left)/s, oy=(py-r.top)/s, R=330;
+      I.items.forEach(function(it){var k=it.vw/it.w,cx=it.vx+(ox-it.x)*k,cy=it.vy+(oy-it.y)*(it.vh/it.h);
+        it.g.setAttribute('cx',cx);it.g.setAttribute('cy',cy);it.g.setAttribute('fx',cx);it.g.setAttribute('fy',cy);it.g.setAttribute('r',R*k)});
+      var dx=px-(r.left+r.width/2),dy=py-(r.top+r.height/2),dist=Math.sqrt(dx*dx+dy*dy)||1;
+      if(!on&&!more){sv.style.setProperty('--sx','-16px');sv.style.setProperty('--sy','6px');sv.style.setProperty('--gi','.85')}
+      else{var gi=Math.max(0,1-dist/(r.width*1.1));sv.style.setProperty('--sx',(-dx/dist*20)+'px');sv.style.setProperty('--sy',(-dy/dist*20)+'px');sv.style.setProperty('--gi',gi.toFixed(2))}
+    });
+    if(again) q();
   }
-  function q(){if(!raf)raf=requestAnimationFrame(apply)}
+  function q(){if(!raf)raf=requestAnimationFrame(frame)}
   addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;q()},{passive:true});
   document.addEventListener('mouseleave',function(){mx=my=null;q()});
-  addEventListener('resize',q);
+  addEventListener('resize',q);addEventListener('scroll',q,{passive:true});
   new MutationObserver(q).observe(document.body,{attributes:true,attributeFilter:['data-ill']});
   q();
 })();
@@ -1555,6 +1559,11 @@ html:not([data-theme="light"]) .hero-zf .zb-sh{filter:drop-shadow(0 1.5px 2px rg
 html:not([data-theme="light"]) body,html:not([data-theme="light"]) .s-dark,html:not([data-theme="light"]) #culture.cult{--bg:#000}
 html:not([data-theme="light"]) body,html:not([data-theme="light"]) .s-dark{background:#000 !important}
 html:not([data-theme="light"]) #culture.cult{background:radial-gradient(46vw 46vw at -8% -10%,rgba(238,34,56,.75),rgba(238,34,56,0) 68%),radial-gradient(40vw 40vw at 108% 112%,rgba(191,29,103,.75),rgba(191,29,103,0) 68%),radial-gradient(26vw 26vw at 22% 70%,rgba(91,20,80,.55),rgba(91,20,80,0) 70%),#000 !important}
+</style>
+<style>
+.ct-z .ct-zf{justify-content:flex-start;align-items:flex-end}
+.ct-z .ct-zf svg{height:66%;width:auto;max-width:100%;margin:0 0 6% 4%}
+@media(max-width:900px){.ct-z .ct-zf{justify-content:center}}
 </style>
 </body>
 </html>
