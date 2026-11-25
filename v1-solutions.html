@@ -1882,6 +1882,12 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 </div>
 </div>
 </section>
+<section class="ost" id="offres-pile" aria-labelledby="ost-t">
+<div class="wrap ost-intro"><span class="ost-eb">Nos offres</span><h2 id="ost-t">Quatre offres, <em>un même système de delivery.</em></h2><p>Chaque offre mobilise des expertises précises et s’appuie sur nos modèles opératoires. Faites défiler : les offres s’empilent à gauche, et la boussole montre en direct ce qui est mobilisé.</p></div>
+<div class="ost-track" id="ost-track"><div class="ost-stick"><div class="wrap ost-grid">
+<ol class="ost-list" id="ost-list"></ol>
+<div class="ost-dial" aria-hidden="true"><svg id="ost-svg" viewBox="-100 0 800 600"></svg></div>
+</div></div></div></section>
 <section class="sx sx2" id="reponses" aria-labelledby="sx-t"><div class="wrap">
 <div class="sx-pin"><div class="sx-b sx-b1"><h2 id="sx-t" class="sx-h2 rv4">Nos modèles opératoires <em>intègrent</em><br>vos équipes et votre organisation…</h2>
 <div class="sx-bar n7 rv4"><div class="sx-s"><p class="sx-m"><em>Diagnostic</em> flash, audit 360° et études</p></div><div class="sx-s"><p class="sx-m"><em>Cadrage</em> produit, solution ou projet</p></div><div class="sx-s"><p class="sx-m"><em>Solution</em> logicielle clé en mains</p></div><div class="sx-s"><p class="sx-m"><em>Régie</em> &amp; renfort d’équipe</p></div><div class="sx-s"><p class="sx-m"><em>Centre de services</em>, de compétences</p></div><div class="sx-s"><p class="sx-m"><em>Expertise</em> ponctuelle et coaching</p></div><div class="sx-s"><p class="sx-m">Programmes de <em>transfo</em> pilotés</p></div></div></div>
@@ -2317,14 +2323,14 @@ var D=[
     {tag:"Nos modèles opératoires",h:"Comment nous intervenons",p:["Diagnostic flash, audit 360°","Cadrage","Solution clés en mains","Régie & renfort","Programmes de transfo pilotés"],x:"Nos modèles intègrent vos équipes et votre organisation."}],
  r:["AI-augmented SDLC","Lean Strike teams"]}];
 var cards=[].slice.call(document.querySelectorAll('.sl4-duo > .sl4-card'));if(cards.length!==4)return;
-var host=null,cur=-1,busy=false,last=null;
+var host=null,cur=-1,busy=false,last=null,fromEl=null;window.odOpen=open;
 function esc(x){return x.replace(/&/g,'&amp;')}
 cards.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.className='od-btn';b.setAttribute('aria-haspopup','dialog');b.setAttribute('aria-label','Découvrir l’offre : '+D[i].t);b.innerHTML='Découvrir<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';c.appendChild(b);b.addEventListener('click',function(){open(i,b)})});
 function body(i){var d=D[i];return '<div class="od-in"><div class="od-eb">Nos offres</div><h2>'+esc(d.t)+'</h2><p class="od-lead">'+esc(d.lead)+'</p><div class="od-g">'+d.c.map(function(c,k){return '<div class="od-c'+(k===0?' red':'')+'" style="--d:'+k+'"><span class="tag">'+esc(c.tag)+'</span><h3>'+esc(c.h)+'</h3><div class="od-p">'+c.p.map(function(p){return '<span>'+esc(p)+'</span>'}).join('')+'</div><p>'+esc(c.x)+'</p></div>'}).join('')+'</div><div class="od-rel"><b>Approches associées</b>'+d.r.map(function(r){return '<span class="pl">'+esc(r)+'</span>'}).join('')+'</div></div>'}
 function open(i,btn){if(host||busy)return;busy=true;cur=i;last=btn;
 host=document.createElement('div');host.className='od-host';host.innerHTML='<div class="od-bd"></div><div class="od" role="dialog" aria-modal="true" aria-label="'+esc(D[i].t)+'"></div><button type="button" class="od-x" aria-label="Fermer">×</button><div class="od-nav"><button type="button" aria-label="Offre précédente">←</button><span></span><button type="button" aria-label="Offre suivante">→</button></div>';
 document.body.appendChild(host);document.documentElement.style.overflow='hidden';
-var o=host.querySelector('.od'),r=cards[i].getBoundingClientRect();o.style.transition='none';o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';o.getBoundingClientRect();o.style.transition='';
+fromEl=(btn&&btn._from)||null;var o=host.querySelector('.od'),r=(fromEl||cards[i]).getBoundingClientRect();o.style.transition='none';o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';o.getBoundingClientRect();o.style.transition='';
 o.innerHTML=body(i);
 requestAnimationFrame(function(){host.classList.add('on');o.classList.add('full');nv();setTimeout(function(){busy=false;host.querySelector('.od-x').focus()},700)});
 host.querySelector('.od-x').addEventListener('click',close);host.querySelector('.od-bd').addEventListener('click',close);
@@ -2332,8 +2338,111 @@ var b=host.querySelectorAll('.od-nav button');b[0].addEventListener('click',func
 document.addEventListener('keydown',key)}
 function nv(){var s=host&&host.querySelector('.od-nav span');if(s)s.textContent=(cur+1)+' / 4'}
 function go(d){if(!host||busy)return;cur=(cur+d+4)%4;var o=host.querySelector('.od');o.setAttribute('aria-label',D[cur].t);o.innerHTML=body(cur);o.classList.remove('od-swap');void o.offsetWidth;o.classList.add('od-swap');nv()}
-function close(){if(!host||busy)return;busy=true;var o=host.querySelector('.od'),c=cards[cur];c.scrollIntoView({block:'nearest'});var r=c.getBoundingClientRect();host.classList.remove('on');o.classList.remove('full');o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';
+function close(){if(!host||busy)return;busy=true;var o=host.querySelector('.od'),c=fromEl||cards[cur];if(!fromEl)c.scrollIntoView({block:'nearest'});var r=c.getBoundingClientRect();host.classList.remove('on');o.classList.remove('full');o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';
 setTimeout(function(){if(host){host.remove();host=null}document.documentElement.style.overflow='';document.removeEventListener('keydown',key);busy=false;if(last&&last.focus)last.focus()},680)}
 function key(e){if(e.key==='Escape'){e.preventDefault();close()}else if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1)}
+})();</script>
+<style id="ost-css">
+.ost{background:#0b0f19;color:#fff;position:relative;overflow:clip}
+.ost::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(900px 520px at 90% 18%,rgba(238,34,56,.28),transparent 60%),radial-gradient(700px 480px at -6% 88%,rgba(139,92,246,.16),transparent 60%)}
+.ost-intro{position:relative;padding-block:clamp(70px,10vw,130px) clamp(30px,4vw,56px)}
+.ost-eb{display:block;font:700 13px var(--display,inherit);letter-spacing:.2em;text-transform:uppercase;color:#ff5a70;margin-bottom:14px}
+.ost h2{margin:0;font-family:var(--display,inherit);font-weight:700;font-size:clamp(32px,4.6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#fff;max-width:18ch;text-wrap:balance}
+.ost h2 em{font-style:normal;color:#ff5a70}
+.ost-intro p{margin:18px 0 0;max-width:56ch;font-size:clamp(16px,1.5vw,20px);line-height:1.55;color:#aab4c6}
+.ost-track{position:relative;height:420vh}
+.ost-stick{position:sticky;top:0;height:100vh;height:100dvh;display:flex;align-items:center;padding-top:76px}
+.ost-grid{width:100%;display:grid;grid-template-columns:minmax(300px,440px) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:center}
+.ost-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.ost-it{position:relative;border-radius:24px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);overflow:hidden;cursor:pointer;transition:background .4s,border-color .4s,transform .5s cubic-bezier(.2,.8,.2,1),margin .5s,opacity .4s;margin-bottom:10px}
+.ost-hd{display:flex;align-items:center;gap:14px;padding:16px 20px;background:none;border:0;color:inherit;font:inherit;text-align:left;width:100%;cursor:pointer}
+.ost-n{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);font:700 13px var(--display,inherit);color:#cfd6e4;transition:.4s}
+.ost-t{font:700 clamp(16px,1.4vw,19px)/1.25 var(--display,inherit);color:#e8ecf4}
+.ost-bd{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.2,.8,.2,1)}
+.ost-bd>div{overflow:hidden;min-height:0;padding:0 20px}
+.ost-bd p{margin:0 0 14px;font-size:15px;line-height:1.5;color:#c7cfdd}
+.ost-ch{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.ost-ch.ex{display:none}
+.ost-ch b{width:100%;font:700 11px var(--display,inherit);letter-spacing:.16em;text-transform:uppercase;color:#ff7b8e}
+.ost-ch span{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);border-radius:999px;padding:5px 12px;font:600 13px var(--display,inherit);color:#fff}
+.ost-go{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:9px 16px 9px 18px;border-radius:999px;border:0;background:#fff;color:#0b0f19;font:700 13.5px/1 var(--display,inherit);cursor:pointer}
+.ost-go:hover{background:#ffe1e6}
+.ost-it.on{background:linear-gradient(135deg,#ee2238,#bf1d67);border-color:transparent;transform:scale(1.015)}
+.ost-it.on .ost-n{background:#fff;color:#bf1d67;border-color:#fff}
+.ost-it.on .ost-t{color:#fff}
+.ost-it.on .ost-bd{grid-template-rows:1fr}
+.ost-it.on .ost-ch span{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.16)}
+.ost-it.on .ost-ch b{color:rgba(255,255,255,.9)}
+.ost-it.done{opacity:.62;transform:scale(.97);margin-bottom:-14px;background:rgba(255,255,255,.09)}
+.ost-it.done .ost-n{background:#ee2238;border-color:#ee2238;color:#fff}
+.ost-it.done .ost-n::before{content:"✓"}.ost-it.done .ost-n span{display:none}
+.ost-it.next{opacity:.8}
+.ost-it:focus-within{outline:2px solid #fff;outline-offset:2px}
+.ost-dial{display:grid;place-items:center;min-width:0}
+.ost-dial svg{width:min(100%,calc((100vh - 150px)*1.33),760px);height:auto;overflow:visible}
+.ost-dial .q{fill:rgba(255,255,255,.1);transition:fill .5s}
+.ost-dial .q.on{fill:#ee2238}
+.ost-dial .qn{fill:#fff;font:700 15px var(--display,inherit);text-anchor:middle;dominant-baseline:central;opacity:.7;transition:opacity .4s}
+.ost-dial .q.on+.qn{opacity:1}
+.ost-dial .ring{fill:none;stroke:rgba(255,255,255,.12);stroke-dasharray:2 6}
+.ost-dial .nd{fill:#3a4152;transition:fill .5s,r .5s}
+.ost-dial .nd.on{fill:#ff5a70;filter:drop-shadow(0 0 8px rgba(238,34,56,.9))}
+.ost-dial .nl{fill:#7e879a;font:600 13.5px var(--display,inherit);transition:fill .5s}
+.ost-dial .nl.on{fill:#fff}
+.ost-dial .ln{stroke:#ee2238;stroke-width:1.6;opacity:0;stroke-linecap:round;transition:opacity .5s}
+.ost-dial .ln.on{opacity:.8}
+.ost-dial .needle{transform-origin:300px 300px;transition:transform .9s cubic-bezier(.3,1.3,.4,1)}
+.ost-dial .hub{fill:#0b0f19;stroke:rgba(255,255,255,.25)}
+.ost-dial .hn{fill:#fff;font:700 34px var(--display,inherit);text-anchor:middle}
+.ost-dial .hs{fill:#8e97aa;font:600 11px var(--display,inherit);letter-spacing:.18em;text-anchor:middle}
+@media(max-width:900px){
+.ost-track{height:auto}
+.ost-stick{position:static;height:auto;padding:0 0 70px;display:block}
+.ost-grid{display:block}
+.ost-dial{display:none}
+.ost-list{gap:0}
+.ost-it,.ost-it.done,.ost-it.on,.ost-it.next{position:sticky;top:calc(84px + var(--k)*12px);transform:none;opacity:1;margin-bottom:22px;background:#161b2a;border-color:rgba(255,255,255,.14)}
+.ost-it .ost-bd{grid-template-rows:1fr}
+.ost-it .ost-bd>div{padding:0 20px 2px}
+.ost-ch.ex{display:flex}
+.ost-it .ost-n{background:linear-gradient(135deg,#ee2238,#bf1d67);border-color:transparent;color:#fff}
+.ost-it .ost-n::before{content:none !important}.ost-it .ost-n span{display:inline !important}
+}
+@media(prefers-reduced-motion:reduce){.ost-it,.ost-bd,.ost-dial *{transition:none !important}}
+</style>
+<script>(function(){
+var O=[
+{t:"AI for Business Performance",l:"Déploiement de l’IA dans les applicatifs métier pour accélérer les opérations, améliorer les parcours et générer un impact mesurable.",e:[0,3,2,5],m:["Diagnostic flash","Cadrage","Solution clés en mains","Régie & renfort","Programmes de transfo pilotés"]},
+{t:"Data-driven Organization",l:"Faire de la data un levier de décision, en maîtrisant la gouvernance, la plateforme et les usages métier. Créer de la valeur et tirer de la valeur.",e:[3,1,7],m:["Diagnostic, audit 360°","Cadrage","Centre de compétences","Expertise ponctuelle et coaching","Programmes de transfo pilotés"]},
+{t:"Cloud, from strategy to value",l:"S’appuyer sur les services Cloud pour gagner en agilité, résilience et maîtrise des coûts, du cadrage à l’industrialisation.",e:[4,1,6],m:["Diagnostic flash","Cadrage","Solution clés en mains","Centre de services","Régie & renfort"]},
+{t:"Modernisation des SI",l:"Valoriser le legacy, rationaliser les architectures et moderniser étape par étape un SI plus simple, performant et durable.",e:[1,2,6,7],m:["Diagnostic, audit 360°","Cadrage","Solution clés en mains","Régie & renfort","Programmes de transfo pilotés"]}];
+var X=["Agentic systems","Architectures modernes","Software Excellence","Data & IA","Infrastructures & Cloud","Product design & mgmt","Delivery Management","Conduite du changement"];
+var sec=document.getElementById('ost-track'),list=document.getElementById('ost-list'),svg=document.getElementById('ost-svg');if(!sec||!list||!svg)return;
+var NS='http://www.w3.org/2000/svg';
+function esc(x){return x.replace(/&/g,'&amp;')}
+list.innerHTML=O.map(function(o,i){return '<li class="ost-it next" style="--k:'+i+'" data-i="'+i+'"><button type="button" class="ost-hd" aria-label="Offre '+(i+1)+' : '+esc(o.t)+'"><span class="ost-n"><span>'+(i+1)+'</span></span><span class="ost-t">'+esc(o.t)+'</span></button><div class="ost-bd"><div><p>'+esc(o.l)+'</p><div class="ost-ch ex"><b>Expertises</b>'+o.e.map(function(k){return '<span>'+esc(X[k])+'</span>'}).join('')+'</div><div class="ost-ch"><b>Modèles opératoires</b>'+o.m.map(function(m){return '<span>'+esc(m)+'</span>'}).join('')+'</div><button type="button" class="ost-go">Découvrir l’offre</button></div></div></li>'}).join('');
+var items=[].slice.call(list.children);
+function P(r,a){a=a*Math.PI/180;return [300+r*Math.sin(a),300-r*Math.cos(a)]}
+function arc(a0,a1,r0,r1){var p=P(r1,a0),q=P(r1,a1),u=P(r0,a1),v=P(r0,a0);return 'M'+p+'A'+r1+' '+r1+' 0 0 1 '+q+'L'+u+'A'+r0+' '+r0+' 0 0 0 '+v+'Z'}
+var h='<circle class="ring" cx="300" cy="300" r="215"/><circle class="ring" cx="300" cy="300" r="150" style="stroke-dasharray:1 5"/>';
+X.forEach(function(x,k){var a=k*45+22.5,p=P(203,a);h+='<line class="ln" data-k="'+k+'" x1="300" y1="300" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'"/>'});
+for(var k=0;k<4;k++){var m=P(122,k*90+45);h+='<path class="q" data-q="'+k+'" d="'+arc(k*90+4,k*90+86,100,146)+'"/><text class="qn" x="'+m[0].toFixed(1)+'" y="'+m[1].toFixed(1)+'">0'+(k+1)+'</text>'}
+X.forEach(function(x,k){var a=k*45+22.5,p=P(215,a),l=P(238,a),an=a<180?'start':'end';if(a>175&&a<185)an='middle';h+='<circle class="nd" data-k="'+k+'" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="8"/><text class="nl" data-k="'+k+'" x="'+l[0].toFixed(1)+'" y="'+l[1].toFixed(1)+'" text-anchor="'+an+'" dominant-baseline="central">'+esc(x)+'</text>'});
+h+='<g class="needle" id="ost-nd"><line x1="300" y1="250" x2="300" y2="196" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="300" cy="190" r="5" fill="#fff"/></g><circle class="hub" cx="300" cy="300" r="48"/><text class="hn" id="ost-hn" x="300" y="302" dominant-baseline="central">01</text><text class="hs" x="300" y="328">/ 04 OFFRES</text>';
+svg.innerHTML=h;
+var cur=-1;
+function set(i){if(i===cur)return;cur=i;
+items.forEach(function(el,k){el.classList.toggle('on',k===i);el.classList.toggle('done',k<i);el.classList.toggle('next',k>i)});
+[].forEach.call(svg.querySelectorAll('.q'),function(q){q.classList.toggle('on',+q.dataset.q===i)});
+[].forEach.call(svg.querySelectorAll('[data-k]'),function(n){n.classList.toggle('on',O[i].e.indexOf(+n.dataset.k)>-1)});
+document.getElementById('ost-nd').style.transform='rotate('+(i*90+45)+'deg)';
+document.getElementById('ost-hn').textContent='0'+(i+1)}
+var tick=false;
+function upd(){tick=false;var r=sec.getBoundingClientRect(),span=sec.offsetHeight-innerHeight;
+if(innerWidth<=900){set(0);return}
+var p=Math.min(.999,Math.max(0,-r.top/span));set(Math.floor(p*4))}
+addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();
+items.forEach(function(el,i){el.querySelector('.ost-hd').addEventListener('click',function(){if(innerWidth<=900)return;var span=sec.offsetHeight-innerHeight;var y=sec.getBoundingClientRect().top+scrollY+span*((i+.5)/4);scrollTo({top:y,behavior:'smooth'})});
+el.querySelector('.ost-go').addEventListener('click',function(e){e.stopPropagation();var b=this;b._from=el;if(window.odOpen)window.odOpen(i,b)})});
 })();</script>
 </body></html>
