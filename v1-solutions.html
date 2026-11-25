@@ -1884,7 +1884,7 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 </section>
 <section class="ost" id="offres-pile" aria-labelledby="ost-t">
 <div class="oh" id="oh"><effect-3d-duo id="oh-fx" count="30" speed="1.4" parallax="0.4" beam="7" aria-hidden="true"></effect-3d-duo><h1 id="ost-t">Quatre offres, sept modèles,<br>huit expertises :<br><em>un même système de delivery.</em></h1><p class="oh-p">L’offre dit ce que nous livrons. Le modèle opératoire dit comment nous intégrons vos équipes et votre organisation, et y déployons nos expertises.</p><a class="oh-cta" href="#ost-track" id="oh-cta">Découvrir</a></div>
-<div class="ost-track" id="ost-track"><div class="ost-stick"><div class="wrap ost-grid">
+<div class="ost-track" id="ost-track"><div class="ost-stick"><a class="ost-next" href="#reponses" aria-label="Passer aux modèles opératoires">Les modèles opératoires <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 2v11M3 8.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="wrap ost-grid">
 <ol class="ost-list" id="ost-list"></ol>
 <div class="ost-dial" aria-hidden="true"><svg id="ost-svg" viewBox="0 0 600 650"></svg></div>
 </div></div></div></section>
@@ -2787,4 +2787,12 @@ html[data-theme="dark"] .ost .oh h1{text-shadow:none}
 <script>(function(){var z=document.getElementById('oh-fx');if(!z)return;function dk(){return document.documentElement.getAttribute('data-theme')==='dark'}
 function sy(){z.setAttribute('theme',dk()?'sombre':'rougenoir')}sy();z.setShape&&z.setShape('duo');customElements.whenDefined('effect-3d-duo').then(function(){z.setShape('duo')});
 new MutationObserver(sy).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});})();</script>
+<style id="ost-next-css">
+.ost-next{position:absolute;right:max(24px,calc((100vw - 1196px)/2));bottom:10px;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font:600 13px var(--display,inherit);color:#6b7280;text-decoration:none;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);border:1px solid #E5E7EB;transition:color .2s,border-color .2s}
+.ost-next svg{animation:ostnx 1.8s ease-in-out infinite}
+.ost-next:hover{color:#EE2238;border-color:#EE2238}
+html[data-theme="dark"] .ost-next{color:#aab1c0;background:rgba(17,20,28,.6);border-color:rgba(255,255,255,.14)}
+@keyframes ostnx{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@media(prefers-reduced-motion:reduce){.ost-next svg{animation:none}}
+</style>
 </body></html>
