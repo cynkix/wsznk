@@ -3074,4 +3074,10 @@ html[data-theme="dark"] #zbig .zb-sh{filter:drop-shadow(0 1.5px 1.5px rgba(238,3
   q();
 })();
 </script>
+<style>/* frise : les traits n'apparaissent qu'au passage de la flèche (chronomètre) */
+.ct-rule i{opacity:0 !important;transition:none !important}
+.ct-card.on .ct-rule i{opacity:.55 !important;transition:opacity .25s var(--d,0s) !important}
+.ct-card.on .ct-rule i.M{opacity:1 !important}
+@media(prefers-reduced-motion:reduce){.ct-rule i{opacity:.55 !important}.ct-rule i.M{opacity:1 !important}}</style>
+<script>(function(){var c=document.getElementById('ct20');if(!c)return;var T0=.2,DUR=4.2;[].slice.call(c.querySelectorAll('.ct-rule i')).forEach(function(t){var p=parseFloat(t.style.left)/100;t.style.setProperty('--d',(T0+DUR*p).toFixed(2)+'s');});})();</script>
 </body></html>

@@ -3140,4 +3140,10 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
 #contact .form,#contact .form label,#contact .form .rg{color:revert}
 </style>
 <script>(function(){var s=document.getElementById('contact');if(!s)return;s.addEventListener('pointermove',function(e){var r=s.getBoundingClientRect();s.style.setProperty('--mx',(e.clientX-r.left)+'px');s.style.setProperty('--my',(e.clientY-r.top)+'px')})})();</script>
+<style>/* frise : les traits n'apparaissent qu'au passage de la flèche (chronomètre) */
+.ct-rule i{opacity:0 !important;transition:none !important}
+.ct-card.on .ct-rule i{opacity:.55 !important;transition:opacity .25s var(--d,0s) !important}
+.ct-card.on .ct-rule i.M{opacity:1 !important}
+@media(prefers-reduced-motion:reduce){.ct-rule i{opacity:.55 !important}.ct-rule i.M{opacity:1 !important}}</style>
+<script>(function(){var c=document.getElementById('ct20');if(!c)return;var T0=.2,DUR=4.2;[].slice.call(c.querySelectorAll('.ct-rule i')).forEach(function(t){var p=parseFloat(t.style.left)/100;t.style.setProperty('--d',(T0+DUR*p).toFixed(2)+'s');});})();</script>
 </body></html>
