@@ -59,7 +59,6 @@ body.in-proto{overflow:hidden}body.in-proto iframe{display:block}body.in-proto #
     <h1>Design Zenika <span>website v4</span></h1>
     <p>Voici quatre partis pris graphiques pour un même contenu.<br>Mode clair par défaut, mode sombre disponible. Version mobile en cours.</p><p class="p2">Le sélecteur de version, en haut à droite, permet de passer de l’une à l’autre ou de revenir ici.<br>Certaines versions proposent des variantes intégrées.</p></section>
   <div class="grid" id="grid"></div>
-  <div class="arch" id="arch"></div>
   <p class="conf">Rappel confidentialité : ces prototypes sont internes à Zenika, contenus et chiffres provisoires.</p>
 </main>
 <iframe id="frame" title="Prototype du site Zenika" src="about:blank"></iframe>
@@ -94,16 +93,12 @@ function show(id){
   try{history.replaceState(null,'','#'+v.id);}catch(e){}
 }
 /* vignettes */
-var grid=document.getElementById('grid'),arch=document.getElementById('arch'),hsel=document.getElementById('hsel');
+var grid=document.getElementById('grid'),hsel=document.getElementById('hsel');
 VERSIONS.filter(function(v){return v.main;}).forEach(function(v){
   var a=document.createElement('a');a.className='card';a.href='#'+v.id;
   a.innerHTML='<div class="th"><img src="img/home/'+v.id+'.webp" alt="Aperçu de '+v.name+'" loading="lazy"></div><div class="tx"><div class="nm">'+v.name+'</div><div class="nt">'+v.note+'</div><div class="go">Ouvrir le prototype</div></div>';
   a.addEventListener('click',function(e){e.preventDefault();show(v.id);});
   grid.appendChild(a);
-});
-arch.innerHTML='<b>Archives :</b> ';
-VERSIONS.filter(function(v){return !v.main;}).forEach(function(v){
-  var a=document.createElement('a');a.textContent=v.name.replace('Archive · ','');a.addEventListener('click',function(){show(v.id);});arch.appendChild(a);
 });
 hsel.innerHTML='<option value="home" selected>Accueil · toutes les versions</option>'+VERSIONS.map(function(v){return '<option value="'+v.id+'">'+v.name+'</option>';}).join('');
 hsel.addEventListener('change',function(){show(hsel.value);hsel.value='home';});
