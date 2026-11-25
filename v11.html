@@ -2771,13 +2771,16 @@ if(rm)document.querySelectorAll('.svb-kw li').forEach(function(li){li.classList.
 var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
 var cards=[].slice.call(document.querySelectorAll('.sv-in .sv-card'));
 cards.forEach(function(c){c.querySelectorAll('.sv-dots li,.sv-chk li').forEach(function(li,i){li.style.setProperty('--dd',(.3+i*.25)+'s');});});
-function playA(){cards.forEach(function(c,i){setTimeout(function(){c.classList.add('ph');},rm?0:i*1700);});}
+var offsL=[].slice.call(document.querySelectorAll('.sv-offs:not(.sv-offs-r)'));
+var plA=document.querySelector('.sv-in .sv-offs:not(.sv-offs-r)'),plB=document.querySelector('.svb-cols .sv-offs:not(.sv-offs-r)');
+function startPl(k){var L=(typeof k==='number')?offsL[k]:k;if(!L||L.dataset.plAt)return;L.dataset.plAt=Date.now();L.classList.add('pl');}
+function playA(){cards.forEach(function(c,i){setTimeout(function(){c.classList.add('ph');if(i===0&&!rm)startPl(plA);},rm?0:i*1700);});}
 var h0=cards[0]&&cards[0].querySelector('h3');
-var offs=[].slice.call(document.querySelectorAll('.sv-offs-r'));var offsL=[].slice.call(document.querySelectorAll('.sv-offs:not(.sv-offs-r)'));
+var offs=[].slice.call(document.querySelectorAll('.sv-offs-r'));
 if(!('IntersectionObserver' in window)||rm){playA();offs.forEach(function(o){o.classList.add('go');});}
 else{
  if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -42% 0px',threshold:1});a.observe(h0);}
- function chk(){var vh=innerHeight||800;offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(mid<vh*.62&&r.bottom>vh*.3){o.classList.add('go0');var L=offsL[offs.indexOf(o)];var n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)L.classList.add('pl');setTimeout(function(){o.classList.add('go');},rm||!n?0:n*450+250);}});}
+ function chk(){var vh=innerHeight||800;offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(mid<vh*.62&&r.bottom>vh*.3){o.classList.add('go0');var k=offs.indexOf(o),L=offsL[k],n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)startPl(k);var left=L&&!rm?Math.max(0,(+L.dataset.plAt)+n*300+500-Date.now()):0;setTimeout(function(){o.classList.add('go');},left);}});}
  addEventListener('scroll',function(){requestAnimationFrame(chk);},{passive:true});addEventListener('resize',chk);
  document.querySelectorAll('.svp button').forEach(function(x){x.addEventListener('click',function(){setTimeout(chk,150);});});
  setTimeout(chk,300);
@@ -2790,7 +2793,7 @@ if(bh&&bc){
  function sync(){
   if(!bh.offsetParent)return;
   var ls=bh.querySelectorAll('.l'),on=bh.querySelectorAll('.l.on').length,p=ls.length?on/ls.length:0;
-  bc.classList.toggle('ph',p>=.999);
+  bc.classList.toggle('ph',p>=.999);if(p>=.999&&!rm)startPl(plB);
   cols.forEach(function(c){c.forEach(function(li,i){var t=.12+i*(.8/M);li.classList.toggle('lit',p>=t);});});
  }
  addEventListener('scroll',function(){requestAnimationFrame(sync);},{passive:true});
@@ -2833,5 +2836,16 @@ if(bh&&bc){
 .svb-cols .sv-offs.pl .sv-off:nth-child(5) .sv-plus{animation-delay:1.90s}
 .svb-cols .sv-offs.pl .sv-off:nth-child(6) .sv-plus{animation-delay:2.35s}
 @media(prefers-reduced-motion:reduce){.svb-cols .sv-offs .sv-plus{opacity:1 !important;animation:none !important}}
+</style>
+<style>
+/* + reliés aux mots-clés : animation enchaînée juste après, un peu plus vite */
+.sv-offs.pl .sv-off .sv-plus{animation-duration:.7s !important}
+.svb-cols .sv-offs.pl .sv-off .sv-plus{animation-duration:.5s !important}
+.sv-offs.pl .sv-off:nth-child(1) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(1) .sv-plus{animation-delay:0.10s !important}
+.sv-offs.pl .sv-off:nth-child(2) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(2) .sv-plus{animation-delay:0.40s !important}
+.sv-offs.pl .sv-off:nth-child(3) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(3) .sv-plus{animation-delay:0.70s !important}
+.sv-offs.pl .sv-off:nth-child(4) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(4) .sv-plus{animation-delay:1.00s !important}
+.sv-offs.pl .sv-off:nth-child(5) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(5) .sv-plus{animation-delay:1.30s !important}
+.sv-offs.pl .sv-off:nth-child(6) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(6) .sv-plus{animation-delay:1.60s !important}
 </style>
 </body></html>
