@@ -23,7 +23,7 @@
     void main(){ vA=aA; vec4 mv=modelViewMatrix*vec4(position,1.0); gl_PointSize=uSize*(10.0/-mv.z); gl_Position=projectionMatrix*mv; }`;
   const PFRAG = `uniform vec3 uBeam; uniform float uHard; varying float vA;
     void main(){ float r=length(gl_PointCoord-0.5)*2.0;
-      if(uHard>0.5){ float d=1.0-smoothstep(0.78,0.98,r); if(d<0.01) discard; gl_FragColor=vec4(0.933,0.133,0.22,d*vA); return; }
+      if(uHard>0.5){ float d=1.0-smoothstep(0.94,1.0,r); if(d<0.01||vA<0.01) discard; gl_FragColor=vec4(0.933,0.133,0.22,d); return; }
       float g=exp(-r*r*5.0); if(g<0.01) discard; gl_FragColor=vec4(uBeam, g*vA); }`;
 
   // un seul effet 3D actif à la fois : celui dont la surface visible est la plus grande
