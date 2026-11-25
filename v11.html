@@ -2352,7 +2352,9 @@ html[data-theme="dark"] .cg,html[data-theme="dark"] .cg li:not(.x){color:#fff}
 <script>
 (function(){var sec=document.getElementById('sequence');if(!sec)return;
 function setV(v){sec.classList.remove('v-b','v-c');if(v!=='a')sec.classList.add('v-'+v);document.querySelectorAll('.svp button').forEach(function(b){b.classList.toggle('on',b.dataset.v===v)})}
-document.querySelectorAll('.svp button').forEach(function(b){b.addEventListener('click',function(){setV(b.dataset.v)})});
+document.querySelectorAll('.svp button').forEach(function(b){b.addEventListener('click',function(){setV(b.dataset.v);
+  /* on remonte au début de la section pour découvrir la proposition choisie depuis son commencement */
+  setTimeout(function(){var y=sec.getBoundingClientRect().top+(window.pageYOffset||0)-84;try{window.scrollTo({top:Math.max(0,y),behavior:(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)?'auto':'smooth'});}catch(e){window.scrollTo(0,Math.max(0,y));}},60);})});
 })();
 </script>
 <style>
