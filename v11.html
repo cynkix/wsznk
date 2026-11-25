@@ -1765,7 +1765,7 @@ html[data-theme="dark"] .tl20-top{background:rgba(14,16,21,.8)}
 <ul class="sv-offs"><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>AI-augmented SDLC</b><span>Conception, analyse de code, test, documentation…</span></div></li><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>Lean Strike teams</b><span>Petites équipes expertes, rapides et autonomes</span></div></li><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>Platform engineering</b><span>Infra as a service, Portail, self service, automatisation</span></div></li><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>Product strategy &amp; discovery</b><span>Accélération du produit par les usages et la valeur</span></div></li><li class="sv-off"><span class="sv-plus" aria-hidden="true"></span><div><b>Performance-driven delivery</b><span>Mesure, DORA, brain intelligence, amélioration continue</span></div></li></ul>
 </article>
 <article class="sv-card rv4">
-<h3><em>Pour traduire</em> les investissements IT <em>en valeur métier mesurable</em>.</h3>
+<h3><em>…pour traduire</em> les investissements IT <em>en valeur métier mesurable</em>.</h3>
 <ul class="sv-chk"><li>Alignement avec la stratégie d'entreprise</li><li>Sécurité, conformité, durabilité</li><li>Pertinence des logiciels pour les métiers</li><li>Bénéfices tangibles de l'IA</li><li>Réduction du time-to-market</li><li>Innovation continue</li></ul>
 <ul class="sv-offs sv-offs-r"><li class="sv-off sv-off-r"><div><b>AI for Business Performance</b><span>Déploiement de l'IA dans les applicatifs métier pour accélérer les opérations, améliorer les parcours et générer un impact mesurable.</span></div></li><li class="sv-off sv-off-r"><div><b>Data-driven Organization</b><span>Faire de la data un levier de décision, en maîtrisant la gouvernance, la plateforme et les usages métier. Créer de la valeur et tirer de la valeur.</span></div></li><li class="sv-off sv-off-r"><div><b>Cloud, from strategy to value</b><span>S'appuyer sur les services Cloud pour gagner en agilité, résilience et maîtrise des coûts, du cadrage à l'industrialisation.</span></div></li><li class="sv-off sv-off-r"><div><b>Modernisation des SI</b><span>Valoriser le legacy, rationaliser les architectures et moderniser étape par étape un SI plus simple, performant et durable.</span></div></li></ul>
 </article>
@@ -2695,4 +2695,17 @@ html[data-theme="dark"] .bgm a{color:#fff}
 })();
 </script>
 <style>@media(max-width:900px){.hact{gap:6px !important}.vpick .vcur{white-space:nowrap !important}.vpick{flex:none}.hact .thm{margin-left:0 !important}.hact .hct{margin-left:0 !important}}</style>
+<style>
+/* solutions : les mots rouges passent du noir au rouge à l'arrivée au scroll ; les filets rouges des 4 offres se déploient un par un */
+.sv-card h3 em,.svb-h em{transition:color .9s ease .15s}
+.sv-card h3 em + em,.svb-h em + em{transition-delay:.55s}
+.sv-card:not(.in) h3 em,.svb-card:not(.in) .svb-h em{color:var(--ink,#14171F) !important}
+.sv-off-r::before{transform-origin:50% 0;transform:scaleY(.012);transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.sv-card.in .sv-off-r::before,.svb-card.in .sv-off-r::before{transform:none}
+.sv-offs-r .sv-off-r:nth-child(1)::before,.svb-cols .sv-off-r:nth-child(1)::before{transition-delay:.5s}
+.sv-offs-r .sv-off-r:nth-child(2)::before,.svb-cols .sv-off-r:nth-child(2)::before{transition-delay:.95s}
+.sv-offs-r .sv-off-r:nth-child(3)::before,.svb-cols .sv-off-r:nth-child(3)::before{transition-delay:1.4s}
+.sv-offs-r .sv-off-r:nth-child(4)::before,.svb-cols .sv-off-r:nth-child(4)::before{transition-delay:1.85s}
+@media(prefers-reduced-motion:reduce){.sv-off-r::before{transform:none !important;transition:none !important}.sv-card h3 em,.svb-h em{transition:none}.sv-card:not(.in) h3 em,.svb-card:not(.in) .svb-h em{color:inherit !important}}
+</style>
 </body></html>
