@@ -2430,7 +2430,7 @@ function dial(el,id,cap){
 var h='<defs><linearGradient id="g'+id+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e62a3b"/><stop offset="1" stop-color="#c01f68"/></linearGradient><g id="z'+id+'">'+ZP.map(function(d){return '<path class="wz" stroke="url(#g'+id+')" d="'+d+'"/>'}).join('')+'</g></defs>';
 h+='<svg x="100" y="100" width="400" height="400" viewBox="0 0 30.27 30.29" overflow="visible">'+ARC.map(function(d,k){return '<path class="wq" data-q="'+k+'" d="'+d+'"/>'}).join('')+'</svg>';
 h+='<svg x="165" y="163" width="270" height="273" viewBox="149 131 78 79" overflow="visible">';
-for(var k=7;k>=0;k--)h+='<use href="#z'+id+'" transform="translate('+(k*.6)+' '+(-k*.6)+')" opacity="'+(k?(.5-k*.055).toFixed(2):1)+'"/>';
+for(var k=2;k>=0;k--)h+='<use href="#z'+id+'" transform="translate('+(k*.9)+' '+(-k*.9)+')" opacity="'+(k?(k==1?.28:.12):1)+'"/>';
 h+='</svg>';
 BP.forEach(function(p,k){var q=P(190,k*90);h+='<g class="wb" data-q="'+k+'"><text x="'+q[0].toFixed(1)+'" y="'+(q[1]+1).toFixed(1)+'" dominant-baseline="central">'+(k+1)+'</text></g>'});
 if(cap)h+='<text class="wcap" id="'+id+'-cap" x="300" y="566">'+esc(SN[0])+'</text>';
