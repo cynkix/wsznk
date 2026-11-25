@@ -2967,4 +2967,29 @@ setTimeout(upd,200);
 .sv.v-c .sv-off span{line-height:1.5 !important;margin-top:3px !important}
 .sv.v-c .sv-in{row-gap:clamp(28px,2.8vw,40px) !important}
 </style>
+<style>
+/* H1 d'accueil : les lettres apparaissent l'une après l'autre au chargement */
+.zin h1 .w{display:inline-block;white-space:nowrap}
+.zin h1 em{background:none !important;color:inherit}
+.zin h1 em .l{background:var(--red);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.zin h1 .l{opacity:0;display:inline-block;transform:translateY(.28em);animation:h1l .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.35s + var(--i) * 32ms)}
+@keyframes h1l{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.zin h1 .l{opacity:1;transform:none;animation:none}}
+</style>
+<script>
+(function(){
+var h=document.querySelector('.zin h1');if(!h||h.dataset.split)return;h.dataset.split='1';
+h.setAttribute('aria-label',h.textContent.replace(/\u00a0/g,' ').replace(/\s+/g,' ').trim());
+var n=0;
+(function split(node){[].slice.call(node.childNodes).forEach(function(c){
+ if(c.nodeType===3){var f=document.createDocumentFragment();
+  c.textContent.split(/( +)/).forEach(function(t){if(!t)return;
+   if(/^ +$/.test(t)){f.appendChild(document.createTextNode(' '));return;}
+   var w=document.createElement('span');w.className='w';w.setAttribute('aria-hidden','true');
+   t.split('').forEach(function(ch){var s=document.createElement('span');s.className='l';s.style.setProperty('--i',n++);s.textContent=ch;w.appendChild(s);});
+   f.appendChild(w);});
+  c.parentNode.replaceChild(f,c);}
+ else if(c.nodeType===1)split(c);});})(h);
+})();
+</script>
 </body></html>

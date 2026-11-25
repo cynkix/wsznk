@@ -1156,7 +1156,7 @@ html[data-theme="dark"] .eg-it.act b,html[data-theme="dark"] .eg2 h2 em,html[dat
 .cst-r li::before{content:"–";margin-right:10px}
 /* solutions en grille sur fond rouge */
 .sl4{position:relative;z-index:1;margin-top:-190px;padding:290px 0 110px;background:var(--red);color:#FFF}
-.sl4 h2{color:#FFF;margin:0 auto;max-width:17em;text-align:center;font-family:var(--display);font-weight:500;font-size:clamp(26px,3vw,44px);line-height:1.15;letter-spacing:-.015em}
+.sl4 h2,.sl4 h1{color:#FFF;margin:0 auto;max-width:17em;text-align:center;font-family:var(--display);font-weight:500;font-size:clamp(26px,3vw,44px);line-height:1.15;letter-spacing:-.015em}
 .sl4-chips{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .sl4-chips li{padding:8px 16px;border-radius:10px;background:rgba(255,255,255,.94);color:#14171F;font-family:var(--display);font-weight:700;font-size:12px;box-shadow:0 8px 18px rgba(0,0,0,.14)}
 .sl4-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,2fr);gap:28px;margin-top:56px;align-items:stretch}
@@ -1244,7 +1244,7 @@ html[data-theme="dark"] .cst-l{border-color:#2B3242}
 @media (max-width:900px){.cst-l h2{max-width:none;margin-left:0}}
 
 /* zk-h2-1116 : titres de section à la même taille */
-.sl4 h2,.dem h2,.adn4-h{font-size:clamp(28px,3.4vw,48px)}
+.sl4 h2,.sl4 h1,.dem h2,.adn4-h{font-size:clamp(28px,3.4vw,48px)}
 
 /* zk-shadozika */
 :root{
@@ -1268,8 +1268,8 @@ html[data-theme="dark"] .cst-l{border-color:#2B3242}
 .cst-l li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2.5 5h5' stroke='%2314171F' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E")}
 .cst-r li::before{margin-right:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='m2.6 5.2 1.7 1.7 3.2-3.6' fill='none' stroke='%23E2001A' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
 .sl4{margin-top:0;padding:90px 0 80px;background:transparent;color:var(--ink)}
-.sl4 h2{color:var(--ink);max-width:none;text-align:left;margin:0;font-weight:600;font-size:clamp(26px,3.2vw,44px)}
-.sl4 h2 .r{color:#E2001A}
+.sl4 h2,.sl4 h1{color:var(--ink);max-width:none;text-align:left;margin:0;font-weight:600;font-size:clamp(26px,3.2vw,44px)}
+.sl4 h2 .r,.sl4 h1 .r{color:#E2001A}
 .sl4-ck{display:inline-block;width:.8em;height:.8em;vertical-align:-.1em;margin-left:.2em;fill:none;stroke:#E2001A;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .sl4-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:26px;margin-top:40px}
 .sl4-col.c1{display:block}
@@ -1875,7 +1875,7 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 <main id="top">
 <section class="sl4" id="solutions">
 <div class="wrap">
-<h2 class="rv4"><span class="r">Des solutions sur mesures,</span><br>construites, exécutées et <span class="r">pilotées ensemble</span> <svg class="sl4-ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></h2>
+<h1 class="rv4"><span class="r">Des solutions sur mesures,</span><br>construites, exécutées et <span class="r">pilotées ensemble</span> <svg class="sl4-ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></h1>
 <div class="sl4-grid">
 <div class="sl4-col c1"><div class="sl4-acc rv4"><b>AI-augmented SDLC<span class="sl4-d">Conception, analyse de code, test, documentation…</span></b><span class="plus" aria-hidden="true"></span><b>Lean Strike teams<span class="sl4-d">Petites équipes expertes, rapides et autonomes</span></b><span class="plus" aria-hidden="true"></span><b>Platform engineering<span class="sl4-d">Infra as a service, Portail, self service, automatisation</span></b><span class="plus" aria-hidden="true"></span><b>Product strategy &amp; discovery<span class="sl4-d">Accélération du produit par les usages et la valeur</span></b><span class="plus" aria-hidden="true"></span><b>Performance-driven delivery<span class="sl4-d">Mesure, DORA, brain intelligence, amélioration continue</span></b></div></div>
 <div class="sl4-duo"><article class="sl4-card bg rv4" style="--i:1"><svg class="sl4-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zM12 4v4M9 13v1.5M15 13v1.5"/></svg><b>AI for Business Performance</b><p>Déploiement de l'IA dans les applicatifs métier pour accélérer les opérations, améliorer les parcours et générer un impact mesurable.</p></article><article class="sl4-card bg rv4" style="--i:2"><svg class="sl4-ic" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg><b>Data-driven Organization</b><p>Faire de la data un levier de décision, en maîtrisant la gouvernance, la plateforme et les usages métier. Créer de la valeur et tirer de la valeur.</p></article><article class="sl4-card bg rv4" style="--i:3"><svg class="sl4-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17 8.5a4.8 4.8 0 0 1 .5 9.5z"/></svg><b>Cloud, from strategy to value</b><p>S'appuyer sur les services Cloud pour gagner en agilité, résilience et maîtrise des coûts, du cadrage à l'industrialisation.</p></article><article class="sl4-card bg rv4" style="--i:4"><svg class="sl4-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 4.5-9 4.5-9-4.5zM3 12l9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></svg><b>Modernisation des SI</b><p>Valoriser le legacy, rationaliser les architectures et moderniser étape par étape un SI plus simple, performant et durable.</p></article></div>
