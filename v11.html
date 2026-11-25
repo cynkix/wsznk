@@ -2896,4 +2896,12 @@ if(bh&&bc){
 .sv-in .sv-plus::before,.sv-in .sv-plus::after{width:11px !important;height:1.8px !important;margin:-.9px 0 0 -5.5px !important;opacity:.9}
 .sv-in .sv-offs.pl .sv-off .sv-plus{animation-duration:.8s !important}
 </style>
+<style>
+/* C : plus d'air entre les deux rangées, lisible sans le bouton « offres en détail » */
+.sv.v-c .sv-in{row-gap:clamp(24px,2.6vw,36px) !important}
+.sv.v-c .sv-card{padding-top:clamp(26px,2.5vw,36px) !important;padding-bottom:clamp(26px,2.5vw,36px) !important;row-gap:clamp(14px,1.5vw,20px) !important}
+.sv.v-c .sv-card>.sv-dots,.sv.v-c .sv-card>.sv-chk{row-gap:9px !important}
+.sv.v-c .sv-card .sv-offs{row-gap:14px !important;gap:14px !important}
+.sv.v-c .sv-card .sv-offs-r{gap:16px !important}
+</style>
 </body></html>
