@@ -6,42 +6,106 @@
 <title>Zenika Site Versions</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap">
 <style>
-:root{--bar:#0E0F13;--bar-text:#FFFFFF;--muted:#A3A7B3;--accent:#EE2238;--line:rgba(255,255,255,.14)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bar:#0E0F13}}
-:root[data-theme="dark"]{--bar:#0E0F13}
+:root{--bar:#0E0F13;--ink:#fff;--muted:#A3A7B3;--accent:#EE2238;--line:rgba(255,255,255,.14);--card:#161922}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;background:#0E0F13;overflow:hidden}
-iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#FFF}
+html,body{margin:0;height:100%;background:#0E0F13}
+body{font-family:Montserrat,system-ui,sans-serif;color:var(--ink)}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#FFF;display:none}
+body.in-proto{overflow:hidden}body.in-proto iframe{display:block}body.in-proto #home{display:none}
+#home{min-height:100%;padding:0 clamp(16px,4vw,56px) 64px;background:radial-gradient(1200px 500px at 15% -10%,rgba(238,34,56,.18),transparent 60%),#0E0F13}
+.hb{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
+.hb .lg{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.01em}
+.hb .lg i{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#EE2238,#BF1D67)}
+.vp{position:relative;display:inline-flex}
+.vp span{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-weight:600;font-size:13px}
+.vp span::after{content:"";width:6px;height:6px;margin-top:-3px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}
+.vp select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font-size:14px}
+.vp:hover span{color:#fff;border-color:rgba(255,255,255,.4)}
+.vp option{color:#1A202C}
+.hero{max-width:1280px;margin:clamp(24px,5vw,56px) auto clamp(28px,4vw,44px)}
+.hero .eb{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.hero h1{margin:12px 0 10px;font-weight:700;font-size:clamp(30px,4.4vw,54px);line-height:1.08;letter-spacing:-.02em;max-width:18ch}
+.hero p{margin:0;max-width:62ch;color:var(--muted);font-size:clamp(15px,1.3vw,18px);line-height:1.5}
+.grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover,.card:focus-visible{transform:translateY(-4px);border-color:rgba(238,34,56,.7);box-shadow:0 18px 40px rgba(0,0,0,.45);outline:none}
+.card .th{aspect-ratio:8/5;background:#222;overflow:hidden;border-bottom:1px solid var(--line)}
+.card .th img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+.card:hover .th img{transform:scale(1.04)}
+.card .tx{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card .nm{font-weight:700;font-size:18px;letter-spacing:-.01em}
+.card .nt{color:var(--muted);font-size:14px;line-height:1.5}
+.card .go{margin-top:auto;padding-top:6px;color:var(--accent);font-weight:600;font-size:13.5px}
+.card .go::after{content:" →"}
+.arch{max-width:1280px;margin:36px auto 0;color:var(--muted);font-size:13px}
+.arch b{color:#fff;font-weight:600}
+.arch a{color:var(--muted);text-decoration:underline;cursor:pointer;margin-right:12px}
+.arch a:hover{color:#fff}
+.conf{max-width:1280px;margin:28px auto 0;color:#7c8190;font-size:12.5px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.card,.card .th img{transition:none}}
 </style>
 </head>
 <body>
-<iframe id="frame" title="Prototype du site Zenika" src="v11.html"></iframe>
+<main id="home">
+  <div class="hb"><div class="lg"><i></i>Zenika · Refonte de l’accueil</div>
+    <label class="vp"><span id="vpcur">Accueil · toutes les versions</span><select id="hsel" aria-label="Version du prototype"></select></label></div>
+  <section class="hero"><div class="eb">Prototypes · novembre 2026</div>
+    <h1>Quatre directions pour la nouvelle page d’accueil</h1>
+    <p>Même contenu, quatre parti pris graphiques. Cliquez sur une vignette pour ouvrir le prototype ; le sélecteur de version en haut à droite permet de passer de l’un à l’autre, ou de revenir ici.</p></section>
+  <div class="grid" id="grid"></div>
+  <div class="arch" id="arch"></div>
+  <p class="conf">Rappel confidentialité : ces prototypes sont internes à Zenika, contenus et chiffres provisoires.</p>
+</main>
+<iframe id="frame" title="Prototype du site Zenika" src="about:blank"></iframe>
 <script>
-/* Ajouter une idée : déposer vN.html et ajouter une ligne ici. */
+/* Ajouter une idée : déposer vN.html, ajouter une ligne ici (main:true = vignette sur l'accueil, avec img/home/vN.webp). */
 var VERSIONS=[
-  {id:'v11',file:'v11.html',name:'V-prod',note:'Version de référence, ouverte par défaut : parcours de la V1, solutions en trois propositions (deux cartes, fusion, deux colonnes), frise des 20 ans et agences sous « Parlons-en »'},
-  {id:'v1',file:'v1.html',name:'V1 · Z 3D',note:'Le Z reste à l’écran et se transforme : Z, case cochée, puis symbole du temps selon les sections'},
-  {id:'v8',file:'v8.html',name:'V4 · Landing',note:'Nouveau design inspiré de « Vis ma vie de designer » : bleu nuit, cartes très arrondies avec une carte rouge en relief, alternance de blocs sombres et clairs, Z 3D en tête, finale dégradée rouge'},
-  {id:'v7',file:'v7.html',name:'V6 · TechnoZ',note:'Accueil en écran partagé : à gauche la photo en carrousel de la V3, à droite le Z 3D de la V5 ; la suite reprend la V5'},
-  {id:'v9',file:'v9.html',name:'V8 · Z Zenika',note:'Même parcours que la V1, mais le Z 3D en lignes devient le Z Zenika plat avec ombre, puis trois icônes : itération, structure, code'},
-  {id:'v2',file:'v2.html',name:'Archive · V2 · Dégradé rouge',note:'Bande dégradée blanc vers rouge (constat + solutions), démarche à plat avec règle graduée, figure 3D qui évolue au scroll'},
-  {id:'v4',file:'v4.html',name:'Archive · V3 · Hero',note:'Photo d’accueil, puis le corps de « Nos solutions » : défis en barres segmentées, offres et programmes, ROI, convictions'},
-  {id:'v3',file:'v3.html',name:'Archive · V5 · Intro Z 3D',note:'Intro plein écran avec le Z en lignes 3D qui suit la souris, constat en deux cartes, solutions en grille, « Notre démarche »'},
-  {id:'v10',file:'v10.html',name:'Archive · V7 · Challenge',note:'Carte blanche : une promesse, quatre paires « aujourd’hui → avec Zenika », puis quatre offres et la façon de travailler, pour comprendre le site en un coup d’œil'},
-  {id:'v6',file:'v6.html',name:'Archive inspiration design · Six phases + programmes illustrés',note:'Roue du PDLC en six étapes, programmes illustrés, six bénéfices animés sur « Votre ROI »'},
+  {id:'v11',file:'v11.html',name:'V1 · Z 3D',main:true,note:'Le Z 3D en lignes reste à l’écran et se transforme au fil des sections : Z, case cochée, puis symbole du temps. Version de référence : offres en trois propositions, frise des 20 ans, agences sous « Parlons-en ».'},
+  {id:'v8',file:'v8.html',name:'V2 · Landing',main:true,note:'Bleu nuit, cartes très arrondies avec une carte rouge en relief, alternance de blocs sombres et clairs, Z 3D en tête et finale dégradée rouge.'},
+  {id:'v7',file:'v7.html',name:'V3 · TechnoZ',main:true,note:'Accueil en écran partagé : à gauche le carrousel photo, à droite le Z 3D sur fond rouge nuit.'},
+  {id:'v9',file:'v9.html',name:'V4 · Z Zenika',main:true,note:'Le Z Zenika plat avec ombre douce remplace le Z en lignes, puis trois icônes : itération, structure, code. Clair par défaut.'},
+  {id:'v1',file:'v1.html',name:'Archive · ancienne V1',note:'Ancienne V1 · Z 3D'},
+  {id:'v2',file:'v2.html',name:'Archive · Dégradé rouge',note:''},
+  {id:'v4',file:'v4.html',name:'Archive · Hero',note:''},
+  {id:'v3',file:'v3.html',name:'Archive · Intro Z 3D',note:''},
+  {id:'v10',file:'v10.html',name:'Archive · Challenge',note:''},
+  {id:'v6',file:'v6.html',name:'Archive · Six phases + programmes illustrés',note:''}
 ];
-var frame=document.getElementById('frame');
+var frame=document.getElementById('frame'),body=document.body;
+function find(id){return VERSIONS.filter(function(x){return x.id===id;})[0];}
+function home(){
+  body.classList.remove('in-proto');frame.setAttribute('src','about:blank');
+  document.title='Zenika · Prototypes de la page d’accueil';
+  try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
+  window.scrollTo(0,0);
+}
 function show(id){
-  var v=VERSIONS.filter(function(x){return x.id===id;})[0]||VERSIONS[0];
+  if(id==='home'||!find(id)){home();return;}
+  var v=find(id);
   document.title='Zenika · '+v.name;
-  try{frame.contentWindow.scrollTo(0,0);}catch(e){}
+  body.classList.add('in-proto');
   frame.setAttribute('src',v.file+'?r='+Date.now());
   try{history.replaceState(null,'','#'+v.id);}catch(e){}
-  try{localStorage.setItem('zk-version3',v.id);}catch(e){}
 }
+/* vignettes */
+var grid=document.getElementById('grid'),arch=document.getElementById('arch'),hsel=document.getElementById('hsel');
+VERSIONS.filter(function(v){return v.main;}).forEach(function(v){
+  var a=document.createElement('a');a.className='card';a.href='#'+v.id;
+  a.innerHTML='<div class="th"><img src="img/home/'+v.id+'.webp" alt="Aperçu de '+v.name+'" loading="lazy"></div><div class="tx"><div class="nm">'+v.name+'</div><div class="nt">'+v.note+'</div><div class="go">Ouvrir le prototype</div></div>';
+  a.addEventListener('click',function(e){e.preventDefault();show(v.id);});
+  grid.appendChild(a);
+});
+arch.innerHTML='<b>Archives :</b> ';
+VERSIONS.filter(function(v){return !v.main;}).forEach(function(v){
+  var a=document.createElement('a');a.textContent=v.name.replace('Archive · ','');a.addEventListener('click',function(){show(v.id);});arch.appendChild(a);
+});
+hsel.innerHTML='<option value="home" selected>Accueil · toutes les versions</option>'+VERSIONS.map(function(v){return '<option value="'+v.id+'">'+v.name+'</option>';}).join('');
+hsel.addEventListener('change',function(){show(hsel.value);hsel.value='home';});
 var start=(location.hash||'').slice(1);
-if(!start){try{start=localStorage.getItem('zk-version3')||'';}catch(e){}}
-show(start||"v11");
+show(start||'home');
+window.addEventListener('hashchange',function(){var h=(location.hash||'').slice(1);if(h&&find(h)&&!body.classList.contains('in-proto'))show(h);});
 window.zkShow=show;
 </script>
 </body>
