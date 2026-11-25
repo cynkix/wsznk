@@ -182,7 +182,7 @@
         const hgt = rs[0].height;
         return { cx: rs.map((r) => wx(r.left + r.width / 2)), y0: wy(rs[0].bottom - 22), R: Math.min(hgt * 0.42, rs[0].width * 0.36) * u, r: 24 * u, x0: wx(rs[0].left - 4), x1: wx(rs[3].right + 14) };
       }
-      return { cx: [0.2, 0.4, 0.6, 0.8].map((f) => wx(W * f)), y0: wy(H * 0.62), R: 60 * u, r: 20 * u, x0: wx(W * 0.06), x1: wx(W * 0.95) };
+      return { cx: [0.2, 0.4, 0.6, 0.8].map((f) => wx(W * f)), y0: wy(H * 0.9), R: Math.min(H * 0.1, W * 0.06) * u, r: Math.min(H * 0.04, W * 0.022) * u, x0: wx(W * 0.04), x1: wx(W * 0.96) };
     }
     _tlPath(g, rank) {
       const V = [[g.x0, g.y0]], loop = (c, rho) => { V.push([c - rho * 0.0, g.y0]); for (let k = 1; k <= 48; k++) { const a = -Math.PI / 2 + (k / 48) * Math.PI * 2; V.push([c + rho * Math.cos(a), g.y0 + rho + rho * Math.sin(a)]); } };

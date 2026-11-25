@@ -1898,7 +1898,7 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 </div></section>
 
 <section class="md" id="reponses" aria-labelledby="md-t">
-<div class="wrap md-intro"><span class="md-eb">Nos modèles opératoires</span><h2 id="md-t">Un modèle opératoire qui <em>intègre vos équipes</em> et votre organisation…</h2><p>Du diagnostic flash de 5 jours aux programmes pluriannuels, nos équipes s’intègrent naturellement à votre gouvernance pour accélérer vos livraisons et pérenniser vos compétences.</p></div>
+<div class="wrap md-intro"><effect-3d-duo id="md-fx" count="48" speed="0.7" parallax="0.2" beam="7" aria-hidden="true"></effect-3d-duo><span class="md-eb">Nos modèles opératoires</span><h2 id="md-t">Un modèle opératoire qui <em>intègre vos équipes</em> et votre organisation…</h2><p>Du diagnostic flash de 5 jours aux programmes pluriannuels, nos équipes s’intègrent naturellement à votre gouvernance pour accélérer vos livraisons et pérenniser vos compétences.</p></div>
 <div class="md-track" id="md-track"><div class="md-stick"><div class="wrap md-grid"><ol class="md-list" id="md-list"></ol><article class="md-pn" id="md-pn" aria-live="polite"><div class="md-scale" aria-hidden="true"><span class="md-sl">Durée d’intervention</span><div class="md-tr"><i class="md-bar" id="md-bar"></i><span style="left:0%">1 jour</span><span style="left:25.7%">1 sem.</span><span style="left:50.3%">1 mois</span><span style="left:75%">6 mois</span><span style="left:100%">2 ans</span></div></div><span class="md-pe">Dispositif d’intervention</span><div class="md-ph"><h3 id="md-pt"></h3><span class="md-dur" id="md-pd"></span></div><p class="md-tag" id="md-pg"></p><p class="md-desc" id="md-pp"></p><div class="md-cols"><div><b class="md-cl">Livrables &amp; engagements tangibles</b><ul id="md-pl"></ul></div><div><b class="md-cl">Quand l’activer ?</b><p id="md-pq"></p></div></div><div class="md-pf"><div class="md-of" id="md-po"></div><span class="md-gov">Gouvernance Agile · Experts Seniors Zenika</span><a class="md-cta" href="#contact">Activer ce dispositif<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article></div></div></div>
 <div class="wrap md-exp"><h2 class="md-h2">… et y déploient nos <em>expertises</em></h2><p class="md-lead">Huit expertises, mobilisées selon l’offre et le modèle retenus. Les pastilles rouges indiquent les offres concernées.</p><ul class="md-tiles" id="md-tiles"></ul></div>
 </section>
@@ -2784,8 +2784,8 @@ html[data-theme="dark"] .ost .oh>effect-3d-duo{opacity:.85}
 html[data-theme="dark"] .ost .oh h1{text-shadow:none}
 </style>
 <script src="3dduo.js"></script>
-<script>(function(){var z=document.getElementById('oh-fx');if(!z)return;function dk(){return document.documentElement.getAttribute('data-theme')==='dark'}
-function sy(){z.setAttribute('theme',dk()?'sombre':'rougenoir')}sy();z.setShape&&z.setShape('duo');customElements.whenDefined('effect-3d-duo').then(function(){z.setShape('duo')});
+<script>(function(){var z=document.getElementById('oh-fx'),m=document.getElementById('md-fx');if(!z)return;function dk(){return document.documentElement.getAttribute('data-theme')==='dark'}
+function sy(){var t=dk()?'sombre':'rougenoir';z.setAttribute('theme',t);if(m)m.setAttribute('theme',t)}sy();customElements.whenDefined('effect-3d-duo').then(function(){z.setShape('duo');if(m)m.setShape('timeline')});
 new MutationObserver(sy).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});})();</script>
 <style id="ost-next-css">
 @media(min-width:901px){.ost-stick{padding-bottom:56px !important}}
@@ -2796,5 +2796,12 @@ html[data-theme="dark"] .ost-next{color:#aab1c0;background:rgba(17,20,28,.6);bor
 @media(max-height:780px) and (min-width:901px){.ost-next{left:auto;right:max(24px,calc((100vw - 1196px)/2));transform:none;bottom:6px}}
 @keyframes ostnx{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 @media(prefers-reduced-motion:reduce){.ost-next svg{animation:none}}
+</style>
+<style id="md-fx-css">
+.md{overflow-x:clip;position:relative}
+.md-intro>effect-3d-duo{position:absolute;top:40px;left:0;right:0;height:clamp(520px,68vh,620px);z-index:0;pointer-events:none;opacity:.85}
+html[data-theme="dark"] .md-intro>effect-3d-duo{opacity:.85}
+.md-intro>*:not(effect-3d-duo){position:relative;z-index:1}
+@media(max-width:900px){.md-intro>effect-3d-duo{display:none}}
 </style>
 </body></html>
