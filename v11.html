@@ -2773,11 +2773,11 @@ var cards=[].slice.call(document.querySelectorAll('.sv-in .sv-card'));
 cards.forEach(function(c){c.querySelectorAll('.sv-dots li,.sv-chk li').forEach(function(li,i){li.style.setProperty('--dd',(.3+i*.25)+'s');});});
 function playA(){cards.forEach(function(c,i){setTimeout(function(){c.classList.add('ph');},rm?0:i*1700);});}
 var h0=cards[0]&&cards[0].querySelector('h3');
-var offs=[].slice.call(document.querySelectorAll('.sv-offs-r'));
+var offs=[].slice.call(document.querySelectorAll('.sv-offs-r'));var offsL=[].slice.call(document.querySelectorAll('.sv-offs:not(.sv-offs-r)'));
 if(!('IntersectionObserver' in window)||rm){playA();offs.forEach(function(o){o.classList.add('go');});}
 else{
  if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -42% 0px',threshold:1});a.observe(h0);}
- function chk(){var vh=innerHeight||800;offs.forEach(function(o){if(o.classList.contains('go')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(mid<vh*.62&&r.bottom>vh*.3)o.classList.add('go');});}
+ function chk(){var vh=innerHeight||800;offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(mid<vh*.62&&r.bottom>vh*.3){o.classList.add('go0');var L=offsL[offs.indexOf(o)];var n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)L.classList.add('pl');setTimeout(function(){o.classList.add('go');},rm||!n?0:n*450+250);}});}
  addEventListener('scroll',function(){requestAnimationFrame(chk);},{passive:true});addEventListener('resize',chk);
  document.querySelectorAll('.svp button').forEach(function(x){x.addEventListener('click',function(){setTimeout(chk,150);});});
  setTimeout(chk,300);
@@ -2810,4 +2810,15 @@ if(bh&&bc){
 </style>
 <style>/* les mots rouges sont rouges dès leur apparition (pas de passage noir → rouge) */
 .sv-card h3 em,.svb-h em,.sv-card:not(.ph) h3 em,.svb-card:not(.ph) .svb-h em,.sv-card:not(.in) h3 em,.svb-card:not(.in) .svb-h em{color:#E2001A !important;transition:none !important}</style>
+<style>
+/* les + des offres pivotent de 45° un par un (mise en avant) avant les filets */
+@keyframes plusTurn{0%{transform:rotate(0) scale(1)}40%{transform:rotate(45deg) scale(1.14)}70%{transform:rotate(45deg) scale(1.14)}100%{transform:rotate(0) scale(1)}}
+.sv-offs.pl .sv-off .sv-plus{animation:plusTurn .9s cubic-bezier(.3,.9,.3,1) both}
+.sv-offs.pl .sv-off:nth-child(1) .sv-plus{animation-delay:.1s}
+.sv-offs.pl .sv-off:nth-child(2) .sv-plus{animation-delay:.55s}
+.sv-offs.pl .sv-off:nth-child(3) .sv-plus{animation-delay:1s}
+.sv-offs.pl .sv-off:nth-child(4) .sv-plus{animation-delay:1.45s}
+.sv-offs.pl .sv-off:nth-child(5) .sv-plus{animation-delay:1.9s}
+.sv-offs.pl .sv-off:nth-child(6) .sv-plus{animation-delay:2.35s}
+</style>
 </body></html>
