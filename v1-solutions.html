@@ -2445,4 +2445,8 @@ addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(u
 items.forEach(function(el,i){el.querySelector('.ost-hd').addEventListener('click',function(){if(innerWidth<=900)return;var span=sec.offsetHeight-innerHeight;var y=sec.getBoundingClientRect().top+scrollY+span*((i+.5)/4);scrollTo({top:y,behavior:'smooth'})});
 el.querySelector('.ost-go').addEventListener('click',function(e){e.stopPropagation();var b=this;b._from=el;if(window.odOpen)window.odOpen(i,b)})});
 })();</script>
+<style id="ost-first">/* la page démarre par « Nos offres » : l’ancien bandeau reste dans le DOM (il alimente le détail plein page) mais n’est plus affiché */
+#solutions{display:none !important}
+.ost-intro{padding-top:clamp(110px,12vw,150px);padding-bottom:0}.ost-track{margin-top:-6vh}
+</style>
 </body></html>
