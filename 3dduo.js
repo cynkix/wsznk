@@ -34,7 +34,7 @@
       this._started = true;
       import(new URL('three.module.js',BASE0).href).then((T) => this._init(T)).catch(() => {});
     }
-    disconnectedCallback() { cancelAnimationFrame(this._raf); this._ro && this._ro.disconnect(); this._onMove && window.removeEventListener('pointermove', this._onMove); this._started = false; }
+    disconnectedCallback() { cancelAnimationFrame(this._raf); this._raf = 0; this._io && this._io.disconnect(); this._onVis && document.removeEventListener('visibilitychange', this._onVis); this._ro && this._ro.disconnect(); this._onMove && window.removeEventListener('pointermove', this._onMove); this._started = false; }
     attributeChangedCallback(name, o, v) {
       if (!this._T || !this._lines) return;
       if (name === 'spacing' && o !== v) this._lines.forEach((L) => this._spawn(L, L.birth));
@@ -55,7 +55,7 @@
     _init(T) {
       this._T = T;
       const r = (this._renderer = new T.WebGLRenderer({ antialias: true, alpha: true }));
-      r.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+      r.setPixelRatio(Math.min(1.5, window.devicePixelRatio || 1));
       r.setClearColor(0x000000, 0);
       r.domElement.style.cssText = 'display:block;width:100%;height:100%';
       this.appendChild(r.domElement);
@@ -104,13 +104,21 @@
       this._t0 = performance.now();
       this._last = this._t0;
       this._time = 0;
+      // performance : on ne dessine que si l'élément est à l'écran et l'onglet visible
+      this._vis = true;
       const loop = (now) => {
+        if (!this._vis || document.hidden) { this._raf = 0; return; }
         this._raf = requestAnimationFrame(loop);
         const dt = Math.min(0.05, (now - this._last) / 1000) * this.speed;
         this._last = now;
         this._time += dt;
         this._tick(this._time, dt);
       };
+      this._kick = () => { if (this._raf || !this._vis || document.hidden) return; this._last = performance.now(); this._raf = requestAnimationFrame(loop); };
+      this._io = new IntersectionObserver((es) => { this._vis = es[es.length - 1].isIntersecting; this._kick(); }, { rootMargin: '80px' });
+      this._io.observe(this);
+      this._onVis = () => this._kick();
+      document.addEventListener('visibilitychange', this._onVis);
       this._raf = requestAnimationFrame(loop);
     }
     _applyTheme() {
@@ -122,6 +130,12 @@
         L.mat.uniforms.uColor.value.setRGB(a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k);
         L.mat.uniforms.uBeam.value.setRGB(...th.beam);
         L.mat.uniforms.uOp.value = Math.min(1, th.op * (parseFloat(this.getAttribute('intensity')) || 1)) * (0.6 + 0.4 * L.rnd);
+        if (this.getAttribute('shape') === 'timeline') {
+          // frise d'itération : 3 traits seulement, un rouge et deux noirs (clairs en mode sombre)
+          const dk = this.theme === 'sombre', j = Math.round(L.i / 4), c = j === 0 ? [0.933, 0.133, 0.22] : (dk ? [0.88, 0.89, 0.93] : [0.05, 0.05, 0.07]);
+          L.mat.uniforms.uColor.value.setRGB(c[0], c[1], c[2]);
+          L.mat.uniforms.uOp.value = j === 0 ? 0.9 : (dk ? 0.6 : 0.7);
+        }
         if (this.getAttribute('shape') === 'duo') {
           // deux fils rouges en dégradé : l'un rouge vif → magenta, l'autre corail clair → bordeaux
           const dk = this.theme === 'sombre', c = L.i % 2 ? (dk ? [[1, 0.42, 0.52], [0.72, 0.1, 0.27]] : [[0.93, 0.35, 0.45], [0.55, 0.06, 0.2]]) : [[0.93, 0.13, 0.22], [0.75, 0.11, 0.41]];
@@ -211,7 +225,7 @@
       this._lines.forEach((L) => this._spawn(L, (this._time || 0) + 0.15 + L.i * 0.05));
     }
     _spawn(L, birth) {
-      L.line.position.set(0, 0, 0); L.line.rotation.z = 0; L.rot = 0; L.hidden = false;
+      L.line.position.set(0, 0, 0); L.line.rotation.z = 0; L.rot = 0; L.hidden = false; L.line.visible = true;
       if (this.getAttribute('shape') === 'duo') {
         // boucle infinie (lemniscate) : deux fils, un par rôle, qui tournent ensemble
         const N = parseInt(this.getAttribute('count')) || 36, k01 = N > 1 ? L.i / (N - 1) : 0.5, pos = L.geo.attributes.position.array, g = this._duoGeom();
@@ -229,7 +243,7 @@
       if (this.getAttribute('shape') === 'timeline') {
         // timeline linéaire : un trait continu avec une boucle par étape (1 à 4) et des micro-boucles entre les étapes, tracé de gauche à droite
         const N = parseInt(this.getAttribute('count')) || 36, k01 = N > 1 ? L.i / (N - 1) : 0.5, pos = L.geo.attributes.position.array, g = this._tlGeom();
-        L.hidden = L.i % 4 !== 0; // peu de traits : on lit chaque itération
+        L.hidden = L.i % 4 !== 0; L.line.visible = !L.hidden; // peu de traits : on lit chaque itération
         const path = this._tlPath(g, k01), dy = (k01 - 0.5) * 0.35, oz = (0.5 - k01) * 1.2;
         for (let k = 0; k <= SEG; k++) { pos[k * 3] = path[k][0]; pos[k * 3 + 1] = path[k][1] + dy; pos[k * 3 + 2] = oz; }
         L.geo.attributes.position.needsUpdate = true;

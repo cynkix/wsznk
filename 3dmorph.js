@@ -112,8 +112,9 @@
       window.addEventListener('pointermove', this._onMove, { passive: true });
       this._last = performance.now(); this._time = 0;
       this._cx = 0; this._cy = 0; this._cs = 1;
-      const loop = (now) => { this._raf = requestAnimationFrame(loop); const dt = Math.min(0.05, (now - this._last) / 1000); this._last = now; this._time += dt; this._tick(this._time, dt); };
+      const loop = (now) => { if (document.hidden) { this._raf = 0; return; } this._raf = requestAnimationFrame(loop); const dt = Math.min(0.05, (now - this._last) / 1000); this._last = now; this._time += dt; this._tick(this._time, dt); };
       this._raf = requestAnimationFrame(loop);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden && !this._raf) { this._last = performance.now(); this._raf = requestAnimationFrame(loop); } });
     }
     _applyTheme() {
       const th = THEMES[this.theme] || THEMES.clair, n = this._lines.length;
