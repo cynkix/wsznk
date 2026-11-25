@@ -1802,7 +1802,7 @@ html[data-theme="dark"] .tl20-top{background:rgba(14,16,21,.8)}
 <section class="contact" id="contact">
 <div class="wrap">
 <div class="cband rv">
-<div><h2>Parlons-en</h2></div>
+<div><h2>Parlons-en</h2><div class="cg"><p class="cg-t">11 agences en France</p><ul><li>Bordeaux</li><li>Brest</li><li>Clermont-Ferrand</li><li>Grenoble</li><li>Lille</li><li>Lyon</li><li>Nantes</li><li>Niort</li><li>Paris</li><li>Rennes</li><li>Toulouse</li></ul><p class="cg-t">Et à l’international</p><ul class="cg-i"><li>Casablanca</li><li>Singapour</li></ul></div></div>
 <form class="form" id="form" aria-label="Formulaire de contact">
 <div class="two">
 <div class="f"><label for="nom">Nom</label><input id="nom" name="nom" type="text" placeholder="Jean Dupont" autocomplete="name"></div>
@@ -2960,4 +2960,35 @@ html[data-theme="dark"] .cult[data-prop="d"] .cv-grid li{background:var(--surfac
 .cult .cv-grid li .cv-ic{background:none !important;color:var(--ink,#14171F) !important;padding:9px;width:44px;height:44px}
 @media(min-width:861px){.cult .cv-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr) !important;column-gap:clamp(24px,2.6vw,40px) !important}.cult .cv-grid li h3{max-width:none !important}.cult .cv-grid li:nth-child(even){padding-right:6px}.cult .cv-grid li{align-content:start !important;row-gap:3px}}
 </style>
+<style>@media(max-width:700px){.ct-lg{height:auto;margin-top:18px}.ct-lg .ct-20{position:static !important;width:96px !important}}</style>
+<style>
+.contact .cband > div:first-child{display:block !important}
+.cg{margin-top:clamp(18px,2.4vw,30px);color:var(--ink,#14171F)}
+.cg-t{margin:0 0 10px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.cg ul{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.cg li{font-size:14.5px;font-weight:600;color:var(--ink,#14171F)}
+.cg-i li{background:linear-gradient(135deg,#EE2238,#C93B7E) !important;color:#fff;border:0 !important;padding:6px 14px;border-radius:99px}
+.cg:not(.x) ul:not(.cg-i){gap:8px 10px !important}
+.cg:not(.x) ul:not(.cg-i) li{background:none !important;border:1.5px solid rgba(20,23,31,.5) !important;border-radius:99px !important;padding:6px 16px !important}
+html[data-theme="dark"] .cg,html[data-theme="dark"] .cg li:not(.x){color:#fff}
+html[data-theme="dark"] .cg:not(.x) ul:not(.cg-i) li{border-color:rgba(255,255,255,.55) !important}
+</style>
+<style>html[data-theme="dark"] .mtrack div{background:#fff !important;box-shadow:0 4px 18px rgba(0,0,0,.35) !important}html[data-theme="dark"] .mtrack div img,html[data-theme="dark"] .mtrack img{filter:none !important;opacity:1 !important}</style>
+<style>
+.ct-h .w{display:inline-block;white-space:nowrap}
+.ct-h.sp .l{opacity:.14}
+.ct-h.sp.anim .l{animation:cthl .3s ease both;animation-delay:calc(.25s + var(--i) * 28ms)}
+@keyframes cthl{from{opacity:.14}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.ct-h.sp .l{opacity:1;animation:none}}
+</style>
+<script>
+(function(){var h=document.querySelector('#ct20 .ct-h');if(!h||h.dataset.split)return;h.dataset.split='1';
+h.setAttribute('aria-label',h.textContent.replace(/\s+/g,' ').trim());var n=0;
+function sp(node){var out=document.createDocumentFragment();node.textContent.split(/( )/).forEach(function(t){if(t===' '){out.appendChild(document.createTextNode(' '));return}if(!t)return;var w=document.createElement('span');w.className='w';w.setAttribute('aria-hidden','true');Array.from(t).forEach(function(c){var l=document.createElement('span');l.className='l';l.style.setProperty('--i',n++);l.textContent=c;w.appendChild(l)});out.appendChild(w)});return out}
+Array.from(h.childNodes).forEach(function(c){if(c.nodeType===3){c.replaceWith(sp(c))}else if(c.nodeType===1){Array.from(c.childNodes).forEach(function(d){if(d.nodeType===3)d.replaceWith(sp(d))})}});
+h.classList.add('sp');
+if(!('IntersectionObserver' in window)){h.classList.add('anim');return}
+new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){h.classList.add('anim')}else{h.classList.remove('anim')}})},{threshold:.9}).observe(h);
+})();
+</script>
 </body></html>
