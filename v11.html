@@ -2739,7 +2739,7 @@ split(h);
 function upd(){
  if(!h.offsetParent)return;
  var r=h.getBoundingClientRect(),vh=innerHeight||800;
- var p=rm?1:Math.max(0,Math.min(1,(vh*.88-r.top)/(vh*.42)));
+ var p=rm?1:Math.max(0,Math.min(1,(vh*.6-r.top)/(vh*.28)));
  var n=Math.round(p*L.length);
  for(var i=0;i<L.length;i++){var on=i<n;if(L[i].classList.contains('on')!==on)L[i].classList.toggle('on',on);}
 }
@@ -2776,7 +2776,7 @@ var h0=cards[0]&&cards[0].querySelector('h3');
 var offs=[].slice.call(document.querySelectorAll('.sv-offs-r'));
 if(!('IntersectionObserver' in window)||rm){playA();offs.forEach(function(o){o.classList.add('go');});}
 else{
- if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -22% 0px',threshold:.9});a.observe(h0);}
+ if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -42% 0px',threshold:1});a.observe(h0);}
  var b=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('go');b.unobserve(e.target);}});},{rootMargin:'0px 0px -25% 0px',threshold:.7});
  offs.forEach(function(o){b.observe(o);});
 }
@@ -2797,4 +2797,13 @@ if(bh&&bc){
 }
 })();
 </script>
+<style>
+/* bullets : apparition discrète un par un, plus petits, sans halo */
+.svb-kw li::before,.sv-dots li::before,.sv-chk li::before{width:5px !important;height:5px !important}
+.svb-kw li::before{top:15px !important}
+.svb-kw li::before,.sv:not(.v-c) .sv-card .sv-dots li::before,.sv:not(.v-c) .sv-card .sv-chk li::before{background:#E2001A !important;opacity:0;transform:scale(.6);box-shadow:none !important;transition:opacity .7s ease,transform .7s ease;transition-delay:var(--dd,0s)}
+.svb-kw li.lit::before,.sv:not(.v-c) .sv-card.ph .sv-dots li::before,.sv:not(.v-c) .sv-card.ph .sv-chk li::before{opacity:1;transform:none;box-shadow:none !important;background:#E2001A !important}
+.svb-kw li::before{transition-delay:0s !important}
+@media(prefers-reduced-motion:reduce){.svb-kw li::before,.sv .sv-card .sv-dots li::before,.sv .sv-card .sv-chk li::before{opacity:1 !important;transform:none;transition:none}}
+</style>
 </body></html>
