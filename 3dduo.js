@@ -40,6 +40,7 @@
       if (name === 'spacing' && o !== v) this._lines.forEach((L) => this._spawn(L, L.birth));
       this._applyTheme();
     }
+    setScroll(p) { this._sp = p == null ? null : Math.max(0, Math.min(1, p)); }
     set parallax(v) { this.setAttribute('parallax', v); }
     get parallax() { const v = parseFloat(this.getAttribute('parallax')); return isNaN(v) ? 0.5 : v; }
     set beam(v) { this.setAttribute('beam', v); }
@@ -311,11 +312,18 @@
       this._lines.forEach((L, idx) => {
         let age = t - L.birth;
         const u = L.mat.uniforms;
-        if (L.hidden || age < 0) { u.uFade.value = 0; pA[idx] = 0; return; }
-        age = age % L.life;
+        const sc = this._sp != null;
+        if (L.hidden || (!sc && age < 0)) { u.uFade.value = 0; pA[idx] = 0; return; }
+        if (!sc) age = age % L.life;
         const ease = (x) => x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
         let head, pulse;
-        if (age < L.grow) { head = ease(age / L.grow); pulse = head; }
+        if (sc) {
+          const st = (L.i / Math.max(1, this._lines.length - 1)) * 0.12;
+          const q = Math.max(0, Math.min(1, (this._sp - st) / (1 - 0.12)));
+          head = ease(q);
+          pulse = q < 1 ? head : ((t * 0.6) / L.period + L.poff) % 1;
+        }
+        else if (age < L.grow) { head = ease(age / L.grow); pulse = head; }
         else if (age < L.grow + L.hold) { head = 1; pulse = ((age - L.grow) / L.period + L.poff) % 1; }
         else if (age < L.grow + L.hold + L.back) { head = 1 - ease((age - L.grow - L.hold) / L.back); pulse = head; }
         else { head = 0; pulse = 0; }
