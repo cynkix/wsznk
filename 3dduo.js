@@ -132,6 +132,12 @@
       this._io.observe(this);
       this._onVis = () => this._kick();
       document.addEventListener('visibilitychange', this._onVis);
+      if (this.hasAttribute('dot')) {
+        const d = document.createElement('i');
+        d.setAttribute('aria-hidden', 'true');
+        d.style.cssText = 'position:absolute;left:0;top:0;width:6px;height:6px;border-radius:50%;background:#EE2238;opacity:0;pointer-events:none;will-change:transform;z-index:2';
+        this.appendChild(d); this._dotEl = d;
+      }
       this._raf = requestAnimationFrame(loop);
       // préchauffage : compile les shaders et dessine une image hors écran, pour éviter la saccade au premier tracé
       if (this.hasAttribute('always')) {
@@ -371,10 +377,20 @@
         } else { pPos[idx * 3] = arr[pk * 3]; pPos[idx * 3 + 1] = arr[pk * 3 + 1]; }
         pPos[idx * 3 + 2] = arr[pk * 3 + 2];
         pA[idx] = fade * (pulse <= head + 0.001 ? 0.9 : 0);
+        if (this._dotEl) { this._dotP = this._dotP || this._cam.position.clone(); this._dotP.set(pPos[idx * 3], pPos[idx * 3 + 1], pPos[idx * 3 + 2]); this._dotOn = pA[idx] > 0; pA[idx] = 0; }
       });
       this._pGeo.attributes.position.needsUpdate = true;
       this._pGeo.attributes.aA.needsUpdate = true;
       this._renderer.render(this._scene, this._cam);
+      if (this._dotEl) {
+        const d = this._dotEl;
+        if (this._dotOn && this._dotP) {
+          const v = this._dotP.clone(); this._group.localToWorld(v); v.project(this._cam);
+          const w = this.clientWidth, h = this.clientHeight;
+          d.style.transform = 'translate3d(' + ((v.x * 0.5 + 0.5) * w - 3).toFixed(2) + 'px,' + ((-v.y * 0.5 + 0.5) * h - 3).toFixed(2) + 'px,0)';
+          d.style.opacity = '1';
+        } else d.style.opacity = '0';
+      }
     }
     _resize() {
       const w = this.clientWidth || 1, h = this.clientHeight || 1;
