@@ -2451,7 +2451,7 @@ function upd(){tick=false;var r=sec.getBoundingClientRect(),span=sec.offsetHeigh
 if(innerWidth<=900){set(0);return}
 var p=Math.min(.999,Math.max(0,-r.top/span));set(Math.floor(p*4))}
 addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();
-items.forEach(function(el,i){el.querySelector('.ost-hd').addEventListener('click',function(){if(innerWidth<=900)return;var span=sec.offsetHeight-innerHeight;var y=sec.getBoundingClientRect().top+scrollY+span*((i+.5)/4);scrollTo({top:y,behavior:'smooth'})});
+items.forEach(function(el,i){el.addEventListener('click',function(e){if(e.target.closest('.ost-go'))return;if(innerWidth<=900||el.classList.contains('on')){var g=el.querySelector('.ost-go');g._from=el;if(window.odOpen)window.odOpen(i,g);return}var span=sec.offsetHeight-innerHeight;var y=sec.getBoundingClientRect().top+scrollY+span*((i+.5)/4);scrollTo({top:y,behavior:'smooth'})});
 el.querySelector('.ost-go').addEventListener('click',function(e){e.stopPropagation();var b=this;b._from=el;if(window.odOpen)window.odOpen(i,b)})});
 })();</script>
 <style id="ost-first">/* la page démarre par « Nos offres » : l’ancien bandeau reste dans le DOM (il alimente le détail plein page) mais n’est plus affiché */
@@ -2568,5 +2568,25 @@ html:not([data-theme="dark"]) .wb text{fill:#3a4152}
 html:not([data-theme="dark"]) .wb.on circle{fill:#ee2238;stroke:#fff}html:not([data-theme="dark"]) .wb.on text{fill:#fff}
 html:not([data-theme="dark"]) .wcap{fill:#0b0f19}
 @media(max-width:900px){.oh-fig svg{height:min(42vh,340px)}.ost .oh{min-height:0;padding-top:104px}}
+</style>
+<style id="ost-bullets">
+/* pas de pastilles qui ressemblent à des boutons : des puces. Seul « Découvrir l’offre » est un bouton. */
+.ost-ch{flex-direction:column;flex-wrap:nowrap;gap:5px}
+html .ost .ost-ch span,html:not([data-theme="dark"]) .ost .ost-it:not(.on) .ost-ch span,html .ost .ost-it.on .ost-ch span{border:0 !important;background:none !important;border-radius:0;padding:0 0 0 18px;position:relative;font:500 14.5px/1.35 var(--display,inherit);color:inherit}
+.ost-ch span::before{content:"";position:absolute;left:3px;top:.55em;width:6px;height:6px;border-radius:50%;background:#ee2238}
+.ost-it.on .ost-ch span::before{background:#fff}
+.ost-it.on .ost-ch span{color:#fff !important}
+html:not([data-theme="dark"]) .ost .ost-it:not(.on) .ost-ch span{color:#0b0f19}
+html[data-theme="dark"] .ost .ost-it:not(.on) .ost-ch span{color:#e8ecf4}
+.ost-it{cursor:pointer}
+.ost-it.on:hover{transform:scale(1.025)}
+.od-p{flex-direction:column;flex-wrap:nowrap;gap:6px}
+html .od .od-p span,html:not([data-theme="dark"]) .od .od-p span,html .od .od-c.red .od-p span{border:0 !important;background:none !important;border-radius:0;padding:0 0 0 18px;position:relative;font:500 15px/1.35 var(--display,inherit)}
+.od-p span::before{content:"";position:absolute;left:3px;top:.55em;width:6px;height:6px;border-radius:50%;background:#ee2238}
+.od-c.red .od-p span::before{background:#fff}
+html[data-theme="dark"] .od-p span{color:#e8ecf4}
+html:not([data-theme="dark"]) .od-p span{color:#0b0f19}
+.od-c.red .od-p span{color:#fff !important}
+@media(max-width:900px){html:not([data-theme="dark"]) .ost .ost-it .ost-ch span,html .ost .ost-it.on .ost-ch span{color:#0b0f19 !important}html[data-theme="dark"] .ost .ost-it .ost-ch span{color:#e8ecf4 !important}.ost-it .ost-ch span::before{background:#ee2238 !important}}
 </style>
 </body></html>
