@@ -2762,7 +2762,7 @@ function badges(o){var h='';for(var k=0;k<4;k++)h+='<i class="'+(o.indexOf(k)>=0
 var SH=["Diagnostic Flash, Audit 360° et Études","Cadrage Produit, Solution ou Projet","Solution Logicielle Clé en Mains","Régie & Renfort d’Équipe","Centre de Services & de Compétences","Expertise Ponctuelle, Coaching & Formation","Programmes de Transformation Pilotés"];
 var WS=["1 à 3 semaines","3 à 6 semaines","2 à 6 mois+","Trimestriel / semestriel","Engagement pluriannuel","1 jour à quelques semaines","6 à 24 mois"];
 list.innerHTML=M.map(function(m,i){return '<li class="md-it" data-i="'+i+'"><button type="button" class="md-hd" aria-label="Modèle '+(i+1)+' : '+esc(SH[i])+'"><span class="md-n">'+(i+1)+'</span><span class="md-t">'+esc(SH[i])+'<small>'+esc(WS[i])+'</small></span></button></li>'}).join('');
-if(tiles)tiles.innerHTML=X.map(function(x,i){return '<li class="md-tile" style="transition-delay:'+(i%4)*90+'ms"><span class="k">Expertise 0'+(i+1)+'</span><b>'+esc(x[0])+'</b><p class="kw">'+(KW[i]||[]).map(function(w){return '<span>'+esc(w)+'</span>'}).join('')+'</p><div class="of" aria-label="Offres concernées">'+badges(x[1])+'</div></li>'}).join('');
+if(tiles)tiles.innerHTML=X.map(function(x,i){return '<li class="md-tile" style="transition-delay:'+(i%4)*90+'ms"><span class="k" aria-label="Expertise '+(i+1)+'">0'+(i+1)+'</span><b>'+esc(x[0])+'</b><p class="kw">'+(KW[i]||[]).map(function(w){return '<span>'+esc(w)+'</span>'}).join('')+'</p><div class="of" aria-label="Offres concernées">'+badges(x[1])+'</div></li>'}).join('');
 var items=[].slice.call(list.children),n=M.length;
 var L0=Math.log10(.2),SP=Math.log10(104)-L0;function pos(w){return Math.max(0,Math.min(1,(Math.log10(w)-L0)/SP))*100}
 var bar=document.getElementById('md-bar');
@@ -2927,4 +2927,5 @@ setTimeout(function(){var m=document.getElementById('msg');try{m&&m.focus({preve
 function u(){tk=false;var vh=innerHeight,t=it.getBoundingClientRect().top,p=Math.max(0,Math.min(1,(vh-60-t)/(vh-60-230)));m.style.transform='translate3d(0,'+(-(1-p)*OFF).toFixed(1)+'px,0)'}
 addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(u)}},{passive:true});addEventListener('resize',u);u()})();</script>
 <style id="md-rec-css">.md-rec{margin:0 0 6px;font:600 14px/1.4 var(--display,inherit);color:#8a92a3;letter-spacing:.2px}html[data-theme="dark"] .md-rec{color:#9aa3b5}</style>
+<style id="md-k-css">.md-tile{display:grid !important;grid-template-columns:auto 1fr;grid-template-rows:auto auto 1fr;align-content:stretch;column-gap:10px}.md-tile .k{grid-column:1;margin:0;align-self:baseline;letter-spacing:.08em;display:inline-block}.md-tile b{grid-column:2;display:block}.md-tile .kw{grid-column:1/-1;margin-top:12px;align-self:start}.md-tile .of{grid-column:1/-1;align-self:end;margin-top:0}</style>
 </body></html>
