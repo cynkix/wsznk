@@ -1883,7 +1883,7 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 </div>
 </section>
 <section class="ost" id="offres-pile" aria-labelledby="ost-t">
-<div class="oh" id="oh"><h1 id="ost-t">Quatre offres,<br><em>un même système de delivery.</em></h1><div class="oh-fig" aria-hidden="true"><svg id="oh-svg" viewBox="88 88 424 424"></svg></div><p class="oh-p">Du cadrage à l’industrialisation, des offres qui s’appuient sur nos expertises et nos modèles opératoires.</p><a class="oh-cta" href="#ost-track" id="oh-cta">Découvrir</a></div>
+<div class="oh" id="oh"><h1 id="ost-t">Quatre offres, sept modèles,<br>huit expertises :<br><em>un même système de delivery.</em></h1><div class="oh-fig" aria-hidden="true"><svg id="oh-svg" viewBox="88 88 424 424"></svg></div><p class="oh-p">L’offre dit ce que nous livrons. Le modèle opératoire dit comment nous intégrons vos équipes et votre organisation, et y déployons nos expertises.</p><a class="oh-cta" href="#ost-track" id="oh-cta">Découvrir</a></div>
 <div class="ost-track" id="ost-track"><div class="ost-stick"><div class="wrap ost-grid">
 <ol class="ost-list" id="ost-list"></ol>
 <div class="ost-dial" aria-hidden="true"><svg id="ost-svg" viewBox="0 0 600 650"></svg></div>
@@ -2596,4 +2596,26 @@ html:not([data-theme="dark"]) .od-p span{color:#0b0f19}
 html:not([data-theme="dark"]) .wb text{fill:#3a4152 !important}
 html:not([data-theme="dark"]) .wb.on text{fill:#ee2238 !important}
 </style>
+<nav class="tabs" id="otabs" aria-label="Repère de la page" hidden><button type="button" data-t="offres-pile" class="on"><i>1</i>Offres</button><span aria-hidden="true"></span><button type="button" data-t="reponses"><i>2</i>Modèles</button></nav>
+<style id="otabs-css">
+.ost .oh h1{font-size:clamp(28px,3.9vw,52px) !important}
+.oh-fig svg{height:min(30vh,320px) !important}
+.oh-p{max-width:58ch !important;font-size:clamp(15px,1.4vw,18px) !important}
+.tabs{position:fixed;left:50%;top:84px;z-index:49;transform:translate(-50%,-14px);display:flex;align-items:center;gap:6px;padding:5px;border-radius:999px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(11,15,25,.1);box-shadow:0 8px 24px rgba(11,15,25,.1);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.tabs[hidden]{display:flex !important}
+.tabs.vis{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.tabs span{width:18px;height:1.5px;background:linear-gradient(90deg,#EE2238,#BF1D67);opacity:.5}
+.tabs button{display:inline-flex;align-items:center;gap:8px;padding:8px 16px 8px 8px;border:0;border-radius:999px;background:transparent;color:#4b5468;font:600 14px var(--display,inherit);cursor:pointer;transition:background .3s,color .3s}
+.tabs button i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid currentColor;font:700 12px var(--display,inherit);font-style:normal}
+.tabs button.on{background:linear-gradient(86deg,#EE2238 6%,#BF1D67 94%);color:#fff}
+.tabs button:focus-visible{outline:2px solid #EE2238;outline-offset:2px}
+html[data-theme="dark"] .tabs{background:rgba(18,21,27,.82);border-color:rgba(255,255,255,.14);box-shadow:0 8px 24px rgba(0,0,0,.45)}
+html[data-theme="dark"] .tabs button{color:#aab4c6}html[data-theme="dark"] .tabs button.on{color:#fff}
+@media(max-width:700px){.tabs{top:70px}.tabs button{padding:7px 13px 7px 7px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.tabs{transition:none}}
+</style>
+<script>(function(){var n=document.getElementById('otabs'),A=document.getElementById('ost-track'),B=document.getElementById('reponses'),O=document.getElementById('offres');if(!n||!A||!B)return;var bt=[].slice.call(n.querySelectorAll('button'));
+bt.forEach(function(b){b.addEventListener('click',function(){var t=document.getElementById(b.dataset.t);if(!t)return;var y=b.dataset.t==='offres-pile'?document.getElementById('offres-pile').getBoundingClientRect().top+scrollY:t.getBoundingClientRect().top+scrollY-70;scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})})});
+var tk=false;function upd(){tk=false;var vh=innerHeight,a=A.getBoundingClientRect(),b=B.getBoundingClientRect(),o=O?O.getBoundingClientRect():{top:1e9};var show=a.top<vh*.35&&o.top>vh*.4;n.classList.toggle('vis',show);var two=b.top<vh*.5;bt[0].classList.toggle('on',!two);bt[1].classList.toggle('on',two)}
+addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd()})();</script>
 </body></html>
