@@ -1884,12 +1884,10 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 </section>
 <section class="ost" id="offres-pile" aria-labelledby="ost-t">
 <div class="oh" id="oh"><effect-3d-duo id="oh-fx" count="30" speed="1.4" parallax="0.4" beam="7" aria-hidden="true"></effect-3d-duo><h1 id="ost-t">Quatre offres, sept modèles,<br>huit expertises :<br><em>un même système de delivery.</em></h1><p class="oh-p">L’offre dit ce que nous livrons. Le modèle opératoire dit comment nous intégrons vos équipes et votre organisation, et y déployons nos expertises.</p><a class="oh-cta" href="#ost-track" id="oh-cta">Découvrir</a></div>
-<div class="ost-track" id="ost-track"><div class="ost-stick"><div class="wrap ost-grid">
+<div class="ost-track" id="ost-track"><div class="ost-stick"><a class="ost-next" href="#reponses" aria-label="Passer aux modèles opératoires">Les modèles opératoires <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 2v11M3 8.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="wrap ost-grid">
 <ol class="ost-list" id="ost-list"></ol>
 <div class="ost-dial" aria-hidden="true"><svg id="ost-svg" viewBox="0 0 600 650"></svg></div>
-</div></div></div>
-<div class="oc" id="oc" aria-roledescription="carrousel" aria-label="Nos quatre offres"><div class="oc-tr" id="oc-tr" tabindex="0"></div>
-<div class="oc-ctl"><button type="button" class="oc-b" id="oc-p" aria-label="Offre précédente"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6"/></svg></button><div class="oc-dots" id="oc-d"></div><button type="button" class="oc-b" id="oc-n" aria-label="Offre suivante"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg></button></div><a class="ost-next" href="#reponses" aria-label="Passer aux modèles opératoires">Les modèles opératoires <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 2v11M3 8.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></section>
+</div></div></div></section>
 <section class="sx sx2" id="reponses-old" aria-hidden="true" hidden><div class="wrap">
 <div class="sx-pin"><div class="sx-b sx-b1"><h2 id="sx-t" class="sx-h2 rv4">Nos modèles opératoires <em>intègrent</em><br>vos équipes et votre organisation…</h2>
 <div class="sx-bar n7 rv4"><div class="sx-s"><p class="sx-m"><em>Diagnostic</em> flash, audit 360° et études</p></div><div class="sx-s"><p class="sx-m"><em>Cadrage</em> produit, solution ou projet</p></div><div class="sx-s"><p class="sx-m"><em>Solution</em> logicielle clé en mains</p></div><div class="sx-s"><p class="sx-m"><em>Régie</em> &amp; renfort d’équipe</p></div><div class="sx-s"><p class="sx-m"><em>Centre de services</em>, de compétences</p></div><div class="sx-s"><p class="sx-m"><em>Expertise</em> ponctuelle et coaching</p></div><div class="sx-s"><p class="sx-m">Programmes de <em>transfo</em> pilotés</p></div></div></div>
@@ -2445,7 +2443,7 @@ el.innerHTML=h;
 return function(i){[].forEach.call(el.querySelectorAll('[data-q]'),function(q){q.classList.toggle('on',+q.dataset.q===i)});var c=el.querySelector('.wcap');if(c)c.textContent=SN[i]}}
 var setStack=dial(svg,'ost',true);
 
-var hc=document.getElementById('oh-cta');if(hc)hc.addEventListener('click',function(e){e.preventDefault();(document.getElementById('oc')||sec).scrollIntoView({behavior:'smooth'})});
+var hc=document.getElementById('oh-cta');if(hc)hc.addEventListener('click',function(e){e.preventDefault();sec.scrollIntoView({behavior:'smooth'})});
 var cur=-1;
 [].forEach.call(svg.querySelectorAll('path.wq,.wb'),function(q){q.style.cursor='pointer';q.addEventListener('click',function(){items[+q.dataset.q].querySelector('.ost-hd').click()})});
 function set(i){if(i===cur)return;cur=i;
@@ -2621,7 +2619,7 @@ html[data-theme="dark"] .tabs button{color:#aab4c6}html[data-theme="dark"] .tabs
 @media(max-width:700px){.tabs{top:70px}.tabs button{padding:7px 13px 7px 7px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.tabs{transition:none}}
 </style>
-<script>(function(){var n=document.getElementById('otabs'),A=document.getElementById('oc'),B=document.getElementById('reponses'),O=document.getElementById('offres');if(!n||!A||!B)return;var bt=[].slice.call(n.querySelectorAll('button'));
+<script>(function(){var n=document.getElementById('otabs'),A=document.getElementById('ost-track'),B=document.getElementById('reponses'),O=document.getElementById('offres');if(!n||!A||!B)return;var bt=[].slice.call(n.querySelectorAll('button'));
 bt.forEach(function(b){b.addEventListener('click',function(){var t=document.getElementById(b.dataset.t);if(!t)return;var y=b.dataset.t==='offres-pile'?document.getElementById('offres-pile').getBoundingClientRect().top+scrollY:t.getBoundingClientRect().top+scrollY-70;scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})})});
 var tk=false;function upd(){tk=false;var vh=innerHeight,a=A.getBoundingClientRect(),b=B.getBoundingClientRect(),o=O?O.getBoundingClientRect():{top:1e9};var show=a.top<vh*.35&&o.top>vh*.4;n.classList.toggle('vis',show);var two=b.top<vh*.5;bt[0].classList.toggle('on',!two);bt[1].classList.toggle('on',two)}
 addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd()})();</script>
@@ -2806,70 +2804,4 @@ html[data-theme="dark"] .md-intro>effect-3d-duo{opacity:.85}
 .md-intro>*:not(effect-3d-duo){position:relative;z-index:1}
 @media(max-width:900px){.md-intro>effect-3d-duo{display:none}}
 </style>
-<style id="oc-css">
-.ost-track{display:none !important}
-.oc{position:relative;z-index:1;padding:clamp(16px,3vh,40px) 0 clamp(50px,8vh,90px)}
-.oc-tr{display:flex;gap:clamp(14px,2vw,26px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px max(24px,calc((100vw - 1196px)/2)) 22px;scroll-padding-inline:max(24px,calc((100vw - 1196px)/2));-webkit-overflow-scrolling:touch;outline:none}
-.oc-tr::-webkit-scrollbar{display:none}
-.oc-c{position:relative;flex:0 0 min(1196px,calc(100vw - 48px));scroll-snap-align:start;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:clamp(20px,4vw,60px);min-height:clamp(420px,56vh,520px);padding:clamp(28px,4vw,56px);border-radius:36px;color:#fff;overflow:hidden;box-shadow:0 24px 60px -24px rgba(120,10,40,.45);background:var(--g);transition:transform .5s,opacity .5s,filter .5s}
-.oc-c:not(.on){opacity:.55;filter:saturate(.8)}
-.oc-c::after{content:"";position:absolute;inset:0;background:radial-gradient(700px 420px at 12% 0%,rgba(255,255,255,.16),transparent 60%);pointer-events:none}
-.oc-i{position:relative;z-index:1;display:grid;place-items:center}
-.oc-i svg{width:100%;max-width:440px;height:auto;overflow:visible}
-.oc-i .f{fill:rgba(255,255,255,.18)}.oc-i .f2{fill:rgba(255,255,255,.32)}.oc-i .f3{fill:#fff}
-.oc-i .s{fill:none;stroke:rgba(255,255,255,.75);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.oc-i .s2{fill:none;stroke:rgba(255,255,255,.35);stroke-width:2;stroke-dasharray:3 9;stroke-linecap:round}
-.oc-i .fl{animation:ocfl 6s ease-in-out infinite}.oc-i .fl2{animation:ocfl 7.5s ease-in-out infinite reverse}
-@keyframes ocfl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.oc-i .rt{transform-origin:200px 160px;animation:ocrt 40s linear infinite}
-@keyframes ocrt{to{transform:rotate(360deg)}}
-.oc-t{position:relative;z-index:1}
-.oc-ch{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:12px;background:rgba(255,255,255,.2);font:700 12px var(--display,inherit);letter-spacing:.16em;text-transform:uppercase}
-.oc-ch b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#fff;color:#bf1d67;font-size:12px;letter-spacing:0}
-.oc-t h3{color:#fff !important;margin:18px 0 0;font:700 clamp(30px,4vw,52px)/1.06 var(--display,inherit);letter-spacing:-.02em;text-wrap:balance}
-.oc-t p{margin:16px 0 0;max-width:46ch;font-size:clamp(16px,1.35vw,19px);line-height:1.55;color:rgba(255,255,255,.92)}
-.oc-m{display:flex;flex-wrap:wrap;gap:6px 8px;margin:20px 0 0;padding:0;list-style:none}
-.oc-m li{padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.45);font:600 13px var(--display,inherit)}
-.oc-go{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:13px 22px;border-radius:999px;border:1.5px solid rgba(255,255,255,.8);background:transparent;color:#fff;font:700 16px var(--display,inherit);cursor:pointer;transition:background .2s,color .2s}
-.oc-go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
-.oc-go:hover{background:#fff;color:#bf1d67}
-.oc-ctl{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:6px}
-.oc-b{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid #E5E7EB;background:#fff;color:#0b0f19;cursor:pointer;transition:border-color .2s,color .2s}
-.oc-b svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.oc-b:hover{border-color:#EE2238;color:#EE2238}
-.oc-dots{display:flex;gap:8px}
-.oc-dots button{width:9px;height:9px;padding:0;border:0;border-radius:99px;background:#d4d8e0;cursor:pointer;transition:width .3s,background .3s}
-.oc-dots button.on{width:28px;background:linear-gradient(90deg,#ee2238,#bf1d67)}
-html[data-theme="dark"] .oc-b{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:#fff}
-html[data-theme="dark"] .oc-dots button{background:rgba(255,255,255,.22)}
-html[data-theme="dark"] .oc-dots button.on{background:linear-gradient(90deg,#ee2238,#bf1d67)}
-.oc .ost-next{position:static !important;transform:none !important;display:flex;width:max-content;margin:22px auto 0}
-@media(max-width:900px){.oc-c{grid-template-columns:1fr;min-height:0;gap:8px;padding:26px 22px 30px;border-radius:28px}.oc-i svg{max-width:240px}.oc-i{order:-1}}
-@media(prefers-reduced-motion:reduce){.oc-i .fl,.oc-i .fl2,.oc-i .rt{animation:none}}
-</style>
-<script>(function(){
-var D=[
-{t:"AI for Business Performance",l:"Déploiement de l’IA dans les applicatifs métier pour accélérer les opérations, améliorer les parcours et générer un impact mesurable.",m:["Diagnostic flash","Cadrage","Solution clés en mains","Régie & renfort","Programmes de transfo pilotés"],g:"linear-gradient(135deg,#ee2238,#bf1d67)",
- i:'<rect class="f" x="70" y="190" width="56" height="90" rx="14"/><rect class="f2" x="152" y="140" width="56" height="140" rx="14"/><rect class="f3 fl" x="234" y="80" width="56" height="200" rx="14" style="fill:rgba(255,255,255,.92)"/><circle class="f3 fl2" cx="330" cy="62" r="16"/><path class="s" d="M70 160 L150 112 L232 60 L318 52"/><path class="s2" d="M60 292 H340"/>'},
-{t:"Data-driven Organization",l:"Faire de la data un levier de décision, en maîtrisant la gouvernance, la plateforme et les usages métier. Créer de la valeur et tirer de la valeur.",m:["Diagnostic, audit 360°","Cadrage","Centre de compétences","Expertise ponctuelle et coaching","Programmes de transfo pilotés"],g:"linear-gradient(135deg,#d11f55,#7b2a9e)",
- i:'<g class="rt"><circle class="s2" cx="200" cy="160" r="128"/><circle class="s2" cx="200" cy="160" r="88"/></g><circle class="f" cx="200" cy="160" r="62"/><path class="s" d="M200 98 A62 62 0 0 1 262 160"/><circle class="f3 fl" cx="262" cy="160" r="13"/><circle class="f2 fl2" cx="112" cy="160" r="11"/><circle class="f3" cx="200" cy="72" r="9"/><circle class="f2" cx="200" cy="248" r="9"/><circle class="f3" cx="328" cy="160" r="8"/>'},
-{t:"Cloud, from strategy to value",l:"S’appuyer sur les services Cloud pour gagner en agilité, résilience et maîtrise des coûts, du cadrage à l’industrialisation.",m:["Diagnostic flash","Cadrage","Solution clés en mains","Centre de services","Régie & renfort"],g:"linear-gradient(135deg,#bf1d67,#3f2a8c)",
- i:'<circle class="f fl2" cx="130" cy="190" r="70"/><circle class="f2 fl" cx="226" cy="150" r="88"/><circle class="f" cx="296" cy="206" r="56"/><path class="s" d="M70 262 C150 262 190 190 330 96"/><circle class="f3" cx="330" cy="96" r="12"/><path class="s2" d="M60 292 H340"/>'},
-{t:"Modernisation des SI",l:"Valoriser le legacy, rationaliser les architectures et moderniser étape par étape un SI plus simple, performant et durable.",m:["Diagnostic, audit 360°","Cadrage","Solution clés en mains","Régie & renfort","Programmes de transfo pilotés"],g:"linear-gradient(135deg,#a3173f,#ee2238 55%,#f2745f)",
- i:'<rect class="f" x="60" y="190" width="84" height="84" rx="10"/><rect class="f2 fl2" x="156" y="152" width="84" height="84" rx="22"/><rect class="f3 fl" x="252" y="114" width="84" height="84" rx="42" style="fill:rgba(255,255,255,.92)"/><path class="s" d="M102 172 L102 136 M102 136 L196 136 L196 104"/><path class="s" d="M196 104 L296 104 L296 74"/><circle class="f3" cx="296" cy="64" r="9"/>'}];
-var tr=document.getElementById('oc-tr'),dots=document.getElementById('oc-d');if(!tr||!dots)return;
-function esc(x){return x.replace(/&/g,'&amp;')}
-tr.innerHTML=D.map(function(d,i){return '<article class="oc-c'+(i?'':' on')+'" style="--g:'+d.g+'" aria-roledescription="diapositive" aria-label="'+(i+1)+' sur 4"><div class="oc-i" aria-hidden="true"><svg viewBox="0 0 400 320">'+d.i+'</svg></div><div class="oc-t"><span class="oc-ch"><b>'+(i+1)+'</b>Offre</span><h3>'+esc(d.t)+'</h3><p>'+esc(d.l)+'</p><ul class="oc-m" aria-label="Modèles opératoires">'+d.m.map(function(m){return '<li>'+esc(m)+'</li>'}).join('')+'</ul><button type="button" class="oc-go">Découvrir l’offre<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></article>'}).join('');
-dots.innerHTML=D.map(function(d,i){return '<button type="button" aria-label="Offre '+(i+1)+' : '+esc(d.t)+'"></button>'}).join('');
-var cs=[].slice.call(tr.children),ds=[].slice.call(dots.children),cur=0;
-function mark(i){cur=i;cs.forEach(function(c,k){c.classList.toggle('on',k===i)});ds.forEach(function(b,k){b.classList.toggle('on',k===i)})}
-function go(i){i=Math.max(0,Math.min(3,i));var c=cs[i];tr.scrollTo({left:c.offsetLeft-(parseFloat(getComputedStyle(tr).scrollPaddingLeft)||0),behavior:'smooth'});mark(i)}
-mark(0);
-var tk=false;tr.addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;var x=tr.scrollLeft+tr.clientWidth*.35,b=0;cs.forEach(function(c,k){if(c.offsetLeft<=x)b=k});if(b!==cur)mark(b)})},{passive:true});
-ds.forEach(function(b,i){b.addEventListener('click',function(){go(i)})});
-document.getElementById('oc-p').addEventListener('click',function(){go(cur-1)});
-document.getElementById('oc-n').addEventListener('click',function(){go(cur+1)});
-tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}else if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}});
-cs.forEach(function(c,i){c.querySelector('.oc-go').addEventListener('click',function(){var b=this;b._from=c;if(window.odOpen)window.odOpen(i,b)})});
-})();</script>
 </body></html>
