@@ -2718,7 +2718,7 @@ split(h);
 function upd(){
  if(!h.offsetParent)return;
  var r=h.getBoundingClientRect(),vh=innerHeight||800;
- var p=rm?1:Math.max(0,Math.min(1,(vh*.6-r.top)/(vh*.28)));
+ var p=rm?1:Math.max(0,Math.min(1,(vh*.72-r.top)/(vh*.22)));
  var n=Math.round(p*L.length);
  for(var i=0;i<L.length;i++){var on=i<n;if(L[i].classList.contains('on')!==on)L[i].classList.toggle('on',on);}
 }
@@ -2753,13 +2753,15 @@ cards.forEach(function(c){c.querySelectorAll('.sv-dots li,.sv-chk li').forEach(f
 var offsL=[].slice.call(document.querySelectorAll('.sv-offs:not(.sv-offs-r)'));
 var plA=document.querySelector('.sv-in .sv-offs:not(.sv-offs-r)'),plB=document.querySelector('.svb-cols .sv-offs:not(.sv-offs-r)');
 function startPl(k){var L=(typeof k==='number')?offsL[k]:k;if(!L||L.dataset.plAt)return;L.dataset.plAt=Date.now();L.classList.add('pl');}
-function playA(){cards.forEach(function(c,i){setTimeout(function(){c.classList.add('ph');if(i===0&&!rm)startPl(plA);},rm?0:i*1700);});}
+function playA(){cards.forEach(function(c,i){setTimeout(function(){c.classList.add('ph');if(i===0&&!rm)setTimeout(function(){window.dispatchEvent(new Event('scroll'));},60);},rm?0:i*1700);});}
 var h0=cards[0]&&cards[0].querySelector('h3');
 var offs=[].slice.call(document.querySelectorAll('.sv-offs-r'));
 if(!('IntersectionObserver' in window)||rm){playA();offs.forEach(function(o){o.classList.add('go');});}
 else{
  if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -16% 0px',threshold:.9});a.observe(h0);}
- function chk(){var vh=innerHeight||800;offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(mid<vh*.82&&r.bottom>vh*.25){o.classList.add('go0');var k=offs.indexOf(o),L=offsL[k],n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)startPl(k);var left=L&&!rm?Math.max(0,(+L.dataset.plAt)+(L.closest('.sv-in')?n*250+450+1000:n*300+500)-Date.now()):0;setTimeout(function(){o.classList.add('go');},left);}});}
+ function chk(){var vh=innerHeight||800;
+  if(!rm&&cards[0]&&cards[0].classList.contains('ph')&&plA&&!plA.dataset.plAt&&plA.offsetParent&&plA.getBoundingClientRect().top<vh*.92)startPl(plA);
+  offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(r.top<vh*.9&&r.bottom>vh*.15){o.classList.add('go0');var k=offs.indexOf(o),L=offsL[k],n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)startPl(k);var left=L&&!rm?Math.max(0,(+L.dataset.plAt)+(L.closest('.sv-in')?n*250+450+1000:n*250+450+200)-Date.now()):0;setTimeout(function(){o.classList.add('go');},left);}});}
  addEventListener('scroll',function(){requestAnimationFrame(chk);},{passive:true});addEventListener('resize',chk);
  document.querySelectorAll('.svp button').forEach(function(x){x.addEventListener('click',function(){setTimeout(chk,150);});});
  function resetA(){cards.forEach(function(c){c.classList.remove('ph');});offsL.forEach(function(L){L.classList.remove('pl');delete L.dataset.plAt;});offs.forEach(function(o){o.classList.remove('go','go0');});}
@@ -2782,8 +2784,8 @@ if(bh&&bc){
  function sync(){
   if(!bh.offsetParent)return;
   var ls=bh.querySelectorAll('.l'),on=bh.querySelectorAll('.l.on').length,p=ls.length?on/ls.length:0;
-  bc.classList.toggle('ph',p>=.999);if(p>=.999&&!rm)startPl(plB);
-  cols.forEach(function(c){c.forEach(function(li,i){var t=.12+i*(.8/M);li.classList.toggle('lit',p>=t);});});
+  bc.classList.toggle('ph',p>=.999);if(p>=.85&&!rm&&plB&&plB.offsetParent&&plB.getBoundingClientRect().top<innerHeight*.92)startPl(plB);
+  cols.forEach(function(c){c.forEach(function(li,i){var t=.1+i*(.62/M);li.classList.toggle('lit',p>=t);});});
  }
  addEventListener('scroll',function(){requestAnimationFrame(sync);},{passive:true});
  document.querySelectorAll('.svp button').forEach(function(x){x.addEventListener('click',function(){setTimeout(sync,120);});});
@@ -2818,24 +2820,24 @@ if(bh&&bc){
 @keyframes plusIn{0%{opacity:0;transform:scale(.4)}100%{opacity:1;transform:none}}
 .svb-cols .sv-offs:not(.pl) .sv-plus{opacity:0}
 .svb-cols .sv-offs.pl .sv-off .sv-plus{animation:plusIn .6s cubic-bezier(.3,1.3,.5,1) both}
-.svb-cols .sv-offs.pl .sv-off:nth-child(1) .sv-plus{animation-delay:0.10s}
-.svb-cols .sv-offs.pl .sv-off:nth-child(2) .sv-plus{animation-delay:0.55s}
-.svb-cols .sv-offs.pl .sv-off:nth-child(3) .sv-plus{animation-delay:1.00s}
-.svb-cols .sv-offs.pl .sv-off:nth-child(4) .sv-plus{animation-delay:1.45s}
-.svb-cols .sv-offs.pl .sv-off:nth-child(5) .sv-plus{animation-delay:1.90s}
-.svb-cols .sv-offs.pl .sv-off:nth-child(6) .sv-plus{animation-delay:2.35s}
+.svb-cols .sv-offs.pl .sv-off:nth-child(1) .sv-plus{animation-delay:0.05s}
+.svb-cols .sv-offs.pl .sv-off:nth-child(2) .sv-plus{animation-delay:0.30s}
+.svb-cols .sv-offs.pl .sv-off:nth-child(3) .sv-plus{animation-delay:0.55s}
+.svb-cols .sv-offs.pl .sv-off:nth-child(4) .sv-plus{animation-delay:0.80s}
+.svb-cols .sv-offs.pl .sv-off:nth-child(5) .sv-plus{animation-delay:1.05s}
+.svb-cols .sv-offs.pl .sv-off:nth-child(6) .sv-plus{animation-delay:1.30s}
 @media(prefers-reduced-motion:reduce){.svb-cols .sv-offs .sv-plus{opacity:1 !important;animation:none !important}}
 </style>
 <style>
 /* + reliés aux mots-clés : animation enchaînée juste après, un peu plus vite */
 .sv-offs.pl .sv-off .sv-plus{animation-duration:.7s !important}
 .svb-cols .sv-offs.pl .sv-off .sv-plus{animation-duration:.5s !important}
-.sv-offs.pl .sv-off:nth-child(1) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(1) .sv-plus{animation-delay:0.10s !important}
-.sv-offs.pl .sv-off:nth-child(2) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(2) .sv-plus{animation-delay:0.40s !important}
-.sv-offs.pl .sv-off:nth-child(3) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(3) .sv-plus{animation-delay:0.70s !important}
-.sv-offs.pl .sv-off:nth-child(4) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(4) .sv-plus{animation-delay:1.00s !important}
-.sv-offs.pl .sv-off:nth-child(5) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(5) .sv-plus{animation-delay:1.30s !important}
-.sv-offs.pl .sv-off:nth-child(6) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(6) .sv-plus{animation-delay:1.60s !important}
+.sv-offs.pl .sv-off:nth-child(1) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(1) .sv-plus{animation-delay:0.05s !important}
+.sv-offs.pl .sv-off:nth-child(2) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(2) .sv-plus{animation-delay:0.30s !important}
+.sv-offs.pl .sv-off:nth-child(3) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(3) .sv-plus{animation-delay:0.55s !important}
+.sv-offs.pl .sv-off:nth-child(4) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(4) .sv-plus{animation-delay:0.80s !important}
+.sv-offs.pl .sv-off:nth-child(5) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(5) .sv-plus{animation-delay:1.05s !important}
+.sv-offs.pl .sv-off:nth-child(6) .sv-plus,.svb-cols .sv-offs.pl .sv-off:nth-child(6) .sv-plus{animation-delay:1.30s !important}
 </style>
 <style>
 /* C : même narration que A, mais sur 2 rangées (une par carte) au lieu de 2 colonnes */
