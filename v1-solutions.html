@@ -2249,4 +2249,91 @@ function u(){ if(!mq.matches){b2.style.opacity='';b2.style.transform='';return;}
 addEventListener('scroll',u,{passive:true});addEventListener('resize',u);addEventListener('load',u);u();})();
 </script>
 <style id="nav-current">.nav a[aria-current="page"]{color:#E2001A !important;font-weight:700;position:relative}.nav a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;border-radius:2px;background:#E2001A}html[data-theme="dark"] .nav a[aria-current="page"]{color:#FF3B52 !important}html[data-theme="dark"] .nav a[aria-current="page"]::after{background:#FF3B52}</style>
+<style id="od-css">
+/* offres : chaque offre s'agrandit en pleine page, façon slides « Chacun sa place » */
+.sl4-card .od-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 16px 9px 18px;border-radius:999px;border:1.5px solid #E2001A;background:transparent;color:#E2001A;font:700 13.5px/1 var(--display,inherit);cursor:pointer;transition:background .2s,color .2s}
+.sl4-card .od-btn:hover,.sl4-card .od-btn:focus-visible{background:#E2001A;color:#fff;outline:0}
+.sl4-card .od-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round}
+.od-host{position:fixed;inset:0;z-index:9990;pointer-events:none}
+.od-bd{position:fixed;inset:0;background:rgba(2,2,3,.6);opacity:0;transition:opacity .5s;pointer-events:auto}
+.od-host.on .od-bd{opacity:1}
+.od{position:fixed;overflow:hidden;background:#fff;border-radius:32px;color:#fff;pointer-events:auto;transition:left .65s cubic-bezier(.2,.8,.2,1),top .65s cubic-bezier(.2,.8,.2,1),width .65s cubic-bezier(.2,.8,.2,1),height .65s cubic-bezier(.2,.8,.2,1),border-radius .65s cubic-bezier(.2,.8,.2,1),background-color .5s .15s}
+.od.full{left:0 !important;top:0 !important;width:100vw !important;height:100vh !important;height:100dvh !important;border-radius:0 !important;background:#0b0f19}
+.od::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .6s .25s;background:radial-gradient(900px 520px at 88% -8%,rgba(238,34,56,.4),transparent 60%),radial-gradient(700px 440px at -8% 108%,rgba(139,92,246,.22),transparent 60%)}
+.od.full::before{opacity:1}
+.od-in{position:absolute;inset:0;overflow:auto;overscroll-behavior:contain;padding:clamp(72px,10vh,120px) clamp(20px,5vw,96px) clamp(90px,12vh,130px);opacity:0;transition:opacity .5s .4s;display:grid;align-content:center;gap:clamp(18px,2.6vh,30px)}
+.od.full .od-in{opacity:1}
+.od-eb{font:700 13px var(--display,inherit);letter-spacing:.2em;text-transform:uppercase;color:#ff5a70}
+.od h2{margin:0;font-family:var(--display,inherit);font-weight:700;font-size:clamp(32px,4.6vw,64px);line-height:1.04;letter-spacing:-.02em;color:#fff;text-wrap:balance}
+.od-lead{margin:0;font-size:clamp(17px,1.7vw,22px);line-height:1.5;color:#aab4c6;max-width:52ch}
+.od-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.od-c{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:26px;display:grid;gap:10px;align-content:start;min-width:0;opacity:0;transform:translateY(24px) scale(.97)}
+.od.full .od-c{animation:odIn .7s cubic-bezier(.22,.8,.24,1) both;animation-delay:calc(var(--d,0)*.14s + .5s)}
+@keyframes odIn{to{opacity:1;transform:none}}
+.od-c.red{background:linear-gradient(135deg,#ee2238,#bf1d67);border-color:transparent}
+.od-c .tag{font:700 12px var(--display,inherit);letter-spacing:.16em;text-transform:uppercase;color:#ff7b8e}
+.od-c.red .tag{color:rgba(255,255,255,.88)}
+.od-c h3{margin:0;font:700 19px/1.25 var(--display,inherit);color:#fff}
+.od-c p{margin:0;font-size:15px;line-height:1.5;color:#aab4c6}
+.od-c.red p{color:rgba(255,255,255,.9)}
+.od-p{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}
+.od-p span{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:999px;padding:6px 14px;font:600 14px var(--display,inherit);color:#fff}
+.od-c.red .od-p span{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.16)}
+.od-rel{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font:600 14px var(--display,inherit);color:#aab4c6}
+.od-rel b{color:#fff}
+.od-rel span.pl{border-bottom:1px solid rgba(255,255,255,.3);color:#fff}
+.od-x{position:fixed;right:clamp(14px,2.4vw,32px);top:clamp(14px,2.4vw,32px);z-index:5;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:#0b0c10;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.4);opacity:0;transform:scale(.7);pointer-events:none;transition:opacity .3s .4s,transform .4s .4s cubic-bezier(.3,1.6,.5,1)}
+.od-host.on .od-x{opacity:1;transform:none;pointer-events:auto}
+.od-nav{position:fixed;left:50%;bottom:clamp(16px,3vh,32px);translate:-50% 0;z-index:5;display:flex;align-items:center;gap:14px;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);color:#fff;font:600 14px/1 var(--display,inherit);opacity:0;transition:opacity .4s .45s;pointer-events:none}
+.od-host.on .od-nav{opacity:1;pointer-events:auto}
+.od-nav button{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:18px;cursor:pointer}
+.od-nav button:hover{background:rgba(255,255,255,.34)}
+.od-nav span{min-width:7.5em;text-align:center}
+.od-swap .od-in{animation:odSw .4s ease both}
+@keyframes odSw{from{opacity:0}to{opacity:1}}
+@media(max-width:900px){.od-g{grid-template-columns:1fr}.od-in{align-content:start}}
+@media(prefers-reduced-motion:reduce){.od,.od-in,.od-bd,.od-x,.od-nav,.od::before{transition:none !important}.od-c{animation:none !important;opacity:1;transform:none}}
+</style>
+<script>(function(){
+var D=[
+{t:"AI for Business Performance",lead:"Déploiement de l’IA dans les applicatifs métier pour accélérer les opérations, améliorer les parcours et générer un impact mesurable.",
+ c:[{tag:"Notre promesse",h:"Mesurer la valeur, pas la vitesse",p:["Time-to-Value","Released Capacity Ratio","Jira"],x:"Les indicateurs suivent la capacité réallouée aux tâches à forte valeur, hors success fee."},
+    {tag:"Nos expertises",h:"Ce que nous mobilisons",p:["Agentic systems","Data & IA","Software Excellence","Product design & management"],x:"Les expertises Zenika réunies autour de l’usage métier."},
+    {tag:"Nos modèles opératoires",h:"Comment nous intervenons",p:["Diagnostic flash","Cadrage","Solution clés en mains","Régie & renfort","Programmes de transfo pilotés"],x:"Nos modèles intègrent vos équipes et votre organisation."}],
+ r:["AI-augmented SDLC","Lean Strike teams"]},
+{t:"Data-driven Organization",lead:"Faire de la data un levier de décision, en maîtrisant la gouvernance, la plateforme et les usages métier. Créer de la valeur et tirer de la valeur.",
+ c:[{tag:"Notre promesse",h:"Org, BU, équipes imbriqués",p:["Gouvernance","Plateforme","Usages métier"],x:"Chaque niveau hérite des règles du niveau supérieur et ajoute les siennes : des données gouvernées, partagées et sécurisées."},
+    {tag:"Nos expertises",h:"Ce que nous mobilisons",p:["Data & IA","Architectures modernes","Organisations, conduite du changement"],x:"Les expertises Zenika réunies autour de vos données."},
+    {tag:"Nos modèles opératoires",h:"Comment nous intervenons",p:["Diagnostic flash, audit 360°","Cadrage","Centre de compétences","Expertise ponctuelle et coaching","Programmes de transfo pilotés"],x:"Nos modèles intègrent vos équipes et votre organisation."}],
+ r:["Platform engineering","Product strategy & discovery"]},
+{t:"Cloud, from strategy to value",lead:"S’appuyer sur les services Cloud pour gagner en agilité, résilience et maîtrise des coûts, du cadrage à l’industrialisation.",
+ c:[{tag:"Notre promesse",h:"Du Nexus jusqu’aux agents",p:["Agilité","Résilience","Maîtrise des coûts"],x:"Le contexte, les droits et l’orchestration circulent jusqu’à l’exécution : stratégie métier, tech et exécution réunies."},
+    {tag:"Nos expertises",h:"Ce que nous mobilisons",p:["Infrastructures & Cloud","Architectures modernes","Delivery Management"],x:"Les expertises Zenika réunies, de la stratégie à l’exécution."},
+    {tag:"Nos modèles opératoires",h:"Comment nous intervenons",p:["Diagnostic flash","Cadrage","Solution clés en mains","Centre de services","Régie & renfort"],x:"Nos modèles intègrent vos équipes et votre organisation."}],
+ r:["Platform engineering","Performance-driven delivery"]},
+{t:"Modernisation des SI",lead:"Valoriser le legacy, rationaliser les architectures et moderniser étape par étape un SI plus simple, performant et durable.",
+ c:[{tag:"Notre promesse",h:"Valorisation du Legacy",p:["Valoriser le legacy","Rationaliser","Étape par étape"],x:"Chaque modernisation passe par la même porte : des contrôles automatiques (tests, scans, schémas), puis la validation d’une personne nommée."},
+    {tag:"Nos expertises",h:"Ce que nous mobilisons",p:["Architectures modernes","Software Excellence","Delivery Management","Organisations, conduite du changement"],x:"Les expertises Zenika réunies autour de votre patrimoine applicatif."},
+    {tag:"Nos modèles opératoires",h:"Comment nous intervenons",p:["Diagnostic flash, audit 360°","Cadrage","Solution clés en mains","Régie & renfort","Programmes de transfo pilotés"],x:"Nos modèles intègrent vos équipes et votre organisation."}],
+ r:["AI-augmented SDLC","Lean Strike teams"]}];
+var cards=[].slice.call(document.querySelectorAll('.sl4-duo > .sl4-card'));if(cards.length!==4)return;
+var host=null,cur=-1,busy=false,last=null;
+function esc(x){return x.replace(/&/g,'&amp;')}
+cards.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.className='od-btn';b.setAttribute('aria-haspopup','dialog');b.setAttribute('aria-label','Découvrir l’offre : '+D[i].t);b.innerHTML='Découvrir<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';c.appendChild(b);b.addEventListener('click',function(){open(i,b)})});
+function body(i){var d=D[i];return '<div class="od-in"><div class="od-eb">Nos offres</div><h2>'+esc(d.t)+'</h2><p class="od-lead">'+esc(d.lead)+'</p><div class="od-g">'+d.c.map(function(c,k){return '<div class="od-c'+(k===0?' red':'')+'" style="--d:'+k+'"><span class="tag">'+esc(c.tag)+'</span><h3>'+esc(c.h)+'</h3><div class="od-p">'+c.p.map(function(p){return '<span>'+esc(p)+'</span>'}).join('')+'</div><p>'+esc(c.x)+'</p></div>'}).join('')+'</div><div class="od-rel"><b>Approches associées</b>'+d.r.map(function(r){return '<span class="pl">'+esc(r)+'</span>'}).join('')+'</div></div>'}
+function open(i,btn){if(host||busy)return;busy=true;cur=i;last=btn;
+host=document.createElement('div');host.className='od-host';host.innerHTML='<div class="od-bd"></div><div class="od" role="dialog" aria-modal="true" aria-label="'+esc(D[i].t)+'"></div><button type="button" class="od-x" aria-label="Fermer">×</button><div class="od-nav"><button type="button" aria-label="Offre précédente">←</button><span></span><button type="button" aria-label="Offre suivante">→</button></div>';
+document.body.appendChild(host);document.documentElement.style.overflow='hidden';
+var o=host.querySelector('.od'),r=cards[i].getBoundingClientRect();o.style.transition='none';o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';o.getBoundingClientRect();o.style.transition='';
+o.innerHTML=body(i);
+requestAnimationFrame(function(){host.classList.add('on');o.classList.add('full');nv();setTimeout(function(){busy=false;host.querySelector('.od-x').focus()},700)});
+host.querySelector('.od-x').addEventListener('click',close);host.querySelector('.od-bd').addEventListener('click',close);
+var b=host.querySelectorAll('.od-nav button');b[0].addEventListener('click',function(){go(-1)});b[1].addEventListener('click',function(){go(1)});
+document.addEventListener('keydown',key)}
+function nv(){var s=host&&host.querySelector('.od-nav span');if(s)s.textContent=(cur+1)+' / 4'}
+function go(d){if(!host||busy)return;cur=(cur+d+4)%4;var o=host.querySelector('.od');o.setAttribute('aria-label',D[cur].t);o.innerHTML=body(cur);o.classList.remove('od-swap');void o.offsetWidth;o.classList.add('od-swap');nv()}
+function close(){if(!host||busy)return;busy=true;var o=host.querySelector('.od'),c=cards[cur];c.scrollIntoView({block:'nearest'});var r=c.getBoundingClientRect();host.classList.remove('on');o.classList.remove('full');o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';
+setTimeout(function(){if(host){host.remove();host=null}document.documentElement.style.overflow='';document.removeEventListener('keydown',key);busy=false;if(last&&last.focus)last.focus()},680)}
+function key(e){if(e.key==='Escape'){e.preventDefault();close()}else if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1)}
+})();</script>
 </body></html>
