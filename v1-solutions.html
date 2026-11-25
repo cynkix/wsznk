@@ -1883,7 +1883,7 @@ main h2{font-size:clamp(30px,3.4vw,44px) !important;font-weight:600 !important;l
 </div>
 </section>
 <section class="ost" id="offres-pile" aria-labelledby="ost-t">
-<div class="oh" id="oh"><h1 id="ost-t">Quatre offres, sept modèles,<br>huit expertises :<br><em>un même système de delivery.</em></h1><div class="oh-fig" aria-hidden="true"><svg id="oh-svg" viewBox="88 88 424 424"></svg></div><p class="oh-p">L’offre dit ce que nous livrons. Le modèle opératoire dit comment nous intégrons vos équipes et votre organisation, et y déployons nos expertises.</p><a class="oh-cta" href="#ost-track" id="oh-cta">Découvrir</a></div>
+<div class="oh" id="oh"><effect-3d-duo id="oh-fx" count="30" speed="1.4" parallax="0.4" beam="7" aria-hidden="true"></effect-3d-duo><h1 id="ost-t">Quatre offres, sept modèles,<br>huit expertises :<br><em>un même système de delivery.</em></h1><p class="oh-p">L’offre dit ce que nous livrons. Le modèle opératoire dit comment nous intégrons vos équipes et votre organisation, et y déployons nos expertises.</p><a class="oh-cta" href="#ost-track" id="oh-cta">Découvrir</a></div>
 <div class="ost-track" id="ost-track"><div class="ost-stick"><div class="wrap ost-grid">
 <ol class="ost-list" id="ost-list"></ol>
 <div class="ost-dial" aria-hidden="true"><svg id="ost-svg" viewBox="0 0 600 650"></svg></div>
@@ -2441,8 +2441,8 @@ BP.forEach(function(p,k){var q=P(190,k*90);h+='<g class="wb" data-q="'+k+'"><tex
 if(cap)h+='<text class="wcap" id="'+id+'-cap" x="300" y="566">'+esc(SN[0])+'</text>';
 el.innerHTML=h;
 return function(i){[].forEach.call(el.querySelectorAll('[data-q]'),function(q){q.classList.toggle('on',+q.dataset.q===i)});var c=el.querySelector('.wcap');if(c)c.textContent=SN[i]}}
-var setStack=dial(svg,'ost',true),setHero=dial(document.getElementById('oh-svg'),'oh',false);
-var hi=0;setHero(0);if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(function(){hi=(hi+1)%4;setHero(hi)},2200);
+var setStack=dial(svg,'ost',true);
+
 var hc=document.getElementById('oh-cta');if(hc)hc.addEventListener('click',function(e){e.preventDefault();sec.scrollIntoView({behavior:'smooth'})});
 var cur=-1;
 [].forEach.call(svg.querySelectorAll('path.wq,.wb'),function(q){q.style.cursor='pointer';q.addEventListener('click',function(){items[+q.dataset.q].querySelector('.ost-hd').click()})});
@@ -2771,4 +2771,15 @@ items.forEach(function(li,i){li.addEventListener('click',function(){goto(i)})});
 set(0,false);upd();
 if(tiles){if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}})},{threshold:.25});[].forEach.call(tiles.children,function(t){o.observe(t)})}else[].forEach.call(tiles.children,function(t){t.classList.add('in')})}
 })();</script>
+<style id="oh-fx-css">
+.ost .oh>effect-3d-duo{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5}
+html[data-theme="dark"] .ost .oh>effect-3d-duo{opacity:.85}
+.ost .oh>*:not(effect-3d-duo){position:relative;z-index:1}
+.ost .oh h1{text-shadow:0 0 40px var(--bg,#fff)}
+html[data-theme="dark"] .ost .oh h1{text-shadow:none}
+</style>
+<script src="3dduo.js"></script>
+<script>(function(){var z=document.getElementById('oh-fx');if(!z)return;function dk(){return document.documentElement.getAttribute('data-theme')==='dark'}
+function sy(){z.setAttribute('theme',dk()?'sombre':'rougenoir')}sy();z.setShape&&z.setShape('duo');customElements.whenDefined('effect-3d-duo').then(function(){z.setShape('duo')});
+new MutationObserver(sy).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});})();</script>
 </body></html>
