@@ -2777,8 +2777,10 @@ var offs=[].slice.call(document.querySelectorAll('.sv-offs-r'));
 if(!('IntersectionObserver' in window)||rm){playA();offs.forEach(function(o){o.classList.add('go');});}
 else{
  if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -42% 0px',threshold:1});a.observe(h0);}
- var b=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('go');b.unobserve(e.target);}});},{rootMargin:'0px 0px -25% 0px',threshold:.7});
- offs.forEach(function(o){b.observe(o);});
+ function chk(){var vh=innerHeight||800;offs.forEach(function(o){if(o.classList.contains('go')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(mid<vh*.62&&r.bottom>vh*.3)o.classList.add('go');});}
+ addEventListener('scroll',function(){requestAnimationFrame(chk);},{passive:true});addEventListener('resize',chk);
+ document.querySelectorAll('.svp button').forEach(function(x){x.addEventListener('click',function(){setTimeout(chk,150);});});
+ setTimeout(chk,300);
 }
 /* B : bullets calés sur l'avancement de la phrase */
 var bh=document.querySelector('.svb-h'),bc=document.querySelector('.svb-card');
