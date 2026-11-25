@@ -453,7 +453,7 @@ html[data-theme="light"] .cvx .cv-list span::before{background:#E2001A}
   addEventListener('scroll',onS,{passive:true});onS();
   /* mode clair / sombre (sombre par défaut, avec alternance de blocs clairs) */
   var b=document.getElementById('thm'),h=document.documentElement,fxs=document.querySelectorAll('effect-3d');
-  function sync(){var l=h.getAttribute('data-theme')==='light';b.setAttribute('aria-label',l?'Passer en mode sombre':'Passer en mode clair');b.setAttribute('aria-pressed',l?'true':'false');fxs.forEach(function(fx){fx.setAttribute('theme',l?'rougenoir':'sombre');});}
+  function sync(){var l=h.getAttribute('data-theme')==='light';b.setAttribute('aria-label',l?'Passer en mode sombre':'Passer en mode clair');b.setAttribute('aria-pressed',l?'true':'false');fxs.forEach(function(fx){fx.setAttribute('theme',l?'rougenoirdoux':'sombre');});}
   b.addEventListener('click',function(){var l=h.getAttribute('data-theme')!=='light';if(l)h.setAttribute('data-theme','light');else h.removeAttribute('data-theme');try{localStorage.setItem('zk-theme',l?'light':'dark');}catch(e){}sync();});
   sync();
   /* sélecteur de version */
@@ -1629,5 +1629,6 @@ html:not([data-theme="light"]) #ct20 .ct-btn{background:#EE2238;border-color:#EE
 .ct-ghost{color:#EE2238 !important;border-color:#EE2238 !important}
 html[data-theme="dark"] .ct-ghost,html:not([data-theme="light"]) .ct-ghost{color:#ff4a60 !important;border-color:#ff4a60 !important}
 </style>
+<style id="ill-red">.ill-sw{opacity:.9}.ill-sw button.on{border:1.5px solid #EE2238 !important;color:inherit}</style>
 </body>
 </html>
