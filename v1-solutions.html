@@ -2609,7 +2609,7 @@ html:not([data-theme="dark"]) .wb.on text{fill:#ee2238 !important}
 .ost .oh h1{font-size:clamp(28px,3.9vw,52px) !important}
 .oh-fig svg{height:min(30vh,320px) !important}
 .oh-p{max-width:58ch !important;font-size:clamp(15px,1.4vw,18px) !important}
-.tabs{position:fixed;left:50%;top:82px;z-index:49;transform:translate(-50%,-14px);display:flex;align-items:center;gap:6px;padding:5px;border-radius:999px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(11,15,25,.1);box-shadow:0 8px 24px rgba(11,15,25,.1);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.tabs{position:fixed;left:50%;top:82px;z-index:49;transform:translate(-50%,-14px);display:flex;align-items:center;gap:6px;padding:5px;border-radius:999px;background:rgba(255,255,255,.96);border:1px solid rgba(11,15,25,.1);box-shadow:0 8px 24px rgba(11,15,25,.1);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
 .tabs[hidden]{display:flex !important}
 .tabs.vis{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 .tabs span{width:18px;height:1.5px;background:linear-gradient(90deg,#EE2238,#BF1D67);opacity:.5}
@@ -2799,8 +2799,8 @@ if(m){m._sp=null;var vis=false;new IntersectionObserver(function(es){es.forEach(
 new MutationObserver(sy).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});})();</script>
 <style id="ost-next-css">
 @media(min-width:901px){.ost-stick{padding-bottom:56px !important}}
-.ost-next{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font:600 13px var(--display,inherit);color:#6b7280;text-decoration:none;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);border:1px solid #E5E7EB;transition:color .2s,border-color .2s}
-.ost-next svg{animation:ostnx 1.8s ease-in-out infinite}
+.ost-next{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font:600 13px var(--display,inherit);color:#6b7280;text-decoration:none;background:rgba(255,255,255,.92);border:1px solid #E5E7EB;transition:color .2s,border-color .2s}
+.ost-next svg{animation:none}
 .ost-next:hover{color:#EE2238;border-color:#EE2238}
 html[data-theme="dark"] .ost-next{color:#aab1c0;background:rgba(17,20,28,.6);border-color:rgba(255,255,255,.14)}
 @media(max-height:780px) and (min-width:901px){.ost-next{left:auto;right:max(24px,calc((100vw - 1196px)/2));transform:none;bottom:6px}}
@@ -2845,7 +2845,7 @@ html[data-theme="dark"] .md-intro>effect-3d-duo{opacity:.85}
 html[data-theme="dark"] .il{--il-a:#ff5a70;--il-l:rgba(255,90,112,.45);--il-t:rgba(255,255,255,.05);--il-ts:rgba(255,90,112,.4);--il-tx:#c9d0de}
 .il text{font:600 13px var(--display,inherit);fill:var(--il-tx);text-anchor:middle}
 .il .ic{fill:none;stroke:var(--il-a);stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
-.il .ln{opacity:1 !important;fill:none;stroke:var(--il-l);stroke-width:2.2;stroke-dasharray:4 6;animation:ilfl 2.4s linear infinite}
+.il .ln{opacity:1 !important;fill:none;stroke:var(--il-l);stroke-width:2.2;stroke-dasharray:4 6}
 .il .dt{fill:var(--il-a)}
 .il .tl{fill:var(--il-t);stroke:var(--il-ts);stroke-width:1.6}
 .il .hb{fill:url(#ilg);filter:drop-shadow(0 10px 18px rgba(226,0,26,.28))}
