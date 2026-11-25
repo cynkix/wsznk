@@ -2830,7 +2830,7 @@ html[data-theme="dark"] .md-intro>effect-3d-duo{opacity:.85}
 <style id="ost-il-css">
 .ost-dial #ost-svg{display:none !important}
 .ost-dial{padding:clamp(26px,3vw,40px) clamp(14px,2vw,28px) clamp(58px,5.4vw,72px) !important}
-.ost-car{position:relative;overflow:hidden}
+.ost-car{position:relative;overflow:hidden;border-radius:20px;transition:transform .3s}.ost-car:hover{transform:scale(1.01)}
 .ost-cr{display:flex;transition:transform .7s cubic-bezier(.22,.8,.24,1)}
 .ost-cs{flex:0 0 100%;display:grid;place-items:center}
 .il{width:100%;height:auto;max-height:min(58vh,560px);overflow:visible;--il-a:#E2001A;--il-l:rgba(226,0,26,.38);--il-t:#fff;--il-ts:#f6c9d1;--il-tx:#3b4254}
@@ -2879,5 +2879,7 @@ cr=document.getElementById('ost-cr');
 cr.innerHTML=D.map(function(d){return '<div class="ost-cs">'+slide(d)+'</div>'}).join('');
 function sync(){var k=0;[].forEach.call(l.children,function(li,i){if(li.classList.contains('on'))k=i});cr.style.transform='translateX(-'+(k*100)+'%)'}
 new MutationObserver(sync).observe(l,{subtree:true,attributes:true,attributeFilter:['class']});sync();
+car=document.getElementById('ost-car');car.style.cursor='pointer';car.title='Découvrir l’offre';
+car.addEventListener('click',function(){var k=0;[].forEach.call(l.children,function(li,i){if(li.classList.contains('on'))k=i});var g=l.children[k]&&l.children[k].querySelector('.ost-go');if(g)g.click()});
 })();</script>
 </body></html>
