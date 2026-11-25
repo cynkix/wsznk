@@ -3114,16 +3114,16 @@ html[data-theme="dark"] .ct-ghost,html:not([data-theme="light"]) .ct-ghost.dk{co
 @media(max-width:760px){#ct20 .ct-lg{height:auto;margin:6px 0 4px}#ct20 .ct-lg .ct-20{position:static;display:block;width:96px;margin:0}}
 </style>
 <style id="ct-bars-perspective">
-/* Test perspective : opacité dégressive des barres (IA 100 / Cloud&Data 90 / Agile 80 / Craft&DevOps 70) */
+/* Test perspective : opacité dégressive des barres (IA 100 / Cloud&Data 93 / Agile 87 / Craft&DevOps 80) */
 #ct20 .ct-ia .ct-bar{opacity:1}
-#ct20 .ct-cd .ct-bar{opacity:.9}
-#ct20 .ct-ag .ct-bar{opacity:.8}
-#ct20 .ct-cr .ct-bar{opacity:.7}
+#ct20 .ct-cd .ct-bar{opacity:.933}
+#ct20 .ct-ag .ct-bar{opacity:.867}
+#ct20 .ct-cr .ct-bar{opacity:.8}
 </style>
 <style id="ct20-cycle">
 .ct-20 .chr{display:none !important}
-.ct-20.ct-face{opacity:0;pointer-events:none;backface-visibility:hidden}
-.ct-20.ct-face .ft{opacity:0}
+.ct-20.ct-face{opacity:0;pointer-events:none;filter:none !important;transition:opacity .7s ease}
+.ct-20.ct-face .ft{opacity:0;transition:opacity .7s ease}
 .ct-face.s20 .f20,.ct-face.syr .fyr{opacity:1}
 #ct20 .ct-lg .ct-20{will-change:transform}
 @media(max-width:760px){#ct20 .ct-lg .ct-20.ct-face{position:absolute;top:0;left:0}}
@@ -3134,12 +3134,9 @@ html[data-theme="dark"] .ct-ghost,html:not([data-theme="light"]) .ct-ghost.dk{co
 var logo=c.querySelector('.ct-lg svg.ct-20:not(.ct-face)'),face=c.querySelector('.ct-face');if(!logo||!face)return;
 var P='perspective(700px) ';function st(el,show,cls){el.style.opacity=show?'1':'0';if(cls!==undefined){face.classList.remove('s20','syr');if(cls)face.classList.add(cls)}}
 var seq=[null,'s20','syr'],k=0,run=false,timer;
-function flip(next){ // rotation: 0 -> 90 (swap) -> 0
-  var els=[logo,face];els.forEach(function(e){e.animate([{transform:P+'rotateY(0deg)'},{transform:P+'rotateY(90deg)'}],{duration:450,easing:'ease-in',fill:'forwards'})});
-  setTimeout(function(){
-    if(next===null){logo.style.opacity='1';face.style.opacity='0'}else{logo.style.opacity='0';face.style.opacity='1';face.classList.remove('s20','syr');face.classList.add(next)}
-    els.forEach(function(e){e.getAnimations().forEach(function(a){a.cancel()});e.animate([{transform:P+'rotateY(-90deg)'},{transform:P+'rotateY(0deg)'}],{duration:450,easing:'ease-out'})});
-  },450);
+function flip(next){ // le disque reste fixe : seul le contenu change (fondu)
+  face.classList.remove('s20','syr');
+  if(next===null){face.style.opacity='0'}else{face.classList.add(next);face.style.opacity='1'}
 }
 function step(){if(!run)return;k=(k+1)%3;flip(seq[k]);timer=setTimeout(step,k===0?6500:3200)}
 function start(){if(run)return;run=true;timer=setTimeout(step,6500)}
