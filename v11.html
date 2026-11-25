@@ -2757,7 +2757,7 @@ var offs=[].slice.call(document.querySelectorAll('.sv-offs-r'));
 if(!('IntersectionObserver' in window)||rm){playA();offs.forEach(function(o){o.classList.add('go');});}
 else{
  if(h0){var a=new IntersectionObserver(function(es){if(es[0].isIntersecting){playA();a.disconnect();}},{rootMargin:'0px 0px -42% 0px',threshold:1});a.observe(h0);}
- function chk(){var vh=innerHeight||800;offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(mid<vh*.62&&r.bottom>vh*.3){o.classList.add('go0');var k=offs.indexOf(o),L=offsL[k],n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)startPl(k);var left=L&&!rm?Math.max(0,(+L.dataset.plAt)+n*300+500-Date.now()):0;setTimeout(function(){o.classList.add('go');},left);}});}
+ function chk(){var vh=innerHeight||800;offs.forEach(function(o){if(o.classList.contains('go0')||!o.offsetParent)return;var r=o.getBoundingClientRect();var mid=r.top+r.height/2;if(mid<vh*.62&&r.bottom>vh*.3){o.classList.add('go0');var k=offs.indexOf(o),L=offsL[k],n=L?L.querySelectorAll('.sv-plus').length:0;if(L&&!rm)startPl(k);var left=L&&!rm?Math.max(0,(+L.dataset.plAt)+n*300+500+(L.closest('.sv-in')?1600:0)-Date.now()):0;setTimeout(function(){o.classList.add('go');},left);}});}
  addEventListener('scroll',function(){requestAnimationFrame(chk);},{passive:true});addEventListener('resize',chk);
  document.querySelectorAll('.svp button').forEach(function(x){x.addEventListener('click',function(){setTimeout(chk,150);});});
  function resetA(){cards.forEach(function(c){c.classList.remove('ph');});offsL.forEach(function(L){L.classList.remove('pl');delete L.dataset.plAt;});offs.forEach(function(o){o.classList.remove('go','go0');});}
@@ -2872,5 +2872,20 @@ if(bh&&bc){
 .sv.v-c .sv-plus::before,.sv.v-c .sv-plus::after{width:11px !important;margin:-1px 0 0 -5.5px !important}
 .sv.v-c .sv-card{translate:none !important}
 }
+</style>
+<style>
+/* + seuls (sans cercle ni ombre), qui apparaissent un à un après les bullets des mots-clés */
+@keyframes plusAppear{0%{opacity:0;transform:rotate(-90deg) scale(.4)}100%{opacity:1;transform:none}}
+.sv-in .sv-plus{background:transparent !important;box-shadow:none !important;border:0 !important}
+.sv-in .sv-plus::before,.sv-in .sv-plus::after{width:18px !important;height:2.4px !important;margin:-1.2px 0 0 -9px !important}
+.sv-in .sv-offs:not(.pl) .sv-off .sv-plus{opacity:0}
+.sv-in .sv-offs.pl .sv-off .sv-plus{animation:plusAppear .6s cubic-bezier(.3,1.3,.5,1) both !important}
+.sv-in .sv-offs.pl .sv-off:nth-child(1) .sv-plus{animation-delay:1.70s !important}
+.sv-in .sv-offs.pl .sv-off:nth-child(2) .sv-plus{animation-delay:2.00s !important}
+.sv-in .sv-offs.pl .sv-off:nth-child(3) .sv-plus{animation-delay:2.30s !important}
+.sv-in .sv-offs.pl .sv-off:nth-child(4) .sv-plus{animation-delay:2.60s !important}
+.sv-in .sv-offs.pl .sv-off:nth-child(5) .sv-plus{animation-delay:2.90s !important}
+.sv-in .sv-offs.pl .sv-off:nth-child(6) .sv-plus{animation-delay:3.20s !important}
+@media(prefers-reduced-motion:reduce){.sv-in .sv-offs .sv-plus{opacity:1 !important;animation:none !important}}
 </style>
 </body></html>
