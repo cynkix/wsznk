@@ -2299,13 +2299,10 @@ addEventListener('scroll',u,{passive:true});addEventListener('resize',u);addEven
 .od-host.on .od-nav{opacity:1;pointer-events:auto}
 .od-nav button{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:18px;cursor:pointer}
 .od-nav button:hover{background:rgba(255,255,255,.34)}
-.od-nav span{min-width:7.5em;text-align:center}
-.od-eb{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px}
-.od-pos{display:inline-flex;align-items:center;gap:10px;padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.14);color:#fff;letter-spacing:.06em;text-transform:none;font-size:13px}
+.od-nav span{min-width:7.5em;display:inline-flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap}
 .od-dots{display:inline-flex;gap:5px}
 .od-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4)}
 .od-dots i.on{width:18px;border-radius:4px;background:#ff5a70}
-html:not([data-theme="dark"]) .od-pos{background:rgba(226,0,26,.08);color:#14171F}
 html:not([data-theme="dark"]) .od-dots i{background:rgba(20,23,31,.25)}
 html:not([data-theme="dark"]) .od-dots i.on{background:#E2001A}
 .od-swap .od-in{animation:odSw .4s ease both}
@@ -2339,7 +2336,7 @@ var cards=[].slice.call(document.querySelectorAll('.sl4-duo > .sl4-card'));if(ca
 var host=null,cur=-1,busy=false,last=null,fromEl=null;window.odOpen=open;
 function esc(x){return x.replace(/&/g,'&amp;')}
 cards.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.className='od-btn';b.setAttribute('aria-haspopup','dialog');b.setAttribute('aria-label','Découvrir l’offre : '+D[i].t);b.innerHTML='Découvrir<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';c.appendChild(b);b.addEventListener('click',function(){open(i,b)})});
-function body(i){var d=D[i];return '<div class="od-in"><div class="od-eb">Nos offres<span class="od-pos" aria-label="Offre '+(i+1)+' sur 4">Offre '+(i+1)+' / 4<span class="od-dots" aria-hidden="true">'+[0,1,2,3].map(function(k){return '<i'+(k===i?' class="on"':'')+'></i>'}).join('')+'</span></span></div><h2>'+esc(d.t)+'</h2><p class="od-lead">'+esc(d.lead)+'</p><div class="od-g">'+d.c.map(function(c,k){return '<div class="od-c'+(k===0?' red':'')+'" style="--d:'+k+'"><span class="tag">'+esc(c.tag)+'</span><h3>'+esc(c.h)+'</h3><div class="od-p">'+c.p.map(function(p){return '<span>'+esc(p)+'</span>'}).join('')+'</div><p>'+esc(c.x)+'</p></div>'}).join('')+'</div><div class="od-rel"><b>Approches associées</b>'+d.r.map(function(r){return '<span class="pl">'+esc(r)+'</span>'}).join('')+'</div></div>'}
+function body(i){var d=D[i];return '<div class="od-in"><div class="od-eb">Nos offres</div><h2>'+esc(d.t)+'</h2><p class="od-lead">'+esc(d.lead)+'</p><div class="od-g">'+d.c.map(function(c,k){return '<div class="od-c'+(k===0?' red':'')+'" style="--d:'+k+'"><span class="tag">'+esc(c.tag)+'</span><h3>'+esc(c.h)+'</h3><div class="od-p">'+c.p.map(function(p){return '<span>'+esc(p)+'</span>'}).join('')+'</div><p>'+esc(c.x)+'</p></div>'}).join('')+'</div><div class="od-rel"><b>Approches associées</b>'+d.r.map(function(r){return '<span class="pl">'+esc(r)+'</span>'}).join('')+'</div></div>'}
 function open(i,btn){if(host||busy)return;busy=true;cur=i;last=btn;
 host=document.createElement('div');host.className='od-host';host.innerHTML='<div class="od-bd"></div><div class="od" role="dialog" aria-modal="true" aria-label="'+esc(D[i].t)+'"></div><button type="button" class="od-x" aria-label="Fermer">×</button><div class="od-nav"><button type="button" aria-label="Offre précédente">←</button><span></span><button type="button" aria-label="Offre suivante">→</button></div>';
 document.body.appendChild(host);document.documentElement.style.overflow='hidden';
@@ -2349,7 +2346,7 @@ requestAnimationFrame(function(){host.classList.add('on');o.classList.add('full'
 host.querySelector('.od-x').addEventListener('click',close);host.querySelector('.od-bd').addEventListener('click',close);
 var b=host.querySelectorAll('.od-nav button');b[0].addEventListener('click',function(){go(-1)});b[1].addEventListener('click',function(){go(1)});
 document.addEventListener('keydown',key)}
-function nv(){var s=host&&host.querySelector('.od-nav span');if(s)s.textContent=(cur+1)+' / 4'}
+function nv(){var s=host&&host.querySelector('.od-nav span');if(s){s.setAttribute('aria-label','Offre '+(cur+1)+' sur 4');s.innerHTML='Offre '+(cur+1)+' / 4<span class="od-dots" aria-hidden="true">'+[0,1,2,3].map(function(k){return '<i'+(k===cur?' class="on"':'')+'></i>'}).join('')+'</span>'}}
 function go(d){if(!host||busy)return;cur=(cur+d+4)%4;var o=host.querySelector('.od');o.setAttribute('aria-label',D[cur].t);o.innerHTML=body(cur);o.classList.remove('od-swap');void o.offsetWidth;o.classList.add('od-swap');nv()}
 function close(){if(!host||busy)return;busy=true;var o=host.querySelector('.od'),c=fromEl||cards[cur];if(!fromEl)c.scrollIntoView({block:'nearest'});var r=c.getBoundingClientRect();host.classList.remove('on');o.classList.remove('full');o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';
 setTimeout(function(){if(host){host.remove();host=null}document.documentElement.style.overflow='';document.removeEventListener('keydown',key);busy=false;if(last&&last.focus)last.focus()},680)}
