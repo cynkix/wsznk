@@ -2342,7 +2342,7 @@ host=document.createElement('div');host.className='od-host';host.innerHTML='<div
 document.body.appendChild(host);document.documentElement.style.overflow='hidden';
 fromEl=(btn&&btn._from)||null;var o=host.querySelector('.od'),r=(fromEl||cards[i]).getBoundingClientRect();o.style.transition='none';o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';o.getBoundingClientRect();o.style.transition='';
 o.innerHTML=body(i);
-requestAnimationFrame(function(){host.classList.add('on');o.classList.add('full');nv();setTimeout(function(){busy=false;host.querySelector('.od-x').focus()},700)});
+requestAnimationFrame(function(){host.classList.add('on');o.classList.add('full');nv();setTimeout(function(){busy=false;var dl=host.querySelector('.od');dl.setAttribute('tabindex','-1');dl.focus({preventScroll:true})},700)});
 host.querySelector('.od-x').addEventListener('click',close);host.querySelector('.od-bd').addEventListener('click',close);
 var b=host.querySelectorAll('.od-nav button');b[0].addEventListener('click',function(){go(-1)});b[1].addEventListener('click',function(){go(1)});
 document.addEventListener('keydown',key)}
@@ -2514,7 +2514,15 @@ html:not([data-theme="dark"]) .od-p span{border-color:rgba(11,15,25,.2);backgrou
 html:not([data-theme="dark"]) .od-c.red .od-p span{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.16);color:#fff}
 html:not([data-theme="dark"]) .od-x{background:#0b0f19;color:#fff}
 html:not([data-theme="dark"]) .od-nav{background:rgba(11,15,25,.08);color:#0b0f19}
-html:not([data-theme="dark"]) .od-nav button{background:rgba(11,15,25,.12);color:#0b0f19}
+.od:focus{outline:0}
+html:not([data-theme="dark"]) .od-x{box-shadow:none}
+html:not([data-theme="dark"]) .od-x:focus,html:not([data-theme="dark"]) .od-nav button:focus{outline:0;box-shadow:none}
+html:not([data-theme="dark"]) .od-x:focus-visible,html:not([data-theme="dark"]) .od-nav button:focus-visible{outline:2px solid #E2001A;outline-offset:2px}
+html:not([data-theme="dark"]) .od-nav{background:#0b0f19;color:#fff;backdrop-filter:none;box-shadow:none}
+html:not([data-theme="dark"]) .od-nav button{background:rgba(255,255,255,.14);color:#fff}
+html:not([data-theme="dark"]) .od-nav button:hover{background:rgba(255,255,255,.28)}
+html:not([data-theme="dark"]) .od-dots i{background:rgba(255,255,255,.4)}
+html:not([data-theme="dark"]) .od-dots i.on{background:#ff5a70}
 </style>
 <style id="ost-dial2">
 .ost-dial .qn,.ost-dial .qt{pointer-events:none}
