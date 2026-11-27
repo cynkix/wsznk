@@ -2299,7 +2299,12 @@ addEventListener('scroll',u,{passive:true});addEventListener('resize',u);addEven
 .od-host.on .od-nav{opacity:1;pointer-events:auto}
 .od-nav button{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:18px;cursor:pointer}
 .od-nav button:hover{background:rgba(255,255,255,.34)}
-.od-nav span{min-width:7.5em;text-align:center}
+.od-nav span{min-width:7.5em;display:inline-flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap}
+.od-dots{display:inline-flex;gap:5px}
+.od-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4)}
+.od-dots i.on{width:18px;border-radius:4px;background:#ff5a70}
+html:not([data-theme="dark"]) .od-dots i{background:rgba(20,23,31,.25)}
+html:not([data-theme="dark"]) .od-dots i.on{background:#E2001A}
 .od-swap .od-in{animation:odSw .4s ease both}
 @keyframes odSw{from{opacity:0}to{opacity:1}}
 @media(max-width:900px){.od-g{grid-template-columns:1fr}.od-in{align-content:start}}
@@ -2337,11 +2342,11 @@ host=document.createElement('div');host.className='od-host';host.innerHTML='<div
 document.body.appendChild(host);document.documentElement.style.overflow='hidden';
 fromEl=(btn&&btn._from)||null;var o=host.querySelector('.od'),r=(fromEl||cards[i]).getBoundingClientRect();o.style.transition='none';o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';o.getBoundingClientRect();o.style.transition='';
 o.innerHTML=body(i);
-requestAnimationFrame(function(){host.classList.add('on');o.classList.add('full');nv();setTimeout(function(){busy=false;host.querySelector('.od-x').focus()},700)});
+requestAnimationFrame(function(){host.classList.add('on');o.classList.add('full');nv();setTimeout(function(){busy=false;var dl=host.querySelector('.od');dl.setAttribute('tabindex','-1');dl.focus({preventScroll:true})},700)});
 host.querySelector('.od-x').addEventListener('click',close);host.querySelector('.od-bd').addEventListener('click',close);
 var b=host.querySelectorAll('.od-nav button');b[0].addEventListener('click',function(){go(-1)});b[1].addEventListener('click',function(){go(1)});
 document.addEventListener('keydown',key)}
-function nv(){var s=host&&host.querySelector('.od-nav span');if(s)s.textContent=(cur+1)+' / 4'}
+function nv(){var s=host&&host.querySelector('.od-nav span');if(s){s.setAttribute('aria-label','Offre '+(cur+1)+' sur 4');s.innerHTML='Offre '+(cur+1)+' / 4<span class="od-dots" aria-hidden="true">'+[0,1,2,3].map(function(k){return '<i'+(k===cur?' class="on"':'')+'></i>'}).join('')+'</span>'}}
 function go(d){if(!host||busy)return;cur=(cur+d+4)%4;var o=host.querySelector('.od');o.setAttribute('aria-label',D[cur].t);o.innerHTML=body(cur);o.classList.remove('od-swap');void o.offsetWidth;o.classList.add('od-swap');nv()}
 function close(){if(!host||busy)return;busy=true;var o=host.querySelector('.od'),c=fromEl||cards[cur];if(!fromEl)c.scrollIntoView({block:'nearest'});var r=c.getBoundingClientRect();host.classList.remove('on');o.classList.remove('full');o.style.left=r.left+'px';o.style.top=r.top+'px';o.style.width=r.width+'px';o.style.height=r.height+'px';
 setTimeout(function(){if(host){host.remove();host=null}document.documentElement.style.overflow='';document.removeEventListener('keydown',key);busy=false;if(last&&last.focus)last.focus()},680)}
@@ -2509,7 +2514,15 @@ html:not([data-theme="dark"]) .od-p span{border-color:rgba(11,15,25,.2);backgrou
 html:not([data-theme="dark"]) .od-c.red .od-p span{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.16);color:#fff}
 html:not([data-theme="dark"]) .od-x{background:#0b0f19;color:#fff}
 html:not([data-theme="dark"]) .od-nav{background:rgba(11,15,25,.08);color:#0b0f19}
-html:not([data-theme="dark"]) .od-nav button{background:rgba(11,15,25,.12);color:#0b0f19}
+.od:focus{outline:0}
+html:not([data-theme="dark"]) .od-x{box-shadow:none}
+html:not([data-theme="dark"]) .od-x:focus,html:not([data-theme="dark"]) .od-nav button:focus{outline:0;box-shadow:none}
+html:not([data-theme="dark"]) .od-x:focus-visible,html:not([data-theme="dark"]) .od-nav button:focus-visible{outline:2px solid #E2001A;outline-offset:2px}
+html:not([data-theme="dark"]) .od-nav{background:#0b0f19;color:#fff;backdrop-filter:none;box-shadow:none}
+html:not([data-theme="dark"]) .od-nav button{background:rgba(255,255,255,.14);color:#fff}
+html:not([data-theme="dark"]) .od-nav button:hover{background:rgba(255,255,255,.28)}
+html:not([data-theme="dark"]) .od-dots i{background:rgba(255,255,255,.4)}
+html:not([data-theme="dark"]) .od-dots i.on{background:#ff5a70}
 </style>
 <style id="ost-dial2">
 .ost-dial .qn,.ost-dial .qt{pointer-events:none}

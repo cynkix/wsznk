@@ -2034,15 +2034,27 @@ html[data-theme="dark"] .hx-ey{color:#FF6B7D}
 }
 @media(prefers-reduced-motion:reduce){.hx-i{opacity:1;transform:none;transition:none}.hx-f{transform:none}}
 </style>
+<style id="hx-relay">
+/* Frise : la ligne se colore en rouge, et seule l'année atteinte par le point s'allume (2006 et 2026 restent rouges) */
+.hx-f{background:#EE2238}
+.hx-y,.hx-m .hx-y{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--ink);transition:color .35s ease,transform .35s ease;transform-origin:left center}
+.hx-i:nth-child(odd) .hx-y{transform-origin:right center}
+.hx-i.cur .hx-y,.hx-i:first-child .hx-y,.hx-i:last-child .hx-y{color:#EE2238}
+.hx-i.cur .hx-y{transform:scale(1.08)}
+.hx-i:not(.cur) .hx-m .hx-c,.hx-m:not(.cur) .hx-c{border-color:var(--line)}
+html[data-theme="dark"] .hx-m:not(.cur) .hx-c{border-color:rgba(255,255,255,.1)}
+.hx-i.cur .hx-c,.hx-i:first-child .hx-c,.hx-i:last-child .hx-c{border-color:rgba(238,34,56,.45)}
+@media (prefers-reduced-motion:reduce){.hx-y{transition:none}.hx-i.cur .hx-y{transform:none}}
+</style>
 <script>
 (function(){var L=document.getElementById('hx-l');if(!L)return;
 var rail=L.querySelector('.hx-rail'),f=L.querySelector('.hx-f'),d=L.querySelector('.hx-d'),it=[].slice.call(L.querySelectorAll('.hx-i'));
 var rm=false;try{rm=matchMedia('(prefers-reduced-motion:reduce)').matches}catch(e){}
-if(rm){it.forEach(function(e){e.classList.add('on')});L.classList.add('end');return}
+if(rm){it.forEach(function(e){e.classList.add('on')});it[it.length-1]&&it[it.length-1].classList.add('cur');L.classList.add('end');return}
 var raf=0,cur=0;
 function calc(){var r=rail.getBoundingClientRect(),h=r.height,c=innerHeight*.55,p=h>0?Math.max(0,Math.min(1,(c-r.top)/h)):0;return {p:p,h:h,c:c}}
 function draw(){raf=0;var s=calc();f.style.transform='scaleY('+s.p+')';d.style.transform='translateY('+(s.p*s.h)+'px)';d.style.opacity=(s.p>0&&s.p<1)?'1':'0';
- it.forEach(function(e){var n=e.querySelector('.hx-n').getBoundingClientRect();e.classList.toggle('on',n.top+n.height/2<=s.c)});
+ var last=-1;it.forEach(function(e,i){var n=e.querySelector('.hx-n').getBoundingClientRect(),on=n.top+n.height/2<=s.c;e.classList.toggle('on',on);if(on)last=i});it.forEach(function(e,i){e.classList.toggle('cur',i===last)});
  L.classList.toggle('end',s.p>=.999)}
 function kick(){if(!raf)raf=requestAnimationFrame(draw)}
 addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);kick();setTimeout(kick,400);
